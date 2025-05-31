@@ -1,0 +1,18 @@
+{
+  "shadow": {
+    "sm": { "value": "0 1px 1px 0 rgb(145 158 171 / 0.08)" },
+    "base": { "value": "0 1px 2px 0 rgb(145 158 171 / 0.16)" },
+    "md": { "value": "0 4px 8px 0 rgb(145 158 171 / 0.16)" },
+    "lg": { "value": "0 8px 16px 0 rgb(145 158 171 / 0.16)" },
+    "xl": { "value": "0 12px 24px -4px rgb(145 158 171 / 0.16)" },
+    "2xl": { "value": "0 20px 40px -4px rgb(145 158 171 / 0.16)" },
+    "inner": { "value": "inset 0 2px 4px 0 rgb(0 0 0 / 0.05)" },
+    "none": { "value": "none" },
+    "primary": { "value": "0 8px 16px rgba(6, 144, 244, 0.24)" },
+    "secondary": { "value": "0 8px 16px rgba(145, 56, 255, 0.24)" },
+    "info": { "value": "0 8px 16px rgba(0, 190, 224, 0.24)" },
+    "success": { "value": "0 8px 16px rgba(34, 185, 84, 0.24)" },
+    "warning": { "value": "0 8px 16px rgba(255, 173, 5, 0.24)" },
+    "error": { "value": "0 8px 16px rgba(255, 88, 51, 0.24)" }
+  }
+}

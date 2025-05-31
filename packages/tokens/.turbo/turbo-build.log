@@ -1,0 +1,9 @@
+
+[0m[2m[35m$[0m [2m[1mnode build-tokens.mjs[0m
+
+css
+[1m[32m✔︎ ./dist/variables.css[39m[22m
+
+js
+[1m[32m✔︎ ./dist/tokens.js[39m[22m
+✔︎ ./dist/fonts/plus-jakarta-sans.css

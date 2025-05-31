@@ -1,0 +1,11 @@
+{
+  "name": "@forte-ui/tsconfig",
+  "version": "0.1.0",
+  "description": "Shared TypeScript configurations for ForteUI",
+  "main": "index.js",
+  "files": [
+    "base.json",
+    "react-library.json",
+    "nextjs.json"
+  ]
+}
