@@ -695,33 +695,106 @@ function App() {
           </div>
 
           {/* Icons in Buttons */}
-          <div className="space-y-4">
+          <div className="space-y-6">
             <Heading level={3}>Icons in Components</Heading>
-            <div className="flex flex-wrap gap-4">
-              <Button variant="primary">
-                <Stack direction="row" spacing="sm" align="center">
+            
+            {/* Contained Buttons - Icons are WHITE for contrast */}
+            <div className="space-y-3">
+              <Text variant="body-sm" className="font-medium text-gray-700">Contained Buttons (White Icons)</Text>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="primary">
                   <IconPlus size={16} />
                   <span>Add Item</span>
-                </Stack>
-              </Button>
-              <Button variant="secondary">
-                <Stack direction="row" spacing="sm" align="center">
-                  <IconEdit size={16} />
-                  <span>Edit</span>
-                </Stack>
-              </Button>
-              <Button variant="outline-error">
-                <Stack direction="row" spacing="sm" align="center">
+                </Button>
+                <Button variant="info">
+                  <IconInfoCircle size={16} />
+                  <span>Info</span>
+                </Button>
+                <Button variant="success">
+                  <IconCheck size={16} />
+                  <span>Success</span>
+                </Button>
+                <Button variant="error">
                   <IconTrash size={16} />
                   <span>Delete</span>
-                </Stack>
-              </Button>
-              <Button variant="text-default" size="icon">
-                <IconSearch size={16} />
-              </Button>
-              <Button variant="text-default" size="icon">
-                <IconSettings size={16} />
-              </Button>
+                </Button>
+              </div>
+            </div>
+
+            {/* Outlined Buttons - Icons match theme color */}
+            <div className="space-y-3">
+              <Text variant="body-sm" className="font-medium text-gray-700">Outlined Buttons (Theme Color Icons)</Text>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="outline-primary">
+                  <IconUser size={16} />
+                  <span>Profile</span>
+                </Button>
+                <Button variant="outline-warning">
+                  <IconAlertTriangle size={16} />
+                  <span>Warning</span>
+                </Button>
+                <Button variant="outline-success">
+                  <IconDownload size={16} />
+                  <span>Download</span>
+                </Button>
+              </div>
+            </div>
+
+            {/* Text Buttons - Icons match theme color */}
+            <div className="space-y-3">
+              <Text variant="body-sm" className="font-medium text-gray-700">Text Buttons (Theme Color Icons)</Text>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="text-default">
+                  <IconEdit size={16} />
+                  <span>Edit</span>
+                </Button>
+                <Button variant="text-primary">
+                  <IconHeart size={16} />
+                  <span>Like</span>
+                </Button>
+                <Button variant="text-success">
+                  <IconStar size={16} />
+                  <span>Favorite</span>
+                </Button>
+              </div>
+            </div>
+
+            {/* Soft Buttons - Icons are darker theme color */}
+            <div className="space-y-3">
+              <Text variant="body-sm" className="font-medium text-gray-700">Soft Buttons (Dark Theme Color Icons)</Text>
+              <div className="flex flex-wrap gap-3">
+                <Button variant="soft-primary">
+                  <IconSettings size={16} />
+                  <span>Settings</span>
+                </Button>
+                <Button variant="soft-error">
+                  <IconX size={16} />
+                  <span>Close</span>
+                </Button>
+                <Button variant="soft-info">
+                  <IconEye size={16} />
+                  <span>View</span>
+                </Button>
+              </div>
+            </div>
+
+            {/* Icon-only Buttons */}
+            <div className="space-y-3">
+              <Text variant="body-sm" className="font-medium text-gray-700">Icon-only Buttons</Text>
+              <div className="flex flex-wrap gap-3 items-center">
+                <Button variant="text-default" size="icon">
+                  <IconSearch size={16} />
+                </Button>
+                <Button variant="text-default" size="icon">
+                  <IconSettings size={16} />
+                </Button>
+                <Button variant="outline-primary" size="icon">
+                  <IconHeart size={16} />
+                </Button>
+                <Button variant="soft-primary" size="icon">
+                  <IconPlus size={16} />
+                </Button>
+              </div>
             </div>
           </div>
 
