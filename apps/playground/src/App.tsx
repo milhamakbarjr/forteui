@@ -117,11 +117,14 @@ function App() {
             </div>
 
             <div>
-              <Text variant="caption" color="secondary" className="mb-3 block">Special States</Text>
+              <Text variant="caption" color="secondary" className="mb-3 block">Soft Variants (6 Colors from Figma)</Text>
               <div className="flex flex-wrap gap-3">
-                <Button variant="destructive">Destructive</Button>
-                <Button variant="link">Link Button</Button>
-                <Button variant="primary" disabled>Disabled</Button>
+                <Button variant="soft-default">Default</Button>
+                <Button variant="soft-primary">Primary</Button>
+                <Button variant="soft-info">Info</Button>
+                <Button variant="soft-success">Success</Button>
+                <Button variant="soft-warning">Warning</Button>
+                <Button variant="soft-error">Error</Button>
               </div>
             </div>
           </div>
@@ -410,7 +413,7 @@ function App() {
                 </Text>
               </CardContent>
               <CardFooter>
-                <Button size="sm" variant="destructive">Delete</Button>
+                <Button size="sm" variant="error">Delete</Button>
               </CardFooter>
             </Card>
           </div>

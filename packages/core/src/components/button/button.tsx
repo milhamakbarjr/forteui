@@ -35,11 +35,13 @@ const buttonVariants = cva(
         "text-warning": "bg-transparent text-warning-main hover:bg-warning-8 focus-visible:ring-warning-main",
         "text-error": "bg-transparent text-error-main hover:bg-error-8 focus-visible:ring-error-main",
         
-        // Destructive (alias for error)
-        destructive: "bg-error-main text-white hover:bg-error-dark focus-visible:ring-error-main",
-        
-        // Link style
-        link: "text-primary-main underline-offset-4 hover:underline focus-visible:ring-primary-main",
+        // Soft variants (6 colors from Figma)
+        "soft-default": "bg-grey-8 text-grey-800 hover:bg-grey-16 focus-visible:ring-grey-800",
+        "soft-primary": "bg-primary-8 text-primary-dark hover:bg-primary-16 focus-visible:ring-primary-main",
+        "soft-info": "bg-info-8 text-info-dark hover:bg-info-16 focus-visible:ring-info-main",
+        "soft-success": "bg-success-8 text-success-dark hover:bg-success-16 focus-visible:ring-success-main",
+        "soft-warning": "bg-warning-8 text-warning-dark hover:bg-warning-16 focus-visible:ring-warning-main",
+        "soft-error": "bg-error-8 text-error-dark hover:bg-error-16 focus-visible:ring-error-main",
       },
       size: {
         sm: "h-[30px] px-2 text-[13px] min-w-16",     // Small: 30px height (Figma spec)
