@@ -105,10 +105,14 @@ function App() {
             </div>
 
             <div>
-              <Text variant="caption" color="secondary" className="mb-3 block">Ghost Variants</Text>
+              <Text variant="caption" color="secondary" className="mb-3 block">Text Variants (6 Colors from Figma)</Text>
               <div className="flex flex-wrap gap-3">
-                <Button variant="ghost">Primary Ghost</Button>
-                <Button variant="ghost-secondary">Secondary Ghost</Button>
+                <Button variant="text-default">Default</Button>
+                <Button variant="text-primary">Primary</Button>
+                <Button variant="text-info">Info</Button>
+                <Button variant="text-success">Success</Button>
+                <Button variant="text-warning">Warning</Button>
+                <Button variant="text-error">Error</Button>
               </div>
             </div>
 
@@ -390,7 +394,7 @@ function App() {
                 </Text>
               </CardContent>
               <CardFooter>
-                <Button size="sm" variant="ghost">View Details</Button>
+                <Button size="sm" variant="text-primary">View Details</Button>
               </CardFooter>
             </Card>
 
@@ -513,7 +517,7 @@ function App() {
                 </Container>
               </CardContent>
               <CardFooter>
-                <Button variant="ghost">Learn More</Button>
+                <Button variant="text-primary">Learn More</Button>
               </CardFooter>
             </Card>
           </div>

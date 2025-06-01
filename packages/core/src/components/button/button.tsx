@@ -27,9 +27,13 @@ const buttonVariants = cva(
         "outline-warning": "border border-warning-48 text-warning-main hover:bg-warning-8 hover:border-warning-main focus-visible:ring-warning-main",
         "outline-error": "border border-error-48 text-error-main hover:bg-error-8 hover:border-error-main focus-visible:ring-error-main",
         
-        // Ghost variants
-        ghost: "text-primary-main hover:bg-primary-8 focus-visible:ring-primary-main",
-        "ghost-secondary": "text-secondary-main hover:bg-secondary-8 focus-visible:ring-secondary-main",
+        // Text variants (6 colors from Figma)
+        "text-default": "bg-transparent text-grey-700 hover:bg-grey-8 focus-visible:ring-grey-700",
+        "text-primary": "bg-transparent text-primary-main hover:bg-primary-8 focus-visible:ring-primary-main",
+        "text-info": "bg-transparent text-info-main hover:bg-info-8 focus-visible:ring-info-main",
+        "text-success": "bg-transparent text-success-main hover:bg-success-8 focus-visible:ring-success-main",
+        "text-warning": "bg-transparent text-warning-main hover:bg-warning-8 focus-visible:ring-warning-main",
+        "text-error": "bg-transparent text-error-main hover:bg-error-8 focus-visible:ring-error-main",
         
         // Destructive (alias for error)
         destructive: "bg-error-main text-white hover:bg-error-dark focus-visible:ring-error-main",
