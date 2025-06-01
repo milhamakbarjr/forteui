@@ -127,6 +127,59 @@ function App() {
                 <Button variant="soft-error">Error</Button>
               </div>
             </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Disabled States (All Variants)</Text>
+              <div className="space-y-3">
+                <div>
+                  <Text variant="body-sm" className="mb-2 text-grey-600">Contained Disabled</Text>
+                  <div className="flex flex-wrap gap-3">
+                    <Button variant="default" disabled>Default</Button>
+                    <Button variant="primary" disabled>Primary</Button>
+                    <Button variant="info" disabled>Info</Button>
+                    <Button variant="success" disabled>Success</Button>
+                    <Button variant="warning" disabled>Warning</Button>
+                    <Button variant="error" disabled>Error</Button>
+                  </div>
+                </div>
+                
+                <div>
+                  <Text variant="body-sm" className="mb-2 text-grey-600">Outline Disabled</Text>
+                  <div className="flex flex-wrap gap-3">
+                    <Button variant="outline-default" disabled>Default</Button>
+                    <Button variant="outline-primary" disabled>Primary</Button>
+                    <Button variant="outline-info" disabled>Info</Button>
+                    <Button variant="outline-success" disabled>Success</Button>
+                    <Button variant="outline-warning" disabled>Warning</Button>
+                    <Button variant="outline-error" disabled>Error</Button>
+                  </div>
+                </div>
+                
+                <div>
+                  <Text variant="body-sm" className="mb-2 text-grey-600">Text Disabled</Text>
+                  <div className="flex flex-wrap gap-3">
+                    <Button variant="text-default" disabled>Default</Button>
+                    <Button variant="text-primary" disabled>Primary</Button>
+                    <Button variant="text-info" disabled>Info</Button>
+                    <Button variant="text-success" disabled>Success</Button>
+                    <Button variant="text-warning" disabled>Warning</Button>
+                    <Button variant="text-error" disabled>Error</Button>
+                  </div>
+                </div>
+                
+                <div>
+                  <Text variant="body-sm" className="mb-2 text-grey-600">Soft Disabled</Text>
+                  <div className="flex flex-wrap gap-3">
+                    <Button variant="soft-default" disabled>Default</Button>
+                    <Button variant="soft-primary" disabled>Primary</Button>
+                    <Button variant="soft-info" disabled>Info</Button>
+                    <Button variant="soft-success" disabled>Success</Button>
+                    <Button variant="soft-warning" disabled>Warning</Button>
+                    <Button variant="soft-error" disabled>Error</Button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
