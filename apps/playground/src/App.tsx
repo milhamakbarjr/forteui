@@ -202,6 +202,158 @@ function App() {
           </div>
         </section>
 
+        {/* Icon Button Showcase */}
+        <section className="space-y-6">
+          <Heading level={2}>Icon Button Components</Heading>
+          <div className="space-y-4">
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Icon Button Colors (6 Variants from Figma)</Text>
+              <div className="flex flex-wrap gap-3 items-center">
+                <Button variant="icon-default" size="icon-md">
+                  <IconHome className="w-6 h-6" />
+                </Button>
+                <Button variant="icon-primary" size="icon-md">
+                  <IconUser className="w-6 h-6" />
+                </Button>
+                <Button variant="icon-info" size="icon-md">
+                  <IconInfoCircle className="w-6 h-6" />
+                </Button>
+                <Button variant="icon-success" size="icon-md">
+                  <IconCheck className="w-6 h-6" />
+                </Button>
+                <Button variant="icon-warning" size="icon-md">
+                  <IconAlertTriangle className="w-6 h-6" />
+                </Button>
+                <Button variant="icon-error" size="icon-md">
+                  <IconX className="w-6 h-6" />
+                </Button>
+              </div>
+            </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Icon Button Sizes (Circular from Figma)</Text>
+              <div className="flex flex-wrap gap-3 items-center">
+                <Button variant="icon-primary" size="icon-lg">
+                  <IconPlus className="w-8 h-8" />
+                </Button>
+                <Button variant="icon-primary" size="icon-md">
+                  <IconPlus className="w-6 h-6" />
+                </Button>
+                <Button variant="icon-primary" size="icon-sm">
+                  <IconPlus className="w-5 h-5" />
+                </Button>
+                <Button variant="icon-primary" size="icon-xs">
+                  <IconPlus className="w-4 h-4" />
+                </Button>
+              </div>
+              <div className="mt-2">
+                <Text variant="body-sm" color="secondary">
+                  Sizes: Large (48px), Medium (40px), Small (36px), Extra Small (28px)
+                </Text>
+              </div>
+            </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Icon Button Use Cases</Text>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                <div className="flex items-center gap-3">
+                  <Button variant="icon-primary" size="icon-sm">
+                    <IconEdit className="w-5 h-5" />
+                  </Button>
+                  <Text variant="body-sm">Edit</Text>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button variant="icon-error" size="icon-sm">
+                    <IconTrash className="w-5 h-5" />
+                  </Button>
+                  <Text variant="body-sm">Delete</Text>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button variant="icon-info" size="icon-sm">
+                    <IconEye className="w-5 h-5" />
+                  </Button>
+                  <Text variant="body-sm">View</Text>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button variant="icon-success" size="icon-sm">
+                    <IconDownload className="w-5 h-5" />
+                  </Button>
+                  <Text variant="body-sm">Download</Text>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button variant="icon-warning" size="icon-sm">
+                    <IconSettings className="w-5 h-5" />
+                  </Button>
+                  <Text variant="body-sm">Settings</Text>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Button variant="icon-default" size="icon-sm">
+                    <IconSearch className="w-5 h-5" />
+                  </Button>
+                  <Text variant="body-sm">Search</Text>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Icon Button States</Text>
+              <div className="space-y-3">
+                <div>
+                  <Text variant="body-sm" className="mb-2 text-grey-600">Normal vs Disabled</Text>
+                  <div className="flex flex-wrap gap-3 items-center">
+                    <Button variant="icon-primary" size="icon-md">
+                      <IconHeart className="w-6 h-6" />
+                    </Button>
+                    <Button variant="icon-primary" size="icon-md" disabled>
+                      <IconHeart className="w-6 h-6" />
+                    </Button>
+                    <Button variant="icon-success" size="icon-md">
+                      <IconStar className="w-6 h-6" />
+                    </Button>
+                    <Button variant="icon-success" size="icon-md" disabled>
+                      <IconStar className="w-6 h-6" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Icon Button Best Practices</Text>
+              <div className="space-y-4">
+                <div className="p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                  <Text variant="body-sm" className="font-medium text-blue-900 mb-2">✅ Recommended: Use dedicated circular icon button variants</Text>
+                  <div className="flex gap-3 mb-3">
+                    <Button variant="icon-primary" size="icon-md">
+                      <IconArrowRight className="w-6 h-6" />
+                    </Button>
+                    <Button variant="icon-success" size="icon-sm">
+                      <IconCheck className="w-5 h-5" />
+                    </Button>
+                    <Button variant="icon-error" size="icon-xs">
+                      <IconX className="w-4 h-4" />
+                    </Button>
+                  </div>
+                  <Text variant="body-sm" className="text-blue-800 mb-2">
+                    • Use `variant="icon-*"` with `size="icon-*"` for modern circular icon buttons
+                  </Text>
+                  <Text variant="body-sm" className="text-blue-800">
+                    • Consistent 8% opacity hover states and proper focus rings
+                  </Text>
+                </div>
+                
+                <div className="p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                  <Text variant="body-sm" className="font-medium text-amber-900 mb-2">⚠️ Legacy: Avoid mixing patterns</Text>
+                  <Text variant="body-sm" className="text-amber-800 mb-2">
+                    • The old `size="icon"` creates square buttons and should only be used for backward compatibility
+                  </Text>
+                  <Text variant="body-sm" className="text-amber-800">
+                    • For new designs, always use the dedicated icon button variants above
+                  </Text>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Color Palette Preview */}
         <section className="space-y-6">
           <Heading level={2}>Design Token Colors</Heading>
@@ -778,21 +930,21 @@ function App() {
               </div>
             </div>
 
-            {/* Icon-only Buttons */}
+            {/* Icon-only Buttons - Using dedicated icon button variants */}
             <div className="space-y-3">
-              <Text variant="body-sm" className="font-medium text-gray-700">Icon-only Buttons</Text>
+              <Text variant="body-sm" className="font-medium text-gray-700">Icon-only Buttons (Circular)</Text>
               <div className="flex flex-wrap gap-3 items-center">
-                <Button variant="text-default" size="icon">
-                  <IconSearch size={16} />
+                <Button variant="icon-default" size="icon-sm">
+                  <IconSearch className="w-5 h-5" />
                 </Button>
-                <Button variant="text-default" size="icon">
-                  <IconSettings size={16} />
+                <Button variant="icon-default" size="icon-sm">
+                  <IconSettings className="w-5 h-5" />
                 </Button>
-                <Button variant="outline-primary" size="icon">
-                  <IconHeart size={16} />
+                <Button variant="icon-primary" size="icon-sm">
+                  <IconHeart className="w-5 h-5" />
                 </Button>
-                <Button variant="soft-primary" size="icon">
-                  <IconPlus size={16} />
+                <Button variant="icon-primary" size="icon-sm">
+                  <IconPlus className="w-5 h-5" />
                 </Button>
               </div>
             </div>
@@ -849,18 +1001,18 @@ function App() {
             </div>
           </div>
 
-          {/* Navigation Icons */}
+          {/* Navigation Icons - Using dedicated icon button variants */}
           <div className="space-y-4">
             <Heading level={3}>Navigation Icons</Heading>
             <div className="flex gap-2 p-4 border rounded-lg">
-              <Button variant="text-default" size="icon">
-                <IconArrowLeft size={16} />
+              <Button variant="icon-default" size="icon-sm">
+                <IconArrowLeft className="w-5 h-5" />
               </Button>
-              <Button variant="text-default" size="icon">
-                <IconArrowRight size={16} />
+              <Button variant="icon-default" size="icon-sm">
+                <IconArrowRight className="w-5 h-5" />
               </Button>
-              <Button variant="text-default" size="icon">
-                <IconChevronDown size={16} />
+              <Button variant="icon-default" size="icon-sm">
+                <IconChevronDown className="w-5 h-5" />
               </Button>
               <div className="ml-4 flex items-center gap-2">
                 <Text variant="body-sm" color="secondary">Perfect for navigation, dropdowns, and UI controls</Text>
