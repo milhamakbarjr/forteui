@@ -63,12 +63,24 @@ function App() {
           <Heading level={2}>Button Components</Heading>
           <div className="space-y-4">
             <div>
-              <Text variant="caption" color="secondary" className="mb-3 block">Primary Buttons (Brand Colors)</Text>
+              <Text variant="caption" color="secondary" className="mb-3 block">Contained Button Colors (6 Variants from Figma)</Text>
               <div className="flex flex-wrap gap-3">
-                <Button variant="primary" size="sm">Small Primary</Button>
-                <Button variant="primary" size="md">Medium Primary</Button>
-                <Button variant="primary" size="lg">Large Primary</Button>
-                <Button variant="primary" size="xl">Extra Large Primary</Button>
+                <Button variant="default" size="md">Default</Button>
+                <Button variant="primary" size="md">Primary</Button>
+                <Button variant="info" size="md">Info</Button>
+                <Button variant="success" size="md">Success</Button>
+                <Button variant="warning" size="md">Warning</Button>
+                <Button variant="error" size="md">Error</Button>
+              </div>
+            </div>
+            
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Button Sizes</Text>
+              <div className="flex flex-wrap gap-3 items-center">
+                <Button variant="primary" size="sm">Small</Button>
+                <Button variant="primary" size="md">Medium</Button>
+                <Button variant="primary" size="lg">Large</Button>
+                <Button variant="primary" size="xl">Extra Large</Button>
               </div>
             </div>
             
