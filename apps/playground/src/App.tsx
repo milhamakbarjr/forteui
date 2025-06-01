@@ -93,10 +93,14 @@ function App() {
             </div>
 
             <div>
-              <Text variant="caption" color="secondary" className="mb-3 block">Outline Variants</Text>
+              <Text variant="caption" color="secondary" className="mb-3 block">Outline Variants (6 Colors from Figma)</Text>
               <div className="flex flex-wrap gap-3">
-                <Button variant="outline">Primary Outline</Button>
-                <Button variant="outline-secondary">Secondary Outline</Button>
+                <Button variant="outline-default">Default</Button>
+                <Button variant="outline-primary">Primary</Button>
+                <Button variant="outline-info">Info</Button>
+                <Button variant="outline-success">Success</Button>
+                <Button variant="outline-warning">Warning</Button>
+                <Button variant="outline-error">Error</Button>
               </div>
             </div>
 
@@ -301,7 +305,7 @@ function App() {
                   <Stack direction="column" spacing="md" className="bg-gray-50 p-4 rounded max-w-xs">
                     <Button size="sm">Item 1</Button>
                     <Button size="sm" variant="secondary">Item 2</Button>
-                    <Button size="sm" variant="outline">Item 3</Button>
+                    <Button size="sm" variant="outline-primary">Item 3</Button>
                   </Stack>
                 </div>
                 
@@ -310,7 +314,7 @@ function App() {
                   <Stack direction="row" spacing="md" className="bg-gray-50 p-4 rounded">
                     <Button size="sm">Left</Button>
                     <Button size="sm" variant="secondary">Center</Button>
-                    <Button size="sm" variant="outline">Right</Button>
+                    <Button size="sm" variant="outline-primary">Right</Button>
                   </Stack>
                 </div>
 
@@ -354,7 +358,7 @@ function App() {
               </CardContent>
               <CardFooter>
                 <Button size="sm">Action</Button>
-                <Button size="sm" variant="outline">Cancel</Button>
+                <Button size="sm" variant="outline-default">Cancel</Button>
               </CardFooter>
             </Card>
 
@@ -476,7 +480,7 @@ function App() {
               </CardContent>
               <CardFooter>
                 <Button>Send Message</Button>
-                <Button variant="outline">Save Draft</Button>
+                <Button variant="outline-default">Save Draft</Button>
               </CardFooter>
             </Card>
 

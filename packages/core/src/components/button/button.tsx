@@ -19,9 +19,13 @@ const buttonVariants = cva(
         // Secondary button using your secondary color
         secondary: "bg-secondary-main text-white hover:bg-secondary-dark focus-visible:ring-secondary-main",
         
-        // Outline variants
-        outline: "border border-primary-main text-primary-main hover:bg-primary-main hover:text-white focus-visible:ring-primary-main",
-        "outline-secondary": "border border-secondary-main text-secondary-main hover:bg-secondary-main hover:text-white focus-visible:ring-secondary-main",
+        // Outline variants (6 colors from Figma) - Using border for better compatibility
+        "outline-default": "border border-grey-48 text-grey-700 hover:bg-grey-8 hover:border-grey-700 focus-visible:ring-grey-700",
+        "outline-primary": "border border-primary-48 text-primary-main hover:bg-primary-8 hover:border-primary-main focus-visible:ring-primary-main",
+        "outline-info": "border border-info-48 text-info-main hover:bg-info-8 hover:border-info-main focus-visible:ring-info-main",
+        "outline-success": "border border-success-48 text-success-main hover:bg-success-8 hover:border-success-main focus-visible:ring-success-main",
+        "outline-warning": "border border-warning-48 text-warning-main hover:bg-warning-8 hover:border-warning-main focus-visible:ring-warning-main",
+        "outline-error": "border border-error-48 text-error-main hover:bg-error-8 hover:border-error-main focus-visible:ring-error-main",
         
         // Ghost variants
         ghost: "text-primary-main hover:bg-primary-8 focus-visible:ring-primary-main",
