@@ -11,7 +11,26 @@ import {
   CardContent, 
   CardFooter,
   Input,
-  Textarea 
+  Textarea,
+  // Tabler Icons
+  IconHome,
+  IconUser,
+  IconSearch,
+  IconPlus,
+  IconX,
+  IconCheck,
+  IconAlertTriangle,
+  IconInfoCircle,
+  IconSettings,
+  IconHeart,
+  IconStar,
+  IconArrowRight,
+  IconArrowLeft,
+  IconChevronDown,
+  IconEdit,
+  IconTrash,
+  IconEye,
+  IconDownload
 } from '@forte-ui/core';
 
 function App() {
@@ -576,6 +595,204 @@ function App() {
                 <Button variant="text-primary">Learn More</Button>
               </CardFooter>
             </Card>
+          </div>
+        </section>
+
+        {/* Icons System Showcase */}
+        <section className="space-y-6">
+          <Heading level={2}>Icons System</Heading>
+          <Text variant="body" color="secondary" className="mb-4">
+            5900+ Tabler Icons integrated with the design system. Icons automatically inherit color and sizing from your design tokens.
+          </Text>
+          
+          {/* Icon Sizes */}
+          <div className="space-y-4">
+            <Heading level={3}>Icon Sizes</Heading>
+            <div className="flex items-center gap-6 p-4 border rounded-lg">
+              <div className="text-center">
+                <IconHome size={16} className="text-primary-main mx-auto mb-1" />
+                <Text variant="caption" color="secondary">16px</Text>
+              </div>
+              <div className="text-center">
+                <IconUser size={20} className="text-primary-main mx-auto mb-1" />
+                <Text variant="caption" color="secondary">20px</Text>
+              </div>
+              <div className="text-center">
+                <IconSearch size={24} className="text-primary-main mx-auto mb-1" />
+                <Text variant="caption" color="secondary">24px (default)</Text>
+              </div>
+              <div className="text-center">
+                <IconSettings size={32} className="text-primary-main mx-auto mb-1" />
+                <Text variant="caption" color="secondary">32px</Text>
+              </div>
+              <div className="text-center">
+                <IconHeart size={40} className="text-primary-main mx-auto mb-1" />
+                <Text variant="caption" color="secondary">40px</Text>
+              </div>
+            </div>
+          </div>
+
+          {/* Icon Colors */}
+          <div className="space-y-4">
+            <Heading level={3}>Icon Colors</Heading>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="p-4 border rounded-lg text-center">
+                <IconStar size={24} className="text-primary-main mx-auto mb-2" />
+                <Text variant="caption" color="secondary">Primary</Text>
+              </div>
+              <div className="p-4 border rounded-lg text-center">
+                <IconHeart size={24} className="text-secondary-main mx-auto mb-2" />
+                <Text variant="caption" color="secondary">Secondary</Text>
+              </div>
+              <div className="p-4 border rounded-lg text-center">
+                <IconCheck size={24} className="text-success-main mx-auto mb-2" />
+                <Text variant="caption" color="secondary">Success</Text>
+              </div>
+              <div className="p-4 border rounded-lg text-center">
+                <IconAlertTriangle size={24} className="text-warning-main mx-auto mb-2" />
+                <Text variant="caption" color="secondary">Warning</Text>
+              </div>
+            </div>
+          </div>
+
+          {/* Common Icons Grid */}
+          <div className="space-y-4">
+            <Heading level={3}>Common Icons</Heading>
+            <div className="grid grid-cols-4 md:grid-cols-8 gap-4 p-4 border rounded-lg">
+              <div className="text-center">
+                <IconHome size={24} className="text-gray-700 mx-auto mb-1" />
+                <Text variant="caption" color="secondary">Home</Text>
+              </div>
+              <div className="text-center">
+                <IconUser size={24} className="text-gray-700 mx-auto mb-1" />
+                <Text variant="caption" color="secondary">User</Text>
+              </div>
+              <div className="text-center">
+                <IconSearch size={24} className="text-gray-700 mx-auto mb-1" />
+                <Text variant="caption" color="secondary">Search</Text>
+              </div>
+              <div className="text-center">
+                <IconSettings size={24} className="text-gray-700 mx-auto mb-1" />
+                <Text variant="caption" color="secondary">Settings</Text>
+              </div>
+              <div className="text-center">
+                <IconEdit size={24} className="text-gray-700 mx-auto mb-1" />
+                <Text variant="caption" color="secondary">Edit</Text>
+              </div>
+              <div className="text-center">
+                <IconTrash size={24} className="text-gray-700 mx-auto mb-1" />
+                <Text variant="caption" color="secondary">Delete</Text>
+              </div>
+              <div className="text-center">
+                <IconEye size={24} className="text-gray-700 mx-auto mb-1" />
+                <Text variant="caption" color="secondary">View</Text>
+              </div>
+              <div className="text-center">
+                <IconDownload size={24} className="text-gray-700 mx-auto mb-1" />
+                <Text variant="caption" color="secondary">Download</Text>
+              </div>
+            </div>
+          </div>
+
+          {/* Icons in Buttons */}
+          <div className="space-y-4">
+            <Heading level={3}>Icons in Components</Heading>
+            <div className="flex flex-wrap gap-4">
+              <Button variant="primary">
+                <Stack direction="row" spacing="sm" align="center">
+                  <IconPlus size={16} />
+                  <span>Add Item</span>
+                </Stack>
+              </Button>
+              <Button variant="secondary">
+                <Stack direction="row" spacing="sm" align="center">
+                  <IconEdit size={16} />
+                  <span>Edit</span>
+                </Stack>
+              </Button>
+              <Button variant="outline-error">
+                <Stack direction="row" spacing="sm" align="center">
+                  <IconTrash size={16} />
+                  <span>Delete</span>
+                </Stack>
+              </Button>
+              <Button variant="text-default" size="icon">
+                <IconSearch size={16} />
+              </Button>
+              <Button variant="text-default" size="icon">
+                <IconSettings size={16} />
+              </Button>
+            </div>
+          </div>
+
+          {/* Status Icons */}
+          <div className="space-y-4">
+            <Heading level={3}>Status & Feedback Icons</Heading>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <Card>
+                <CardContent className="p-4">
+                  <Stack direction="row" spacing="sm" align="center">
+                    <IconCheck size={20} className="text-success-main" />
+                    <div>
+                      <Text variant="body" className="font-medium">Success</Text>
+                      <Text variant="body-sm" color="secondary">Task completed successfully</Text>
+                    </div>
+                  </Stack>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-4">
+                  <Stack direction="row" spacing="sm" align="center">
+                    <IconAlertTriangle size={20} className="text-warning-main" />
+                    <div>
+                      <Text variant="body" className="font-medium">Warning</Text>
+                      <Text variant="body-sm" color="secondary">Please review your input</Text>
+                    </div>
+                  </Stack>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-4">
+                  <Stack direction="row" spacing="sm" align="center">
+                    <IconInfoCircle size={20} className="text-info-main" />
+                    <div>
+                      <Text variant="body" className="font-medium">Information</Text>
+                      <Text variant="body-sm" color="secondary">Additional details available</Text>
+                    </div>
+                  </Stack>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="p-4">
+                  <Stack direction="row" spacing="sm" align="center">
+                    <IconX size={20} className="text-error-main" />
+                    <div>
+                      <Text variant="body" className="font-medium">Error</Text>
+                      <Text variant="body-sm" color="secondary">Something went wrong</Text>
+                    </div>
+                  </Stack>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+
+          {/* Navigation Icons */}
+          <div className="space-y-4">
+            <Heading level={3}>Navigation Icons</Heading>
+            <div className="flex gap-2 p-4 border rounded-lg">
+              <Button variant="text-default" size="icon">
+                <IconArrowLeft size={16} />
+              </Button>
+              <Button variant="text-default" size="icon">
+                <IconArrowRight size={16} />
+              </Button>
+              <Button variant="text-default" size="icon">
+                <IconChevronDown size={16} />
+              </Button>
+              <div className="ml-4 flex items-center gap-2">
+                <Text variant="body-sm" color="secondary">Perfect for navigation, dropdowns, and UI controls</Text>
+              </div>
+            </div>
           </div>
         </section>
 
