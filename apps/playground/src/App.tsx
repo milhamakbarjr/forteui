@@ -12,6 +12,7 @@ import {
   CardFooter,
   Input,
   Textarea,
+  Avatar,
   // Tabler Icons
   IconHome,
   IconUser,
@@ -498,6 +499,155 @@ function App() {
                 <Textarea size="sm" placeholder="Small textarea" />
                 <Textarea size="md" placeholder="Medium textarea (default)" />
                 <Textarea size="lg" placeholder="Large textarea" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Avatar Components Showcase */}
+        <section className="space-y-6">
+          <Heading level={2}>Avatar Component</Heading>
+          
+          <div className="space-y-6">
+            {/* Avatar Sizes */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Avatar Sizes</Text>
+              <div className="flex items-center gap-4">
+                <div className="text-center">
+                  <Avatar size="xs" fallback="XS" />
+                  <Text variant="caption" className="block mt-1">XS (24px)</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar size="sm" fallback="SM" />
+                  <Text variant="caption" className="block mt-1">SM (32px)</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar size="md" fallback="MD" />
+                  <Text variant="caption" className="block mt-1">MD (40px)</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar size="lg" fallback="LG" />
+                  <Text variant="caption" className="block mt-1">LG (48px)</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar size="xl" fallback="XL" />
+                  <Text variant="caption" className="block mt-1">XL (64px)</Text>
+                </div>
+              </div>
+            </div>
+
+            {/* Avatar Color Variants - Circular */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Color Variants (Circular)</Text>
+              <div className="flex items-center gap-4">
+                <div className="text-center">
+                  <Avatar variant="default" icon={<IconUser />} />
+                  <Text variant="caption" className="block mt-1">Default</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar variant="primary" icon={<IconUser />} />
+                  <Text variant="caption" className="block mt-1">Primary</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar variant="secondary" icon={<IconUser />} />
+                  <Text variant="caption" className="block mt-1">Secondary</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar variant="info" icon={<IconUser />} />
+                  <Text variant="caption" className="block mt-1">Info</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar variant="success" icon={<IconUser />} />
+                  <Text variant="caption" className="block mt-1">Success</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar variant="warning" icon={<IconUser />} />
+                  <Text variant="caption" className="block mt-1">Warning</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar variant="error" icon={<IconUser />} />
+                  <Text variant="caption" className="block mt-1">Error</Text>
+                </div>
+              </div>
+            </div>
+
+            {/* Avatar Shapes */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Avatar Shapes</Text>
+              <div className="flex items-center gap-4">
+                <div className="text-center">
+                  <Avatar shape="circular" variant="primary" fallback="CI" />
+                  <Text variant="caption" className="block mt-1">Circular</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar shape="rounded" variant="primary" fallback="RO" />
+                  <Text variant="caption" className="block mt-1">Rounded</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar shape="square" variant="primary" fallback="SQ" />
+                  <Text variant="caption" className="block mt-1">Square</Text>
+                </div>
+              </div>
+            </div>
+
+            {/* Avatar with Initials */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Avatar with Initials</Text>
+              <div className="flex items-center gap-4">
+                <Avatar variant="primary" fallback="John Doe" />
+                <Avatar variant="secondary" fallback="Jane Smith" />
+                <Avatar variant="success" fallback="Alex Johnson" />
+                <Avatar variant="warning" fallback="Chris Brown" />
+                <Avatar variant="error" fallback="Taylor Davis" />
+              </div>
+            </div>
+
+            {/* Avatar with Custom Icons */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Avatar with Custom Icons</Text>
+              <div className="flex items-center gap-4">
+                <Avatar variant="primary" icon={<IconSettings />} />
+                <Avatar variant="info" icon={<IconHeart />} />
+                <Avatar variant="success" icon={<IconStar />} />
+                <Avatar variant="warning" icon={<IconHome />} />
+                <Avatar variant="error" icon={<IconSearch />} />
+              </div>
+            </div>
+
+            {/* Avatar with Images */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Avatar with Images (with fallbacks)</Text>
+              <div className="flex items-center gap-4">
+                <Avatar 
+                  src="https://unavatar.io/github/vercel" 
+                  alt="Vercel"
+                  fallback="VE"
+                  variant="primary"
+                />
+                <Avatar 
+                  src="https://unavatar.io/github/shadcn" 
+                  alt="shadcn"
+                  fallback="SH"
+                  variant="secondary"
+                />
+                <Avatar 
+                  src="https://invalid-image-url.jpg" 
+                  alt="Broken Image"
+                  fallback="BR"
+                  variant="error"
+                />
+              </div>
+            </div>
+
+            {/* Different Sizes with Colors - Rounded */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Mixed Sizes & Colors (Rounded)</Text>
+              <div className="flex items-center gap-4">
+                <Avatar size="xs" shape="rounded" variant="primary" fallback="XS" />
+                <Avatar size="sm" shape="rounded" variant="secondary" fallback="SM" />
+                <Avatar size="md" shape="rounded" variant="info" fallback="MD" />
+                <Avatar size="lg" shape="rounded" variant="success" fallback="LG" />
+                <Avatar size="xl" shape="rounded" variant="warning" fallback="XL" />
               </div>
             </div>
           </div>

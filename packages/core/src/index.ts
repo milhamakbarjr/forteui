@@ -5,6 +5,9 @@ export { Heading, headingVariants, type HeadingProps } from "./components/typogr
 // Export button components
 export * from "./components/button";
 
+// Export avatar components
+export * from "./components/avatar";
+
 // Export layout components
 export { Container } from "./components/layout/container";
 export { Stack } from "./components/layout/stack";
