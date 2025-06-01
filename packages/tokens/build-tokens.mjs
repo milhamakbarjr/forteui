@@ -4,10 +4,10 @@ import { join } from 'path';
 
 const styleDictionary = new StyleDictionary({
   source: [
-    "../../colors.json",
-    "../../effects.json", 
-    "../../typography.json",
-    "../../spacing.json"
+    "./src/colors.json",
+    "./src/effects.json", 
+    "./src/typography.json",
+    "./src/spacing.json"
   ],
   platforms: {
     css: {
@@ -27,6 +27,9 @@ const styleDictionary = new StyleDictionary({
       files: [{
         destination: "tokens.js",
         format: "javascript/es6"
+      }, {
+        destination: "tokens.d.ts",
+        format: "typescript/es6-declarations"
       }]
     }
   }

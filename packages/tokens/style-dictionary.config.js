@@ -1,9 +1,9 @@
 module.exports = {
   source: [
-    "../../colors.json",
-    "../../effects.json", 
-    "../../typography.json",
-    "../../spacing.json"
+    "./src/colors.json",
+    "./src/effects.json", 
+    "./src/typography.json",
+    "./src/spacing.json"
   ],
   platforms: {
     css: {
