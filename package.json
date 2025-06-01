@@ -16,7 +16,7 @@
     "lint": "turbo lint",
     "type-check": "turbo type-check",
     "clean": "turbo clean",
-    "tokens:build": "bun run style-dictionary build",
+    "tokens:build": "cd packages/tokens && bun run build",
     "format": "prettier --write \"**/*.{js,ts,tsx,md,json}\"",
     "format:check": "prettier --check \"**/*.{js,ts,tsx,md,json}\""
   },
