@@ -80,7 +80,6 @@ function App() {
                 <Button variant="primary" size="sm">Small</Button>
                 <Button variant="primary" size="md">Medium</Button>
                 <Button variant="primary" size="lg">Large</Button>
-                <Button variant="primary" size="xl">Extra Large</Button>
               </div>
             </div>
             

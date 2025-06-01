@@ -34,11 +34,10 @@ const buttonVariants = cva(
         link: "text-primary-main underline-offset-4 hover:underline focus-visible:ring-primary-main",
       },
       size: {
-        sm: "h-10 px-4 text-sm min-w-16",     // 40px height
-        md: "h-12 px-4 text-sm min-w-16",     // 48px height (Figma spec)
-        lg: "h-14 px-6 text-base min-w-20",   // 56px height
-        xl: "h-16 px-8 text-lg min-w-24",     // 64px height
-        icon: "h-12 w-12",                    // Square icon button
+        sm: "h-[30px] px-2 text-[13px] min-w-16",     // Small: 30px height (Figma spec)
+        md: "h-9 px-3 text-sm min-w-16",              // Medium: 36px height (Figma spec)
+        lg: "h-12 px-4 text-[15px] min-w-16",         // Large: 48px height (Figma spec)
+        icon: "h-12 w-12",                            // Square icon button
       },
     },
     defaultVariants: {
