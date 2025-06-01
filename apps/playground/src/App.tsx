@@ -34,6 +34,13 @@ import {
   IconDownload
 } from '@forte-ui/core';
 
+// Avatar Images - Using public folder paths
+const avatarImage1 = '/image-avatar1.avif';
+const avatarImage2 = '/image-avatar2.avif';
+const avatarImage3 = '/image-avatar3.avif';
+const avatarImage4 = '/image-avatar4.avif';
+const avatarImage5 = '/image-avatar5.avif';
+
 function App() {
   return (
     <div className="min-h-screen bg-white p-8">
@@ -505,10 +512,10 @@ function App() {
         </section>
 
         {/* Avatar Components Showcase */}
-        <section className="space-y-6">
+        <section className="space-y-8">
           <Heading level={2}>Avatar Component</Heading>
           
-          <div className="space-y-6">
+          <div className="space-y-8">
             {/* Avatar Sizes */}
             <div>
               <Text variant="caption" color="secondary" className="mb-3 block">Avatar Sizes</Text>
@@ -614,21 +621,225 @@ function App() {
               </div>
             </div>
 
-            {/* Avatar with Images */}
+            {/* Figma Pattern: Circular Image Avatars (border-radius: 500px) */}
+            <div className="space-y-4 p-6 bg-gray-50 rounded-lg">
+              <div>
+                <Heading level={3}>Circular Image Avatars</Heading>
+                <Text variant="body-sm" color="secondary" className="mt-1">
+                  Figma Pattern: Circular avatars with border-radius: 500px (All sizes 24px-64px)
+                </Text>
+              </div>
+              <div className="flex items-center gap-6">
+                <div className="text-center">
+                  <Avatar 
+                    size="xs" 
+                    shape="circular" 
+                    src={avatarImage1} 
+                    alt="Avatar 1"
+                    fallback="A1" 
+                  />
+                  <Text variant="caption" className="block mt-1">24px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="sm" 
+                    shape="circular" 
+                    src={avatarImage2} 
+                    alt="Avatar 2"
+                    fallback="A2" 
+                  />
+                  <Text variant="caption" className="block mt-1">32px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="md" 
+                    shape="circular" 
+                    src={avatarImage3} 
+                    alt="Avatar 3"
+                    fallback="A3" 
+                  />
+                  <Text variant="caption" className="block mt-1">40px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="lg" 
+                    shape="circular" 
+                    src={avatarImage4} 
+                    alt="Avatar 4"
+                    fallback="A4" 
+                  />
+                  <Text variant="caption" className="block mt-1">48px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="xl" 
+                    shape="circular" 
+                    src={avatarImage5} 
+                    alt="Avatar 5"
+                    fallback="A5" 
+                  />
+                  <Text variant="caption" className="block mt-1">64px</Text>
+                </div>
+              </div>
+            </div>
+
+            {/* Figma Pattern: Rounded Image Avatars (border-radius: 12px) */}
+            <div className="space-y-4 p-6 bg-blue-50 rounded-lg">
+              <div>
+                <Heading level={3}>Rounded Image Avatars</Heading>
+                <Text variant="body-sm" color="secondary" className="mt-1">
+                  Figma Pattern: Rounded avatars with border-radius: 12px (All sizes 24px-64px)
+                </Text>
+              </div>
+              <div className="flex items-center gap-6">
+                <div className="text-center">
+                  <Avatar 
+                    size="xs" 
+                    shape="rounded" 
+                    src={avatarImage2} 
+                    alt="Avatar 2"
+                    fallback="A2" 
+                  />
+                  <Text variant="caption" className="block mt-1">24px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="sm" 
+                    shape="rounded" 
+                    src={avatarImage3} 
+                    alt="Avatar 3"
+                    fallback="A3" 
+                  />
+                  <Text variant="caption" className="block mt-1">32px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="md" 
+                    shape="rounded" 
+                    src={avatarImage4} 
+                    alt="Avatar 4"
+                    fallback="A4" 
+                  />
+                  <Text variant="caption" className="block mt-1">40px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="lg" 
+                    shape="rounded" 
+                    src={avatarImage5} 
+                    alt="Avatar 5"
+                    fallback="A5" 
+                  />
+                  <Text variant="caption" className="block mt-1">48px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="xl" 
+                    shape="rounded" 
+                    src={avatarImage1} 
+                    alt="Avatar 1"
+                    fallback="A1" 
+                  />
+                  <Text variant="caption" className="block mt-1">64px</Text>
+                </div>
+              </div>
+            </div>
+
+            {/* Figma Pattern: Square Image Avatars (no border-radius) */}
+            <div className="space-y-4 p-6 bg-green-50 rounded-lg">
+              <div>
+                <Heading level={3}>Square Image Avatars</Heading>
+                <Text variant="body-sm" color="secondary" className="mt-1">
+                  Figma Pattern: Square avatars with no border-radius (All sizes 24px-64px)
+                </Text>
+              </div>
+              <div className="flex items-center gap-6">
+                <div className="text-center">
+                  <Avatar 
+                    size="xs" 
+                    shape="square" 
+                    src={avatarImage3} 
+                    alt="Avatar 3"
+                    fallback="A3" 
+                  />
+                  <Text variant="caption" className="block mt-1">24px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="sm" 
+                    shape="square" 
+                    src={avatarImage4} 
+                    alt="Avatar 4"
+                    fallback="A4" 
+                  />
+                  <Text variant="caption" className="block mt-1">32px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="md" 
+                    shape="square" 
+                    src={avatarImage5} 
+                    alt="Avatar 5"
+                    fallback="A5" 
+                  />
+                  <Text variant="caption" className="block mt-1">40px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="lg" 
+                    shape="square" 
+                    src={avatarImage1} 
+                    alt="Avatar 1"
+                    fallback="A1" 
+                  />
+                  <Text variant="caption" className="block mt-1">48px</Text>
+                </div>
+                <div className="text-center">
+                  <Avatar 
+                    size="xl" 
+                    shape="square" 
+                    src={avatarImage2} 
+                    alt="Avatar 2"
+                    fallback="A2" 
+                  />
+                  <Text variant="caption" className="block mt-1">64px</Text>
+                </div>
+              </div>
+            </div>
+
+            {/* Avatar with Images - Updated with Local Images */}
             <div>
-              <Text variant="caption" color="secondary" className="mb-3 block">Avatar with Images (with fallbacks)</Text>
+              <Text variant="caption" color="secondary" className="mb-3 block">Avatar with Images (Local Images & Fallbacks)</Text>
               <div className="flex items-center gap-4">
                 <Avatar 
-                  src="https://unavatar.io/github/vercel" 
-                  alt="Vercel"
-                  fallback="VE"
+                  src={avatarImage1} 
+                  alt="Avatar 1"
+                  fallback="A1"
                   variant="primary"
                 />
                 <Avatar 
-                  src="https://unavatar.io/github/shadcn" 
-                  alt="shadcn"
-                  fallback="SH"
+                  src={avatarImage2} 
+                  alt="Avatar 2"
+                  fallback="A2"
                   variant="secondary"
+                />
+                <Avatar 
+                  src={avatarImage3} 
+                  alt="Avatar 3"
+                  fallback="A3"
+                  variant="info"
+                />
+                <Avatar 
+                  src={avatarImage4} 
+                  alt="Avatar 4"
+                  fallback="A4"
+                  variant="success"
+                />
+                <Avatar 
+                  src={avatarImage5} 
+                  alt="Avatar 5"
+                  fallback="A5"
+                  variant="warning"
                 />
                 <Avatar 
                   src="https://invalid-image-url.jpg" 
