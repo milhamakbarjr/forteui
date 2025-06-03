@@ -850,6 +850,212 @@ function App() {
               </div>
             </div>
 
+            {/* Avatar Status Badges - NEW FEATURE */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Avatar Status Badges (NEW)</Text>
+              <div className="space-y-6">
+                {/* Circular Avatars with Status */}
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Circular Avatars with Status</Text>
+                  <div className="flex items-center gap-4">
+                    <div className="text-center">
+                      <Avatar 
+                        src={avatarImage1} 
+                        alt="Online User"
+                        status="online"
+                        size="md"
+                        shape="circular"
+                      />
+                      <Text variant="caption" color="secondary" className="mt-1 block">Online</Text>
+                    </div>
+                    <div className="text-center">
+                      <Avatar 
+                        src={avatarImage2} 
+                        alt="Away User"
+                        status="away"
+                        size="md"
+                        shape="circular"
+                      />
+                      <Text variant="caption" color="secondary" className="mt-1 block">Away</Text>
+                    </div>
+                    <div className="text-center">
+                      <Avatar 
+                        src={avatarImage3} 
+                        alt="Busy User"
+                        status="busy"
+                        size="md"
+                        shape="circular"
+                      />
+                      <Text variant="caption" color="secondary" className="mt-1 block">Busy</Text>
+                    </div>
+                    <div className="text-center">
+                      <Avatar 
+                        src={avatarImage4} 
+                        alt="Offline User"
+                        status="offline"
+                        size="md"
+                        shape="circular"
+                      />
+                      <Text variant="caption" color="secondary" className="mt-1 block">Offline</Text>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Rounded Avatars with Status */}
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Rounded Avatars with Status</Text>
+                  <div className="flex items-center gap-4">
+                    <Avatar 
+                      src={avatarImage1} 
+                      alt="Online User"
+                      status="online"
+                      size="lg"
+                      shape="rounded"
+                    />
+                    <Avatar 
+                      src={avatarImage2} 
+                      alt="Away User"
+                      status="away"
+                      size="lg"
+                      shape="rounded"
+                    />
+                    <Avatar 
+                      src={avatarImage3} 
+                      alt="Busy User"
+                      status="busy"
+                      size="lg"
+                      shape="rounded"
+                    />
+                    <Avatar 
+                      src={avatarImage4} 
+                      alt="Offline User"
+                      status="offline"
+                      size="lg"
+                      shape="rounded"
+                    />
+                  </div>
+                </div>
+
+                {/* Square Avatars with Status (Top-right positioning) */}
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Square Avatars with Status (Top-right position)</Text>
+                  <div className="flex items-center gap-4">
+                    <Avatar 
+                      src={avatarImage1} 
+                      alt="Online User"
+                      status="online"
+                      size="md"
+                      shape="square"
+                    />
+                    <Avatar 
+                      src={avatarImage2} 
+                      alt="Away User"
+                      status="away"
+                      size="md"
+                      shape="square"
+                    />
+                    <Avatar 
+                      src={avatarImage3} 
+                      alt="Busy User"
+                      status="busy"
+                      size="md"
+                      shape="square"
+                    />
+                    <Avatar 
+                      src={avatarImage4} 
+                      alt="Offline User"
+                      status="offline"
+                      size="md"
+                      shape="square"
+                    />
+                  </div>
+                </div>
+
+                {/* Different Sizes with Status */}
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Status Badges - All Sizes</Text>
+                  <div className="flex items-center gap-4">
+                    <div className="text-center">
+                      <Avatar 
+                        fallback="XS"
+                        status="online"
+                        size="xs"
+                        variant="primary"
+                      />
+                      <Text variant="caption" color="secondary" className="mt-1 block">XS</Text>
+                    </div>
+                    <div className="text-center">
+                      <Avatar 
+                        fallback="SM"
+                        status="away"
+                        size="sm"
+                        variant="secondary"
+                      />
+                      <Text variant="caption" color="secondary" className="mt-1 block">SM</Text>
+                    </div>
+                    <div className="text-center">
+                      <Avatar 
+                        fallback="MD"
+                        status="busy"
+                        size="md"
+                        variant="info"
+                      />
+                      <Text variant="caption" color="secondary" className="mt-1 block">MD</Text>
+                    </div>
+                    <div className="text-center">
+                      <Avatar 
+                        fallback="LG"
+                        status="offline"
+                        size="lg"
+                        variant="success"
+                      />
+                      <Text variant="caption" color="secondary" className="mt-1 block">LG</Text>
+                    </div>
+                    <div className="text-center">
+                      <Avatar 
+                        fallback="XL"
+                        status="online"
+                        size="xl"
+                        variant="warning"
+                      />
+                      <Text variant="caption" color="secondary" className="mt-1 block">XL</Text>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Status with Fallback Icons */}
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Status with Icon Fallbacks</Text>
+                  <div className="flex items-center gap-4">
+                    <Avatar 
+                      icon={<IconUser />}
+                      status="online"
+                      variant="primary"
+                      size="md"
+                    />
+                    <Avatar 
+                      icon={<IconSettings />}
+                      status="away"
+                      variant="secondary"
+                      size="md"
+                    />
+                    <Avatar 
+                      icon={<IconHeart />}
+                      status="busy"
+                      variant="info"
+                      size="md"
+                    />
+                    <Avatar 
+                      icon={<IconHome />}
+                      status="offline"
+                      variant="success"
+                      size="md"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Different Sizes with Colors - Rounded */}
             <div>
               <Text variant="caption" color="secondary" className="mb-3 block">Mixed Sizes & Colors (Rounded)</Text>
