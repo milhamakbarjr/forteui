@@ -8,6 +8,9 @@ export * from "./components/button";
 // Export avatar components
 export * from "./components/avatar";
 
+// Export badge components
+export * from "./components/badge";
+
 // Export layout components
 export { Container } from "./components/layout/container";
 export { Stack } from "./components/layout/stack";

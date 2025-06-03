@@ -13,6 +13,7 @@ import {
   Input,
   Textarea,
   Avatar,
+  Badge,
   // Tabler Icons
   IconHome,
   IconUser,
@@ -31,7 +32,11 @@ import {
   IconEdit,
   IconTrash,
   IconEye,
-  IconDownload
+  IconDownload,
+  IconNotification,
+  IconMail,
+  IconShoppingCart,
+  IconMessage
 } from '@forte-ui/core';
 
 // Avatar Images - Using public folder paths
@@ -1065,6 +1070,216 @@ function App() {
                 <Avatar size="md" shape="rounded" variant="info" fallback="MD" />
                 <Avatar size="lg" shape="rounded" variant="success" fallback="LG" />
                 <Avatar size="xl" shape="rounded" variant="warning" fallback="XL" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Badge Component Showcase */}
+        <section className="space-y-6">
+          <Heading level={2}>Badge Component</Heading>
+          <Text variant="body" color="secondary" className="mb-4">
+            Badge component for icons with number counts or dot indicators using CSS positioning and Figma design specifications.
+          </Text>
+          
+          <div className="space-y-8">
+            {/* Number Badge Examples */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Number Badges - Color Variants</Text>
+              <div className="flex items-center gap-6 flex-wrap">
+                <Badge variant="default" count={1}>
+                  <IconNotification size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="primary" count={5}>
+                  <IconMail size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="secondary" count={12}>
+                  <IconMessage size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="info" count={25}>
+                  <IconInfoCircle size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="success" count={8}>
+                  <IconCheck size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="warning" count={99}>
+                  <IconAlertTriangle size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="error" count={156}>
+                  <IconX size={24} className="text-gray-700" />
+                </Badge>
+              </div>
+            </div>
+
+            {/* Number Formatting Examples */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Number Formatting & Positioning</Text>
+              <div className="space-y-4">
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Single Digit (1-9)</Text>
+                  <div className="flex items-center gap-6">
+                    <Badge variant="primary" count={1}>
+                      <IconShoppingCart size={24} className="text-gray-700" />
+                    </Badge>
+                    <Badge variant="primary" count={9}>
+                      <IconNotification size={24} className="text-gray-700" />
+                    </Badge>
+                  </div>
+                </div>
+                
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Double Digit with + (99+)</Text>
+                  <div className="flex items-center gap-6">
+                    <Badge variant="primary" count={99}>
+                      <IconMail size={24} className="text-gray-700" />
+                    </Badge>
+                    <Badge variant="primary" count={150} max={99}>
+                      <IconMessage size={24} className="text-gray-700" />
+                    </Badge>
+                  </div>
+                </div>
+                
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Triple Digit with + (999+)</Text>
+                  <div className="flex items-center gap-6">
+                    <Badge variant="primary" count={999}>
+                      <IconNotification size={24} className="text-gray-700" />
+                    </Badge>
+                    <Badge variant="primary" count={1500} max={999}>
+                      <IconShoppingCart size={24} className="text-gray-700" />
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Dot Badge Examples */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Dot Badges - Color Variants</Text>
+              <div className="flex items-center gap-6 flex-wrap">
+                <Badge variant="default" type="dot">
+                  <IconNotification size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="primary" type="dot">
+                  <IconMail size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="secondary" type="dot">
+                  <IconMessage size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="info" type="dot">
+                  <IconInfoCircle size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="success" type="dot">
+                  <IconCheck size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="warning" type="dot">
+                  <IconAlertTriangle size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="error" type="dot">
+                  <IconX size={24} className="text-gray-700" />
+                </Badge>
+              </div>
+            </div>
+
+            {/* Badge States & Behavior */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Badge States & Behavior</Text>
+              <div className="space-y-4">
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Show Zero vs Hidden</Text>
+                  <div className="flex items-center gap-6">
+                    <div className="text-center">
+                      <Badge variant="primary" count={0} showZero={false}>
+                        <IconNotification size={24} className="text-gray-700" />
+                      </Badge>
+                      <Text variant="caption" color="secondary" className="mt-1 block">Hidden (count=0)</Text>
+                    </div>
+                    <div className="text-center">
+                      <Badge variant="primary" count={0} showZero={true}>
+                        <IconMail size={24} className="text-gray-700" />
+                      </Badge>
+                      <Text variant="caption" color="secondary" className="mt-1 block">Show Zero</Text>
+                    </div>
+                  </div>
+                </div>
+                
+                <div>
+                  <Text variant="body-sm" className="mb-2 block font-medium">Custom Max Values</Text>
+                  <div className="flex items-center gap-6">
+                    <div className="text-center">
+                      <Badge variant="primary" count={50} max={10}>
+                        <IconShoppingCart size={24} className="text-gray-700" />
+                      </Badge>
+                      <Text variant="caption" color="secondary" className="mt-1 block">Max: 10</Text>
+                    </div>
+                    <div className="text-center">
+                      <Badge variant="primary" count={250} max={99}>
+                        <IconMessage size={24} className="text-gray-700" />
+                      </Badge>
+                      <Text variant="caption" color="secondary" className="mt-1 block">Max: 99 (default)</Text>
+                    </div>
+                    <div className="text-center">
+                      <Badge variant="primary" count={2500} max={999}>
+                        <IconNotification size={24} className="text-gray-700" />
+                      </Badge>
+                      <Text variant="caption" color="secondary" className="mt-1 block">Max: 999</Text>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Badge with Different Icon Sizes */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Badge with Different Icon Sizes</Text>
+              <div className="flex items-center gap-6">
+                <Badge variant="primary" count={3}>
+                  <IconNotification size={16} className="text-gray-700" />
+                </Badge>
+                <Badge variant="primary" count={7}>
+                  <IconNotification size={20} className="text-gray-700" />
+                </Badge>
+                <Badge variant="primary" count={12}>
+                  <IconNotification size={24} className="text-gray-700" />
+                </Badge>
+                <Badge variant="primary" count={25}>
+                  <IconNotification size={32} className="text-gray-700" />
+                </Badge>
+                <Badge variant="primary" count={48}>
+                  <IconNotification size={40} className="text-gray-700" />
+                </Badge>
+              </div>
+            </div>
+
+            {/* Figma Design Specifications */}
+            <div className="space-y-4 p-6 bg-blue-50 rounded-lg">
+              <div>
+                <Heading level={3}>Figma Design Specifications</Heading>
+                <Text variant="body-sm" color="secondary" className="mt-1">
+                  Badge component follows exact Figma specifications for positioning and styling
+                </Text>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2">Number Badge Specs:</Text>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Height: 20px (fixed)</li>
+                    <li>• Min-width: 20px (expands for content)</li>
+                    <li>• Padding: 6px left/right</li>
+                    <li>• Font: 12px, weight 700</li>
+                    <li>• Border-radius: 500px (fully rounded)</li>
+                    <li>• Dynamic positioning based on content length</li>
+                  </ul>
+                </div>
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2">Dot Badge Specs:</Text>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Size: 10px x 10px</li>
+                    <li>• Position: absolute top-right</li>
+                    <li>• Border-radius: 500px (circular)</li>
+                    <li>• 2px white border for contrast</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
