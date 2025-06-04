@@ -29,6 +29,9 @@ export {
   CardContent 
 } from "./components/card/card";
 
+// Export chip components
+export * from "./components/chip";
+
 // Export utilities
 export { cn } from "./lib/utils";
 

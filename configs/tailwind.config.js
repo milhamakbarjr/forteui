@@ -205,6 +205,7 @@ export default {
       fontSize: {
         xs: ['0.75rem', { lineHeight: '1.25' }],
         sm: ['0.875rem', { lineHeight: '1.5' }],
+        chip: ['0.625rem', { lineHeight: '1.2' }], // 10px with 12px line height
         base: ['1rem', { lineHeight: '1.5' }],
         lg: ['1.125rem', { lineHeight: '1.5' }],
         xl: ['1.25rem', { lineHeight: '1.5' }],
@@ -212,6 +213,11 @@ export default {
         '3xl': ['1.875rem', { lineHeight: '1.25' }],
         '4xl': ['2.25rem', { lineHeight: '1.25' }],
         '5xl': ['3rem', { lineHeight: '1.25' }],
+      },
+      
+      // Line heights
+      lineHeight: {
+        chip: '1.2',
       },
       
       // Font weights
