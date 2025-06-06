@@ -11,6 +11,9 @@ export * from "./components/avatar";
 // Export badge components
 export * from "./components/badge";
 
+// Export checkbox components
+export * from "./components/checkbox";
+
 // Export layout components
 export { Container } from "./components/layout/container";
 export { Stack } from "./components/layout/stack";

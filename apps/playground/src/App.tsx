@@ -15,6 +15,7 @@ import {
   Avatar,
   Badge,
   Chip,
+  Checkbox,
   // Tabler Icons
   IconHome,
   IconUser,
@@ -39,6 +40,7 @@ import {
   IconShoppingCart,
   IconMessage
 } from '@forte-ui/core';
+import { useState } from 'react';
 
 // Avatar Images - Using public folder paths
 const avatarImage1 = '/image-avatar1.avif';
@@ -46,6 +48,69 @@ const avatarImage2 = '/image-avatar2.avif';
 const avatarImage3 = '/image-avatar3.avif';
 const avatarImage4 = '/image-avatar4.avif';
 const avatarImage5 = '/image-avatar5.avif';
+
+// Checkbox Example Components
+function CheckboxExample() {
+  const [isChecked, setIsChecked] = useState(false);
+  
+  return (
+    <div className="space-y-3">
+      <div className="flex items-center gap-4">
+        <Checkbox 
+          checked={isChecked}
+          onCheckedChange={setIsChecked}
+          label="I agree to the terms and conditions"
+          variant="primary"
+        />
+      </div>
+      <Text variant="body-sm" color="secondary">
+        Status: {isChecked ? 'Agreed' : 'Not agreed'}
+      </Text>
+    </div>
+  );
+}
+
+function CheckboxGroupExample() {
+  const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
+  
+  const handleOptionChange = (option: string, checked: boolean) => {
+    if (checked) {
+      setSelectedOptions(prev => [...prev, option]);
+    } else {
+      setSelectedOptions(prev => prev.filter(item => item !== option));
+    }
+  };
+
+  const options = [
+    { id: 'newsletter', label: 'Subscribe to newsletter', variant: 'primary' as const },
+    { id: 'updates', label: 'Receive product updates', variant: 'info' as const },
+    { id: 'marketing', label: 'Marketing communications', variant: 'success' as const },
+    { id: 'analytics', label: 'Analytics and performance', variant: 'warning' as const }
+  ];
+
+  return (
+    <div className="space-y-4">
+      <Text variant="body-sm" className="font-medium">Select your preferences:</Text>
+      <div className="space-y-3">
+        {options.map(option => (
+          <Checkbox
+            key={option.id}
+            label={option.label}
+            variant={option.variant}
+            checked={selectedOptions.includes(option.id)}
+            onCheckedChange={(checked: boolean) => handleOptionChange(option.id, checked)}
+          />
+        ))}
+      </div>
+      <div className="mt-4 p-3 bg-gray-50 rounded">
+        <Text variant="body-sm" className="font-medium">Selected options:</Text>
+        <Text variant="body-sm" color="secondary">
+          {selectedOptions.length > 0 ? selectedOptions.join(', ') : 'None selected'}
+        </Text>
+      </div>
+    </div>
+  );
+}
 
 function App() {
   return (
@@ -1703,7 +1768,7 @@ function App() {
                     <li>• Height: 20px (fixed)</li>
                     <li>• Min-width: 20px (expands for content)</li>
                     <li>• Padding: 6px left/right</li>
-                    <li>• Font: 12px, weight 700</li>
+                                       <li>• Font: 12px, weight 700</li>
                     <li>• Border-radius: 500px (fully rounded)</li>
                     <li>• Dynamic positioning based on content length</li>
                   </ul>
@@ -2081,6 +2146,131 @@ function App() {
           </div>
         </section>
 
+        {/* Checkbox Component Showcase */}
+        <section className="space-y-6">
+          <Heading level={2}>Checkbox Component</Heading>
+          
+          {/* Basic Checkbox Examples */}
+          <div className="space-y-6">
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Basic Checkbox</Text>
+              <div className="space-y-3">
+                <Checkbox label="Basic checkbox" />
+                <Checkbox label="Checked by default" checked />
+                <Checkbox label="Disabled checkbox" disabled />
+                <Checkbox label="Disabled and checked" checked disabled />
+              </div>
+            </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Checkbox Sizes</Text>
+              <div className="flex flex-wrap gap-6 items-center">
+                <div className="space-y-2">
+                  <Text variant="body-sm" className="font-medium">Small (20px)</Text>
+                  <Checkbox size="sm" label="Small checkbox" />
+                </div>
+                <div className="space-y-2">
+                  <Text variant="body-sm" className="font-medium">Medium (24px)</Text>
+                  <Checkbox size="md" label="Medium checkbox" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Checkbox Color Variants</Text>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <Checkbox variant="default" label="Default variant" checked />
+                  <Checkbox variant="primary" label="Primary variant" checked />
+                  <Checkbox variant="secondary" label="Secondary variant" checked />
+                  <Checkbox variant="info" label="Info variant" checked />
+                </div>
+                <div className="space-y-3">
+                  <Checkbox variant="success" label="Success variant" checked />
+                  <Checkbox variant="warning" label="Warning variant" checked />
+                  <Checkbox variant="error" label="Error variant" checked />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Interactive States</Text>
+              <div className="space-y-3">
+                <Text variant="body-sm" className="font-medium">Hover over these checkboxes to see hover effects:</Text>
+                <div className="space-y-2">
+                  <Checkbox variant="primary" label="Hover me (Primary)" />
+                  <Checkbox variant="success" label="Hover me (Success)" />
+                  <Checkbox variant="warning" label="Hover me (Warning)" />
+                  <Checkbox variant="error" label="Hover me (Error)" />
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Controlled Checkbox Example</Text>
+              <CheckboxExample />
+            </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Form Group Example</Text>
+              <CheckboxGroupExample />
+            </div>
+
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Custom Styling</Text>
+              <div className="space-y-3">
+                <Checkbox 
+                  label="Custom label styling" 
+                  labelClassName="text-purple-600 font-semibold"
+                  variant="primary"
+                />
+                <Checkbox 
+                  label="Custom checkbox styling" 
+                  className="border-2 border-purple-300 rounded-lg"
+                  variant="secondary"
+                />
+              </div>
+            </div>
+
+            <div className="bg-gray-50 p-6 rounded-lg space-y-4">
+              <Text variant="body-sm" className="font-medium">Design Specifications:</Text>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2">Sizes:</Text>
+                  <ul className="space-y-1">
+                    <li>• Small: 20x20px</li>
+                    <li>• Medium: 24x24px</li>
+                  </ul>
+                </div>
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2">Interaction States:</Text>
+                  <ul className="space-y-1">
+                    <li>• Hover: 8% opacity background</li>
+                    <li>• Focus: Ring outline</li>
+                    <li>• Disabled: 40% opacity</li>
+                  </ul>
+                </div>
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2">Colors:</Text>
+                  <ul className="space-y-1">
+                    <li>• 7 semantic variants</li>
+                    <li>• Consistent with design tokens</li>
+                    <li>• Custom check icon</li>
+                  </ul>
+                </div>
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2">Accessibility:</Text>
+                  <ul className="space-y-1">
+                    <li>• ARIA compliant</li>
+                    <li>• Keyboard navigation</li>
+                    <li>• Screen reader support</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Layout Components Showcase */}
         <section className="space-y-6">
           <Heading level={2}>Layout Components</Heading>
@@ -2288,8 +2478,9 @@ function App() {
                 </Stack>
               </CardContent>
               <CardFooter>
-                <Button>Send Message</Button>
-                <Button variant="outline-default">Save Draft</Button>
+                <Button variant="primary" className="w-full">
+                  Submit Form
+                </Button>
               </CardFooter>
             </Card>
 
