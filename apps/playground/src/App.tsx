@@ -455,38 +455,171 @@ function App() {
         <section className="space-y-6">
           <Heading level={2}>Form Components</Heading>
           
-          {/* Input Variants */}
-          <div className="space-y-4">
+          {/* Input Component Showcase */}
+          <div className="space-y-8">
+            {/* Input States - Figma Inspired */}
             <div>
-              <Text variant="caption" color="secondary" className="mb-3 block">Input Variants & States</Text>
-              <div className="grid gap-4 max-w-md">
-                <div>
-                  <Text variant="body-sm" className="mb-1 block">Default Input</Text>
-                  <Input placeholder="Enter your text here..." />
+              <Text variant="caption" color="secondary" className="mb-4 block">Input States (Figma Specification)</Text>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                <div className="space-y-4">
+                  <Text variant="body-sm" className="font-medium text-gray-700">Default States</Text>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Default (placeholder)</Text>
+                    <Input placeholder="Label" />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">With Value</Text>
+                    <Input label="Label" defaultValue="Value" />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Disabled (placeholder centered)</Text>
+                    <Input label="Label" disabled />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Disabled with Value</Text>
+                    <Input label="Label" defaultValue="Disabled" disabled />
+                  </div>
                 </div>
-                <div>
-                  <Text variant="body-sm" className="mb-1 block">Success State</Text>
-                  <Input variant="success" placeholder="Valid input" defaultValue="john@example.com" />
-                </div>
-                <div>
-                  <Text variant="body-sm" className="mb-1 block">Error State</Text>
-                  <Input variant="error" placeholder="Invalid input" defaultValue="invalid-email" />
-                </div>
-                <div>
-                  <Text variant="body-sm" className="mb-1 block">Disabled Input</Text>
-                  <Input disabled placeholder="Disabled input" />
+
+                <div className="space-y-4">
+                  <Text variant="body-sm" className="font-medium text-gray-700">Interactive States</Text>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Hover (hover over input)</Text>
+                    <Input label="Label" defaultValue="Hovered" />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Focus (click to focus)</Text>
+                    <Input label="Label" placeholder="Click to focus and see 2px border" />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Error State</Text>
+                    <Input 
+                      label="Label" 
+                      variant="error" 
+                      defaultValue="Incorrect" 
+                      helperText="Caption text, description, notification"
+                      helperIcon={<IconAlertTriangle size={16} />}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
+            {/* Input Sizes */}
             <div>
               <Text variant="caption" color="secondary" className="mb-3 block">Input Sizes</Text>
               <div className="grid gap-3 max-w-md">
-                <Input size="sm" placeholder="Small input" />
-                <Input size="md" placeholder="Medium input (default)" />
-                <Input size="lg" placeholder="Large input" />
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Small (40px height)</Text>
+                  <Input size="sm" label="Small Label" placeholder="Small input" />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Medium (54px height)</Text>
+                  <Input size="md" label="Medium Label" placeholder="Medium input (default)" />
+                </div>
               </div>
             </div>
+
+            {/* Floating Labels */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Floating Label Behavior</Text>
+              <div className="grid gap-4 max-w-md">
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Empty (label in center)</Text>
+                  <Input label="Email Address" />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">With Value (label floated)</Text>
+                  <Input label="Email Address" defaultValue="john@example.com" />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Error State (red label)</Text>
+                  <Input 
+                    label="Email Address" 
+                    variant="error" 
+                    defaultValue="invalid-email" 
+                    helperText="Please enter a valid email address"
+                    helperIcon={<IconAlertTriangle size={16} />}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Input with Helper Text */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Helper Text & Icons</Text>
+              <div className="grid gap-4 max-w-md">
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Info Helper</Text>
+                  <Input 
+                    label="Username" 
+                    placeholder="Enter username"
+                    helperText="Caption text, description, notification"
+                    helperIcon={<IconInfoCircle size={16} />}
+                  />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Error Helper</Text>
+                  <Input 
+                    label="Password" 
+                    type="password"
+                    variant="error"
+                    defaultValue="123"
+                    helperText="Password must be at least 8 characters"
+                    helperIcon={<IconAlertTriangle size={16} />}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Input with End Adornments */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">End Adornments</Text>
+              <div className="grid gap-4 max-w-md">
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Search Icon</Text>
+                  <Input 
+                    label="Search" 
+                    placeholder="Search for anything..."
+                    endAdornment={<IconSearch size={20} className="text-gray-500" />}
+                  />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Settings Icon</Text>
+                  <Input 
+                    label="Configuration" 
+                    defaultValue="Advanced settings"
+                    endAdornment={<IconSettings size={20} className="text-gray-500" />}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Border Specifications */}
+            <div className="p-6 bg-gray-50 rounded-lg">
+              <Text variant="body-sm" className="font-medium mb-3 block">Border Specifications (Figma)</Text>
+              <div className="grid gap-2 text-sm text-gray-600">
+                <div>• Default: 1px outline, rgba(147, 161, 174, 0.20)</div>
+                <div>• Hover: 1px outline, #1F2933 (text-primary)</div>
+                <div>• Focus: 2px outline, #1F2933 (text-primary)</div>
+                <div>• Error: 2px outline, #FF5833 (error-main)</div>
+                <div>• Disabled: 1px outline, rgba(147, 161, 174, 0.20) + 50% opacity</div>
+                <div>• Border Radius: 8px</div>
+                <div>• Height: 54px (medium), 40px (small)</div>
+              </div>
+            </div>
+          </div>
+
+          {/* Textarea Showcase */}
+          <div className="space-y-4">
+            <Heading level={3}>Textarea Component</Heading>
 
             <div>
               <Text variant="caption" color="secondary" className="mb-3 block">Textarea Variants</Text>
