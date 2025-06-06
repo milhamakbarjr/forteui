@@ -15,9 +15,9 @@ export * from "./components/badge";
 export { Container } from "./components/layout/container";
 export { Stack } from "./components/layout/stack";
 
-// Export form components
-export { Input } from "./components/form/input";
-export { Textarea } from "./components/form/textarea";
+// Export input components
+export * from "./components/input";
+export * from "./components/textarea";
 
 // Export card components
 export { 

@@ -728,33 +728,226 @@ function App() {
           </div>
 
           {/* Textarea Showcase */}
-          <div className="space-y-4">
+          <div className="space-y-8">
             <Heading level={3}>Textarea Component</Heading>
-
+            
+            {/* Textarea States - Following Input Pattern */}
             <div>
-              <Text variant="caption" color="secondary" className="mb-3 block">Textarea Variants</Text>
-              <div className="grid gap-4 max-w-md">
-                <div>
-                  <Text variant="body-sm" className="mb-1 block">Default Textarea</Text>
-                  <Textarea placeholder="Enter your message here..." />
+              <Text variant="caption" color="secondary" className="mb-4 block">Textarea States (Following Input Pattern)</Text>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl">
+                <div className="space-y-4">
+                  <Text variant="body-sm" className="font-medium text-gray-700">Default Variant (Outline)</Text>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Default (placeholder)</Text>
+                    <Textarea placeholder="Enter your message..." />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">With Label</Text>
+                    <Textarea label="Message" placeholder="Type your message here..." />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">With Value (floating label)</Text>
+                    <Textarea 
+                      label="Feedback" 
+                      defaultValue="This is a sample message with some content to show how the textarea behaves with text."
+                    />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Error State</Text>
+                    <Textarea 
+                      label="Comments" 
+                      error
+                      defaultValue="Short"
+                      helperText="Message must be at least 20 characters long"
+                      helperIcon={<IconAlertTriangle size={16} />}
+                    />
+                  </div>
                 </div>
-                <div>
-                  <Text variant="body-sm" className="mb-1 block">Success State</Text>
-                  <Textarea variant="success" placeholder="Valid message" defaultValue="This looks good!" />
-                </div>
-                <div>
-                  <Text variant="body-sm" className="mb-1 block">Error State</Text>
-                  <Textarea variant="error" placeholder="Error message" defaultValue="This message is too short." />
+
+                <div className="space-y-4">
+                  <Text variant="body-sm" className="font-medium text-gray-700">Filled Variant (Background)</Text>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Default State (grey-8 background)</Text>
+                    <Textarea variant="filled" placeholder="Enter your message..." />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">With Label</Text>
+                    <Textarea variant="filled" label="Description" placeholder="Type your description here..." />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">With Value (hover for grey-16)</Text>
+                    <Textarea 
+                      variant="filled"
+                      label="Review" 
+                      defaultValue="This product exceeded my expectations. The quality is excellent and delivery was fast."
+                    />
+                  </div>
+                  
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Error State (error-8 background)</Text>
+                    <Textarea 
+                      variant="filled"
+                      label="Reason"
+                      error
+                      defaultValue="Too short"
+                      helperText="Please provide a detailed explanation"
+                      helperIcon={<IconAlertTriangle size={16} />}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
+            {/* Textarea Sizes */}
             <div>
               <Text variant="caption" color="secondary" className="mb-3 block">Textarea Sizes</Text>
-              <div className="grid gap-3 max-w-md">
-                <Textarea size="sm" placeholder="Small textarea" />
-                <Textarea size="md" placeholder="Medium textarea (default)" />
-                <Textarea size="lg" placeholder="Large textarea" />
+              <div className="grid gap-4 max-w-md">
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Small (60px min-height)</Text>
+                  <Textarea size="sm" label="Small Note" placeholder="Brief note..." />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Medium (98px min-height)</Text>
+                  <Textarea size="md" label="Message" placeholder="Your message here..." />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Large (120px min-height)</Text>
+                  <Textarea size="lg" label="Detailed Feedback" placeholder="Please provide detailed feedback..." />
+                </div>
+              </div>
+            </div>
+
+            {/* Textarea with Helper Text */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Helper Text & Icons</Text>
+              <div className="grid gap-4 max-w-md">
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Info Helper (Outline)</Text>
+                  <Textarea 
+                    label="Bio" 
+                    placeholder="Tell us about yourself..."
+                    helperText="This will be displayed on your public profile"
+                    helperIcon={<IconInfoCircle size={16} />}
+                  />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Error Helper (Filled)</Text>
+                  <Textarea 
+                    variant="filled"
+                    label="Requirements" 
+                    error
+                    defaultValue="Basic requirements"
+                    helperText="Please provide more detailed requirements (min 50 characters)"
+                    helperIcon={<IconAlertTriangle size={16} />}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Disabled States */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Disabled States</Text>
+              <div className="grid gap-4 max-w-md">
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Disabled (Outline)</Text>
+                  <Textarea label="Comments" defaultValue="This field is disabled" disabled />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Disabled (Filled)</Text>
+                  <Textarea variant="filled" label="Notes" defaultValue="This field is disabled" disabled />
+                </div>
+              </div>
+            </div>
+
+            {/* Variant Comparison */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Variant Comparison</Text>
+              <div className="grid gap-4 max-w-2xl">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Outline (Border-based)</Text>
+                    <Textarea label="Message" placeholder="Enter your message..." />
+                  </div>
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Filled (Background-based)</Text>
+                    <Textarea variant="filled" label="Message" placeholder="Enter your message..." />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Outline with Value</Text>
+                    <Textarea label="Feedback" defaultValue="Great product! Really satisfied with the quality and customer service." />
+                  </div>
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Filled with Value</Text>
+                    <Textarea variant="filled" label="Feedback" defaultValue="Great product! Really satisfied with the quality and customer service." />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Outline Error</Text>
+                    <Textarea 
+                      label="Reason" 
+                      error
+                      defaultValue="Too brief"
+                      helperText="Please provide more details"
+                    />
+                  </div>
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Filled Error</Text>
+                    <Textarea 
+                      variant="filled"
+                      label="Reason"
+                      error
+                      defaultValue="Too brief"
+                      helperText="Please provide more details"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Textarea Specifications */}
+            <div className="p-6 bg-gray-50 rounded-lg">
+              <Text variant="body-sm" className="font-medium mb-3 block">Textarea Specifications</Text>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Outline Variant (Border-based)</Text>
+                  <div className="grid gap-2 text-sm text-gray-600">
+                    <div>• Default: 1px outline, rgba(147, 161, 174, 0.20)</div>
+                    <div>• Hover: 1px outline, #1F2933 (text-primary)</div>
+                    <div>• Focus: 2px outline, #1F2933 (text-primary)</div>
+                    <div>• Error: 2px outline, #FF5833 (error-main)</div>
+                    <div>• Disabled: 1px outline, rgba(147, 161, 174, 0.20) + 50% opacity</div>
+                    <div>• Padding: 14px all around</div>
+                  </div>
+                </div>
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Filled Variant (Background-based)</Text>
+                  <div className="grid gap-2 text-sm text-gray-600">
+                    <div>• Default: grey-8 background (rgba(147, 161, 174, 0.08))</div>
+                    <div>• Hover: grey-16 background (rgba(147, 161, 174, 0.16))</div>
+                    <div>• Focus: grey-16 background (rgba(147, 161, 174, 0.16))</div>
+                    <div>• Error: error-8 background (rgba(255, 88, 51, 0.08))</div>
+                    <div>• Disabled: grey-8 background + 50% opacity</div>
+                    <div>• Padding: 12px all around</div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 grid gap-2 text-sm text-gray-600">
+                <Text variant="body-sm" className="font-medium mb-2 block">Common Properties</Text>
+                <div>• Border Radius: 8px</div>
+                <div>• Min Heights: Small (60px), Medium (98px), Large (120px)</div>
+                <div>• Typography: 15px font size, Plus Jakarta Sans</div>
+                <div>• Resize: Vertical only (resize-y)</div>
+                <div>• Floating label behavior: Same as Input component</div>
               </div>
             </div>
           </div>
