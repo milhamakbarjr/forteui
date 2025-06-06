@@ -602,17 +602,127 @@ function App() {
               </div>
             </div>
 
+            {/* Filled Variant Showcase */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Filled Variant (Background-based)</Text>
+              <div className="grid gap-4 max-w-md">
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Default State (grey-8 background)</Text>
+                  <Input variant="filled" label="Email Address" placeholder="Enter your email" />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">With Value (hover for grey-16)</Text>
+                  <Input variant="filled" label="Full Name" defaultValue="John Doe" />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Error State (error-8 background)</Text>
+                  <Input 
+                    variant="filled" 
+                    error
+                    label="Password" 
+                    type="password"
+                    defaultValue="123"
+                    helperText="Password must be at least 8 characters"
+                    helperIcon={<IconAlertTriangle size={16} />}
+                  />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">Disabled State</Text>
+                  <Input variant="filled" label="Username" defaultValue="disabled_user" disabled />
+                </div>
+                <div>
+                  <Text variant="caption" className="mb-2 block text-gray-600">With End Adornment</Text>
+                  <Input 
+                    variant="filled" 
+                    label="Search" 
+                    placeholder="Search anything..."
+                    endAdornment={<IconSearch size={20} className="text-gray-500" />}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Variant Comparison */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Variant Comparison</Text>
+              <div className="grid gap-4 max-w-2xl">
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Default (Border-based)</Text>
+                    <Input label="Email Address" placeholder="Enter your email" />
+                  </div>
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Filled (Background-based)</Text>
+                    <Input variant="filled" label="Email Address" placeholder="Enter your email" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Default with Value</Text>
+                    <Input label="Full Name" defaultValue="John Doe" />
+                  </div>
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Filled with Value</Text>
+                    <Input variant="filled" label="Full Name" defaultValue="John Doe" />
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Default Error</Text>
+                    <Input 
+                      variant="error" 
+                      label="Password" 
+                      defaultValue="123"
+                      helperText="Too short"
+                    />
+                  </div>
+                  <div>
+                    <Text variant="caption" className="mb-2 block text-gray-600">Filled Error</Text>
+                    <Input 
+                      variant="filled" 
+                      error
+                      label="Password" 
+                      defaultValue="123"
+                      helperText="Too short"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
             {/* Border Specifications */}
             <div className="p-6 bg-gray-50 rounded-lg">
-              <Text variant="body-sm" className="font-medium mb-3 block">Border Specifications (Figma)</Text>
-              <div className="grid gap-2 text-sm text-gray-600">
-                <div>• Default: 1px outline, rgba(147, 161, 174, 0.20)</div>
-                <div>• Hover: 1px outline, #1F2933 (text-primary)</div>
-                <div>• Focus: 2px outline, #1F2933 (text-primary)</div>
-                <div>• Error: 2px outline, #FF5833 (error-main)</div>
-                <div>• Disabled: 1px outline, rgba(147, 161, 174, 0.20) + 50% opacity</div>
+              <Text variant="body-sm" className="font-medium mb-3 block">Specifications (Figma)</Text>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Default Variant (Border-based)</Text>
+                  <div className="grid gap-2 text-sm text-gray-600">
+                    <div>• Default: 1px outline, rgba(147, 161, 174, 0.20)</div>
+                    <div>• Hover: 1px outline, #1F2933 (text-primary)</div>
+                    <div>• Focus: 2px outline, #1F2933 (text-primary)</div>
+                    <div>• Error: 2px outline, #FF5833 (error-main)</div>
+                    <div>• Disabled: 1px outline, rgba(147, 161, 174, 0.20) + 50% opacity</div>
+                    <div>• Padding: 14px left/right</div>
+                  </div>
+                </div>
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Filled Variant (Background-based)</Text>
+                  <div className="grid gap-2 text-sm text-gray-600">
+                    <div>• Default: grey-8 background (rgba(147, 161, 174, 0.08))</div>
+                    <div>• Hover: grey-16 background (rgba(147, 161, 174, 0.16))</div>
+                    <div>• Focus: grey-16 background (rgba(147, 161, 174, 0.16))</div>
+                    <div>• Error: error-8 background (rgba(255, 88, 51, 0.08))</div>
+                    <div>• Disabled: grey-8 background + 50% opacity</div>
+                    <div>• Padding: 12px left, 10px right</div>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-4 grid gap-2 text-sm text-gray-600">
+                <Text variant="body-sm" className="font-medium mb-2 block">Common Properties</Text>
                 <div>• Border Radius: 8px</div>
                 <div>• Height: 54px (medium), 40px (small)</div>
+                <div>• Typography: 15px font size, Plus Jakarta Sans</div>
+                <div>• Label floating behavior: Same for both variants</div>
               </div>
             </div>
           </div>

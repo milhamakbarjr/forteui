@@ -9,6 +9,7 @@ const inputWrapperVariants = cva(
     variants: {
       variant: {
         default: "",
+        filled: "",
         error: "",
         success: "",
       },
@@ -17,16 +18,79 @@ const inputWrapperVariants = cva(
         md: "h-[54px]",
       },
       state: {
-        default: "outline outline-1 outline-grey-20 outline-offset-[-1px]",
-        hover: "outline outline-1 outline-text-primary outline-offset-[-1px]",
-        focus: "outline outline-2 outline-text-primary outline-offset-[-2px]",
-        error: "outline outline-2 outline-error-main outline-offset-[-2px]",
+        default: "",
+        hover: "",
+        focus: "",
+        error: "",
       },
       disabled: {
-        true: "outline outline-1 outline-grey-20 outline-offset-[-1px] opacity-50",
+        true: "opacity-50",
         false: "",
       },
     },
+    compoundVariants: [
+      // Default variant styles (outline-based)
+      {
+        variant: ["default", "success"],
+        state: "default",
+        disabled: false,
+        class: "outline outline-1 outline-grey-20 outline-offset-[-1px]",
+      },
+      {
+        variant: ["default", "success"],
+        state: "hover",
+        disabled: false,
+        class: "outline outline-1 outline-text-primary outline-offset-[-1px]",
+      },
+      {
+        variant: ["default", "success"],
+        state: "focus",
+        disabled: false,
+        class: "outline outline-2 outline-text-primary outline-offset-[-2px]",
+      },
+      {
+        variant: ["default", "success"],
+        disabled: true,
+        class: "outline outline-1 outline-grey-20 outline-offset-[-1px]",
+      },
+      {
+        variant: "error",
+        state: "error",
+        disabled: false,
+        class: "outline outline-2 outline-error-main outline-offset-[-2px]",
+      },
+      // Filled variant styles (background-based)
+      {
+        variant: "filled",
+        state: "default",
+        disabled: false,
+        class: "bg-grey-8",
+      },
+      {
+        variant: "filled",
+        state: "hover",
+        disabled: false,
+        class: "bg-grey-16",
+      },
+      {
+        variant: "filled",
+        state: "focus",
+        disabled: false,
+        class: "bg-grey-16",
+      },
+      {
+        variant: "filled",
+        disabled: true,
+        class: "bg-grey-8",
+      },
+      // Filled variant error state
+      {
+        variant: "filled",
+        state: "error",
+        disabled: false,
+        class: "bg-error-8",
+      },
+    ],
     defaultVariants: {
       variant: "default",
       size: "md",
@@ -41,16 +105,33 @@ const inputVariants = cva(
   "w-full bg-transparent border-0 outline-none font-normal font-sans placeholder:text-grey-500 disabled:cursor-not-allowed text-text-primary",
   {
     variants: {
+      variant: {
+        default: "",
+        filled: "",
+      },
       size: {
-        sm: "h-10 px-[14px] text-[15px] leading-[22px]",
-        md: "h-[54px] px-[14px] text-[15px] leading-[22px]",
+        sm: "h-10 text-[15px] leading-[22px]",
+        md: "h-[54px] text-[15px] leading-[22px]",
       },
       hasLabel: {
         true: "pt-[18px] pb-[14px]",
         false: "py-0",
       },
     },
+    compoundVariants: [
+      // Default variant padding
+      {
+        variant: "default",
+        class: "px-[14px]",
+      },
+      // Filled variant padding (12px left, 10px right)
+      {
+        variant: "filled",
+        class: "pl-[12px] pr-[10px]",
+      },
+    ],
     defaultVariants: {
+      variant: "default",
       size: "md",
       hasLabel: false,
     },
@@ -59,9 +140,13 @@ const inputVariants = cva(
 
 // Floating label variants
 const labelVariants = cva(
-  "absolute left-[14px] font-semibold font-sans transition-all duration-200 pointer-events-none bg-white px-1",
+  "absolute font-semibold font-sans transition-all duration-200 pointer-events-none px-1",
   {
     variants: {
+      variant: {
+        default: "bg-white left-[14px]",
+        filled: "bg-transparent left-[12px]",
+      },
       state: {
         default: "top-1/2 -translate-y-1/2 text-[15px] leading-[22px] text-grey-500",
         floating: "top-[-5px] text-xs leading-3 text-grey-600",
@@ -74,6 +159,7 @@ const labelVariants = cva(
       },
     },
     defaultVariants: {
+      variant: "default",
       state: "default",
       size: "md",
     },
@@ -104,6 +190,7 @@ export interface InputProps
   helperText?: string;
   helperIcon?: React.ReactNode;
   endAdornment?: React.ReactNode;
+  error?: boolean;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -123,6 +210,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     onFocus,
     onBlur,
     onChange,
+    error,
     ...props 
   }, ref) => {
     const [isFocused, setIsFocused] = React.useState(false);
@@ -138,7 +226,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     // Determine input state for styling
     const getInputState = () => {
       if (disabled) return "default";
-      if (variant === "error") return "error";
+      if (error || variant === "error") return "error";
       if (isFocused) return "focus";
       if (isHovered) return "hover";
       return "default";
@@ -147,10 +235,22 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     // Determine label state
     const getLabelState = () => {
       if (disabled) return "default"; // Disabled inputs should always show default label state
-      if (variant === "error" && (isFocused || hasValue)) return "error";
+      if ((error || variant === "error") && (isFocused || hasValue)) return "error";
       if (isFocused) return "focus";
       if (hasValue) return "floating";
       return "default";
+    };
+
+    // Helper function to get the base variant type for input/label styling
+    const getBaseVariant = () => {
+      return variant === "filled" ? "filled" : "default";
+    };
+
+    // Helper function to get the effective variant for wrapper styling (considers filled + error combination)
+    const getWrapperVariant = () => {
+      if (variant === "filled") return "filled";
+      if (error || variant === "error") return "error";
+      return variant || "default";
     };
 
     const shouldFloatLabel = !disabled && (isFocused || hasValue); // Don't float label when disabled
@@ -185,7 +285,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         <div
           className={cn(
             inputWrapperVariants({ 
-              variant, 
+              variant: getWrapperVariant(), 
               size, 
               state: getInputState(),
               disabled: Boolean(disabled)
@@ -200,6 +300,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             type={type}
             className={cn(
               inputVariants({ 
+                variant: getBaseVariant(),
                 size, 
                 hasLabel: Boolean(shouldShowLabel)
               })
@@ -220,6 +321,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             <label
               className={cn(
                 labelVariants({ 
+                  variant: getBaseVariant(),
                   state: getLabelState(),
                   size 
                 })
@@ -232,8 +334,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {/* End Adornment */}
           {endAdornment && (
             <div className={cn(
-              "absolute right-[14px] top-1/2 -translate-y-1/2 flex items-center justify-center",
-              size === "sm" ? "h-10" : "h-10"
+              "absolute top-1/2 -translate-y-1/2 flex items-center justify-center",
+              size === "sm" ? "h-10" : "h-10",
+              getBaseVariant() === "filled" ? "right-[10px]" : "right-[14px]"
             )}>
               {endAdornment}
             </div>
@@ -244,7 +347,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         {helperText && (
           <div className={cn(
             helperTextVariants({ 
-              variant: variant === "error" ? "error" : "default"
+              variant: (error || variant === "error") ? "error" : "default"
             })
           )}>
             {helperIcon && (
