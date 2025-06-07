@@ -43,6 +43,7 @@ import { ChipShowcase } from './showcases/ChipShowcase';
 import { BreadcrumbShowcase } from './showcases/BreadcrumbShowcase';
 import { AlertShowcase } from './showcases/AlertShowcase';
 import { RadioShowcase } from './showcases/RadioShowcase';
+import { SnackbarShowcase } from './showcases/SnackbarShowcase';
 
 function App() {
   return (
@@ -721,6 +722,9 @@ function App() {
 
         {/* Alert Component Showcase */}
         <AlertShowcase />
+
+        {/* Snackbar Component Showcase */}
+        <SnackbarShowcase />
 
         {/* Radio Component Showcase */}
         <RadioShowcase />

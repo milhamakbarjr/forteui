@@ -44,6 +44,9 @@ export {
 // Export chip components
 export * from "./components/chip";
 
+// Export snackbar components
+export * from "./components/snackbar";
+
 // Export utilities
 export { cn } from "./lib/utils";
 
