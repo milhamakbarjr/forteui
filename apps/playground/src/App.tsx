@@ -44,6 +44,7 @@ import { BreadcrumbShowcase } from './showcases/BreadcrumbShowcase';
 import { AlertShowcase } from './showcases/AlertShowcase';
 import { RadioShowcase } from './showcases/RadioShowcase';
 import { SnackbarShowcase } from './showcases/SnackbarShowcase';
+import { PaginationShowcase } from './showcases/PaginationShowcase';
 
 function App() {
   return (
@@ -728,6 +729,9 @@ function App() {
 
         {/* Radio Component Showcase */}
         <RadioShowcase />
+
+        {/* Pagination Component Showcase */}
+        <PaginationShowcase />
 
         {/* Shadow Showcase */}
         <section className="space-y-6">
