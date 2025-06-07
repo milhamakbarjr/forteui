@@ -17,6 +17,9 @@ export * from "./components/badge";
 // Export checkbox components
 export * from "./components/checkbox";
 
+// Export radio components
+export * from "./components/radio";
+
 // Export breadcrumb components
 export * from "./components/breadcrumb";
 

@@ -16,6 +16,8 @@ import {
   Badge,
   Chip,
   Checkbox,
+  Radio,
+  RadioGroup,
   Breadcrumb,
   Alert,
   // Tabler Icons
@@ -108,6 +110,70 @@ function CheckboxGroupExample() {
         <Text variant="body-sm" className="font-medium">Selected options:</Text>
         <Text variant="body-sm" color="secondary">
           {selectedOptions.length > 0 ? selectedOptions.join(', ') : 'None selected'}
+        </Text>
+      </div>
+    </div>
+  );
+}
+
+// Radio Group Example Components
+function RadioGroupExample() {
+  const [selectedOption, setSelectedOption] = useState<string>('option1');
+  
+  return (
+    <div className="space-y-4">
+      <Text variant="caption" color="secondary" className="mb-3 block">Radio Group Example - Single Selection</Text>
+      <RadioGroup
+        value={selectedOption}
+        onValueChange={setSelectedOption}
+        name="preferences"
+        variant="primary"
+      >
+        <Radio value="option1" label="Enable notifications" />
+        <Radio value="option2" label="Enable email updates" />
+        <Radio value="option3" label="Enable SMS alerts" />
+        <Radio value="option4" label="Disable all communications" />
+      </RadioGroup>
+      <div className="mt-4 p-3 bg-gray-50 rounded">
+        <Text variant="body-sm" className="font-medium">Selected option:</Text>
+        <Text variant="body-sm" color="secondary">
+          {selectedOption}
+        </Text>
+      </div>
+    </div>
+  );
+}
+
+function SemanticRadioGroupExample() {
+  const [selectedPriority, setSelectedPriority] = useState<string>('medium');
+  
+  const priorityOptions = [
+    { value: 'low', label: 'Low Priority', variant: 'info' as const },
+    { value: 'medium', label: 'Medium Priority', variant: 'warning' as const },
+    { value: 'high', label: 'High Priority', variant: 'error' as const },
+    { value: 'critical', label: 'Critical Priority', variant: 'error' as const }
+  ];
+
+  return (
+    <div className="space-y-4">
+      <Text variant="caption" color="secondary" className="mb-3 block">Semantic Colors Example - Priority Selection</Text>
+      <div className="space-y-3">
+        {priorityOptions.map(option => (
+          <Radio
+            key={option.value}
+            value={option.value}
+            label={option.label}
+            variant={option.variant}
+            name="priority"
+            checked={selectedPriority === option.value}
+            onCheckedChange={() => setSelectedPriority(option.value)}
+          />
+        ))}
+      </div>
+      <div className="mt-4 p-3 bg-gray-50 rounded">
+        <Text variant="body-sm" className="font-medium">Selected priority:</Text>
+        <Text variant="body-sm" color="secondary">
+          {priorityOptions.find(opt => opt.value === selectedPriority)?.label || 'None'}
         </Text>
       </div>
     </div>
@@ -1765,18 +1831,18 @@ function App() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Number Badge Specs:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Number Badge Specs:</Text>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Height: 20px (fixed)</li>
                     <li>• Min-width: 20px (expands for content)</li>
                     <li>• Padding: 6px left/right</li>
-                                       <li>• Font: 12px, weight 700</li>
+                    <li>• Font: 12px, weight 700</li>
                     <li>• Border-radius: 500px (fully rounded)</li>
                     <li>• Dynamic positioning based on content length</li>
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Dot Badge Specs:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Dot Badge Specs:</Text>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Size: 10px x 10px</li>
                     <li>• Position: absolute top-right</li>
@@ -2070,7 +2136,7 @@ function App() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Medium Size (32px):</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Medium Size (32px):</Text>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Height: 32px (fixed)</li>
                     <li>• Outer padding: 4px left/right</li>
@@ -2081,7 +2147,7 @@ function App() {
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Small Size (24px):</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Small Size (24px):</Text>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Height: 24px (fixed)</li>
                     <li>• Outer padding: 3px left/right</li>
@@ -2093,7 +2159,7 @@ function App() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Action Icon System:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Action Icon System:</Text>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Icon container: 20px × 20px (both sizes)</li>
                     <li>• Icon size: 16.67px (exact from Figma)</li>
@@ -2104,7 +2170,7 @@ function App() {
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">New API Features:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">New API Features:</Text>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• startIcon: Custom left-side action</li>
                     <li>• endIcon: Custom right-side action</li>
@@ -2117,7 +2183,7 @@ function App() {
               </div>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Filled Variant:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Filled Variant:</Text>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Background: Semantic color main</li>
                     <li>• Text: Contrast colors (white/dark)</li>
@@ -2126,7 +2192,7 @@ function App() {
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Outlined Variant:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Outlined Variant:</Text>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Border: 1px solid semantic color</li>
                     <li>• Text: Semantic color main</li>
@@ -2135,7 +2201,7 @@ function App() {
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Soft Variant:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Soft Variant:</Text>
                   <ul className="text-sm text-gray-600 space-y-1">
                     <li>• Background: 16% alpha semantic color</li>
                     <li>• Text: Dark variant of semantic color</li>
@@ -2235,17 +2301,17 @@ function App() {
             </div>
 
             <div className="bg-gray-50 p-6 rounded-lg space-y-4">
-              <Text variant="body-sm" className="font-medium">Design Specifications:</Text>
+              <Text variant="body-sm" className="font-medium mb-3 block">Design Specifications:</Text>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Sizes:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Sizes:</Text>
                   <ul className="space-y-1">
                     <li>• Small: 20x20px</li>
                     <li>• Medium: 24x24px</li>
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Interaction States:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Interaction States:</Text>
                   <ul className="space-y-1">
                     <li>• Hover: 8% opacity background</li>
                     <li>• Focus: Ring outline</li>
@@ -2253,7 +2319,7 @@ function App() {
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Colors:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Colors:</Text>
                   <ul className="space-y-1">
                     <li>• 7 semantic variants</li>
                     <li>• Consistent with design tokens</li>
@@ -2261,7 +2327,7 @@ function App() {
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Accessibility:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Accessibility:</Text>
                   <ul className="space-y-1">
                     <li>• ARIA compliant</li>
                     <li>• Keyboard navigation</li>
@@ -2441,10 +2507,10 @@ function App() {
             </div>
 
             <div className="bg-gray-50 p-6 rounded-lg space-y-4">
-              <Text variant="body-sm" className="font-medium">Design Specifications:</Text>
+              <Text variant="body-sm" className="font-medium mb-3 block">Design Specifications:</Text>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Typography:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Typography:</Text>
                   <ul className="space-y-1">
                     <li>• Font: Public Sans (font-sans)</li>
                     <li>• Size: 14px (text-sm)</li>
@@ -2453,7 +2519,7 @@ function App() {
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Colors:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Colors:</Text>
                   <ul className="space-y-1">
                     <li>• Active: text-primary (#1F2933)</li>
                     <li>• Current: text-disabled</li>
@@ -2461,7 +2527,7 @@ function App() {
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Spacing:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Spacing:</Text>
                   <ul className="space-y-1">
                     <li>• Item Gap: 16px (gap-4)</li>
                     <li>• Icon-Text Gap: 4px (gap-1)</li>
@@ -2469,7 +2535,7 @@ function App() {
                   </ul>
                 </div>
                 <div>
-                  <Text variant="body-sm" className="font-medium mb-2">Features:</Text>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Features:</Text>
                   <ul className="space-y-1">
                     <li>• Two variants: text, icon</li>
                     <li>• Custom separators</li>
@@ -3158,6 +3224,115 @@ function App() {
                   <div>• success-main, success-8, success-48</div>
                   <div>• warning-main, warning-8, warning-48</div>
                   <div>• error-main, error-8, error-48</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Radio Component Showcase */}
+        <section className="space-y-6">
+          <Heading level={2}>Radio Component</Heading>
+          <Text variant="body" color="secondary" className="mb-4">
+            Radio button component for single-choice selections with multiple variants, semantic colors, and interactive states.
+          </Text>
+          
+          <div className="space-y-8">
+            {/* Default vs Semantic Colors */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Color Variants - Default vs Semantic Colors</Text>
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-6">
+                  <Radio variant="default" label="Default" name="colors" value="default" />
+                  <Radio variant="primary" label="Primary" name="colors" value="primary" />
+                  <Radio variant="secondary" label="Secondary" name="colors" value="secondary" />
+                  <Radio variant="info" label="Info" name="colors" value="info" />
+                  <Radio variant="success" label="Success" name="colors" value="success" />
+                  <Radio variant="warning" label="Warning" name="colors" value="warning" />
+                  <Radio variant="error" label="Error" name="colors" value="error" />
+                </div>
+              </div>
+            </div>
+
+            {/* States Showcase */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Interactive States - Unchecked, Hovered, Disabled, Checked</Text>
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-6">
+                  <Radio variant="primary" label="Unchecked" name="states1" value="unchecked" />
+                  <Radio variant="primary" label="Checked" name="states2" value="checked" checked />
+                  <Radio variant="primary" label="Disabled Unchecked" name="states3" value="disabled-unchecked" disabled />
+                  <Radio variant="primary" label="Disabled Checked" name="states4" value="disabled-checked" checked disabled />
+                </div>
+              </div>
+            </div>
+
+            {/* Sizes Showcase */}
+            <div>
+              <Text variant="caption" color="secondary" className="mb-3 block">Size Variants - Small (20px) and Medium (24px)</Text>
+              <div className="space-y-4">
+                <div className="flex flex-wrap gap-6">
+                  <Radio variant="primary" size="md" label="Medium (24px)" name="sizes1" value="medium" />
+                  <Radio variant="primary" size="sm" label="Small (20px)" name="sizes2" value="small" />
+                </div>
+              </div>
+            </div>
+
+            {/* Radio Group Example */}
+            <RadioGroupExample />
+
+            {/* Semantic Colors Radio Group Example */}
+            <SemanticRadioGroupExample />
+
+            {/* Radio Component Specifications */}
+            <div className="p-6 bg-gray-50 rounded-lg">
+              <Text variant="body-sm" className="font-medium mb-3 block">Radio Component Specifications</Text>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Color Variants:</Text>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Default: Action color (#657686)</li>
+                    <li>• Primary: Brand primary (#0690F4)</li>
+                    <li>• Secondary: Brand secondary (#9138FF)</li>
+                    <li>• Info: Info semantic (#00BEE0)</li>
+                    <li>• Success: Success semantic (#22B954)</li>
+                    <li>• Warning: Warning semantic (#FFAD05)</li>
+                    <li>• Error: Error semantic (#FF5833)</li>
+                  </ul>
+                </div>
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Interactive States:</Text>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Unchecked: Default ring outline</li>
+                    <li>• Unchecked Hovered: 8% background</li>
+                    <li>• Disabled: Action-disabled color</li>
+                    <li>• Checked: Filled center with color</li>
+                    <li>• Checked Hovered: 8% background</li>
+                  </ul>
+                </div>
+                <div>
+                  <Text variant="body-sm" className="font-medium mb-2 block">Features:</Text>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Two sizes: Small (20px), Medium (24px)</li>
+                    <li>• Radio groups for single selection</li>
+                    <li>• Native form integration</li>
+                    <li>• Accessibility compliant (ARIA)</li>
+                    <li>• Keyboard navigation support</li>
+                    <li>• Plus Jakarta Sans typography</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="mt-4 grid gap-2 text-sm text-gray-600">
+                <Text variant="body-sm" className="font-medium mb-2 block">Design Tokens Used:</Text>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                  <div>• primary-main, primary-8</div>
+                  <div>• secondary-main, secondary-8</div>
+                  <div>• success-main, success-8</div>
+                  <div>• warning-main, warning-8</div>
+                  <div>• error-main, error-8</div>
+                  <div>• info-main, info-8</div>
+                  <div>• action-active, action-disabled</div>
+                  <div>• grey-8 (hover backgrounds)</div>
                 </div>
               </div>
             </div>
