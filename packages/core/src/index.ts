@@ -44,6 +44,9 @@ export {
 // Export chip components
 export * from "./components/chip";
 
+// Export progress components
+export * from "./components/progress";
+
 // Export pagination components
 export * from "./components/pagination";
 
