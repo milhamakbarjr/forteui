@@ -53,6 +53,9 @@ export * from "./components/pagination";
 // Export snackbar components
 export * from "./components/snackbar";
 
+// Export slider components
+export * from "./components/slider";
+
 // Export utilities
 export { cn } from "./lib/utils";
 
