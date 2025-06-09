@@ -47,6 +47,7 @@ import { SnackbarShowcase } from './showcases/SnackbarShowcase';
 import { PaginationShowcase } from './showcases/PaginationShowcase';
 import { ProgressShowcase } from './showcases/ProgressShowcase';
 import { SliderShowcase } from './showcases/SliderShowcase';
+import { StepperShowcase } from './showcases/StepperShowcase';
 
 function App() {
   return (
@@ -203,6 +204,9 @@ function App() {
 
         {/* Breadcrumb Component Showcase */}
         <BreadcrumbShowcase />
+
+        {/* Stepper Component Showcase */}
+        <StepperShowcase />
 
         {/* Layout Components Showcase */}
         <section className="space-y-6">

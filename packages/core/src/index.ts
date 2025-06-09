@@ -56,6 +56,9 @@ export * from "./components/snackbar";
 // Export slider components
 export * from "./components/slider";
 
+// Export stepper components 
+export * from "./components/stepper";
+
 // Export utilities
 export { cn } from "./lib/utils";
 
