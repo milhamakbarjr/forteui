@@ -43,6 +43,7 @@ import { ChipShowcase } from './showcases/ChipShowcase';
 import { BreadcrumbShowcase } from './showcases/BreadcrumbShowcase';
 import { AlertShowcase } from './showcases/AlertShowcase';
 import { RadioShowcase } from './showcases/RadioShowcase';
+import { SwitchShowcase } from './showcases/SwitchShowcase';
 import { SnackbarShowcase } from './showcases/SnackbarShowcase';
 import { PaginationShowcase } from './showcases/PaginationShowcase';
 import { ProgressShowcase } from './showcases/ProgressShowcase';
@@ -735,6 +736,9 @@ function App() {
 
         {/* Radio Component Showcase */}
         <RadioShowcase />
+
+        {/* Switch Component Showcase */}
+        <SwitchShowcase />
 
         {/* Pagination Component Showcase */}
         <PaginationShowcase />

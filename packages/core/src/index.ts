@@ -59,6 +59,9 @@ export * from "./components/slider";
 // Export stepper components 
 export * from "./components/stepper";
 
+// Export switch components
+export * from "./components/switch";
+
 // Export utilities
 export { cn } from "./lib/utils";
 
