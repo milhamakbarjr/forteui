@@ -1,9 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  transpilePackages: ['@forteui/core', '@forteui/tokens', '@forteui/utils'],
-  experimental: {
-    mdxRs: true,
-  },
+  transpilePackages: ['forteui-core', 'forteui-tokens'],
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
 }
 
