@@ -13,7 +13,7 @@ export default async function Page({
 
   // For now, let's use a simple div to render content
   return (
-    <DocsPage toc={[]} full={page.data.full}>
+    <DocsPage toc={[]} full={false}>
       <DocsBody>
         <h1>{page.data.title}</h1>
         <div>
