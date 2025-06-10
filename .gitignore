@@ -44,6 +44,9 @@ turbo-build.log
 .next/
 out/
 
+# fumadocs
+.source/
+
 # Node.js
 node_modules/
 npm-debug.log*

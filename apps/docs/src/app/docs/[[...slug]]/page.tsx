@@ -38,6 +38,6 @@ export function generateMetadata({
 
   return {
     title: page.data.title,
-    description: 'ForteUI Documentation',
+    description: 'ForteUI Documentation - Component Library',
   };
 }
