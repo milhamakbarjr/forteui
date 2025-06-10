@@ -14,6 +14,11 @@ const pageMap = {
     description: 'Get started with ForteUI',
     Component: lazy(() => import('../../../../content/docs/getting-started.mdx')),
   },
+  'design-system': {
+    title: 'Design System',
+    description: 'ForteUI design system foundation including colors, typography, spacing, and design tokens',
+    Component: lazy(() => import('../../../../content/docs/design-system.mdx')),
+  },
   // Component documentation
   'components/button': {
     title: 'Button',
@@ -122,6 +127,7 @@ export async function generateStaticParams() {
   return [
     { slug: ['introduction'] },
     { slug: ['getting-started'] },
+    { slug: ['design-system'] },
     { slug: ['components', 'button'] },
     { slug: ['components', 'input'] },
     { slug: ['components', 'checkbox'] },

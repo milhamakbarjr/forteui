@@ -1,4 +1,5 @@
 import type { ReactNode } from 'react';
+import { HeaderSearch } from '../../components/SearchSystem';
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
@@ -11,6 +12,11 @@ export default function Layout({ children }: { children: ReactNode }) {
           <div className="bg-gradient-to-r from-primary-main to-secondary-main text-white p-3 rounded-lg mt-4">
             <p className="text-sm font-medium">🎉 100% Component Coverage!</p>
           </div>
+        </div>
+
+        {/* Search */}
+        <div className="mb-6">
+          <HeaderSearch />
         </div>
         
         <nav className="space-y-6">
@@ -25,6 +31,17 @@ export default function Layout({ children }: { children: ReactNode }) {
               <li>
                 <a href="/docs/getting-started" className="block text-sm text-gray-600 hover:text-primary-main transition-colors">
                   Getting Started
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wider">Design System</h3>
+            <ul className="space-y-2">
+              <li>
+                <a href="/docs/design-system" className="block text-sm text-gray-600 hover:text-primary-main transition-colors">
+                  Design System
                 </a>
               </li>
             </ul>
