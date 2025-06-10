@@ -4,7 +4,7 @@ import { ShowcaseSection } from "../components/ShowcaseSection";
 import { ShowcaseVariant } from "../components/ShowcaseVariant";
 import { SpecificationBox } from "../components/SpecificationBox";
 import { SpecList } from "../components/SpecList";
-import { Pagination } from "@forte-ui/core";
+import { Pagination } from "forteui-core";
 
 export function PaginationShowcase() {
   const [currentPageCircular, setCurrentPageCircular] = useState(1);

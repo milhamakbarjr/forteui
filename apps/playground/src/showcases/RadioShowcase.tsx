@@ -1,4 +1,4 @@
-import { Radio, RadioGroup, Text } from '@forte-ui/core';
+import { Radio, RadioGroup, Text } from 'forteui-core';
 import { useState } from 'react';
 
 // Shared showcase components

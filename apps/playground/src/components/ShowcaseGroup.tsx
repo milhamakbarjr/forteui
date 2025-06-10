@@ -1,4 +1,4 @@
-import { Text } from '@forte-ui/core';
+import { Text } from 'forteui-core';
 
 interface ShowcaseGroupProps {
   title: string;

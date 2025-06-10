@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import {
   Switch,
-} from '@forte-ui/core';
+} from 'forteui-core';
 
 import {
   ShowcaseSection,

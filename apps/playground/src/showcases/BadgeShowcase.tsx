@@ -1,4 +1,4 @@
-import { Badge, Text, IconNotification, IconMail, IconShoppingCart, IconMessage } from '@forte-ui/core';
+import { Badge, Text, IconNotification, IconMail, IconShoppingCart, IconMessage } from 'forteui-core';
 
 // Shared showcase components
 interface ShowcaseSectionProps {

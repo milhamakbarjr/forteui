@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Slider } from "@forte-ui/core";
+import { Slider } from "forteui-core";
 import { ShowcaseSection } from "../components/ShowcaseSection";
 import { ShowcaseVariant } from "../components/ShowcaseVariant";
 import { SpecificationBox } from "../components/SpecificationBox";

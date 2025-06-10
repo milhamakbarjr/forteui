@@ -7,7 +7,7 @@ import {
   IconMail,
   IconEye,
   IconEyeOff
-} from '@forte-ui/core';
+} from 'forteui-core';
 
 import {
   ShowcaseSection,

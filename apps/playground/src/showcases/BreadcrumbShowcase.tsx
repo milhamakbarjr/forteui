@@ -8,7 +8,7 @@ import {
   IconStar,
   IconEye,
   IconArrowRight
-} from '@forte-ui/core';
+} from 'forteui-core';
 
 // Shared showcase components
 interface ShowcaseSectionProps {

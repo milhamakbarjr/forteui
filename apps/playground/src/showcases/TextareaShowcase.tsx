@@ -2,7 +2,7 @@ import {
   Textarea,
   IconAlertTriangle,
   IconInfoCircle
-} from '@forte-ui/core';
+} from 'forteui-core';
 
 import {
   ShowcaseSection,

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Progress } from "@forte-ui/core";
+import { Progress } from "forteui-core";
 import { ShowcaseGroup } from "../components/ShowcaseGroup";
 import { ShowcaseSection } from "../components/ShowcaseSection";
 import { ShowcaseVariant } from "../components/ShowcaseVariant";

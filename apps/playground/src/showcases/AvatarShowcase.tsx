@@ -1,4 +1,4 @@
-import { Avatar, Text, IconUser, IconSettings, IconHeart, IconStar, IconHome, IconSearch } from '@forte-ui/core';
+import { Avatar, Text, IconUser, IconSettings, IconHeart, IconStar, IconHome, IconSearch } from 'forteui-core';
 import { 
   ShowcaseSection, 
   ShowcaseGroup, 

@@ -3,35 +3,30 @@ import {
   Text, 
   Heading, 
   Container, 
-  Stack, 
-  Card, 
-  CardHeader, 
-  CardTitle, 
-  CardDescription, 
-  CardContent, 
-  CardFooter,
+  Stack,
+  Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle,
   Input,
   Textarea,
-  // Tabler Icons
+  // Icons from @tabler/icons-react re-exported by forteui-core
   IconHome,
   IconUser,
   IconSearch,
-  IconPlus,
-  IconX,
-  IconCheck,
-  IconAlertTriangle,
-  IconInfoCircle,
   IconSettings,
   IconHeart,
   IconStar,
-  IconArrowRight,
-  IconArrowLeft,
-  IconChevronDown,
+  IconCheck,
+  IconAlertTriangle,
   IconEdit,
   IconTrash,
   IconEye,
-  IconDownload
-} from '@forte-ui/core';
+  IconDownload,
+  IconPlus,
+  IconInfoCircle,
+  IconX,
+  IconArrowLeft,
+  IconArrowRight,
+  IconChevronDown
+} from "forteui-core";
 import { AvatarShowcase } from './showcases/AvatarShowcase';
 import { ButtonShowcase } from './showcases/ButtonShowcase';
 import { InputShowcase } from './showcases/InputShowcase';

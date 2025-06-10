@@ -11,7 +11,7 @@ import {
   Textarea,
   IconArrowRight,
   IconUser
-} from '@forte-ui/core';
+} from 'forteui-core';
 
 import {
   ShowcaseSection,

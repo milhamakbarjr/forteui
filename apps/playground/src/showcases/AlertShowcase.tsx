@@ -1,4 +1,4 @@
-import { Alert, Text } from '@forte-ui/core';
+import { Alert, Text } from 'forteui-core';
 
 // Shared showcase components
 interface ShowcaseSectionProps {

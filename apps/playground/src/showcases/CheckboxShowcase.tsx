@@ -1,7 +1,7 @@
 import {
   Checkbox,
   Text
-} from '@forte-ui/core';
+} from 'forteui-core';
 import { useState } from 'react';
 
 import {

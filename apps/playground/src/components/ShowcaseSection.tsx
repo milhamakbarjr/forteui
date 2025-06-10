@@ -1,4 +1,4 @@
-import { Heading, Text } from '@forte-ui/core';
+import { Heading, Text } from 'forteui-core';
 
 interface ShowcaseSectionProps {
   title: string;

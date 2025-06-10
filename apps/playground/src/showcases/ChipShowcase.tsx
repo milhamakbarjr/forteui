@@ -12,7 +12,7 @@ import {
   IconMail,
   IconAlertTriangle,
   IconTrash
-} from '@forte-ui/core';
+} from 'forteui-core';
 
 // Shared showcase components
 interface ShowcaseSectionProps {

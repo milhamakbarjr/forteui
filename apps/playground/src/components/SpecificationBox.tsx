@@ -1,4 +1,4 @@
-import { Heading } from '@forte-ui/core';
+import { Heading } from 'forteui-core';
 
 interface SpecificationBoxProps {
   title?: string;

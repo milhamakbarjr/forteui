@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Snackbar } from '@forte-ui/core';
+import { Snackbar } from 'forteui-core';
 
 import {
   ShowcaseSection,

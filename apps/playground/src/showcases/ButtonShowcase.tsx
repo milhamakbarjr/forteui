@@ -13,7 +13,7 @@ import {
   IconSearch,
   IconArrowRight,
   IconChevronDown
-} from '@forte-ui/core';
+} from 'forteui-core';
 
 import {
   ShowcaseSection,
