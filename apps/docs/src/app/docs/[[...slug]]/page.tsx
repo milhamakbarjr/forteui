@@ -30,6 +30,21 @@ const pageMap = {
     description: 'Checkbox component for selection controls with multiple states and variants',
     Component: lazy(() => import('../../../../content/docs/components/checkbox.mdx')),
   },
+  'components/radio': {
+    title: 'Radio',
+    description: 'Radio component for single-choice selection controls with multiple variants',
+    Component: lazy(() => import('../../../../content/docs/components/radio.mdx')),
+  },
+  'components/switch': {
+    title: 'Switch',
+    description: 'Switch component for binary on/off controls with smooth animations',
+    Component: lazy(() => import('../../../../content/docs/components/switch.mdx')),
+  },
+  'components/avatar': {
+    title: 'Avatar',
+    description: 'Avatar component for displaying user profile images with fallbacks and status indicators',
+    Component: lazy(() => import('../../../../content/docs/components/avatar.mdx')),
+  },
   'components/alert': {
     title: 'Alert',
     description: 'Alert component for displaying important messages and notifications',
@@ -44,6 +59,11 @@ const pageMap = {
     title: 'Card',
     description: 'Card component for grouping related content with header, content, and footer sections',
     Component: lazy(() => import('../../../../content/docs/components/card.mdx')),
+  },
+  'components/progress': {
+    title: 'Progress',
+    description: 'Progress component for displaying task completion and loading states',
+    Component: lazy(() => import('../../../../content/docs/components/progress.mdx')),
   },
 };
 
@@ -75,9 +95,13 @@ export async function generateStaticParams() {
     { slug: ['components', 'button'] },
     { slug: ['components', 'input'] },
     { slug: ['components', 'checkbox'] },
+    { slug: ['components', 'radio'] },
+    { slug: ['components', 'switch'] },
+    { slug: ['components', 'avatar'] },
     { slug: ['components', 'alert'] },
     { slug: ['components', 'badge'] },
     { slug: ['components', 'card'] },
+    { slug: ['components', 'progress'] },
   ];
 }
 

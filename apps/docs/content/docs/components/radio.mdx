@@ -1,0 +1,199 @@
+---
+title: Radio
+description: Radio component for single-choice selection controls with multiple variants and accessible interaction.
+---
+
+# Radio
+
+Radio component for single-choice selection controls. Perfect for forms where users need to select one option from a set of mutually exclusive choices.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Radio, RadioGroup } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Radio, RadioGroup } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <RadioGroup defaultValue="option1">
+      <Radio value="option1" label="Option 1" />
+      <Radio value="option2" label="Option 2" />
+      <Radio value="option3" label="Option 3" />
+    </RadioGroup>
+  );
+}
+```
+
+## Variants and Colors
+
+```tsx
+<RadioGroup defaultValue="primary">
+  <Radio variant="default" value="default" label="Default" />
+  <Radio variant="primary" value="primary" label="Primary" />
+  <Radio variant="secondary" value="secondary" label="Secondary" />
+  <Radio variant="info" value="info" label="Info" />
+  <Radio variant="success" value="success" label="Success" />
+  <Radio variant="warning" value="warning" label="Warning" />
+  <Radio variant="error" value="error" label="Error" />
+</RadioGroup>
+```
+
+## Sizes
+
+```tsx
+<RadioGroup defaultValue="sm">
+  <Radio size="sm" value="sm" label="Small radio" />
+  <Radio size="md" value="md" label="Medium radio" />
+</RadioGroup>
+```
+
+## Controlled RadioGroup
+
+```tsx
+import { useState } from 'react';
+
+function ControlledRadioExample() {
+  const [value, setValue] = useState('option2');
+  
+  return (
+    <RadioGroup value={value} onValueChange={setValue}>
+      <Radio value="option1" label="Option 1" />
+      <Radio value="option2" label="Option 2" />
+      <Radio value="option3" label="Option 3" />
+    </RadioGroup>
+  );
+}
+```
+
+## Form Integration
+
+### Survey Form Example
+
+```tsx
+import { useState } from 'react';
+
+function SurveyForm() {
+  const [satisfaction, setSatisfaction] = useState('');
+  const [frequency, setFrequency] = useState('');
+  
+  return (
+    <form className="space-y-6">
+      <div>
+        <h3 className="text-lg font-semibold mb-3">How satisfied are you?</h3>
+        <RadioGroup value={satisfaction} onValueChange={setSatisfaction}>
+          <Radio value="very-satisfied" label="Very Satisfied" variant="success" />
+          <Radio value="satisfied" label="Satisfied" variant="primary" />
+          <Radio value="neutral" label="Neutral" variant="default" />
+          <Radio value="dissatisfied" label="Dissatisfied" variant="warning" />
+          <Radio value="very-dissatisfied" label="Very Dissatisfied" variant="error" />
+        </RadioGroup>
+      </div>
+      
+      <div>
+        <h3 className="text-lg font-semibold mb-3">How often do you use our product?</h3>
+        <RadioGroup value={frequency} onValueChange={setFrequency}>
+          <Radio value="daily" label="Daily" />
+          <Radio value="weekly" label="Weekly" />
+          <Radio value="monthly" label="Monthly" />
+          <Radio value="rarely" label="Rarely" />
+        </RadioGroup>
+      </div>
+    </form>
+  );
+}
+```
+
+## Disabled States
+
+```tsx
+<RadioGroup defaultValue="option1">
+  <Radio value="option1" label="Selected and disabled" disabled />
+  <Radio value="option2" label="Unselected and disabled" disabled />
+  <Radio value="option3" label="Normal option" />
+</RadioGroup>
+```
+
+## Custom Descriptions
+
+```tsx
+<RadioGroup defaultValue="basic">
+  <div className="space-y-4">
+    <Radio value="basic" label="Basic Plan">
+      <p className="text-sm text-gray-500 ml-6">Perfect for individuals</p>
+    </Radio>
+    <Radio value="pro" label="Pro Plan">
+      <p className="text-sm text-gray-500 ml-6">Great for small teams</p>
+    </Radio>
+    <Radio value="enterprise" label="Enterprise Plan">
+      <p className="text-sm text-gray-500 ml-6">For large organizations</p>
+    </Radio>
+  </div>
+</RadioGroup>
+```
+
+## Props
+
+### RadioGroup Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | Controlled selected value |
+| `defaultValue` | `string` | - | Uncontrolled default value |
+| `onValueChange` | `(value: string) => void` | - | Callback when selection changes |
+| `disabled` | `boolean` | `false` | Disable the entire group |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Radio components |
+
+### Radio Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `string` | - | Value for this radio option |
+| `label` | `string` | - | Label text |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md'` | `'md'` | Size of the radio |
+| `disabled` | `boolean` | `false` | Whether this option is disabled |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Additional content below label |
+
+## Design Specifications
+
+- **Size**: Small (16px), Medium (20px)
+- **Shape**: Circular with inner dot
+- **Border**: 2px solid for clear definition
+- **Focus Ring**: 2px outline for accessibility
+- **Selected State**: Filled inner circle
+- **Animations**: Smooth transitions for state changes
+
+## Accessibility
+
+- **Keyboard Navigation**: Arrow keys navigate between options
+- **Screen Readers**: Properly announced with group context
+- **Focus Management**: Clear focus indicators
+- **ARIA**: Follows ARIA radio group specifications
+- **Label Association**: Labels properly associated with controls
+
+## Best Practices
+
+1. **Mutually exclusive**: Use for options where only one can be selected
+2. **Clear labels**: Use descriptive, concise labels
+3. **Logical order**: Arrange options in logical sequence
+4. **Default selection**: Consider providing a sensible default
+5. **Group related options**: Keep related choices together
+
+## Related Components
+
+- [Checkbox](/docs/components/checkbox) - For multiple selections
+- [Switch](/docs/components/switch) - For on/off toggles
+- [Button](/docs/components/button) - For form submission 

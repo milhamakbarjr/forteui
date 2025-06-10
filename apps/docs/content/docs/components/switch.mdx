@@ -1,0 +1,286 @@
+---
+title: Switch
+description: Switch component for binary on/off controls with smooth animations and multiple variants.
+---
+
+# Switch
+
+Switch component for binary on/off controls. Perfect for settings, toggles, and feature enablement with smooth animations and excellent user experience.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Switch } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Switch } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Switch 
+      label="Enable notifications"
+      defaultChecked={false}
+    />
+  );
+}
+```
+
+## Variants and Colors
+
+```tsx
+<div className="space-y-4">
+  <Switch variant="default" label="Default switch" />
+  <Switch variant="primary" label="Primary switch" />
+  <Switch variant="secondary" label="Secondary switch" />
+  <Switch variant="info" label="Info switch" />
+  <Switch variant="success" label="Success switch" />
+  <Switch variant="warning" label="Warning switch" />
+  <Switch variant="error" label="Error switch" />
+</div>
+```
+
+## Sizes
+
+```tsx
+<div className="space-y-4">
+  <Switch size="sm" label="Small switch" />
+  <Switch size="md" label="Medium switch" />
+</div>
+```
+
+## States
+
+```tsx
+<div className="space-y-4">
+  <Switch label="Unchecked" checked={false} />
+  <Switch label="Checked" checked={true} />
+  <Switch label="Disabled unchecked" disabled />
+  <Switch label="Disabled checked" disabled checked={true} />
+</div>
+```
+
+## Controlled Switch
+
+```tsx
+import { useState } from 'react';
+
+function ControlledSwitchExample() {
+  const [isEnabled, setIsEnabled] = useState(false);
+  
+  return (
+    <div className="space-y-4">
+      <Switch 
+        label="Dark Mode"
+        checked={isEnabled}
+        onCheckedChange={setIsEnabled}
+      />
+      <p className="text-sm text-gray-600">
+        Dark mode is {isEnabled ? 'enabled' : 'disabled'}
+      </p>
+    </div>
+  );
+}
+```
+
+## Settings Panel Example
+
+```tsx
+import { useState } from 'react';
+
+function SettingsPanel() {
+  const [settings, setSettings] = useState({
+    notifications: true,
+    emailUpdates: false,
+    autoSave: true,
+    darkMode: false,
+    analytics: true,
+  });
+  
+  const updateSetting = (key: string) => (checked: boolean) => {
+    setSettings(prev => ({ ...prev, [key]: checked }));
+  };
+  
+  return (
+    <div className="space-y-6 p-6 bg-white rounded-lg border">
+      <h3 className="text-lg font-semibold">Preferences</h3>
+      
+      <div className="space-y-4">
+        <Switch 
+          label="Push Notifications"
+          checked={settings.notifications}
+          onCheckedChange={updateSetting('notifications')}
+          variant="primary"
+        />
+        
+        <Switch 
+          label="Email Updates"
+          checked={settings.emailUpdates}
+          onCheckedChange={updateSetting('emailUpdates')}
+          variant="info"
+        />
+        
+        <Switch 
+          label="Auto Save"
+          checked={settings.autoSave}
+          onCheckedChange={updateSetting('autoSave')}
+          variant="success"
+        />
+        
+        <Switch 
+          label="Dark Mode"
+          checked={settings.darkMode}
+          onCheckedChange={updateSetting('darkMode')}
+          variant="default"
+        />
+        
+        <Switch 
+          label="Analytics"
+          checked={settings.analytics}
+          onCheckedChange={updateSetting('analytics')}
+          variant="warning"
+        />
+      </div>
+    </div>
+  );
+}
+```
+
+## With Descriptions
+
+```tsx
+<div className="space-y-6">
+  <div>
+    <Switch 
+      label="Two-Factor Authentication"
+      checked={true}
+      variant="success"
+    />
+    <p className="text-sm text-gray-500 mt-1 ml-12">
+      Add an extra layer of security to your account
+    </p>
+  </div>
+  
+  <div>
+    <Switch 
+      label="Marketing Communications"
+      checked={false}
+      variant="primary"
+    />
+    <p className="text-sm text-gray-500 mt-1 ml-12">
+      Receive updates about new features and promotions
+    </p>
+  </div>
+</div>
+```
+
+## Form Integration
+
+```tsx
+import { useState } from 'react';
+
+function ProfileForm() {
+  const [profile, setProfile] = useState({
+    isPublic: false,
+    allowMessages: true,
+    showActivity: false,
+  });
+  
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Profile settings:', profile);
+  };
+  
+  return (
+    <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="space-y-4">
+        <Switch 
+          label="Public Profile"
+          checked={profile.isPublic}
+          onCheckedChange={(checked) => 
+            setProfile(prev => ({ ...prev, isPublic: checked }))
+          }
+        />
+        
+        <Switch 
+          label="Allow Direct Messages"
+          checked={profile.allowMessages}
+          onCheckedChange={(checked) => 
+            setProfile(prev => ({ ...prev, allowMessages: checked }))
+          }
+        />
+        
+        <Switch 
+          label="Show Activity Status"
+          checked={profile.showActivity}
+          onCheckedChange={(checked) => 
+            setProfile(prev => ({ ...prev, showActivity: checked }))
+          }
+        />
+      </div>
+      
+      <Button type="submit" variant="primary">
+        Save Settings
+      </Button>
+    </form>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Label text for the switch |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md'` | `'md'` | Size of the switch |
+| `checked` | `boolean` | - | Controlled checked state |
+| `defaultChecked` | `boolean` | `false` | Uncontrolled default checked state |
+| `disabled` | `boolean` | `false` | Whether the switch is disabled |
+| `onCheckedChange` | `(checked: boolean) => void` | - | Callback when checked state changes |
+| `className` | `string` | - | Additional CSS classes for wrapper |
+| `labelClassName` | `string` | - | Additional CSS classes for label |
+
+## Design Specifications
+
+- **Track Width**: Small (32px), Medium (40px)
+- **Track Height**: Small (18px), Medium (22px)  
+- **Thumb Size**: Scales proportionally with track
+- **Border Radius**: Fully rounded (pill shape)
+- **Animation**: Smooth 200ms spring transition
+- **Focus Ring**: 2px outline for accessibility
+
+## Accessibility
+
+- **Keyboard Navigation**: Supports Tab and Space key interaction
+- **Screen Readers**: Properly announced as switch control
+- **Focus Management**: Clear focus indicators
+- **ARIA**: Uses `role="switch"` with proper state
+- **Label Association**: Labels properly associated with controls
+
+## Best Practices
+
+1. **Use for binary states**: Perfect for on/off, enable/disable scenarios
+2. **Immediate effect**: Switch should take effect immediately, not require form submission
+3. **Clear labels**: Use action-oriented labels that describe what the switch controls
+4. **Logical defaults**: Choose sensible default states
+5. **Group related switches**: Keep related settings together
+
+## When to Use Switch vs Checkbox
+
+- **Switch**: For settings that take immediate effect (like toggling WiFi)
+- **Checkbox**: For selections that require confirmation (like form submissions)
+
+## Related Components
+
+- [Checkbox](/docs/components/checkbox) - For selection controls requiring confirmation
+- [Radio](/docs/components/radio) - For single-choice selections
+- [Button](/docs/components/button) - For form actions 

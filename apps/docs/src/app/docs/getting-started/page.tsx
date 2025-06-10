@@ -20,17 +20,17 @@ export default function GettingStartedPage() {
         <div className="space-y-4">
           <div>
             <Text variant="body-sm" className="mb-2 font-medium">npm</Text>
-            <CodeBlock language="bash" code="npm install @forteui/core" />
+            <CodeBlock language="bash">npm install @forteui/core</CodeBlock>
           </div>
           
           <div>
             <Text variant="body-sm" className="mb-2 font-medium">yarn</Text>
-            <CodeBlock language="bash" code="yarn add @forteui/core" />
+            <CodeBlock language="bash">yarn add @forteui/core</CodeBlock>
           </div>
           
           <div>
             <Text variant="body-sm" className="mb-2 font-medium">pnpm</Text>
-            <CodeBlock language="bash" code="pnpm add @forteui/core" />
+            <CodeBlock language="bash">pnpm add @forteui/core</CodeBlock>
           </div>
         </div>
       </div>
@@ -41,9 +41,7 @@ export default function GettingStartedPage() {
           Import and use ForteUI components in your React application:
         </Text>
         
-        <CodeBlock 
-          language="tsx" 
-          code={`import React from 'react';
+        <CodeBlock language="tsx">{`import React from 'react';
 import { Button, Heading, Text } from '@forteui/core';
 
 function App() {
@@ -60,8 +58,7 @@ function App() {
   );
 }
 
-export default App;`}
-        />
+export default App;`}</CodeBlock>
       </div>
 
       <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">

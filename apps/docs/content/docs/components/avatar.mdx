@@ -1,0 +1,271 @@
+---
+title: Avatar
+description: Avatar component for displaying user profile images with fallbacks, multiple sizes, and status indicators.
+---
+
+# Avatar
+
+Avatar component for displaying user profile images with intelligent fallback handling, multiple sizes, and optional status indicators. Perfect for user profiles, comments, and team displays.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Avatar } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Avatar } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Avatar 
+      src="/user-avatar.jpg"
+      alt="John Doe"
+      fallback="JD"
+    />
+  );
+}
+```
+
+## Sizes
+
+```tsx
+<div className="flex items-center gap-4">
+  <Avatar size="xs" src="/user.jpg" fallback="XS" />
+  <Avatar size="sm" src="/user.jpg" fallback="SM" />
+  <Avatar size="md" src="/user.jpg" fallback="MD" />
+  <Avatar size="lg" src="/user.jpg" fallback="LG" />
+  <Avatar size="xl" src="/user.jpg" fallback="XL" />
+  <Avatar size="2xl" src="/user.jpg" fallback="2XL" />
+</div>
+```
+
+## Fallback Handling
+
+### Text Fallback
+
+```tsx
+<div className="flex gap-4">
+  <Avatar fallback="JD" />
+  <Avatar fallback="AB" />
+  <Avatar fallback="CD" />
+</div>
+```
+
+### Icon Fallback
+
+```tsx
+import { Avatar, IconUser } from '@forteui/core';
+
+<Avatar fallback={<IconUser className="w-5 h-5" />} />
+```
+
+### Image with Fallback
+
+```tsx
+<Avatar 
+  src="/broken-image.jpg" 
+  fallback="JD"
+  alt="John Doe"
+/>
+```
+
+## Status Indicators
+
+```tsx
+<div className="flex gap-4">
+  <Avatar 
+    src="/user.jpg" 
+    fallback="JD"
+    status="online"
+  />
+  <Avatar 
+    src="/user.jpg" 
+    fallback="AB"
+    status="away"
+  />
+  <Avatar 
+    src="/user.jpg" 
+    fallback="CD"
+    status="busy"
+  />
+  <Avatar 
+    src="/user.jpg" 
+    fallback="EF"
+    status="offline"
+  />
+</div>
+```
+
+## Avatar Groups
+
+```tsx
+<div className="flex -space-x-2">
+  <Avatar src="/user1.jpg" fallback="JD" size="md" className="border-2 border-white" />
+  <Avatar src="/user2.jpg" fallback="AB" size="md" className="border-2 border-white" />
+  <Avatar src="/user3.jpg" fallback="CD" size="md" className="border-2 border-white" />
+  <Avatar fallback="+3" size="md" className="border-2 border-white bg-gray-200 text-gray-600" />
+</div>
+```
+
+## Interactive Avatars
+
+### Clickable Avatar
+
+```tsx
+<Avatar 
+  src="/user.jpg"
+  fallback="JD"
+  className="cursor-pointer hover:ring-2 hover:ring-primary-main transition-all"
+  onClick={() => console.log('Avatar clicked')}
+/>
+```
+
+### Avatar with Dropdown
+
+```tsx
+import { useState } from 'react';
+
+function AvatarWithMenu() {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div className="relative">
+      <Avatar 
+        src="/user.jpg"
+        fallback="JD"
+        className="cursor-pointer"
+        onClick={() => setIsOpen(!isOpen)}
+      />
+      {isOpen && (
+        <div className="absolute top-12 right-0 bg-white border rounded-lg shadow-lg p-2 min-w-[150px]">
+          <button className="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Profile</button>
+          <button className="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Settings</button>
+          <button className="w-full text-left px-3 py-2 hover:bg-gray-100 rounded">Sign Out</button>
+        </div>
+      )}
+    </div>
+  );
+}
+```
+
+## Use Cases
+
+### User Profile Header
+
+```tsx
+<div className="flex items-center space-x-4">
+  <Avatar 
+    src="/profile.jpg"
+    fallback="JD"
+    size="xl"
+    status="online"
+  />
+  <div>
+    <h2 className="text-2xl font-bold">John Doe</h2>
+    <p className="text-gray-600">Software Engineer</p>
+    <p className="text-sm text-gray-500">Last seen 2 minutes ago</p>
+  </div>
+</div>
+```
+
+### Comment Section
+
+```tsx
+<div className="space-y-4">
+  <div className="flex space-x-3">
+    <Avatar src="/user1.jpg" fallback="JD" size="sm" />
+    <div className="flex-1">
+      <div className="bg-gray-100 rounded-lg p-3">
+        <p className="font-semibold text-sm">John Doe</p>
+        <p className="text-sm">This is a great feature! Thanks for implementing it.</p>
+      </div>
+      <p className="text-xs text-gray-500 mt-1">2 hours ago</p>
+    </div>
+  </div>
+  
+  <div className="flex space-x-3">
+    <Avatar src="/user2.jpg" fallback="AB" size="sm" />
+    <div className="flex-1">
+      <div className="bg-gray-100 rounded-lg p-3">
+        <p className="font-semibold text-sm">Alice Brown</p>
+        <p className="text-sm">Agreed! The user experience is much better now.</p>
+      </div>
+      <p className="text-xs text-gray-500 mt-1">1 hour ago</p>
+    </div>
+  </div>
+</div>
+```
+
+### Team Grid
+
+```tsx
+<div className="grid grid-cols-4 gap-4">
+  {[
+    { name: 'John Doe', role: 'Designer', src: '/john.jpg' },
+    { name: 'Alice Brown', role: 'Developer', src: '/alice.jpg' },
+    { name: 'Bob Wilson', role: 'Manager', src: '/bob.jpg' },
+    { name: 'Carol Davis', role: 'QA', src: '/carol.jpg' },
+  ].map((member) => (
+    <div key={member.name} className="text-center">
+      <Avatar 
+        src={member.src}
+        fallback={member.name.split(' ').map(n => n[0]).join('')}
+        size="lg"
+        className="mx-auto mb-2"
+      />
+      <p className="font-semibold text-sm">{member.name}</p>
+      <p className="text-xs text-gray-500">{member.role}</p>
+    </div>
+  ))}
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `src` | `string` | - | Image source URL |
+| `alt` | `string` | - | Alt text for the image |
+| `fallback` | `string \| ReactNode` | - | Fallback content when image fails to load |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | `'md'` | Size of the avatar |
+| `status` | `'online' \| 'away' \| 'busy' \| 'offline'` | - | Status indicator |
+| `className` | `string` | - | Additional CSS classes |
+| `onClick` | `() => void` | - | Click handler for interactive avatars |
+
+## Design Specifications
+
+- **Sizes**: XS (24px), SM (32px), MD (40px), LG (48px), XL (64px), 2XL (80px)
+- **Shape**: Perfect circle
+- **Status Indicator**: 8px circle positioned at bottom-right
+- **Fallback**: Centered text or icon with background color
+- **Border**: Optional border for layered avatars
+
+## Accessibility
+
+- **Alt Text**: Properly describes the user when image is present
+- **Keyboard Navigation**: Supports Tab navigation when interactive
+- **Screen Readers**: Fallback content is announced appropriately
+- **Focus Management**: Clear focus indicators for interactive avatars
+
+## Best Practices
+
+1. **Consistent sizing**: Use the same size for avatars in the same context
+2. **Meaningful fallbacks**: Use initials or relevant icons
+3. **Alt text**: Provide descriptive alt text for images
+4. **Status clarity**: Use status indicators consistently across the app
+5. **Loading states**: Consider loading placeholders for slow images
+
+## Related Components
+
+- [Badge](/docs/components/badge) - For status indicators
+- [Button](/docs/components/button) - For interactive actions
+- [Card](/docs/components/card) - For user profile cards 

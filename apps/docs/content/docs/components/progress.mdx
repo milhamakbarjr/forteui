@@ -1,0 +1,305 @@
+---
+title: Progress
+description: Progress component for displaying task completion and loading states with multiple variants and animations.
+---
+
+# Progress
+
+Progress component for displaying task completion, loading states, and process visualization. Supports multiple variants, colors, and animation options.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Progress } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Progress } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Progress value={65} max={100} />
+  );
+}
+```
+
+## Variants
+
+### Linear Progress
+
+```tsx
+<div className="space-y-4">
+  <Progress value={25} variant="linear" color="primary" />
+  <Progress value={50} variant="linear" color="success" />
+  <Progress value={75} variant="linear" color="warning" />
+  <Progress value={90} variant="linear" color="error" />
+</div>
+```
+
+### Circular Progress
+
+```tsx
+<div className="flex gap-4">
+  <Progress value={25} variant="circular" color="primary" />
+  <Progress value={50} variant="circular" color="success" />
+  <Progress value={75} variant="circular" color="warning" />
+  <Progress value={90} variant="circular" color="error" />
+</div>
+```
+
+## Sizes
+
+### Linear Sizes
+
+```tsx
+<div className="space-y-4">
+  <Progress value={60} size="sm" label="Small" />
+  <Progress value={60} size="md" label="Medium" />
+  <Progress value={60} size="lg" label="Large" />
+</div>
+```
+
+### Circular Sizes
+
+```tsx
+<div className="flex gap-4 items-center">
+  <Progress value={75} variant="circular" size="sm" />
+  <Progress value={75} variant="circular" size="md" />
+  <Progress value={75} variant="circular" size="lg" />
+</div>
+```
+
+## With Labels
+
+### Percentage Labels
+
+```tsx
+<div className="space-y-4">
+  <Progress value={25} showLabel label="25%" />
+  <Progress value={50} showLabel label="50%" />
+  <Progress value={75} showLabel label="75%" />
+  <Progress value={100} showLabel label="Complete!" />
+</div>
+```
+
+### Custom Labels
+
+```tsx
+<div className="space-y-4">
+  <Progress value={30} label="Uploading files..." />
+  <Progress value={65} label="Processing data..." />
+  <Progress value={90} label="Almost done..." />
+</div>
+```
+
+## Indeterminate Progress
+
+For unknown completion times:
+
+```tsx
+<div className="space-y-4">
+  <Progress indeterminate label="Loading..." />
+  <Progress indeterminate variant="circular" />
+</div>
+```
+
+## Real-World Examples
+
+### File Upload Progress
+
+```tsx
+import { useState, useEffect } from 'react';
+
+function FileUploadProgress() {
+  const [progress, setProgress] = useState(0);
+  const [uploading, setUploading] = useState(false);
+  
+  const startUpload = () => {
+    setUploading(true);
+    setProgress(0);
+    
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval);
+          setUploading(false);
+          return 100;
+        }
+        return prev + Math.random() * 10;
+      });
+    }, 200);
+  };
+  
+  return (
+    <div className="space-y-4">
+      <div className="flex justify-between items-center">
+        <span className="text-sm font-medium">document.pdf</span>
+        <span className="text-sm text-gray-500">
+          {uploading ? `${Math.round(progress)}%` : 'Ready'}
+        </span>
+      </div>
+      
+      <Progress 
+        value={progress} 
+        color={progress === 100 ? "success" : "primary"}
+        className="w-full"
+      />
+      
+      <Button 
+        onClick={startUpload} 
+        disabled={uploading}
+        variant={uploading ? "outline-default" : "primary"}
+      >
+        {uploading ? 'Uploading...' : 'Start Upload'}
+      </Button>
+    </div>
+  );
+}
+```
+
+### Multi-Step Process
+
+```tsx
+import { useState } from 'react';
+
+function MultiStepProgress() {
+  const [currentStep, setCurrentStep] = useState(1);
+  const totalSteps = 4;
+  const progress = (currentStep / totalSteps) * 100;
+  
+  const steps = [
+    'Personal Info',
+    'Account Details', 
+    'Preferences',
+    'Confirmation'
+  ];
+  
+  return (
+    <div className="space-y-6">
+      <div>
+        <div className="flex justify-between text-sm text-gray-600 mb-2">
+          <span>Step {currentStep} of {totalSteps}</span>
+          <span>{Math.round(progress)}% Complete</span>
+        </div>
+        
+        <Progress 
+          value={progress} 
+          color="primary"
+          size="md"
+        />
+      </div>
+      
+      <div className="text-center">
+        <h3 className="text-lg font-semibold mb-4">
+          {steps[currentStep - 1]}
+        </h3>
+        
+        <div className="flex gap-2 justify-center">
+          <Button 
+            variant="outline-default"
+            onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
+            disabled={currentStep === 1}
+          >
+            Previous
+          </Button>
+          
+          <Button 
+            variant="primary"
+            onClick={() => setCurrentStep(Math.min(totalSteps, currentStep + 1))}
+            disabled={currentStep === totalSteps}
+          >
+            {currentStep === totalSteps ? 'Complete' : 'Next'}
+          </Button>
+        </div>
+      </div>
+    </div>
+  );
+}
+```
+
+### Dashboard Metrics
+
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <Card>
+    <CardContent className="text-center p-6">
+      <Progress value={85} variant="circular" size="lg" color="success" />
+      <h3 className="text-lg font-semibold mt-4">Sales Goal</h3>
+      <p className="text-sm text-gray-500">85% of target reached</p>
+    </CardContent>
+  </Card>
+  
+  <Card>
+    <CardContent className="text-center p-6">
+      <Progress value={92} variant="circular" size="lg" color="primary" />
+      <h3 className="text-lg font-semibold mt-4">User Satisfaction</h3>
+      <p className="text-sm text-gray-500">92% positive feedback</p>
+    </CardContent>
+  </Card>
+  
+  <Card>
+    <CardContent className="text-center p-6">
+      <Progress value={68} variant="circular" size="lg" color="warning" />
+      <h3 className="text-lg font-semibold mt-4">Server Usage</h3>
+      <p className="text-sm text-gray-500">68% capacity used</p>
+    </CardContent>
+  </Card>
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number` | `0` | Current progress value |
+| `max` | `number` | `100` | Maximum progress value |
+| `variant` | `'linear' \| 'circular'` | `'linear'` | Progress display style |
+| `color` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `'primary'` | Color theme |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the progress indicator |
+| `indeterminate` | `boolean` | `false` | Show indeterminate animation |
+| `showLabel` | `boolean` | `false` | Show percentage label |
+| `label` | `string` | - | Custom label text |
+| `className` | `string` | - | Additional CSS classes |
+
+## Design Specifications
+
+### Linear Progress
+- **Height**: Small (4px), Medium (6px), Large (8px)
+- **Border Radius**: Fully rounded
+- **Animation**: Smooth transitions for value changes
+- **Indeterminate**: Sliding animation
+
+### Circular Progress
+- **Size**: Small (32px), Medium (48px), Large (64px)
+- **Stroke Width**: Proportional to size
+- **Animation**: Smooth arc transitions
+- **Indeterminate**: Rotating animation
+
+## Accessibility
+
+- **ARIA Attributes**: Uses `role="progressbar"` with proper value attributes
+- **Screen Readers**: Progress values are announced appropriately
+- **Labels**: Associated labels provide context
+- **Color Independence**: Progress is not conveyed by color alone
+
+## Best Practices
+
+1. **Provide context**: Use labels to explain what is progressing
+2. **Realistic updates**: Update progress values smoothly and realistically
+3. **Completion feedback**: Provide clear completion states
+4. **Appropriate variants**: Use linear for processes, circular for dashboards
+5. **Loading states**: Use indeterminate for unknown durations
+
+## Related Components
+
+- [Button](/docs/components/button) - For triggering processes
+- [Alert](/docs/components/alert) - For completion notifications
+- [Card](/docs/components/card) - For dashboard layouts 

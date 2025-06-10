@@ -25,67 +25,83 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ),
     pre: ({ children, ...props }) => {
       // Extract code from pre element
-      const codeElement = Array.isArray(children) ? children[0] : children;
-      if (typeof codeElement === 'object' && codeElement && 'props' in codeElement) {
-        const code = codeElement.props?.children;
-        const language = codeElement.props?.className?.replace('language-', '') || 'typescript';
-        
-        if (typeof code === 'string') {
-          return <CodeBlock code={code.trim()} language={language} />;
-        }
-      }
+      const code = typeof children === 'object' && children && 'props' in children 
+        ? children.props.children 
+        : String(children);
       
-      return <pre {...props}>{children}</pre>;
+      // Extract language from className (e.g., "language-tsx")
+      const className = typeof children === 'object' && children && 'props' in children
+        ? children.props.className
+        : '';
+      const language = className?.replace('language-', '') || 'tsx';
+      
+      return <CodeBlock language={language}>{code}</CodeBlock>;
     },
-    code: ({ children, className }) => {
-      // Inline code
-      if (!className) {
+    code: ({ children, className, ...props }) => {
+      const isInline = !className;
+      
+      if (isInline) {
         return (
-          <code className="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded text-sm font-mono">
+          <code 
+            className="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded text-sm font-mono"
+            {...props}
+          >
             {children}
           </code>
         );
       }
       
-      // Block code - will be handled by pre
-      return <code className={className}>{children}</code>;
+      // This will be handled by the pre element
+      return <code className={className} {...props}>{children}</code>;
     },
     ul: ({ children }) => (
-      <ul className="list-disc pl-6 mb-4 space-y-1">
+      <ul className="list-disc list-inside mb-4 space-y-1 text-gray-700">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="list-decimal pl-6 mb-4 space-y-1">
+      <ol className="list-decimal list-inside mb-4 space-y-1 text-gray-700">
         {children}
       </ol>
     ),
     li: ({ children }) => (
-      <li className="text-gray-700">
-        {children}
-      </li>
+      <li className="text-gray-700">{children}</li>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-primary-main bg-gray-50 p-4 mb-4">
+      <blockquote className="border-l-4 border-primary-main bg-primary-8 p-4 mb-4 italic">
         {children}
       </blockquote>
     ),
     table: ({ children }) => (
       <div className="overflow-x-auto mb-6">
-        <table className="w-full border-collapse border border-gray-200">
+        <table className="min-w-full border-collapse border border-gray-300">
           {children}
         </table>
       </div>
     ),
+    thead: ({ children }) => (
+      <thead className="bg-gray-50">
+        {children}
+      </thead>
+    ),
     th: ({ children }) => (
-      <th className="border border-gray-200 bg-gray-50 px-4 py-2 text-left font-semibold">
+      <th className="border border-gray-300 px-4 py-2 text-left font-semibold text-gray-900">
         {children}
       </th>
     ),
     td: ({ children }) => (
-      <td className="border border-gray-200 px-4 py-2">
+      <td className="border border-gray-300 px-4 py-2 text-gray-700">
         {children}
       </td>
+    ),
+    a: ({ children, href, ...props }) => (
+      <a 
+        href={href}
+        className="text-primary-main hover:text-primary-dark underline transition-colors"
+        {...props}
+      >
+        {children}
+      </a>
     ),
     ...components,
   };
