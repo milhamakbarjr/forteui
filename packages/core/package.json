@@ -1,6 +1,6 @@
 {
-  "name": "@forte-ui/core",
-  "version": "0.1.1",
+  "name": "forteui-core",
+  "version": "0.1.2",
   "description": "Core React components for ForteUI design system",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -11,14 +11,13 @@
       "import": "./dist/index.mjs",
       "require": "./dist/index.js"
     },
-    "./styles": "./dist/styles.css"
+    "./styles.css": "./dist/styles.css"
   },
   "files": [
     "dist/**/*",
     "src/**/*"
   ],
   "publishConfig": {
-    "name": "forteui-core",
     "access": "public"
   },
   "scripts": {
