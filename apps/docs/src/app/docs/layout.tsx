@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { Button } from '@forteui/core';
+import { PreferencesToggle } from '../../components/UserPreferences';
 
 // Dynamic import for SearchSystem to avoid SSR issues
 const HeaderSearch = dynamic(
@@ -55,14 +56,25 @@ export default function Layout({ children }: { children: ReactNode }) {
               <h2 className="text-lg font-bold text-gray-900 font-sans">ForteUI</h2>
               <p className="text-sm text-gray-600">Documentation</p>
             </div>
-            <Button
-              variant="outline-default"
-              size="sm"
-              onClick={closeSidebar}
-              className="lg:hidden"
-            >
-              ✕
-            </Button>
+            <div className="flex items-center gap-2 lg:hidden">
+              <PreferencesToggle />
+              <Button
+                variant="outline-default"
+                size="sm"
+                onClick={closeSidebar}
+                className="lg:hidden"
+              >
+                ✕
+              </Button>
+            </div>
+          </div>
+
+          {/* Desktop Header Controls */}
+          <div className="hidden lg:flex items-center justify-between mb-6">
+            <div className="text-xs text-gray-500">
+              v1.0.0
+            </div>
+            <PreferencesToggle />
           </div>
 
           <div className="bg-gradient-to-r from-primary-main to-secondary-main text-white p-3 rounded-lg mb-6">

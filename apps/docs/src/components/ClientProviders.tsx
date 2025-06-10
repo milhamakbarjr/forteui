@@ -9,6 +9,8 @@ import {
   ReducedMotionProvider,
   AccessibilityPanel 
 } from './AccessibilityFeatures';
+import { UserPreferencesProvider } from './UserPreferences';
+import { PerformanceMonitor, PerformanceIndicator } from './PerformanceMonitor';
 
 interface ClientProvidersProps {
   children: React.ReactNode;
@@ -23,17 +25,25 @@ export default function ClientProviders({ children }: ClientProvidersProps) {
       {/* Screen reader announcements - for route changes */}
       <ScreenReaderAnnouncements />
       
+      {/* Performance monitoring - headless component */}
+      <PerformanceMonitor />
+      
       <ErrorBoundary>
-        <ReducedMotionProvider>
-          <KeyboardNavigationProvider>
-            <RootProvider>
-              {children}
-              
-              {/* Accessibility panel - render last so it's always accessible */}
-              <AccessibilityPanel />
-            </RootProvider>
-          </KeyboardNavigationProvider>
-        </ReducedMotionProvider>
+        <UserPreferencesProvider>
+          <ReducedMotionProvider>
+            <KeyboardNavigationProvider>
+              <RootProvider>
+                {children}
+                
+                {/* Accessibility panel - render last so it's always accessible */}
+                <AccessibilityPanel />
+                
+                {/* Performance indicator - only shows in development */}
+                <PerformanceIndicator showDetails />
+              </RootProvider>
+            </KeyboardNavigationProvider>
+          </ReducedMotionProvider>
+        </UserPreferencesProvider>
       </ErrorBoundary>
     </>
   );
