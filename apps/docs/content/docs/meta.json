@@ -1,7 +1,63 @@
 {
   "title": "Documentation",
   "pages": [
-    "introduction",
-    "getting-started"
+    {
+      "title": "Getting Started",
+      "pages": [
+        "introduction",
+        "getting-started"
+      ]
+    },
+    {
+      "title": "Components",
+      "pages": [
+        {
+          "title": "Form Components",
+          "pages": [
+            "components/button",
+            "components/input",
+            "components/checkbox",
+            "components/radio",
+            "components/switch",
+            "components/textarea",
+            "components/slider"
+          ]
+        },
+        {
+          "title": "Display Components", 
+          "pages": [
+            "components/badge",
+            "components/card",
+            "components/avatar",
+            "components/chip",
+            "components/typography"
+          ]
+        },
+        {
+          "title": "Navigation Components",
+          "pages": [
+            "components/breadcrumb",
+            "components/pagination",
+            "components/stepper"
+          ]
+        },
+        {
+          "title": "Feedback Components",
+          "pages": [
+            "components/alert",
+            "components/snackbar", 
+            "components/progress"
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Design System",
+      "pages": [
+        "theming",
+        "typography",
+        "design-tokens"
+      ]
+    }
   ]
 }

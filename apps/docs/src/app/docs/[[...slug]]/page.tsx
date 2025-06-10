@@ -1,31 +1,47 @@
-import { source } from '@/lib/source';
 import type { Metadata } from 'next';
-import { DocsPage, DocsBody } from 'fumadocs-ui/page';
 import { notFound } from 'next/navigation';
+import { lazy } from 'react';
+
+// Simple mapping for existing pages
+const pageMap = {
+  'introduction': {
+    title: 'Introduction',
+    description: 'Introduction to ForteUI component library',
+    Component: lazy(() => import('../../../../content/docs/introduction.mdx')),
+  },
+  'getting-started': {
+    title: 'Getting Started', 
+    description: 'Get started with ForteUI',
+    Component: lazy(() => import('../../../../content/docs/getting-started.mdx')),
+  },
+};
 
 export default async function Page({
   params,
 }: {
   params: { slug?: string[] };
 }) {
-  const page = source.getPage(params.slug);
-  if (!page) notFound();
+  const slug = params.slug?.[0] || 'introduction';
+  const pageData = pageMap[slug as keyof typeof pageMap];
 
-  // For now, let's use a simple div to render content
+  if (!pageData) {
+    notFound();
+  }
+
+  const { Component } = pageData;
+
   return (
-    <DocsPage toc={[]} full={false}>
-      <DocsBody>
-        <h1>{page.data.title}</h1>
-        <div>
-          <p>Documentation content will be rendered here.</p>
-        </div>
-      </DocsBody>
-    </DocsPage>
+    <div className="prose prose-gray max-w-none">
+      <Component />
+    </div>
   );
 }
 
 export async function generateStaticParams() {
-  return source.generateParams();
+  return [
+    { slug: ['introduction'] },
+    { slug: ['getting-started'] },
+  ];
 }
 
 export function generateMetadata({
@@ -33,11 +49,18 @@ export function generateMetadata({
 }: {
   params: { slug?: string[] };
 }): Metadata {
-  const page = source.getPage(params.slug);
-  if (!page) notFound();
+  const slug = params.slug?.[0] || 'introduction';
+  const pageData = pageMap[slug as keyof typeof pageMap];
+
+  if (!pageData) {
+    return {
+      title: 'Not Found',
+      description: 'Page not found',
+    };
+  }
 
   return {
-    title: page.data.title,
-    description: 'ForteUI Documentation - Component Library',
+    title: pageData.title,
+    description: pageData.description,
   };
 }
