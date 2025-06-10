@@ -1,0 +1,251 @@
+---
+title: Checkbox
+description: Checkbox component for selection controls with multiple states, variants, and accessible interaction.
+---
+
+# Checkbox
+
+Checkbox component for binary selection controls. Supports multiple visual variants, semantic colors, and provides excellent accessibility for form interactions.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Checkbox } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Checkbox } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Checkbox 
+      label="Accept terms and conditions"
+      defaultChecked={false}
+    />
+  );
+}
+```
+
+## Variants and Colors
+
+### Default Variant
+
+```tsx
+<Checkbox variant="default" label="Default checkbox" />
+<Checkbox variant="primary" label="Primary checkbox" />
+<Checkbox variant="secondary" label="Secondary checkbox" />
+<Checkbox variant="info" label="Info checkbox" />
+<Checkbox variant="success" label="Success checkbox" />
+<Checkbox variant="warning" label="Warning checkbox" />
+<Checkbox variant="error" label="Error checkbox" />
+```
+
+## Sizes
+
+```tsx
+<Checkbox size="sm" label="Small checkbox" />
+<Checkbox size="md" label="Medium checkbox" />
+```
+
+## States
+
+### Checked States
+
+```tsx
+<Checkbox label="Unchecked" checked={false} />
+<Checkbox label="Checked" checked={true} />
+<Checkbox label="Indeterminate" indeterminate={true} />
+<Checkbox label="Disabled" disabled />
+<Checkbox label="Disabled Checked" disabled checked={true} />
+```
+
+## Controlled vs Uncontrolled
+
+### Uncontrolled (with defaultChecked)
+
+```tsx
+<Checkbox 
+  label="Uncontrolled checkbox"
+  defaultChecked={true}
+/>
+```
+
+### Controlled (with checked and onCheckedChange)
+
+```tsx
+import { useState } from 'react';
+
+function ControlledCheckbox() {
+  const [checked, setChecked] = useState(false);
+  
+  return (
+    <Checkbox 
+      label="Controlled checkbox"
+      checked={checked}
+      onCheckedChange={setChecked}
+    />
+  );
+}
+```
+
+## Form Integration
+
+### Multiple Checkboxes
+
+```tsx
+import { useState } from 'react';
+
+function PreferencesForm() {
+  const [preferences, setPreferences] = useState({
+    newsletter: false,
+    updates: true,
+    promotions: false,
+  });
+  
+  const handleChange = (key: string) => (checked: boolean) => {
+    setPreferences(prev => ({ ...prev, [key]: checked }));
+  };
+  
+  return (
+    <div className="space-y-4">
+      <h3>Email Preferences</h3>
+      <Checkbox 
+        label="Newsletter"
+        checked={preferences.newsletter}
+        onCheckedChange={handleChange('newsletter')}
+      />
+      <Checkbox 
+        label="Product Updates"
+        checked={preferences.updates}
+        onCheckedChange={handleChange('updates')}
+        variant="primary"
+      />
+      <Checkbox 
+        label="Promotional Offers"
+        checked={preferences.promotions}
+        onCheckedChange={handleChange('promotions')}
+        variant="success"
+      />
+    </div>
+  );
+}
+```
+
+### Indeterminate State (Select All)
+
+```tsx
+import { useState, useEffect } from 'react';
+
+function SelectAllExample() {
+  const [items, setItems] = useState([
+    { id: 1, name: 'Item 1', selected: false },
+    { id: 2, name: 'Item 2', selected: true },
+    { id: 3, name: 'Item 3', selected: false },
+  ]);
+  
+  const [selectAll, setSelectAll] = useState(false);
+  const [indeterminate, setIndeterminate] = useState(false);
+  
+  useEffect(() => {
+    const selectedCount = items.filter(item => item.selected).length;
+    setSelectAll(selectedCount === items.length);
+    setIndeterminate(selectedCount > 0 && selectedCount < items.length);
+  }, [items]);
+  
+  const handleSelectAll = (checked: boolean) => {
+    setItems(items.map(item => ({ ...item, selected: checked })));
+  };
+  
+  const handleItemChange = (id: number) => (checked: boolean) => {
+    setItems(items.map(item => 
+      item.id === id ? { ...item, selected: checked } : item
+    ));
+  };
+  
+  return (
+    <div className="space-y-3">
+      <Checkbox 
+        label="Select All"
+        checked={selectAll}
+        indeterminate={indeterminate}
+        onCheckedChange={handleSelectAll}
+        variant="primary"
+      />
+      <div className="ml-6 space-y-2">
+        {items.map(item => (
+          <Checkbox 
+            key={item.id}
+            label={item.name}
+            checked={item.selected}
+            onCheckedChange={handleItemChange(item.id)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+```
+
+## Custom Label Styling
+
+```tsx
+<Checkbox 
+  label="Custom styled label"
+  labelClassName="text-lg font-semibold text-blue-600"
+  variant="primary"
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Label text for the checkbox |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md'` | `'md'` | Size of the checkbox |
+| `checked` | `boolean` | - | Controlled checked state |
+| `defaultChecked` | `boolean` | `false` | Uncontrolled default checked state |
+| `indeterminate` | `boolean` | `false` | Whether checkbox is in indeterminate state |
+| `disabled` | `boolean` | `false` | Whether the checkbox is disabled |
+| `onCheckedChange` | `(checked: boolean) => void` | - | Callback when checked state changes |
+| `className` | `string` | - | Additional CSS classes for wrapper |
+| `labelClassName` | `string` | - | Additional CSS classes for label |
+
+## Design Specifications
+
+- **Size**: Small (16px), Medium (20px)
+- **Border Radius**: 3px for rounded corners
+- **Border**: 2px solid for clear definition
+- **Check Mark**: Custom SVG icon
+- **Focus Ring**: 2px outline for accessibility
+- **Animations**: Smooth transitions for state changes
+
+## Accessibility
+
+- **Keyboard Navigation**: Supports Tab and Space key interaction
+- **Screen Readers**: Properly labeled and announced
+- **Focus Management**: Clear focus indicators
+- **ARIA**: Follows ARIA checkbox specifications
+- **Label Association**: Labels are properly associated via htmlFor
+
+## Best Practices
+
+1. **Clear labels**: Use descriptive, actionable labels
+2. **Logical grouping**: Group related checkboxes together
+3. **Consistent alignment**: Align checkboxes and labels consistently
+4. **Error handling**: Provide clear error states when validation fails
+5. **Touch targets**: Ensure adequate size for touch interaction
+
+## Related Components
+
+- [Radio](/docs/components/radio) - For single-choice selections
+- [Switch](/docs/components/switch) - For on/off toggles
+- [Button](/docs/components/button) - For form submission 

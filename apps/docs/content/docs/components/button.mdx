@@ -1,0 +1,283 @@
+---
+title: Button
+description: Versatile button component with multiple variants, sizes, states, and icon support following the ForteUI design system.
+---
+
+# Button
+
+A versatile button component that supports multiple variants, sizes, states, and rich icon integration. Built with accessibility in mind and following the ForteUI design specifications.
+
+## Installation
+
+The Button component is included in the ForteUI core package.
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Button } from '@forteui/core';
+```
+
+## Basic Usage
+
+The simplest way to use the Button component:
+
+```tsx
+import { Button } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Button variant="primary" onClick={() => alert('Clicked!')}>
+      Click me
+    </Button>
+  );
+}
+```
+
+## Variants
+
+### Contained Buttons (Default)
+
+Contained buttons are high-emphasis buttons that are distinguished by their use of elevation and fill.
+
+```tsx
+<Button variant="default">Default</Button>
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="info">Info</Button>
+<Button variant="success">Success</Button>
+<Button variant="warning">Warning</Button>
+<Button variant="error">Error</Button>
+```
+
+### Outline Buttons
+
+Outline buttons are medium-emphasis buttons that provide an alternative to contained buttons.
+
+```tsx
+<Button variant="outline-default">Default</Button>
+<Button variant="outline-primary">Primary</Button>
+<Button variant="outline-info">Info</Button>
+<Button variant="outline-success">Success</Button>
+<Button variant="outline-warning">Warning</Button>
+<Button variant="outline-error">Error</Button>
+```
+
+### Text Buttons
+
+Text buttons are typically used for less-pronounced actions, including those located in cards and dialogs.
+
+```tsx
+<Button variant="text-default">Default</Button>
+<Button variant="text-primary">Primary</Button>
+<Button variant="text-info">Info</Button>
+<Button variant="text-success">Success</Button>
+<Button variant="text-warning">Warning</Button>
+<Button variant="text-error">Error</Button>
+```
+
+### Soft Buttons
+
+Soft buttons provide a subtle background color while maintaining good contrast.
+
+```tsx
+<Button variant="soft-default">Default</Button>
+<Button variant="soft-primary">Primary</Button>
+<Button variant="soft-info">Info</Button>
+<Button variant="soft-success">Success</Button>
+<Button variant="soft-warning">Warning</Button>
+<Button variant="soft-error">Error</Button>
+```
+
+## Sizes
+
+The Button component comes in three sizes to fit various design needs:
+
+```tsx
+<Button variant="primary" size="sm">Small</Button>
+<Button variant="primary" size="md">Medium</Button>
+<Button variant="primary" size="lg">Large</Button>
+```
+
+## States
+
+### Disabled State
+
+Buttons can be disabled using the `disabled` prop:
+
+```tsx
+<Button variant="primary" disabled>Disabled Button</Button>
+<Button variant="outline-primary" disabled>Disabled Outline</Button>
+<Button variant="text-primary" disabled>Disabled Text</Button>
+<Button variant="soft-primary" disabled>Disabled Soft</Button>
+```
+
+## Icons
+
+### Buttons with Leading Icons
+
+Add icons before the button text:
+
+```tsx
+import { Button, IconPlus, IconCheck, IconTrash } from '@forteui/core';
+
+<Button variant="primary">
+  <IconPlus size={16} />
+  <span>Add Item</span>
+</Button>
+
+<Button variant="success">
+  <IconCheck size={16} />
+  <span>Confirm</span>
+</Button>
+
+<Button variant="error">
+  <IconTrash size={16} />
+  <span>Delete</span>
+</Button>
+```
+
+### Buttons with Trailing Icons
+
+Add icons after the button text:
+
+```tsx
+import { Button, IconArrowRight, IconChevronDown, IconDownload } from '@forteui/core';
+
+<Button variant="primary">
+  <span>Next</span>
+  <IconArrowRight size={16} />
+</Button>
+
+<Button variant="secondary">
+  <span>Options</span>
+  <IconChevronDown size={16} />
+</Button>
+
+<Button variant="success">
+  <span>Download</span>
+  <IconDownload size={16} />
+</Button>
+```
+
+### Icon-Only Buttons
+
+For icon-only buttons, use the icon variants:
+
+```tsx
+import { Button, IconHome, IconUser, IconSettings } from '@forteui/core';
+
+<Button variant="icon-default" size="icon-md">
+  <IconHome className="w-6 h-6" />
+</Button>
+
+<Button variant="icon-primary" size="icon-md">
+  <IconUser className="w-6 h-6" />
+</Button>
+
+<Button variant="icon-info" size="icon-md">
+  <IconSettings className="w-6 h-6" />
+</Button>
+```
+
+#### Icon Button Sizes
+
+Icon buttons come in four sizes:
+
+```tsx
+<Button variant="icon-primary" size="icon-lg">
+  <IconPlus className="w-8 h-8" />
+</Button>
+<Button variant="icon-primary" size="icon-md">
+  <IconPlus className="w-6 h-6" />
+</Button>
+<Button variant="icon-primary" size="icon-sm">
+  <IconPlus className="w-5 h-5" />
+</Button>
+<Button variant="icon-primary" size="icon-xs">
+  <IconPlus className="w-4 h-4" />
+</Button>
+```
+
+## Advanced Usage
+
+### As Child (Polymorphic)
+
+Use the `asChild` prop to render the button as a different element:
+
+```tsx
+import { Button } from '@forteui/core';
+import Link from 'next/link';
+
+<Button asChild>
+  <Link href="/dashboard">Go to Dashboard</Link>
+</Button>
+```
+
+### Custom Click Handlers
+
+```tsx
+const handleClick = () => {
+  console.log('Button clicked!');
+  // Your custom logic here
+};
+
+<Button variant="primary" onClick={handleClick}>
+  Custom Handler
+</Button>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'outline-default' \| 'outline-primary' \| 'outline-info' \| 'outline-success' \| 'outline-warning' \| 'outline-error' \| 'text-default' \| 'text-primary' \| 'text-info' \| 'text-success' \| 'text-warning' \| 'text-error' \| 'soft-default' \| 'soft-primary' \| 'soft-info' \| 'soft-success' \| 'soft-warning' \| 'soft-error' \| 'icon-default' \| 'icon-primary' \| 'icon-info' \| 'icon-success' \| 'icon-warning' \| 'icon-error'` | `'primary'` | Visual style variant of the button |
+| `size` | `'sm' \| 'md' \| 'lg' \| 'icon' \| 'icon-lg' \| 'icon-md' \| 'icon-sm' \| 'icon-xs'` | `'md'` | Size of the button |
+| `disabled` | `boolean` | `false` | Whether the button is disabled |
+| `asChild` | `boolean` | `false` | Render as a child element (polymorphic) |
+| `onClick` | `(event: MouseEvent) => void` | - | Click handler function |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Button content |
+
+The Button component also accepts all standard HTML button attributes.
+
+## Design Specifications
+
+### Contained Buttons
+- **Height**: Small (30px), Medium (36px), Large (48px)
+- **Border Radius**: 6px
+- **Font**: Plus Jakarta Sans Bold
+- **Font Size**: 13px (sm), 14px (md), 15px (lg)
+- **Hover State**: Darker shade of the primary color
+- **Focus Ring**: 2px solid primary color
+
+### Icon Buttons
+- **Sizes**: XS (28px), Small (36px), Medium (40px), Large (48px)
+- **Shape**: Circular
+- **Icon Size**: Scales proportionally with button size
+- **Hover State**: 8% opacity background color
+
+## Accessibility
+
+- **Keyboard Navigation**: Supports Tab and Enter/Space key interaction
+- **Screen Readers**: Properly labeled with accessible text
+- **Focus Management**: Clear focus indicators for keyboard navigation
+- **Disabled State**: Properly communicated to assistive technologies
+- **ARIA**: Follows ARIA button specifications
+
+## Best Practices
+
+1. **Use appropriate variants**: Primary for main actions, secondary for supporting actions
+2. **Consistent sizing**: Use the same size for buttons in a group
+3. **Clear labels**: Use descriptive text that clearly indicates the action
+4. **Icon alignment**: Ensure icons are properly sized and aligned with text
+5. **Loading states**: Consider adding loading indicators for async actions
+
+## Related Components
+
+- [Input](/docs/components/input) - For form input elements
+- [Checkbox](/docs/components/checkbox) - For selection controls
+- [Switch](/docs/components/switch) - For toggle controls 

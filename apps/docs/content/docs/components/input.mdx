@@ -1,0 +1,327 @@
+---
+title: Input
+description: Input component with floating labels, multiple states, variants, and adornment support following the ForteUI design system.
+---
+
+# Input
+
+A versatile input component with floating label behavior, multiple states, variants, and adornment support. Built for form interactions with excellent accessibility and user experience.
+
+## Installation
+
+The Input component is included in the ForteUI core package.
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Input } from '@forteui/core';
+```
+
+## Basic Usage
+
+The simplest way to use the Input component:
+
+```tsx
+import { Input } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Input 
+      label="Email" 
+      placeholder="Enter your email"
+      type="email"
+    />
+  );
+}
+```
+
+## Variants
+
+### Default Variant (Border-based)
+
+The default variant uses a border-based design:
+
+```tsx
+<Input label="Default Input" placeholder="Border-based styling" />
+<Input label="With Value" defaultValue="Some input value" />
+<Input label="Disabled" disabled />
+```
+
+### Filled Variant (Background-based)
+
+The filled variant uses a background-based design:
+
+```tsx
+<Input variant="filled" label="Filled Input" placeholder="Background-based styling" />
+<Input variant="filled" label="With Value" defaultValue="Some input value" />
+<Input variant="filled" label="Disabled" disabled />
+```
+
+## Sizes
+
+The Input component supports two sizes:
+
+```tsx
+<Input size="sm" label="Small Input" placeholder="Small (40px height)" />
+<Input size="md" label="Medium Input" placeholder="Medium (54px height)" />
+```
+
+## States
+
+### Error State
+
+Display error states with helper text:
+
+```tsx
+<Input 
+  label="Password" 
+  type="password"
+  error
+  defaultValue="123"
+  helperText="Password must be at least 8 characters"
+  helperIcon={<IconAlertTriangle size={16} />}
+/>
+```
+
+### With Helper Text
+
+Provide additional guidance with helper text:
+
+```tsx
+import { Input, IconInfoCircle } from '@forteui/core';
+
+<Input 
+  label="Username" 
+  placeholder="Enter username"
+  helperText="Username must be at least 4 characters"
+  helperIcon={<IconInfoCircle size={16} />}
+/>
+```
+
+## Adornments
+
+### End Adornments
+
+Add icons or elements at the end of the input:
+
+```tsx
+import { Input, IconSearch, IconMail, IconSettings } from '@forteui/core';
+
+<Input 
+  label="Search" 
+  placeholder="Search for anything..."
+  endAdornment={<IconSearch size={20} className="text-gray-500" />}
+/>
+
+<Input 
+  label="Email" 
+  placeholder="Enter your email"
+  endAdornment={<IconMail size={20} className="text-gray-500" />}
+/>
+
+<Input 
+  label="Settings" 
+  defaultValue="Configuration options"
+  endAdornment={<IconSettings size={20} className="text-gray-500" />}
+/>
+```
+
+### Interactive Adornments
+
+Create interactive elements like password toggles:
+
+```tsx
+import { Input, IconEye, IconEyeOff } from '@forteui/core';
+import { useState } from 'react';
+
+function PasswordInput() {
+  const [showPassword, setShowPassword] = useState(false);
+  
+  return (
+    <Input 
+      label="Password" 
+      type={showPassword ? "text" : "password"}
+      placeholder="Enter your password"
+      endAdornment={
+        <button 
+          type="button"
+          onClick={() => setShowPassword(!showPassword)}
+          className="text-gray-500 hover:text-gray-700"
+        >
+          {showPassword ? <IconEyeOff size={20} /> : <IconEye size={20} />}
+        </button>
+      }
+    />
+  );
+}
+```
+
+## Controlled vs Uncontrolled
+
+### Uncontrolled (with defaultValue)
+
+```tsx
+<Input 
+  label="Uncontrolled" 
+  defaultValue="Initial value"
+  placeholder="This uses defaultValue"
+/>
+```
+
+### Controlled (with value and onChange)
+
+```tsx
+import { useState } from 'react';
+
+function ControlledInput() {
+  const [value, setValue] = useState('');
+  
+  return (
+    <Input 
+      label="Controlled Input" 
+      value={value}
+      onChange={(e) => setValue(e.target.value)}
+      placeholder="This uses value and onChange"
+    />
+  );
+}
+```
+
+## Form Integration
+
+### With Form Validation
+
+```tsx
+import { Input } from '@forteui/core';
+import { useState } from 'react';
+
+function LoginForm() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({});
+  
+  const validateEmail = (email) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+  
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newErrors = {};
+    
+    if (!validateEmail(email)) {
+      newErrors.email = 'Please enter a valid email';
+    }
+    
+    if (password.length < 8) {
+      newErrors.password = 'Password must be at least 8 characters';
+    }
+    
+    setErrors(newErrors);
+    
+    if (Object.keys(newErrors).length === 0) {
+      // Submit form
+      console.log('Form submitted:', { email, password });
+    }
+  };
+  
+  return (
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <Input 
+        label="Email" 
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        error={!!errors.email}
+        helperText={errors.email}
+        placeholder="Enter your email"
+      />
+      
+      <Input 
+        label="Password" 
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        error={!!errors.password}
+        helperText={errors.password}
+        placeholder="Enter your password"
+      />
+      
+      <button type="submit">Sign In</button>
+    </form>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Label text for the input |
+| `variant` | `'default' \| 'filled'` | `'default'` | Visual variant of the input |
+| `size` | `'sm' \| 'md'` | `'md'` | Size of the input |
+| `error` | `boolean` | `false` | Whether the input is in error state |
+| `helperText` | `string` | - | Helper text displayed below the input |
+| `helperIcon` | `ReactNode` | - | Icon displayed with helper text |
+| `endAdornment` | `ReactNode` | - | Element displayed at the end of the input |
+| `disabled` | `boolean` | `false` | Whether the input is disabled |
+| `placeholder` | `string` | - | Placeholder text |
+| `value` | `string` | - | Controlled value |
+| `defaultValue` | `string` | - | Uncontrolled default value |
+| `onChange` | `(event: ChangeEvent) => void` | - | Change handler |
+| `onFocus` | `(event: FocusEvent) => void` | - | Focus handler |
+| `onBlur` | `(event: FocusEvent) => void` | - | Blur handler |
+| `className` | `string` | - | Additional CSS classes |
+
+The Input component also accepts all standard HTML input attributes.
+
+## Design Specifications
+
+### Default Variant (Border-based)
+- **Border**: 1px solid rgba(147, 161, 174, 0.20) (default)
+- **Hover**: 1px solid #1F2933 (text-primary)
+- **Focus**: 2px solid #1F2933 (text-primary)
+- **Error**: 2px solid #FF5833 (error-main)
+- **Padding**: 14px horizontal
+- **Height**: Small (40px), Medium (54px)
+
+### Filled Variant (Background-based)
+- **Background**: #F7F8F9 (grey-8)
+- **Border**: 1px solid transparent
+- **Focus**: 2px solid #1F2933 with background
+- **Error**: 2px solid #FF5833 with background
+- **Border Radius**: 8px
+
+### Floating Label
+- **Float Trigger**: Focus or when input has value
+- **Animation**: Smooth 200ms transition
+- **Typography**: 12px when floating, 15px when inline
+- **Position**: Moves from center-left to top-left with padding
+
+## Accessibility
+
+- **Keyboard Navigation**: Supports Tab navigation and all standard input interactions
+- **Screen Readers**: Properly labeled with accessible descriptions
+- **Focus Management**: Clear focus indicators and proper focus flow
+- **Error Handling**: Error states are announced to screen readers
+- **Label Association**: Labels are properly associated with inputs
+- **Helper Text**: Helper text is linked via `aria-describedby`
+
+## Best Practices
+
+1. **Always use labels**: Provide clear, descriptive labels for all inputs
+2. **Helpful placeholder text**: Use placeholders to show format examples
+3. **Clear error messages**: Provide specific, actionable error messages
+4. **Appropriate input types**: Use the correct HTML input type (email, password, tel, etc.)
+5. **Validation timing**: Validate on blur or submit, not on every keystroke
+6. **Helper text**: Use helper text to provide additional context or requirements
+
+## Related Components
+
+- [Button](/docs/components/button) - For form submission
+- [Checkbox](/docs/components/checkbox) - For boolean inputs
+- [Radio](/docs/components/radio) - For single-choice selections
+- [Textarea](/docs/components/textarea) - For multi-line text input 

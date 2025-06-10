@@ -1,0 +1,163 @@
+---
+title: Badge
+description: Badge component for displaying status indicators, counts, and labels with multiple variants and colors.
+---
+
+# Badge
+
+Badge component for displaying status indicators, counts, and labels. Perfect for notification badges, status indicators, and categorical labels.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Badge } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Badge } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Badge variant="filled" color="primary">
+      New
+    </Badge>
+  );
+}
+```
+
+## Variants
+
+### Filled Badges
+
+```tsx
+<Badge variant="filled" color="default">Default</Badge>
+<Badge variant="filled" color="primary">Primary</Badge>
+<Badge variant="filled" color="secondary">Secondary</Badge>
+<Badge variant="filled" color="success">Success</Badge>
+<Badge variant="filled" color="warning">Warning</Badge>
+<Badge variant="filled" color="error">Error</Badge>
+```
+
+### Outline Badges
+
+```tsx
+<Badge variant="outline" color="default">Default</Badge>
+<Badge variant="outline" color="primary">Primary</Badge>
+<Badge variant="outline" color="secondary">Secondary</Badge>
+<Badge variant="outline" color="success">Success</Badge>
+<Badge variant="outline" color="warning">Warning</Badge>
+<Badge variant="outline" color="error">Error</Badge>
+```
+
+### Soft Badges
+
+```tsx
+<Badge variant="soft" color="default">Default</Badge>
+<Badge variant="soft" color="primary">Primary</Badge>
+<Badge variant="soft" color="secondary">Secondary</Badge>
+<Badge variant="soft" color="success">Success</Badge>
+<Badge variant="soft" color="warning">Warning</Badge>
+<Badge variant="soft" color="error">Error</Badge>
+```
+
+## Sizes
+
+```tsx
+<Badge size="sm" color="primary">Small</Badge>
+<Badge size="md" color="primary">Medium</Badge>
+<Badge size="lg" color="primary">Large</Badge>
+```
+
+## Common Use Cases
+
+### Notification Count
+
+```tsx
+<div className="relative">
+  <Button variant="outline-primary">
+    Messages
+  </Button>
+  <Badge 
+    variant="filled" 
+    color="error" 
+    size="sm"
+    className="absolute -top-2 -right-2"
+  >
+    3
+  </Badge>
+</div>
+```
+
+### Status Indicators
+
+```tsx
+<div className="flex items-center gap-2">
+  <span>Server Status:</span>
+  <Badge variant="filled" color="success">Online</Badge>
+</div>
+
+<div className="flex items-center gap-2">
+  <span>Build Status:</span>
+  <Badge variant="filled" color="warning">Pending</Badge>
+</div>
+
+<div className="flex items-center gap-2">
+  <span>Payment Status:</span>
+  <Badge variant="filled" color="error">Failed</Badge>
+</div>
+```
+
+### Category Labels
+
+```tsx
+<div className="flex gap-2">
+  <Badge variant="soft" color="primary">React</Badge>
+  <Badge variant="soft" color="secondary">TypeScript</Badge>
+  <Badge variant="soft" color="success">CSS</Badge>
+</div>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `variant` | `'filled' \| 'outline' \| 'soft'` | `'filled'` | Visual style variant |
+| `color` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `'default'` | Color theme |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the badge |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Badge content |
+
+## Design Specifications
+
+- **Border Radius**: Fully rounded (pill shape)
+- **Typography**: Bold weight for emphasis
+- **Padding**: Proportional to size
+- **Colors**: Uses semantic color system
+- **Sizing**: Small (20px), Medium (24px), Large (28px) height
+
+## Accessibility
+
+- **Color Independence**: Information is not conveyed by color alone
+- **Readable Text**: High contrast ratios maintained
+- **Screen Readers**: Content is properly announced
+
+## Best Practices
+
+1. **Keep text short**: Use concise labels or numbers
+2. **Consistent sizing**: Use appropriate size for context
+3. **Semantic colors**: Use colors that match the meaning
+4. **Strategic placement**: Position near related content
+5. **Don't overuse**: Avoid too many badges in one area
+
+## Related Components
+
+- [Chip](/docs/components/chip) - For interactive tags
+- [Button](/docs/components/button) - For actionable elements 

@@ -1,0 +1,151 @@
+---
+title: Alert
+description: Alert component for displaying important messages and notifications with multiple severity levels and variants.
+---
+
+# Alert
+
+Alert component for displaying important messages and notifications. Supports multiple severity levels, variants, and optional close functionality with excellent accessibility.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Alert } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Alert } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Alert severity="info">
+      This is an informational alert.
+    </Alert>
+  );
+}
+```
+
+## Severity Levels
+
+Alerts support four semantic severity levels:
+
+```tsx
+<Alert severity="info">
+  This is an info alert — check it out!
+</Alert>
+
+<Alert severity="success">
+  This is a success alert — check it out!
+</Alert>
+
+<Alert severity="warning">
+  This is a warning alert — check it out!
+</Alert>
+
+<Alert severity="error">
+  This is an error alert — check it out!
+</Alert>
+```
+
+## Variants
+
+### Default Variant
+
+```tsx
+<Alert variant="default" severity="info">
+  Default variant with subtle styling
+</Alert>
+```
+
+### Filled Variant
+
+```tsx
+<Alert variant="filled" severity="success">
+  Filled variant with solid background
+</Alert>
+```
+
+### Outline Variant
+
+```tsx
+<Alert variant="outline" severity="warning">
+  Outline variant with border emphasis
+</Alert>
+```
+
+## Closable Alerts
+
+Add a close button to allow users to dismiss alerts:
+
+```tsx
+<Alert 
+  severity="info" 
+  closable 
+  onClose={() => console.log('Alert closed')}
+>
+  This alert can be closed
+</Alert>
+```
+
+## Custom Icons
+
+Replace the default severity icon with a custom one:
+
+```tsx
+import { Alert, IconCustom } from '@forteui/core';
+
+<Alert severity="info" icon={IconCustom}>
+  Alert with custom icon
+</Alert>
+```
+
+## No Icon
+
+Hide the icon completely:
+
+```tsx
+<Alert severity="info" hideIcon>
+  Alert without an icon
+</Alert>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | - | The content of the alert |
+| `variant` | `'default' \| 'filled' \| 'outline'` | `'default'` | Visual variant of the alert |
+| `severity` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Semantic severity level |
+| `closable` | `boolean` | `false` | Whether to show the close button |
+| `onClose` | `() => void` | - | Callback fired when close button is clicked |
+| `icon` | `ComponentType` | - | Custom icon to override the default |
+| `hideIcon` | `boolean` | `false` | Hide the icon completely |
+| `className` | `string` | - | Additional CSS classes |
+
+## Accessibility
+
+- **ARIA Role**: Uses `role="alert"` for immediate announcements
+- **Keyboard Navigation**: Close button is keyboard accessible
+- **Screen Readers**: Severity is communicated through appropriate styling and icons
+- **Focus Management**: Maintains proper focus flow
+
+## Best Practices
+
+1. **Appropriate severity**: Choose the correct severity level for the message context
+2. **Clear messaging**: Use concise, actionable language
+3. **Strategic placement**: Position alerts near relevant content
+4. **Don't overuse**: Avoid showing too many alerts simultaneously
+5. **Accessibility**: Ensure alerts are announced to screen readers when appropriate
+
+## Related Components
+
+- [Snackbar](/docs/components/snackbar) - For temporary notifications
+- [Button](/docs/components/button) - For alert actions 

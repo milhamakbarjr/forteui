@@ -1,0 +1,271 @@
+---
+title: Card
+description: Card component for grouping related content with header, content, and footer sections.
+---
+
+# Card
+
+Card component for grouping related content in a visually distinct container. Includes composable header, content, and footer sections with flexible styling options.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Card, CardHeader, CardContent, CardFooter } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Card, CardHeader, CardContent, CardFooter } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Card>
+      <CardHeader>
+        <h3>Card Title</h3>
+      </CardHeader>
+      <CardContent>
+        <p>This is the card content area.</p>
+      </CardContent>
+      <CardFooter>
+        <button>Action</button>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+
+## Card Structure
+
+### Card with Header and Content
+
+```tsx
+<Card>
+  <CardHeader>
+    <div>
+      <h3 className="text-lg font-semibold">Project Update</h3>
+      <p className="text-sm text-gray-500">2 hours ago</p>
+    </div>
+  </CardHeader>
+  <CardContent>
+    <p>The new features have been successfully deployed to production. 
+       All systems are running smoothly.</p>
+  </CardContent>
+</Card>
+```
+
+### Card with All Sections
+
+```tsx
+<Card>
+  <CardHeader>
+    <div className="flex items-center justify-between">
+      <h3 className="text-lg font-semibold">Team Settings</h3>
+      <Badge variant="soft" color="primary">Pro</Badge>
+    </div>
+  </CardHeader>
+  <CardContent>
+    <div className="space-y-4">
+      <div>
+        <label className="text-sm font-medium">Team Name</label>
+        <Input defaultValue="Design Team" />
+      </div>
+      <div>
+        <label className="text-sm font-medium">Description</label>
+        <textarea 
+          className="w-full p-2 border rounded" 
+          placeholder="Describe your team..."
+        />
+      </div>
+    </div>
+  </CardContent>
+  <CardFooter className="flex justify-between">
+    <Button variant="outline-default">Cancel</Button>
+    <Button variant="primary">Save Changes</Button>
+  </CardFooter>
+</Card>
+```
+
+## Content-Only Cards
+
+For simple content without header or footer:
+
+```tsx
+<Card>
+  <CardContent>
+    <div className="text-center py-8">
+      <h2 className="text-2xl font-bold mb-4">Welcome!</h2>
+      <p className="text-gray-600 mb-6">Get started with your new dashboard.</p>
+      <Button variant="primary">Get Started</Button>
+    </div>
+  </CardContent>
+</Card>
+```
+
+## Interactive Cards
+
+### Clickable Cards
+
+```tsx
+<Card 
+  className="cursor-pointer hover:shadow-lg transition-shadow"
+  onClick={() => console.log('Card clicked')}
+>
+  <CardContent>
+    <div className="flex items-center space-x-4">
+      <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center">
+        <IconFolder className="w-6 h-6 text-primary-600" />
+      </div>
+      <div>
+        <h3 className="font-semibold">Documents</h3>
+        <p className="text-sm text-gray-500">24 files</p>
+      </div>
+    </div>
+  </CardContent>
+</Card>
+```
+
+### Cards with Actions
+
+```tsx
+<Card>
+  <CardHeader>
+    <div className="flex items-center justify-between">
+      <div className="flex items-center space-x-3">
+        <Avatar src="/user.jpg" fallback="JD" />
+        <div>
+          <h4 className="font-semibold">John Doe</h4>
+          <p className="text-sm text-gray-500">Software Engineer</p>
+        </div>
+      </div>
+      <Button variant="icon-default" size="icon-sm">
+        <IconMoreHorizontal className="w-4 h-4" />
+      </Button>
+    </div>
+  </CardHeader>
+  <CardContent>
+    <p>Working on the new user authentication system. 
+       Expected completion by end of week.</p>
+  </CardContent>
+  <CardFooter>
+    <div className="flex space-x-2">
+      <Button variant="soft-primary" size="sm">Message</Button>
+      <Button variant="outline-default" size="sm">View Profile</Button>
+    </div>
+  </CardFooter>
+</Card>
+```
+
+## Grid Layouts
+
+### Product Cards
+
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <Card>
+    <CardContent>
+      <img 
+        src="/product1.jpg" 
+        alt="Product" 
+        className="w-full h-48 object-cover rounded-lg mb-4"
+      />
+      <h3 className="font-semibold mb-2">Wireless Headphones</h3>
+      <p className="text-gray-600 text-sm mb-4">Premium noise-canceling headphones</p>
+      <div className="flex items-center justify-between">
+        <span className="text-lg font-bold">$299</span>
+        <Button variant="primary" size="sm">Add to Cart</Button>
+      </div>
+    </CardContent>
+  </Card>
+  
+  {/* More product cards... */}
+</div>
+```
+
+### Stats Cards
+
+```tsx
+<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+  <Card>
+    <CardContent>
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm text-gray-500">Total Users</p>
+          <p className="text-2xl font-bold">12,345</p>
+        </div>
+        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+          <IconUsers className="w-5 h-5 text-blue-600" />
+        </div>
+      </div>
+    </CardContent>
+  </Card>
+  
+  {/* More stat cards... */}
+</div>
+```
+
+## Props
+
+### Card Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Card content |
+
+### CardHeader Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Header content |
+
+### CardContent Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Main content |
+
+### CardFooter Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Footer content |
+
+## Design Specifications
+
+- **Border Radius**: 8px for modern appearance
+- **Shadow**: Subtle elevation for depth
+- **Border**: 1px solid border for definition
+- **Padding**: Consistent spacing between sections
+- **Background**: White background with proper contrast
+
+## Accessibility
+
+- **Semantic Structure**: Uses proper heading hierarchy
+- **Focus Management**: Interactive cards support keyboard navigation
+- **Screen Readers**: Content is properly structured and announced
+- **Color Contrast**: Maintains WCAG AA compliance
+
+## Best Practices
+
+1. **Consistent spacing**: Use consistent padding and margins
+2. **Clear hierarchy**: Use proper heading levels and visual hierarchy
+3. **Logical grouping**: Group related content together
+4. **Action placement**: Place primary actions in footer or prominent locations
+5. **Responsive design**: Ensure cards work well on all screen sizes
+6. **Loading states**: Consider loading states for dynamic content
+
+## Related Components
+
+- [Button](/docs/components/button) - For card actions
+- [Badge](/docs/components/badge) - For status indicators
+- [Avatar](/docs/components/avatar) - For user representation 
