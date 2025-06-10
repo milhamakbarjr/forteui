@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import Plus Jakarta Sans from Google Fonts directly */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+
+@layer components {
+  /* Custom documentation styles */
+  .prose {
+    max-width: none;
+  }
+
+  /* Code block styling */
+  pre {
+    @apply rounded-lg border bg-gray-100 p-4;
+  }
+
+  code {
+    @apply rounded bg-gray-100 px-1.5 py-0.5 text-sm;
+  }
+
+  /* Custom scrollbar for navigation */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(203 213 225) transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: rgb(203 213 225);
+    border-radius: 3px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(148 163 184);
+  }
+}

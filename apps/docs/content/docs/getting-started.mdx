@@ -1,0 +1,127 @@
+---
+title: Getting Started
+description: Learn how to install and use ForteUI in your React application.
+---
+
+# Getting Started
+
+Get up and running with ForteUI in your React application in just a few minutes.
+
+## Prerequisites
+
+Before you begin, make sure you have:
+
+- **Node.js** 18 or later
+- **React** 18 or later
+- **TypeScript** (recommended)
+
+## Installation
+
+Install ForteUI using your preferred package manager:
+
+```bash
+# Using npm
+npm install @forteui/core
+
+# Using yarn
+yarn add @forteui/core
+
+# Using pnpm
+pnpm add @forteui/core
+
+# Using bun
+bun add @forteui/core
+```
+
+## Setup
+
+### 1. Import Styles
+
+Import the ForteUI styles in your main CSS file or at the root of your application:
+
+```css
+@import '@forteui/core/styles.css';
+```
+
+### 2. Add Font Support
+
+ForteUI uses Plus Jakarta Sans. Add it to your project:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet">
+```
+
+Or if you're using CSS:
+
+```css
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+```
+
+### 3. Configure Tailwind CSS (Optional)
+
+If you're using Tailwind CSS, you can extend your configuration to use ForteUI's design tokens:
+
+```js
+// tailwind.config.js
+module.exports = {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/@forteui/core/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Plus Jakarta Sans', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+## Basic Usage
+
+Here's a simple example to get you started:
+
+```jsx
+import React from 'react';
+import { Button, Card, CardContent, Heading, Text } from '@forteui/core';
+
+function App() {
+  return (
+    <div className="p-8">
+      <Card>
+        <CardContent>
+          <Heading level={2}>Welcome to ForteUI</Heading>
+          <Text variant="body" className="mb-4">
+            This is a simple example using ForteUI components.
+          </Text>
+          <Button variant="primary" size="md">
+            Get Started
+          </Button>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Next Steps
+
+Now that you have ForteUI set up, you can:
+
+1. [Explore Components](/docs/components) - Browse all available components
+2. [Learn about Theming](/docs/theming) - Customize the look and feel
+3. [Check Typography](/docs/typography) - Understand the typography system
+
+## Need Help?
+
+If you run into any issues:
+
+- Check our [Component Documentation](/docs/components)
+- Look at the [Examples](https://github.com/your-org/forteui/tree/main/examples)
+- [Open an Issue](https://github.com/your-org/forteui/issues) on GitHub
