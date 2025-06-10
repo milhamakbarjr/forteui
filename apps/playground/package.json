@@ -1,5 +1,5 @@
 {
-  "name": "@forte-ui/playground", 
+  "name": "@forte-ui/playground",
   "version": "0.1.0",
   "private": true,
   "type": "module",
@@ -9,8 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@forte-ui/core": "workspace:*",
     "@forte-ui/tokens": "workspace:*",
+    "forteui-core": "^0.1.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
