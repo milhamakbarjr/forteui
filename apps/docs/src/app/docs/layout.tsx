@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           <h2 className="text-lg font-bold text-gray-900 font-sans">ForteUI</h2>
           <p className="text-sm text-gray-600">Documentation</p>
           <div className="bg-gradient-to-r from-primary-main to-secondary-main text-white p-3 rounded-lg mt-4">
-            <p className="text-sm font-medium">🎉 ForteUI v1.0 is here!</p>
+            <p className="text-sm font-medium">🎉 100% Component Coverage!</p>
           </div>
         </div>
         
@@ -106,7 +106,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             <h3 className="text-sm font-semibold text-gray-800 mb-3 uppercase tracking-wider">Navigation Components</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="block text-sm text-gray-400 cursor-not-allowed">
+                <a href="/docs/components/breadcrumb" className="block text-sm text-gray-600 hover:text-primary-main transition-colors">
                   Breadcrumb
                 </a>
               </li>
@@ -132,7 +132,7 @@ export default function Layout({ children }: { children: ReactNode }) {
                 </a>
               </li>
               <li>
-                <a href="#" className="block text-sm text-gray-400 cursor-not-allowed">
+                <a href="/docs/components/snackbar" className="block text-sm text-gray-600 hover:text-primary-main transition-colors">
                   Snackbar
                 </a>
               </li>

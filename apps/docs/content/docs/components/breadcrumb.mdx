@@ -1,0 +1,483 @@
+---
+title: Breadcrumb
+description: Hierarchical navigation component for showing the current page location within a navigational hierarchy with separators and overflow handling.
+---
+
+# Breadcrumb
+
+Breadcrumbs provide users with awareness of their location within the website hierarchy and the ability to navigate back to any preceding page.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Breadcrumb, BreadcrumbItem } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Breadcrumb, BreadcrumbItem } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Breadcrumb>
+      <BreadcrumbItem href="/">Home</BreadcrumbItem>
+      <BreadcrumbItem href="/products">Products</BreadcrumbItem>
+      <BreadcrumbItem>Current Page</BreadcrumbItem>
+    </Breadcrumb>
+  );
+}
+```
+
+## Separators
+
+### Default Separator
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbItem href="/">Home</BreadcrumbItem>
+  <BreadcrumbItem href="/category">Category</BreadcrumbItem>
+  <BreadcrumbItem href="/subcategory">Subcategory</BreadcrumbItem>
+  <BreadcrumbItem>Product</BreadcrumbItem>
+</Breadcrumb>
+```
+
+### Custom Separators
+
+```tsx
+<div className="space-y-4">
+  <Breadcrumb separator=">">
+    <BreadcrumbItem href="/">Home</BreadcrumbItem>
+    <BreadcrumbItem href="/docs">Docs</BreadcrumbItem>
+    <BreadcrumbItem>Components</BreadcrumbItem>
+  </Breadcrumb>
+  
+  <Breadcrumb separator="•">
+    <BreadcrumbItem href="/">Home</BreadcrumbItem>
+    <BreadcrumbItem href="/blog">Blog</BreadcrumbItem>
+    <BreadcrumbItem>Article</BreadcrumbItem>
+  </Breadcrumb>
+  
+  <Breadcrumb separator={<ChevronRightIcon className="w-4 h-4" />}>
+    <BreadcrumbItem href="/">Home</BreadcrumbItem>
+    <BreadcrumbItem href="/dashboard">Dashboard</BreadcrumbItem>
+    <BreadcrumbItem>Settings</BreadcrumbItem>
+  </Breadcrumb>
+</div>
+```
+
+## Sizes
+
+```tsx
+<div className="space-y-4">
+  <Breadcrumb size="sm">
+    <BreadcrumbItem href="/">Home</BreadcrumbItem>
+    <BreadcrumbItem href="/products">Products</BreadcrumbItem>
+    <BreadcrumbItem>Details</BreadcrumbItem>
+  </Breadcrumb>
+  
+  <Breadcrumb size="md">
+    <BreadcrumbItem href="/">Home</BreadcrumbItem>
+    <BreadcrumbItem href="/products">Products</BreadcrumbItem>
+    <BreadcrumbItem>Details</BreadcrumbItem>
+  </Breadcrumb>
+  
+  <Breadcrumb size="lg">
+    <BreadcrumbItem href="/">Home</BreadcrumbItem>
+    <BreadcrumbItem href="/products">Products</BreadcrumbItem>
+    <BreadcrumbItem>Details</BreadcrumbItem>
+  </Breadcrumb>
+</div>
+```
+
+## With Icons
+
+### Leading Icons
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbItem href="/" icon={<HomeIcon />}>
+    Home
+  </BreadcrumbItem>
+  <BreadcrumbItem href="/products" icon={<ShoppingBagIcon />}>
+    Products
+  </BreadcrumbItem>
+  <BreadcrumbItem icon={<StarIcon />}>
+    Favorites
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
+### Icon Only Items
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbItem href="/" icon={<HomeIcon />} />
+  <BreadcrumbItem href="/products" icon={<ShoppingBagIcon />}>
+    Products
+  </BreadcrumbItem>
+  <BreadcrumbItem href="/category" icon={<TagIcon />}>
+    Electronics
+  </BreadcrumbItem>
+  <BreadcrumbItem>Laptops</BreadcrumbItem>
+</Breadcrumb>
+```
+
+## Overflow Handling
+
+### Collapsed Middle Items
+
+```tsx
+import { useState } from 'react';
+
+function CollapsedBreadcrumb() {
+  const items = [
+    { href: '/', label: 'Home' },
+    { href: '/level1', label: 'Level 1' },
+    { href: '/level1/level2', label: 'Level 2' },
+    { href: '/level1/level2/level3', label: 'Level 3' },
+    { href: '/level1/level2/level3/level4', label: 'Level 4' },
+    { href: '/level1/level2/level3/level4/level5', label: 'Level 5' },
+    { label: 'Current Page' }
+  ];
+  
+  return (
+    <Breadcrumb maxItems={4}>
+      {items.map((item, index) => (
+        <BreadcrumbItem key={index} href={item.href}>
+          {item.label}
+        </BreadcrumbItem>
+      ))}
+    </Breadcrumb>
+  );
+}
+```
+
+### Custom Overflow
+
+```tsx
+<Breadcrumb
+  maxItems={3}
+  overflowAriaLabel="Show hidden breadcrumb items"
+>
+  <BreadcrumbItem href="/">Home</BreadcrumbItem>
+  <BreadcrumbItem href="/category">Category</BreadcrumbItem>
+  <BreadcrumbItem href="/subcategory">Subcategory</BreadcrumbItem>
+  <BreadcrumbItem href="/product-type">Product Type</BreadcrumbItem>
+  <BreadcrumbItem href="/brand">Brand</BreadcrumbItem>
+  <BreadcrumbItem>Product Name</BreadcrumbItem>
+</Breadcrumb>
+```
+
+## Interactive States
+
+### Hover and Focus States
+
+```tsx
+<Breadcrumb>
+  <BreadcrumbItem href="/">Home</BreadcrumbItem>
+  <BreadcrumbItem href="/products">Products</BreadcrumbItem>
+  <BreadcrumbItem href="/category" disabled>
+    Disabled Category
+  </BreadcrumbItem>
+  <BreadcrumbItem>Current Page</BreadcrumbItem>
+</Breadcrumb>
+```
+
+## Real-World Examples
+
+### E-commerce Navigation
+
+```tsx
+import { useRouter } from 'next/router';
+
+function EcommerceBreadcrumb() {
+  const router = useRouter();
+  
+  // Example: /products/electronics/laptops/gaming
+  const pathSegments = router.asPath.split('/').filter(Boolean);
+  
+  const breadcrumbItems = [
+    { href: '/', label: 'Home', icon: <HomeIcon /> }
+  ];
+  
+  // Build breadcrumb items from URL segments
+  let currentPath = '';
+  pathSegments.forEach((segment, index) => {
+    currentPath += `/${segment}`;
+    const isLast = index === pathSegments.length - 1;
+    
+    breadcrumbItems.push({
+      href: isLast ? undefined : currentPath,
+      label: segment.charAt(0).toUpperCase() + segment.slice(1).replace('-', ' '),
+      icon: getIconForSegment(segment)
+    });
+  });
+  
+  return (
+    <div className="bg-gray-50 px-6 py-4">
+      <Breadcrumb>
+        {breadcrumbItems.map((item, index) => (
+          <BreadcrumbItem
+            key={index}
+            href={item.href}
+            icon={item.icon}
+          >
+            {item.label}
+          </BreadcrumbItem>
+        ))}
+      </Breadcrumb>
+    </div>
+  );
+}
+
+function getIconForSegment(segment) {
+  const icons = {
+    products: <ShoppingBagIcon />,
+    electronics: <ComputerDesktopIcon />,
+    laptops: <DeviceTabletIcon />,
+    // Add more mappings
+  };
+  return icons[segment];
+}
+```
+
+### Documentation Navigation
+
+```tsx
+function DocsBreadcrumb({ currentPage }) {
+  const docStructure = {
+    'getting-started': { label: 'Getting Started', parent: null },
+    'components': { label: 'Components', parent: null },
+    'button': { label: 'Button', parent: 'components' },
+    'input': { label: 'Input', parent: 'components' },
+    'form-controls': { label: 'Form Controls', parent: 'components' },
+    'checkbox': { label: 'Checkbox', parent: 'form-controls' }
+  };
+  
+  const buildBreadcrumb = (pageKey) => {
+    const items = [];
+    let current = pageKey;
+    
+    while (current) {
+      const page = docStructure[current];
+      items.unshift({
+        key: current,
+        label: page.label,
+        href: current === pageKey ? undefined : `/docs/${current}`
+      });
+      current = page.parent;
+    }
+    
+    return [{ href: '/', label: 'Home', icon: <HomeIcon /> }, ...items];
+  };
+  
+  const breadcrumbItems = buildBreadcrumb(currentPage);
+  
+  return (
+    <div className="border-b border-gray-200 bg-white px-6 py-3">
+      <Breadcrumb separator={<ChevronRightIcon className="w-4 h-4" />}>
+        {breadcrumbItems.map((item, index) => (
+          <BreadcrumbItem
+            key={item.key || 'home'}
+            href={item.href}
+            icon={item.icon}
+          >
+            {item.label}
+          </BreadcrumbItem>
+        ))}
+      </Breadcrumb>
+    </div>
+  );
+}
+```
+
+### File System Navigator
+
+```tsx
+import { useState } from 'react';
+
+function FileSystemBreadcrumb() {
+  const [currentPath, setCurrentPath] = useState('/Users/john/Documents/Projects/my-app/src/components');
+  
+  const pathParts = currentPath.split('/').filter(Boolean);
+  
+  const navigateToPath = (index) => {
+    const newPath = '/' + pathParts.slice(0, index + 1).join('/');
+    setCurrentPath(newPath);
+  };
+  
+  return (
+    <div className="bg-gray-100 p-4 rounded-lg">
+      <div className="mb-4">
+        <Text variant="body-sm" weight="medium">File System Navigation</Text>
+      </div>
+      
+      <Breadcrumb maxItems={5} separator="/">
+        <BreadcrumbItem 
+          href="#"
+          onClick={() => setCurrentPath('/')}
+          icon={<ComputerDesktopIcon />}
+        />
+        {pathParts.map((part, index) => {
+          const isLast = index === pathParts.length - 1;
+          return (
+            <BreadcrumbItem
+              key={index}
+              href={isLast ? undefined : "#"}
+              onClick={isLast ? undefined : () => navigateToPath(index)}
+              icon={isLast ? <DocumentIcon /> : <FolderIcon />}
+            >
+              {part}
+            </BreadcrumbItem>
+          );
+        })}
+      </Breadcrumb>
+      
+      <div className="mt-4 p-3 bg-white rounded border">
+        <Text variant="body-sm" color="muted">Current Path:</Text>
+        <Text variant="body-sm" className="font-mono">{currentPath}</Text>
+      </div>
+    </div>
+  );
+}
+```
+
+### Multi-Step Form Progress
+
+```tsx
+import { useState } from 'react';
+
+function FormStepBreadcrumb() {
+  const [currentStep, setCurrentStep] = useState(2);
+  
+  const steps = [
+    { id: 1, label: 'Personal Info', completed: true },
+    { id: 2, label: 'Address', completed: false },
+    { id: 3, label: 'Payment', completed: false },
+    { id: 4, label: 'Review', completed: false }
+  ];
+  
+  const canNavigateToStep = (stepId) => {
+    return stepId <= currentStep || steps[stepId - 1].completed;
+  };
+  
+  return (
+    <div className="space-y-6">
+      <Card>
+        <CardContent className="p-6">
+          <div className="mb-4">
+            <Text variant="body-lg" weight="semibold">Account Setup</Text>
+            <Text variant="body-sm" color="muted">Step {currentStep} of {steps.length}</Text>
+          </div>
+          
+          <Breadcrumb separator={<ChevronRightIcon className="w-4 h-4" />}>
+            {steps.map((step, index) => {
+              const isActive = step.id === currentStep;
+              const canNavigate = canNavigateToStep(step.id);
+              
+              return (
+                <BreadcrumbItem
+                  key={step.id}
+                  href={canNavigate && !isActive ? "#" : undefined}
+                  onClick={canNavigate && !isActive ? () => setCurrentStep(step.id) : undefined}
+                  icon={
+                    step.completed ? (
+                      <CheckCircleIcon className="w-4 h-4 text-success-main" />
+                    ) : isActive ? (
+                      <div className="w-4 h-4 bg-primary-main rounded-full" />
+                    ) : (
+                      <div className="w-4 h-4 bg-gray-300 rounded-full" />
+                    )
+                  }
+                  className={isActive ? 'font-semibold text-primary-main' : ''}
+                >
+                  {step.label}
+                </BreadcrumbItem>
+              );
+            })}
+          </Breadcrumb>
+        </CardContent>
+      </Card>
+      
+      <div className="flex justify-between">
+        <Button 
+          variant="outline-default" 
+          disabled={currentStep === 1}
+          onClick={() => setCurrentStep(currentStep - 1)}
+        >
+          Previous
+        </Button>
+        <Button 
+          variant="primary" 
+          disabled={currentStep === steps.length}
+          onClick={() => setCurrentStep(currentStep + 1)}
+        >
+          Next
+        </Button>
+      </div>
+    </div>
+  );
+}
+```
+
+## Props
+
+### Breadcrumb Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `separator` | `ReactNode \| string` | `"/"` | Element to display between items |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
+| `maxItems` | `number` | - | Maximum items to show before collapsing |
+| `overflowAriaLabel` | `string` | `"Show more"` | ARIA label for overflow button |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | BreadcrumbItem components |
+
+### BreadcrumbItem Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `href` | `string` | - | Navigation URL |
+| `onClick` | `() => void` | - | Click handler |
+| `icon` | `ReactNode` | - | Leading icon |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Item content |
+
+## Design Specifications
+
+- **Font Size**: Small (12px), Medium (14px), Large (16px)
+- **Spacing**: 8px between items and separators
+- **Icon Size**: 16px for all sizes
+- **Colors**: Links use primary color, current page uses muted color
+- **Hover States**: Subtle background color change
+
+## Accessibility
+
+- **Semantic HTML**: Uses `<nav>` and `<ol>` for proper structure
+- **ARIA Labels**: `aria-label="Breadcrumb"` on navigation
+- **Screen Readers**: Current page marked with `aria-current="page"`
+- **Keyboard Navigation**: Full keyboard support for interactive items
+- **Focus Management**: Clear focus indicators
+
+## Best Practices
+
+1. **Show Hierarchy**: Represent the actual site structure
+2. **Current Page**: Always show the current page as the last item
+3. **Link Appropriately**: Don't link the current page
+4. **Keep Concise**: Use short, descriptive labels
+5. **Consistent Placement**: Place consistently across pages
+6. **Mobile Consideration**: Consider collapsing on smaller screens
+
+## Related Components
+
+- [Button](/docs/components/button) - For breadcrumb actions
+- [Typography](/docs/components/typography) - For text styling
+- [Navigation](/docs/components/pagination) - For page navigation 

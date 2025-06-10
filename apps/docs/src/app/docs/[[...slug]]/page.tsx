@@ -85,6 +85,16 @@ const pageMap = {
     description: 'Text system documentation with Plus Jakarta Sans font family and all variants',
     Component: lazy(() => import('../../../../content/docs/components/typography.mdx')),
   },
+  'components/snackbar': {
+    title: 'Snackbar',
+    description: 'Toast notification component with actions, positioning, and auto-dismiss functionality',
+    Component: lazy(() => import('../../../../content/docs/components/snackbar.mdx')),
+  },
+  'components/breadcrumb': {
+    title: 'Breadcrumb',
+    description: 'Hierarchical navigation component with separators and overflow handling',
+    Component: lazy(() => import('../../../../content/docs/components/breadcrumb.mdx')),
+  },
 };
 
 export default async function Page({
@@ -126,6 +136,8 @@ export async function generateStaticParams() {
     { slug: ['components', 'progress'] },
     { slug: ['components', 'chip'] },
     { slug: ['components', 'typography'] },
+    { slug: ['components', 'snackbar'] },
+    { slug: ['components', 'breadcrumb'] },
   ];
 }
 

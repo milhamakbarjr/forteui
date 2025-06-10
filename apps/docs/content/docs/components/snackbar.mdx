@@ -1,0 +1,676 @@
+---
+title: Snackbar
+description: Toast notification component for displaying brief messages with actions, multiple positions, and auto-dismiss functionality.
+---
+
+# Snackbar
+
+Brief notification messages that appear temporarily to provide feedback about an operation. Snackbars appear at the bottom of the screen and can include actions.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Snackbar, useSnackbar } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Snackbar, Button } from '@forteui/core';
+import { useState } from 'react';
+
+function MyComponent() {
+  const [open, setOpen] = useState(false);
+  
+  return (
+    <div>
+      <Button onClick={() => setOpen(true)}>
+        Show Snackbar
+      </Button>
+      
+      <Snackbar
+        open={open}
+        onClose={() => setOpen(false)}
+        message="This is a basic snackbar message"
+      />
+    </div>
+  );
+}
+```
+
+## Variants
+
+### Message Types
+
+```tsx
+import { useState } from 'react';
+
+function SnackbarVariants() {
+  const [notifications, setNotifications] = useState({
+    info: false,
+    success: false,
+    warning: false,
+    error: false
+  });
+  
+  const showNotification = (type) => {
+    setNotifications(prev => ({ ...prev, [type]: true }));
+  };
+  
+  const hideNotification = (type) => {
+    setNotifications(prev => ({ ...prev, [type]: false }));
+  };
+  
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-2 flex-wrap">
+        <Button variant="outline" onClick={() => showNotification('info')}>
+          Info Message
+        </Button>
+        <Button variant="outline-success" onClick={() => showNotification('success')}>
+          Success Message
+        </Button>
+        <Button variant="outline-warning" onClick={() => showNotification('warning')}>
+          Warning Message
+        </Button>
+        <Button variant="outline-error" onClick={() => showNotification('error')}>
+          Error Message
+        </Button>
+      </div>
+      
+      <Snackbar
+        open={notifications.info}
+        onClose={() => hideNotification('info')}
+        message="This is an informational message"
+        variant="info"
+      />
+      
+      <Snackbar
+        open={notifications.success}
+        onClose={() => hideNotification('success')}
+        message="Operation completed successfully!"
+        variant="success"
+      />
+      
+      <Snackbar
+        open={notifications.warning}
+        onClose={() => hideNotification('warning')}
+        message="Warning: Please check your input"
+        variant="warning"
+      />
+      
+      <Snackbar
+        open={notifications.error}
+        onClose={() => hideNotification('error')}
+        message="Error: Something went wrong"
+        variant="error"
+      />
+    </div>
+  );
+}
+```
+
+## With Actions
+
+### Action Buttons
+
+```tsx
+import { useState } from 'react';
+
+function SnackbarWithActions() {
+  const [open, setOpen] = useState(false);
+  
+  const handleUndo = () => {
+    console.log('Undo action triggered');
+    setOpen(false);
+  };
+  
+  return (
+    <div>
+      <Button onClick={() => setOpen(true)}>
+        Delete Item
+      </Button>
+      
+      <Snackbar
+        open={open}
+        onClose={() => setOpen(false)}
+        message="Item deleted"
+        action={{
+          label: "Undo",
+          onClick: handleUndo
+        }}
+        autoHideDuration={6000}
+      />
+    </div>
+  );
+}
+```
+
+### Multiple Actions
+
+```tsx
+import { useState } from 'react';
+
+function MultipleActions() {
+  const [open, setOpen] = useState(false);
+  
+  return (
+    <div>
+      <Button onClick={() => setOpen(true)}>
+        Show Actions
+      </Button>
+      
+      <Snackbar
+        open={open}
+        onClose={() => setOpen(false)}
+        message="New version available"
+        actions={[
+          {
+            label: "Update",
+            onClick: () => console.log('Update clicked'),
+            variant: "primary"
+          },
+          {
+            label: "Later",
+            onClick: () => setOpen(false),
+            variant: "text"
+          }
+        ]}
+        autoHideDuration={null} // Don't auto-hide
+      />
+    </div>
+  );
+}
+```
+
+## Positioning
+
+```tsx
+import { useState } from 'react';
+
+function SnackbarPositions() {
+  const [position, setPosition] = useState(null);
+  
+  const positions = [
+    { key: 'top-left', label: 'Top Left' },
+    { key: 'top-center', label: 'Top Center' },
+    { key: 'top-right', label: 'Top Right' },
+    { key: 'bottom-left', label: 'Bottom Left' },
+    { key: 'bottom-center', label: 'Bottom Center' },
+    { key: 'bottom-right', label: 'Bottom Right' }
+  ];
+  
+  return (
+    <div className="space-y-4">
+      <div className="grid grid-cols-3 gap-2">
+        {positions.map(pos => (
+          <Button
+            key={pos.key}
+            variant="outline"
+            size="sm"
+            onClick={() => setPosition(pos.key)}
+          >
+            {pos.label}
+          </Button>
+        ))}
+      </div>
+      
+      {positions.map(pos => (
+        <Snackbar
+          key={pos.key}
+          open={position === pos.key}
+          onClose={() => setPosition(null)}
+          message={`Snackbar at ${pos.label}`}
+          position={pos.key}
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+## Auto-Hide Duration
+
+```tsx
+import { useState } from 'react';
+
+function AutoHideDuration() {
+  const [notifications, setNotifications] = useState({
+    quick: false,
+    normal: false,
+    slow: false,
+    persistent: false
+  });
+  
+  const durations = [
+    { key: 'quick', label: '2 seconds', duration: 2000 },
+    { key: 'normal', label: '4 seconds', duration: 4000 },
+    { key: 'slow', label: '8 seconds', duration: 8000 },
+    { key: 'persistent', label: 'No auto-hide', duration: null }
+  ];
+  
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-2 flex-wrap">
+        {durations.map(d => (
+          <Button
+            key={d.key}
+            variant="outline"
+            onClick={() => setNotifications(prev => ({ ...prev, [d.key]: true }))}
+          >
+            {d.label}
+          </Button>
+        ))}
+      </div>
+      
+      {durations.map(d => (
+        <Snackbar
+          key={d.key}
+          open={notifications[d.key]}
+          onClose={() => setNotifications(prev => ({ ...prev, [d.key]: false }))}
+          message={`Auto-hide: ${d.label}`}
+          autoHideDuration={d.duration}
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+## useSnackbar Hook
+
+### Hook-Based Usage
+
+```tsx
+import { useSnackbar } from '@forteui/core';
+
+function HookExample() {
+  const { showSnackbar, hideSnackbar } = useSnackbar();
+  
+  const handleSuccess = () => {
+    showSnackbar({
+      message: "Settings saved successfully!",
+      variant: "success",
+      action: {
+        label: "View",
+        onClick: () => console.log('View settings')
+      }
+    });
+  };
+  
+  const handleError = () => {
+    showSnackbar({
+      message: "Failed to save settings",
+      variant: "error",
+      action: {
+        label: "Retry",
+        onClick: () => console.log('Retry save')
+      }
+    });
+  };
+  
+  return (
+    <div className="space-y-2">
+      <Button variant="success" onClick={handleSuccess}>
+        Save Settings
+      </Button>
+      <Button variant="error" onClick={handleError}>
+        Simulate Error
+      </Button>
+    </div>
+  );
+}
+```
+
+### Global Provider Setup
+
+```tsx
+import { SnackbarProvider } from '@forteui/core';
+
+function App() {
+  return (
+    <SnackbarProvider maxStack={3}>
+      <YourAppContent />
+    </SnackbarProvider>
+  );
+}
+```
+
+## Real-World Examples
+
+### Form Submission Feedback
+
+```tsx
+import { useState } from 'react';
+
+function FormWithFeedback() {
+  const [formData, setFormData] = useState({ name: '', email: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [notification, setNotification] = useState(null);
+  
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    try {
+      // Simulate API call
+      await new Promise((resolve, reject) => {
+        setTimeout(() => {
+          Math.random() > 0.3 ? resolve() : reject();
+        }, 1000);
+      });
+      
+      setNotification({
+        message: "Form submitted successfully!",
+        variant: "success",
+        action: {
+          label: "View",
+          onClick: () => console.log('View submission')
+        }
+      });
+      setFormData({ name: '', email: '' });
+    } catch (error) {
+      setNotification({
+        message: "Failed to submit form. Please try again.",
+        variant: "error",
+        action: {
+          label: "Retry",
+          onClick: () => handleSubmit(e)
+        }
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+  
+  return (
+    <div className="space-y-4">
+      <Card>
+        <CardContent className="p-6">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <Input
+              label="Name"
+              value={formData.name}
+              onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
+              required
+            />
+            <Input
+              label="Email"
+              type="email"
+              value={formData.email}
+              onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
+              required
+            />
+            <Button type="submit" disabled={isSubmitting} variant="primary">
+              {isSubmitting ? 'Submitting...' : 'Submit'}
+            </Button>
+          </form>
+        </CardContent>
+      </Card>
+      
+      {notification && (
+        <Snackbar
+          open={!!notification}
+          onClose={() => setNotification(null)}
+          message={notification.message}
+          variant={notification.variant}
+          action={notification.action}
+        />
+      )}
+    </div>
+  );
+}
+```
+
+### File Upload Progress
+
+```tsx
+import { useState } from 'react';
+
+function FileUploadNotifications() {
+  const [uploads, setUploads] = useState([]);
+  
+  const simulateUpload = (filename) => {
+    const uploadId = Date.now();
+    
+    // Start upload notification
+    const newUpload = {
+      id: uploadId,
+      filename,
+      message: `Uploading ${filename}...`,
+      variant: 'info',
+      progress: 0
+    };
+    
+    setUploads(prev => [...prev, newUpload]);
+    
+    // Simulate progress
+    const interval = setInterval(() => {
+      setUploads(prev => prev.map(upload => {
+        if (upload.id === uploadId) {
+          const newProgress = Math.min(upload.progress + Math.random() * 20, 100);
+          
+          if (newProgress >= 100) {
+            clearInterval(interval);
+            // Complete notification
+            setTimeout(() => {
+              setUploads(prev => prev.map(u => 
+                u.id === uploadId 
+                  ? { ...u, message: `${filename} uploaded successfully!`, variant: 'success' }
+                  : u
+              ));
+            }, 500);
+          }
+          
+          return { ...upload, progress: newProgress };
+        }
+        return upload;
+      }));
+    }, 200);
+  };
+  
+  const removeUpload = (id) => {
+    setUploads(prev => prev.filter(upload => upload.id !== id));
+  };
+  
+  return (
+    <div className="space-y-4">
+      <div className="flex gap-2">
+        <Button onClick={() => simulateUpload('document.pdf')}>
+          Upload PDF
+        </Button>
+        <Button onClick={() => simulateUpload('image.jpg')}>
+          Upload Image
+        </Button>
+      </div>
+      
+      {uploads.map(upload => (
+        <Snackbar
+          key={upload.id}
+          open={true}
+          onClose={() => removeUpload(upload.id)}
+          message={upload.message}
+          variant={upload.variant}
+          autoHideDuration={upload.variant === 'success' ? 3000 : null}
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+### Shopping Cart Notifications
+
+```tsx
+import { useState } from 'react';
+
+function ShoppingCartNotifications() {
+  const [cartItems, setCartItems] = useState([]);
+  const [notification, setNotification] = useState(null);
+  
+  const addToCart = (item) => {
+    setCartItems(prev => [...prev, { ...item, id: Date.now() }]);
+    setNotification({
+      message: `${item.name} added to cart`,
+      variant: "success",
+      action: {
+        label: "View Cart",
+        onClick: () => console.log('Navigate to cart')
+      }
+    });
+  };
+  
+  const removeFromCart = (itemId) => {
+    const item = cartItems.find(i => i.id === itemId);
+    setCartItems(prev => prev.filter(i => i.id !== itemId));
+    setNotification({
+      message: `${item.name} removed from cart`,
+      variant: "info",
+      action: {
+        label: "Undo",
+        onClick: () => {
+          setCartItems(prev => [...prev, item]);
+          setNotification(null);
+        }
+      }
+    });
+  };
+  
+  const products = [
+    { name: 'Wireless Headphones', price: 99 },
+    { name: 'Smart Watch', price: 299 },
+    { name: 'Phone Case', price: 25 }
+  ];
+  
+  return (
+    <div className="space-y-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {products.map(product => (
+          <Card key={product.name}>
+            <CardContent className="p-4 text-center space-y-2">
+              <h3 className="font-medium">{product.name}</h3>
+              <p className="text-lg font-bold">${product.price}</p>
+              <Button 
+                variant="primary" 
+                size="sm"
+                onClick={() => addToCart(product)}
+              >
+                Add to Cart
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      
+      {cartItems.length > 0 && (
+        <Card>
+          <CardHeader>
+            <h3 className="font-semibold">Cart ({cartItems.length} items)</h3>
+          </CardHeader>
+          <CardContent>
+            {cartItems.map(item => (
+              <div key={item.id} className="flex justify-between items-center py-2">
+                <span>{item.name}</span>
+                <Button
+                  variant="text"
+                  size="sm"
+                  onClick={() => removeFromCart(item.id)}
+                >
+                  Remove
+                </Button>
+              </div>
+            ))}
+          </CardContent>
+        </Card>
+      )}
+      
+      {notification && (
+        <Snackbar
+          open={!!notification}
+          onClose={() => setNotification(null)}
+          message={notification.message}
+          variant={notification.variant}
+          action={notification.action}
+        />
+      )}
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `open` | `boolean` | `false` | Whether the snackbar is visible |
+| `onClose` | `() => void` | - | Close handler |
+| `message` | `string` | - | Main message text |
+| `variant` | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Visual variant |
+| `position` | `'top-left' \| 'top-center' \| 'top-right' \| 'bottom-left' \| 'bottom-center' \| 'bottom-right'` | `'bottom-center'` | Screen position |
+| `autoHideDuration` | `number \| null` | `4000` | Auto-hide timeout (null = no auto-hide) |
+| `action` | `{label: string, onClick: () => void, variant?: string}` | - | Single action button |
+| `actions` | `Array<{label: string, onClick: () => void, variant?: string}>` | - | Multiple action buttons |
+| `closable` | `boolean` | `true` | Show close button |
+| `className` | `string` | - | Additional CSS classes |
+
+## useSnackbar Hook API
+
+```tsx
+const {
+  showSnackbar,
+  hideSnackbar,
+  hideAllSnackbars
+} = useSnackbar();
+
+// Show snackbar
+showSnackbar({
+  message: "Hello world",
+  variant: "success",
+  autoHideDuration: 5000,
+  action: { label: "Action", onClick: () => {} }
+});
+
+// Hide specific snackbar
+hideSnackbar(snackbarId);
+
+// Hide all snackbars
+hideAllSnackbars();
+```
+
+## Design Specifications
+
+- **Width**: Minimum 288px, Maximum 568px
+- **Height**: Minimum 48px (adjusts to content)
+- **Border Radius**: 8px
+- **Elevation**: Shadow level 6 for prominence
+- **Animation**: Slide in/out with smooth transitions
+- **Spacing**: 16px margin from screen edges
+
+## Accessibility
+
+- **ARIA Roles**: Uses `role="alert"` for important messages
+- **Screen Readers**: Messages are announced automatically
+- **Keyboard Navigation**: Focusable actions with Tab navigation
+- **Focus Management**: Focus trapped within action buttons
+- **Color Independence**: Uses icons and text, not just color for variants
+
+## Best Practices
+
+1. **Clear Messages**: Keep messages concise and actionable
+2. **Appropriate Duration**: Use longer durations for important messages
+3. **Action Relevance**: Only include actions that are directly related
+4. **Position Consistency**: Use consistent positioning throughout your app
+5. **Stack Management**: Limit the number of simultaneous snackbars
+6. **Error Handling**: Provide retry actions for error states
+
+## Related Components
+
+- [Alert](/docs/components/alert) - For persistent notifications
+- [Button](/docs/components/button) - For action buttons
+- [Card](/docs/components/card) - For detailed notifications 
