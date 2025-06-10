@@ -2,8 +2,24 @@
 
 import type { ReactNode } from 'react';
 import { useState } from 'react';
-// import { HeaderSearch } from '../../components/SearchSystem';
+import dynamic from 'next/dynamic';
 import { Button } from '@forteui/core';
+
+// Dynamic import for SearchSystem to avoid SSR issues
+const HeaderSearch = dynamic(
+  () => import('../../components/SearchSystem').then(mod => ({ default: mod.HeaderSearch })),
+  { 
+    ssr: false,
+    loading: () => (
+      <input 
+        type="text" 
+        placeholder="Loading search..." 
+        className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+        disabled
+      />
+    )
+  }
+);
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -55,12 +71,7 @@ export default function Layout({ children }: { children: ReactNode }) {
 
           {/* Search - Hidden on mobile, shown in header */}
           <div className="mb-6 hidden lg:block">
-            <input 
-              type="text" 
-              placeholder="Search..." 
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
-              disabled
-            />
+            <HeaderSearch />
           </div>
           
           <nav className="space-y-6">
@@ -217,12 +228,7 @@ export default function Layout({ children }: { children: ReactNode }) {
           </Button>
           
           <div className="flex-1 max-w-sm">
-            <input 
-              type="text" 
-              placeholder="Search..." 
-              className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
-              disabled
-            />
+            <HeaderSearch />
           </div>
           
           <div className="text-sm font-medium text-gray-900 ml-4">

@@ -1,5 +1,22 @@
 import { Button } from '@forteui/core';
 import Link from 'next/link';
+import dynamic from 'next/dynamic';
+
+// Dynamic import for SearchSystem to avoid SSR issues
+const HeaderSearch = dynamic(
+  () => import('../components/SearchSystem').then(mod => ({ default: mod.HeaderSearch })),
+  { 
+    ssr: false,
+    loading: () => (
+      <input 
+        type="text" 
+        placeholder="Loading search..." 
+        className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
+        disabled
+      />
+    )
+  }
+);
 
 export default function HomePage() {
   return (
@@ -10,14 +27,8 @@ export default function HomePage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-8">
               <h1 className="text-xl font-bold text-gray-900">ForteUI</h1>
-              {/* Search temporarily disabled */}
               <div className="flex-1 max-w-sm">
-                <input 
-                  type="text" 
-                  placeholder="Search documentation..." 
-                  className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm"
-                  disabled
-                />
+                <HeaderSearch />
               </div>
             </div>
             <div className="flex items-center gap-4">
@@ -82,8 +93,84 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Quick Start */}
+      {/* Features Section */}
       <section className="py-16 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Why Choose ForteUI?
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Everything you need to build modern web applications with confidence.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-primary-main text-xl">🎨</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Design System</h3>
+              <p className="text-gray-600">
+                Comprehensive design tokens, color system, typography, and spacing guidelines for consistent UIs.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-primary-main text-xl">🔍</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Smart Search</h3>
+              <p className="text-gray-600">
+                Powerful search functionality across components, props, and documentation with instant results.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-primary-main text-xl">♿</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Accessible</h3>
+              <p className="text-gray-600">
+                WCAG 2.1 AA compliant components with proper ARIA labels, keyboard navigation, and screen reader support.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-primary-main text-xl">⚡</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Interactive Docs</h3>
+              <p className="text-gray-600">
+                Live code examples, interactive playground, and comprehensive API documentation for every component.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-primary-main text-xl">🚀</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Production Ready</h3>
+              <p className="text-gray-600">
+                Battle-tested components with TypeScript support, optimized for performance and developer experience.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+              <div className="w-12 h-12 bg-primary-100 rounded-lg flex items-center justify-center mb-4">
+                <span className="text-primary-main text-xl">📱</span>
+              </div>
+              <h3 className="text-xl font-semibold text-gray-900 mb-2">Mobile First</h3>
+              <p className="text-gray-600">
+                Responsive design with touch-friendly interfaces and mobile-optimized navigation patterns.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Quick Start */}
+      <section className="py-16 px-6 bg-gray-50">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-gray-900 mb-8">
             Get Started in Minutes
@@ -113,7 +200,7 @@ function App() {
             <div className="md:col-span-2">
               <h3 className="text-xl font-bold mb-4">ForteUI</h3>
               <p className="text-gray-400 mb-4">
-                A modern React component library built for production applications.
+                A modern React component library built for production applications with comprehensive documentation and accessibility features.
               </p>
             </div>
             
