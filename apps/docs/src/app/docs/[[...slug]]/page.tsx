@@ -17,7 +17,7 @@ export default async function Page({
       <DocsBody>
         <h1>{page.data.title}</h1>
         <div>
-          <p>{page.data.description}</p>
+          <p>Documentation content will be rendered here.</p>
         </div>
       </DocsBody>
     </DocsPage>
@@ -38,6 +38,6 @@ export function generateMetadata({
 
   return {
     title: page.data.title,
-    description: page.data.description,
+    description: 'ForteUI Documentation',
   };
 }
