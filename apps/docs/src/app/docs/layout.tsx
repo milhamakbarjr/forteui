@@ -59,12 +59,12 @@ export default function Layout({ children }: { children: ReactNode }) {
                 </a>
               </li>
               <li>
-                <a href="#" className="block text-sm text-gray-400 cursor-not-allowed">
+                <a href="/docs/components/textarea" className="block text-sm text-gray-600 hover:text-primary-main transition-colors">
                   Textarea
                 </a>
               </li>
               <li>
-                <a href="#" className="block text-sm text-gray-400 cursor-not-allowed">
+                <a href="/docs/components/slider" className="block text-sm text-gray-600 hover:text-primary-main transition-colors">
                   Slider
                 </a>
               </li>
@@ -90,12 +90,12 @@ export default function Layout({ children }: { children: ReactNode }) {
                 </a>
               </li>
               <li>
-                <a href="#" className="block text-sm text-gray-400 cursor-not-allowed">
+                <a href="/docs/components/chip" className="block text-sm text-gray-600 hover:text-primary-main transition-colors">
                   Chip
                 </a>
               </li>
               <li>
-                <a href="#" className="block text-sm text-gray-400 cursor-not-allowed">
+                <a href="/docs/components/typography" className="block text-sm text-gray-600 hover:text-primary-main transition-colors">
                   Typography
                 </a>
               </li>

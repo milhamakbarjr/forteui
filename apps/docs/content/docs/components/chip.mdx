@@ -1,0 +1,527 @@
+---
+title: Chip
+description: Compact chip component for tags, filters, and selection with removable functionality and multiple variants.
+---
+
+# Chip
+
+Compact elements that represent inputs, attributes, or actions. Chips allow users to enter information, make selections, filter content, or trigger actions.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Chip } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Chip } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Chip label="Default Chip" />
+  );
+}
+```
+
+## Variants
+
+### Default Chips
+
+```tsx
+<div className="flex flex-wrap gap-2">
+  <Chip label="Default" />
+  <Chip label="Primary" variant="primary" />
+  <Chip label="Secondary" variant="secondary" />
+  <Chip label="Success" variant="success" />
+  <Chip label="Warning" variant="warning" />
+  <Chip label="Error" variant="error" />
+</div>
+```
+
+### Outlined Chips
+
+```tsx
+<div className="flex flex-wrap gap-2">
+  <Chip label="Default" variant="outline" />
+  <Chip label="Primary" variant="outline-primary" />
+  <Chip label="Secondary" variant="outline-secondary" />
+  <Chip label="Success" variant="outline-success" />
+  <Chip label="Warning" variant="outline-warning" />
+  <Chip label="Error" variant="outline-error" />
+</div>
+```
+
+## Sizes
+
+```tsx
+<div className="flex flex-wrap items-center gap-2">
+  <Chip size="sm" label="Small" />
+  <Chip size="md" label="Medium" />
+  <Chip size="lg" label="Large" />
+</div>
+```
+
+## With Icons
+
+### Leading Icons
+
+```tsx
+<div className="flex flex-wrap gap-2">
+  <Chip 
+    label="User" 
+    startIcon={<UserIcon />}
+    variant="primary"
+  />
+  
+  <Chip 
+    label="Settings" 
+    startIcon={<SettingsIcon />}
+    variant="secondary"
+  />
+  
+  <Chip 
+    label="Verified" 
+    startIcon={<CheckIcon />}
+    variant="success"
+  />
+</div>
+```
+
+### Trailing Icons
+
+```tsx
+<div className="flex flex-wrap gap-2">
+  <Chip 
+    label="Download" 
+    endIcon={<DownloadIcon />}
+    variant="primary"
+  />
+  
+  <Chip 
+    label="External Link" 
+    endIcon={<ExternalLinkIcon />}
+    variant="outline"
+  />
+</div>
+```
+
+## Removable Chips
+
+### Basic Removable
+
+```tsx
+import { useState } from 'react';
+
+function RemovableChipsExample() {
+  const [chips, setChips] = useState([
+    { id: 1, label: 'React' },
+    { id: 2, label: 'TypeScript' },
+    { id: 3, label: 'Tailwind CSS' },
+    { id: 4, label: 'Next.js' }
+  ]);
+  
+  const handleDelete = (chipId) => {
+    setChips(chips.filter(chip => chip.id !== chipId));
+  };
+  
+  return (
+    <div className="flex flex-wrap gap-2">
+      {chips.map(chip => (
+        <Chip 
+          key={chip.id}
+          label={chip.label}
+          onDelete={() => handleDelete(chip.id)}
+          variant="primary"
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+### Tags with Custom Delete
+
+```tsx
+import { useState } from 'react';
+
+function TagsExample() {
+  const [tags, setTags] = useState(['Frontend', 'Backend', 'DevOps', 'Mobile']);
+  
+  const removeTag = (tagToRemove) => {
+    setTags(tags.filter(tag => tag !== tagToRemove));
+  };
+  
+  return (
+    <div className="space-y-4">
+      <div className="flex flex-wrap gap-2">
+        {tags.map(tag => (
+          <Chip 
+            key={tag}
+            label={tag}
+            onDelete={() => removeTag(tag)}
+            variant="outline"
+            deleteIcon={<XIcon />}
+          />
+        ))}
+      </div>
+      
+      <p className="text-sm text-gray-600">
+        {tags.length} tags selected
+      </p>
+    </div>
+  );
+}
+```
+
+## Clickable Chips
+
+### Basic Clickable
+
+```tsx
+import { useState } from 'react';
+
+function ClickableChipsExample() {
+  const [selectedChip, setSelectedChip] = useState('home');
+  
+  const navItems = [
+    { id: 'home', label: 'Home', icon: <HomeIcon /> },
+    { id: 'profile', label: 'Profile', icon: <UserIcon /> },
+    { id: 'settings', label: 'Settings', icon: <SettingsIcon /> },
+    { id: 'help', label: 'Help', icon: <HelpIcon /> }
+  ];
+  
+  return (
+    <div className="flex flex-wrap gap-2">
+      {navItems.map(item => (
+        <Chip 
+          key={item.id}
+          label={item.label}
+          startIcon={item.icon}
+          onClick={() => setSelectedChip(item.id)}
+          variant={selectedChip === item.id ? 'primary' : 'outline'}
+          clickable
+        />
+      ))}
+    </div>
+  );
+}
+```
+
+### Selection Chips
+
+```tsx
+import { useState } from 'react';
+
+function SelectionChipsExample() {
+  const [selectedCategories, setSelectedCategories] = useState(['technology']);
+  
+  const categories = [
+    'Technology', 'Design', 'Business', 'Health', 
+    'Travel', 'Food', 'Sports', 'Music'
+  ];
+  
+  const toggleCategory = (category) => {
+    const categoryLower = category.toLowerCase();
+    setSelectedCategories(prev => 
+      prev.includes(categoryLower)
+        ? prev.filter(c => c !== categoryLower)
+        : [...prev, categoryLower]
+    );
+  };
+  
+  return (
+    <div className="space-y-4">
+      <h3 className="font-medium">Select your interests:</h3>
+      
+      <div className="flex flex-wrap gap-2">
+        {categories.map(category => {
+          const isSelected = selectedCategories.includes(category.toLowerCase());
+          return (
+            <Chip 
+              key={category}
+              label={category}
+              onClick={() => toggleCategory(category)}
+              variant={isSelected ? 'primary' : 'outline'}
+              clickable
+            />
+          );
+        })}
+      </div>
+      
+      <p className="text-sm text-gray-600">
+        {selectedCategories.length} categories selected
+      </p>
+    </div>
+  );
+}
+```
+
+## States
+
+### Disabled State
+
+```tsx
+<div className="flex flex-wrap gap-2">
+  <Chip label="Disabled" disabled />
+  <Chip label="Disabled Primary" variant="primary" disabled />
+  <Chip label="Disabled with Icon" startIcon={<UserIcon />} disabled />
+  <Chip label="Disabled Removable" onDelete={() => {}} disabled />
+</div>
+```
+
+## Real-World Examples
+
+### Filter System
+
+```tsx
+import { useState } from 'react';
+
+function FilterSystem() {
+  const [activeFilters, setActiveFilters] = useState({
+    price: [],
+    brand: [],
+    size: [],
+    color: []
+  });
+  
+  const filterOptions = {
+    price: ['Under $50', '$50-$100', '$100-$200', 'Over $200'],
+    brand: ['Nike', 'Adidas', 'Puma', 'Reebok'],
+    size: ['XS', 'S', 'M', 'L', 'XL'],
+    color: ['Black', 'White', 'Red', 'Blue', 'Green']
+  };
+  
+  const toggleFilter = (category, value) => {
+    setActiveFilters(prev => ({
+      ...prev,
+      [category]: prev[category].includes(value)
+        ? prev[category].filter(v => v !== value)
+        : [...prev[category], value]
+    }));
+  };
+  
+  const clearAllFilters = () => {
+    setActiveFilters({ price: [], brand: [], size: [], color: [] });
+  };
+  
+  const totalFilters = Object.values(activeFilters).flat().length;
+  
+  return (
+    <Card>
+      <CardHeader>
+        <div className="flex justify-between items-center">
+          <h3 className="font-semibold">Filters</h3>
+          {totalFilters > 0 && (
+            <Button variant="text" size="sm" onClick={clearAllFilters}>
+              Clear All ({totalFilters})
+            </Button>
+          )}
+        </div>
+      </CardHeader>
+      
+      <CardContent className="space-y-6">
+        {Object.entries(filterOptions).map(([category, options]) => (
+          <div key={category}>
+            <h4 className="font-medium mb-3 capitalize">{category}</h4>
+            <div className="flex flex-wrap gap-2">
+              {options.map(option => (
+                <Chip 
+                  key={option}
+                  label={option}
+                  onClick={() => toggleFilter(category, option)}
+                  variant={activeFilters[category].includes(option) ? 'primary' : 'outline'}
+                  size="sm"
+                  clickable
+                />
+              ))}
+            </div>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+### Tag Input Field
+
+```tsx
+import { useState, KeyboardEvent } from 'react';
+
+function TagInputField() {
+  const [tags, setTags] = useState(['React', 'JavaScript']);
+  const [inputValue, setInputValue] = useState('');
+  
+  const addTag = () => {
+    const trimmed = inputValue.trim();
+    if (trimmed && !tags.includes(trimmed)) {
+      setTags([...tags, trimmed]);
+      setInputValue('');
+    }
+  };
+  
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      addTag();
+    } else if (e.key === 'Backspace' && inputValue === '' && tags.length > 0) {
+      setTags(tags.slice(0, -1));
+    }
+  };
+  
+  const removeTag = (tagToRemove: string) => {
+    setTags(tags.filter(tag => tag !== tagToRemove));
+  };
+  
+  return (
+    <Card>
+      <CardContent className="p-4 space-y-4">
+        <label className="block text-sm font-medium">
+          Skills & Technologies
+        </label>
+        
+        <div className="border border-gray-300 rounded-md p-3 min-h-[60px] flex flex-wrap gap-2 items-center">
+          {tags.map(tag => (
+            <Chip 
+              key={tag}
+              label={tag}
+              onDelete={() => removeTag(tag)}
+              variant="primary"
+              size="sm"
+            />
+          ))}
+          
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            onKeyDown={handleKeyDown}
+            onBlur={addTag}
+            placeholder={tags.length === 0 ? "Add a skill..." : ""}
+            className="flex-1 min-w-[120px] outline-none bg-transparent"
+          />
+        </div>
+        
+        <p className="text-xs text-gray-500">
+          Press Enter to add a tag, Backspace to remove the last tag
+        </p>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+### Status Indicators
+
+```tsx
+function StatusIndicators() {
+  const projects = [
+    { name: 'Website Redesign', status: 'In Progress', priority: 'High' },
+    { name: 'Mobile App', status: 'Completed', priority: 'Medium' },
+    { name: 'API Integration', status: 'Pending', priority: 'Low' },
+    { name: 'Database Migration', status: 'On Hold', priority: 'High' }
+  ];
+  
+  const getStatusVariant = (status: string) => {
+    switch (status) {
+      case 'Completed': return 'success';
+      case 'In Progress': return 'primary';
+      case 'Pending': return 'warning';
+      case 'On Hold': return 'error';
+      default: return 'outline';
+    }
+  };
+  
+  const getPriorityVariant = (priority: string) => {
+    switch (priority) {
+      case 'High': return 'error';
+      case 'Medium': return 'warning';
+      case 'Low': return 'success';
+      default: return 'outline';
+    }
+  };
+  
+  return (
+    <div className="space-y-4">
+      <h3 className="font-semibold">Project Status</h3>
+      
+      {projects.map(project => (
+        <Card key={project.name}>
+          <CardContent className="p-4">
+            <div className="flex justify-between items-center">
+              <h4 className="font-medium">{project.name}</h4>
+              <div className="flex gap-2">
+                <Chip 
+                  label={project.status}
+                  variant={getStatusVariant(project.status)}
+                  size="sm"
+                />
+                <Chip 
+                  label={`${project.priority} Priority`}
+                  variant={getPriorityVariant(project.priority)}
+                  size="sm"
+                />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | - | Chip text content |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error' \| 'outline' \| 'outline-primary' \| 'outline-secondary' \| 'outline-success' \| 'outline-warning' \| 'outline-error'` | `'default'` | Visual variant |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
+| `startIcon` | `ReactNode` | - | Leading icon |
+| `endIcon` | `ReactNode` | - | Trailing icon |
+| `onClick` | `() => void` | - | Click handler |
+| `onDelete` | `() => void` | - | Delete handler (shows delete button) |
+| `deleteIcon` | `ReactNode` | - | Custom delete icon |
+| `clickable` | `boolean` | `false` | Enable clickable state styling |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `className` | `string` | - | Additional CSS classes |
+
+## Design Specifications
+
+- **Height**: Small (24px), Medium (32px), Large (40px)
+- **Padding**: Proportional to size with icon spacing
+- **Border Radius**: 16px for rounded pill shape
+- **Typography**: Font sizes match size variants
+- **Icons**: 16px for small, 18px for medium, 20px for large
+
+## Accessibility
+
+- **Keyboard Navigation**: Focusable when clickable or deletable
+- **Screen Readers**: Proper ARIA labels for actions
+- **Focus Management**: Clear focus indicators
+- **Role Attributes**: Uses appropriate roles for buttons and tags
+- **Keyboard Actions**: Enter/Space for clicking, Delete for removal
+
+## Best Practices
+
+1. **Clear Labels**: Use concise, descriptive text
+2. **Consistent Variants**: Maintain visual hierarchy across chip groups
+3. **Logical Grouping**: Group related chips together
+4. **Action Feedback**: Provide clear feedback for interactive chips
+5. **Accessibility**: Ensure proper keyboard navigation and screen reader support
+6. **Performance**: Avoid rendering too many chips at once
+
+## Related Components
+
+- [Button](/docs/components/button) - For primary actions
+- [Badge](/docs/components/badge) - For status indicators
+- [Input](/docs/components/input) - For tag input fields 

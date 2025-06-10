@@ -40,6 +40,16 @@ const pageMap = {
     description: 'Switch component for binary on/off controls with smooth animations',
     Component: lazy(() => import('../../../../content/docs/components/switch.mdx')),
   },
+  'components/textarea': {
+    title: 'Textarea',
+    description: 'Multi-line text input component with auto-resize, character limits, and form integration',
+    Component: lazy(() => import('../../../../content/docs/components/textarea.mdx')),
+  },
+  'components/slider': {
+    title: 'Slider',
+    description: 'Range input component for selecting numeric values with single or dual handles',
+    Component: lazy(() => import('../../../../content/docs/components/slider.mdx')),
+  },
   'components/avatar': {
     title: 'Avatar',
     description: 'Avatar component for displaying user profile images with fallbacks and status indicators',
@@ -64,6 +74,16 @@ const pageMap = {
     title: 'Progress',
     description: 'Progress component for displaying task completion and loading states',
     Component: lazy(() => import('../../../../content/docs/components/progress.mdx')),
+  },
+  'components/chip': {
+    title: 'Chip',
+    description: 'Compact chip component for tags, filters, and selection with removable functionality',
+    Component: lazy(() => import('../../../../content/docs/components/chip.mdx')),
+  },
+  'components/typography': {
+    title: 'Typography',
+    description: 'Text system documentation with Plus Jakarta Sans font family and all variants',
+    Component: lazy(() => import('../../../../content/docs/components/typography.mdx')),
   },
 };
 
@@ -97,11 +117,15 @@ export async function generateStaticParams() {
     { slug: ['components', 'checkbox'] },
     { slug: ['components', 'radio'] },
     { slug: ['components', 'switch'] },
+    { slug: ['components', 'textarea'] },
+    { slug: ['components', 'slider'] },
     { slug: ['components', 'avatar'] },
     { slug: ['components', 'alert'] },
     { slug: ['components', 'badge'] },
     { slug: ['components', 'card'] },
     { slug: ['components', 'progress'] },
+    { slug: ['components', 'chip'] },
+    { slug: ['components', 'typography'] },
   ];
 }
 

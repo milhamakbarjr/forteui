@@ -1,0 +1,565 @@
+---
+title: Slider
+description: Range input component for selecting numeric values with single or dual handles, step controls, and custom formatting.
+---
+
+# Slider
+
+A versatile range input component for selecting numeric values within a specified range. Supports single and dual handle modes, step controls, custom formatting, and accessibility features.
+
+## Installation
+
+```bash
+npm install @forteui/core
+```
+
+## Import
+
+```tsx
+import { Slider } from '@forteui/core';
+```
+
+## Basic Usage
+
+```tsx
+import { Slider } from '@forteui/core';
+
+function MyComponent() {
+  return (
+    <Slider 
+      min={0}
+      max={100}
+      defaultValue={50}
+      label="Volume"
+    />
+  );
+}
+```
+
+## Single Handle Slider
+
+### Basic Single Slider
+
+```tsx
+import { useState } from 'react';
+
+function SingleSliderExample() {
+  const [value, setValue] = useState(25);
+  
+  return (
+    <div className="space-y-6">
+      <Slider 
+        label="Temperature"
+        min={0}
+        max={100}
+        value={value}
+        onChange={setValue}
+        suffix="°C"
+      />
+      
+      <p className="text-sm text-gray-600">
+        Current temperature: {value}°C
+      </p>
+    </div>
+  );
+}
+```
+
+### With Step Control
+
+```tsx
+<div className="space-y-4">
+  <Slider 
+    label="Price (step: $5)"
+    min={0}
+    max={500}
+    step={5}
+    defaultValue={100}
+    prefix="$"
+  />
+  
+  <Slider 
+    label="Rating (step: 0.5)"
+    min={0}
+    max={5}
+    step={0.5}
+    defaultValue={3.5}
+    suffix=" stars"
+  />
+</div>
+```
+
+## Dual Handle Slider (Range)
+
+### Basic Range Slider
+
+```tsx
+import { useState } from 'react';
+
+function RangeSliderExample() {
+  const [range, setRange] = useState([20, 80]);
+  
+  return (
+    <div className="space-y-6">
+      <Slider 
+        label="Price Range"
+        min={0}
+        max={1000}
+        value={range}
+        onChange={setRange}
+        dual
+        prefix="$"
+      />
+      
+      <p className="text-sm text-gray-600">
+        Selected range: ${range[0]} - ${range[1]}
+      </p>
+    </div>
+  );
+}
+```
+
+### Age Range Selector
+
+```tsx
+import { useState } from 'react';
+
+function AgeRangeSelector() {
+  const [ageRange, setAgeRange] = useState([25, 45]);
+  
+  return (
+    <div className="space-y-4">
+      <Slider 
+        label="Age Range"
+        min={18}
+        max={65}
+        value={ageRange}
+        onChange={setAgeRange}
+        dual
+        suffix=" years"
+      />
+      
+      <div className="flex justify-between text-sm text-gray-600">
+        <span>Min: {ageRange[0]} years</span>
+        <span>Max: {ageRange[1]} years</span>
+      </div>
+    </div>
+  );
+}
+```
+
+## Sizes
+
+```tsx
+<div className="space-y-6">
+  <Slider 
+    size="sm"
+    label="Small slider"
+    min={0}
+    max={100}
+    defaultValue={30}
+  />
+  
+  <Slider 
+    size="md"
+    label="Medium slider (default)"
+    min={0}
+    max={100}
+    defaultValue={50}
+  />
+  
+  <Slider 
+    size="lg"
+    label="Large slider"
+    min={0}
+    max={100}
+    defaultValue={70}
+  />
+</div>
+```
+
+## Colors
+
+```tsx
+<div className="space-y-4">
+  <Slider 
+    label="Primary (default)"
+    color="primary"
+    min={0}
+    max={100}
+    defaultValue={40}
+  />
+  
+  <Slider 
+    label="Success"
+    color="success"
+    min={0}
+    max={100}
+    defaultValue={60}
+  />
+  
+  <Slider 
+    label="Warning"
+    color="warning"
+    min={0}
+    max={100}
+    defaultValue={80}
+  />
+  
+  <Slider 
+    label="Error"
+    color="error"
+    min={0}
+    max={100}
+    defaultValue={90}
+  />
+</div>
+```
+
+## States
+
+### Disabled State
+
+```tsx
+<div className="space-y-4">
+  <Slider 
+    label="Disabled single slider"
+    min={0}
+    max={100}
+    defaultValue={30}
+    disabled
+  />
+  
+  <Slider 
+    label="Disabled range slider"
+    min={0}
+    max={100}
+    defaultValue={[25, 75]}
+    dual
+    disabled
+  />
+</div>
+```
+
+## Custom Formatting
+
+### Custom Value Display
+
+```tsx
+import { useState } from 'react';
+
+function CustomFormattingExample() {
+  const [volume, setVolume] = useState(5);
+  const [bandwidth, setBandwidth] = useState(50);
+  
+  const formatVolume = (value) => {
+    if (value === 0) return 'Muted';
+    if (value <= 3) return 'Low';
+    if (value <= 6) return 'Medium';
+    return 'High';
+  };
+  
+  const formatBandwidth = (value) => {
+    return value >= 100 ? `${value / 100}GB/s` : `${value}MB/s`;
+  };
+  
+  return (
+    <div className="space-y-6">
+      <Slider 
+        label="Volume Level"
+        min={0}
+        max={10}
+        value={volume}
+        onChange={setVolume}
+        formatValue={formatVolume}
+      />
+      
+      <Slider 
+        label="Bandwidth"
+        min={1}
+        max={1000}
+        value={bandwidth}
+        onChange={setBandwidth}
+        formatValue={formatBandwidth}
+      />
+    </div>
+  );
+}
+```
+
+### With Custom Marks
+
+```tsx
+<Slider 
+  label="Performance Level"
+  min={0}
+  max={100}
+  defaultValue={60}
+  marks={[
+    { value: 0, label: 'Low' },
+    { value: 25, label: 'Basic' },
+    { value: 50, label: 'Standard' },
+    { value: 75, label: 'High' },
+    { value: 100, label: 'Ultra' }
+  ]}
+  step={25}
+/>
+```
+
+## Real-World Examples
+
+### Video Player Controls
+
+```tsx
+import { useState } from 'react';
+
+function VideoPlayerControls() {
+  const [currentTime, setCurrentTime] = useState(45);
+  const [volume, setVolume] = useState(75);
+  const [playbackSpeed, setPlaybackSpeed] = useState(1);
+  
+  const totalDuration = 180; // 3 minutes
+  
+  const formatTime = (seconds) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins}:${secs.toString().padStart(2, '0')}`;
+  };
+  
+  return (
+    <Card>
+      <CardContent className="p-6 space-y-6">
+        <div className="text-center">
+          <h3 className="font-semibold mb-2">Video Player Controls</h3>
+          <div className="bg-gray-100 h-32 rounded-lg flex items-center justify-center">
+            Video Player
+          </div>
+        </div>
+        
+        <Slider 
+          label="Timeline"
+          min={0}
+          max={totalDuration}
+          value={currentTime}
+          onChange={setCurrentTime}
+          formatValue={(value) => `${formatTime(value)} / ${formatTime(totalDuration)}`}
+          color="primary"
+        />
+        
+        <div className="grid grid-cols-2 gap-4">
+          <Slider 
+            label="Volume"
+            min={0}
+            max={100}
+            value={volume}
+            onChange={setVolume}
+            suffix="%"
+            size="sm"
+          />
+          
+          <Slider 
+            label="Speed"
+            min={0.25}
+            max={2}
+            step={0.25}
+            value={playbackSpeed}
+            onChange={setPlaybackSpeed}
+            suffix="x"
+            size="sm"
+          />
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+### E-commerce Price Filter
+
+```tsx
+import { useState } from 'react';
+
+function PriceFilter() {
+  const [priceRange, setPriceRange] = useState([50, 500]);
+  const [rating, setRating] = useState(3);
+  
+  return (
+    <Card>
+      <CardHeader>
+        <h3 className="font-semibold">Filters</h3>
+      </CardHeader>
+      
+      <CardContent className="space-y-6">
+        <Slider 
+          label="Price Range"
+          min={0}
+          max={1000}
+          value={priceRange}
+          onChange={setPriceRange}
+          dual
+          prefix="$"
+          step={10}
+        />
+        
+        <Slider 
+          label="Minimum Rating"
+          min={1}
+          max={5}
+          value={rating}
+          onChange={setRating}
+          step={0.5}
+          suffix=" stars"
+          marks={[
+            { value: 1, label: '1★' },
+            { value: 2, label: '2★' },
+            { value: 3, label: '3★' },
+            { value: 4, label: '4★' },
+            { value: 5, label: '5★' }
+          ]}
+        />
+        
+        <div className="pt-4 border-t">
+          <p className="text-sm text-gray-600 mb-2">Selected Filters:</p>
+          <div className="space-y-1 text-sm">
+            <p>Price: ${priceRange[0]} - ${priceRange[1]}</p>
+            <p>Rating: {rating}+ stars</p>
+          </div>
+        </div>
+      </CardContent>
+      
+      <CardFooter>
+        <Button variant="primary" className="w-full">
+          Apply Filters
+        </Button>
+      </CardFooter>
+    </Card>
+  );
+}
+```
+
+### Audio Equalizer
+
+```tsx
+import { useState } from 'react';
+
+function AudioEqualizer() {
+  const [frequencies, setFrequencies] = useState({
+    '60Hz': 0,
+    '170Hz': 0,
+    '310Hz': 0,
+    '600Hz': 0,
+    '1kHz': 0,
+    '3kHz': 0,
+    '6kHz': 0,
+    '12kHz': 0,
+    '14kHz': 0,
+    '16kHz': 0
+  });
+  
+  const updateFrequency = (freq, value) => {
+    setFrequencies(prev => ({ ...prev, [freq]: value }));
+  };
+  
+  return (
+    <Card>
+      <CardHeader>
+        <h3 className="font-semibold">Audio Equalizer</h3>
+        <p className="text-sm text-gray-600">Adjust frequency levels</p>
+      </CardHeader>
+      
+      <CardContent>
+        <div className="grid grid-cols-5 gap-4">
+          {Object.entries(frequencies).map(([freq, value]) => (
+            <div key={freq} className="text-center">
+              <Slider 
+                orientation="vertical"
+                min={-12}
+                max={12}
+                value={value}
+                onChange={(newValue) => updateFrequency(freq, newValue)}
+                height={120}
+                suffix="dB"
+                size="sm"
+              />
+              <p className="text-xs mt-2 font-medium">{freq}</p>
+            </div>
+          ))}
+        </div>
+        
+        <div className="flex justify-center gap-2 mt-6">
+          <Button 
+            variant="outline-default" 
+            size="sm"
+            onClick={() => setFrequencies(Object.fromEntries(
+              Object.keys(frequencies).map(freq => [freq, 0])
+            ))}
+          >
+            Reset
+          </Button>
+          <Button variant="primary" size="sm">
+            Save Preset
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `value` | `number \| [number, number]` | - | Controlled value(s) |
+| `defaultValue` | `number \| [number, number]` | - | Default uncontrolled value(s) |
+| `onChange` | `(value) => void` | - | Change handler |
+| `min` | `number` | `0` | Minimum value |
+| `max` | `number` | `100` | Maximum value |
+| `step` | `number` | `1` | Step increment |
+| `dual` | `boolean` | `false` | Enable dual handle mode |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Slider orientation |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
+| `color` | `'primary' \| 'success' \| 'warning' \| 'error'` | `'primary'` | Color theme |
+| `label` | `string` | - | Label text |
+| `prefix` | `string` | - | Value prefix (e.g., "$") |
+| `suffix` | `string` | - | Value suffix (e.g., "px") |
+| `formatValue` | `(value) => string` | - | Custom value formatter |
+| `marks` | `Array<{value: number, label: string}>` | - | Mark indicators |
+| `disabled` | `boolean` | `false` | Disabled state |
+| `height` | `number` | `200` | Height for vertical sliders |
+| `className` | `string` | - | Additional CSS classes |
+
+## Design Specifications
+
+### Horizontal Slider
+- **Track Height**: Small (4px), Medium (6px), Large (8px)
+- **Handle Size**: Small (16px), Medium (20px), Large (24px)
+- **Border Radius**: Fully rounded
+
+### Vertical Slider
+- **Track Width**: Small (4px), Medium (6px), Large (8px)
+- **Handle Size**: Small (16px), Medium (20px), Large (24px)
+- **Default Height**: 200px
+
+## Accessibility
+
+- **Keyboard Navigation**: Arrow keys for fine control, Page Up/Down for large steps
+- **Screen Readers**: Proper ARIA labels and value announcements
+- **Focus Management**: Clear focus indicators on handles
+- **Touch Support**: Touch-friendly handle sizes for mobile devices
+- **ARIA Attributes**: Uses `role="slider"` with appropriate value attributes
+
+## Best Practices
+
+1. **Clear Labels**: Always provide descriptive labels
+2. **Appropriate Steps**: Choose step values that make sense for your use case
+3. **Visual Feedback**: Show current values clearly
+4. **Range Validation**: Ensure ranges make logical sense
+5. **Touch Targets**: Ensure handles are large enough for touch interaction
+6. **Performance**: Debounce onChange handlers for expensive operations
+
+## Related Components
+
+- [Input](/docs/components/input) - For precise numeric input
+- [Button](/docs/components/button) - For slider actions
+- [Card](/docs/components/card) - For containing slider groups 
