@@ -1,5 +1,5 @@
 /* Import design token CSS variables */
-@import "@forte-ui/tokens/css";
+@import "forteui-tokens/css";
 
 /* Global base styles */
 :root {

@@ -1,6 +1,6 @@
 {
   "name": "forteui-core",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Core React components for ForteUI design system",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -28,7 +28,7 @@
     "clean": "rm -rf dist"
   },
   "dependencies": {
-    "@forte-ui/tokens": "workspace:*",
+    "forteui-tokens": "^0.1.0",
     "@radix-ui/react-slot": "^1.1.1",
     "@radix-ui/react-switch": "^1.2.5",
     "@tabler/icons-react": "^3.33.0",

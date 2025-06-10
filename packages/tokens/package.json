@@ -1,5 +1,5 @@
 {
-  "name": "@forte-ui/tokens",
+  "name": "forteui-tokens",
   "version": "0.1.0",
   "description": "Design tokens for ForteUI component library",
   "main": "./dist/tokens.js",
@@ -16,6 +16,9 @@
   "files": [
     "dist/**/*"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "node build-tokens.mjs",
     "clean": "rm -rf dist"

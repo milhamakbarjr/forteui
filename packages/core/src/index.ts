@@ -66,7 +66,7 @@ export * from "./components/switch";
 export { cn } from "./lib/utils";
 
 // Re-export design tokens for easy access
-export * from "@forte-ui/tokens";
+export * from "forteui-tokens";
 
 // Export icons
 export * from "@tabler/icons-react";
