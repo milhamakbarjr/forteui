@@ -11,13 +11,14 @@ export default async function Page({
   const page = source.getPage(params.slug);
   if (!page) notFound();
 
-  const MDX = page.data.exports.default;
-
+  // For now, let's use a simple div to render content
   return (
-    <DocsPage toc={page.data.exports.toc} full={page.data.full}>
+    <DocsPage toc={[]} full={page.data.full}>
       <DocsBody>
         <h1>{page.data.title}</h1>
-        <MDX />
+        <div>
+          <p>{page.data.description}</p>
+        </div>
       </DocsBody>
     </DocsPage>
   );
