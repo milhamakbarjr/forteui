@@ -1,15 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "next.config.js",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ]
+  "buildCommand": "cd ../.. && bun run build --filter=forteui-docs",
+  "outputDirectory": ".next",
+  "installCommand": "cd ../.. && bun install"
 }
