@@ -9,13 +9,13 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneLight } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 const packageManagers = [
-  { name: 'npm', command: 'npm install @forteui/core' },
-  { name: 'yarn', command: 'yarn add @forteui/core' },
-  { name: 'pnpm', command: 'pnpm add @forteui/core' },
-  { name: 'bun', command: 'bun add @forteui/core' }
+  { name: 'npm', command: 'npm install forteui-core' },
+  { name: 'yarn', command: 'yarn add forteui-core' },
+  { name: 'pnpm', command: 'pnpm add forteui-core' },
+  { name: 'bun', command: 'bun add forteui-core' }
 ];
 
-const usageCode = `import { Button, Card, Input } from '@forteui/core';
+const usageCode = `import { Button, Card, Input } from 'forteui-core';
 
 function App() {
   return (
@@ -106,7 +106,7 @@ export function QuickStart() {
                         <code className="text-xs sm:text-sm font-mono text-gray-800 select-none block truncate sm:overflow-visible">
                           <span className="text-blue-600">{pm.name}</span>{' '}
                           <span className="text-gray-600">{pm.name === 'npm' ? 'install' : 'add'}</span>{' '}
-                          <span className="text-purple-600">@forteui/core</span>
+                          <span className="text-purple-600">forteui-core</span>
                         </code>
                       </div>
                       <div className="opacity-0 group-hover:opacity-100 sm:opacity-100 transition-opacity flex-shrink-0">
