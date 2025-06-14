@@ -1,3 +1,6 @@
+/* Import ForteUI design tokens and base styles */
+@import './forteui.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
