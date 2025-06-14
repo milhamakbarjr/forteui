@@ -12,8 +12,15 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   
+  // Basic production optimizations
+  compiler: {
+    // Remove console.log in production
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
+
   // Performance optimizations
   compress: true,
+  poweredByHeader: false, // Remove X-Powered-By header
   
   // Enable server-side rendering for proper hydration
   // output: 'export', // Commented out to fix hydration issues
@@ -28,9 +35,14 @@ const nextConfig = {
   // Transpile workspace packages
   transpilePackages: ['forteui-core', 'forteui-tokens'],
   
-  // Bundle optimization
+  // Bundle optimization with selective imports
   experimental: {
-    optimizePackageImports: ['forteui-core', 'react-live', 'tailwind-merge'],
+    optimizePackageImports: [
+      'forteui-core', 
+      'react-live', 
+      'tailwind-merge',
+      '@tabler/icons-react'
+    ],
   },
   
   // Enhanced webpack configuration for monorepo
@@ -67,6 +79,18 @@ const nextConfig = {
               name: 'animations',
               chunks: 'all',
               priority: 8,
+            },
+            icons: {
+              test: /[\\/]node_modules[\\/](@tabler\/icons-react)[\\/]/,
+              name: 'icons',
+              chunks: 'all',
+              priority: 7,
+            },
+            ui: {
+              test: /[\\/]node_modules[\\/](fumadocs-ui|fumadocs-core)[\\/]/,
+              name: 'ui-framework',
+              chunks: 'all',
+              priority: 6,
             },
             vendor: {
               test: /[\\/]node_modules[\\/]/,

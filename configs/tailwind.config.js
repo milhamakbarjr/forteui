@@ -8,6 +8,9 @@ export default {
     './apps/*/src/**/*.{js,ts,jsx,tsx}',
     './apps/*/**/*.{js,ts,jsx,tsx}',
   ],
+  // Production optimizations
+  mode: 'jit', // Just-in-time compilation
+  important: false, // Avoid !important cascade issues
   theme: {
     extend: {
       // Font families with Plus Jakarta Sans

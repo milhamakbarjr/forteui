@@ -2,6 +2,7 @@
 
 import { Button, Card, Badge, Avatar, Chip, Input, Switch, Progress, Radio, Checkbox } from '@forteui/core';
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import { FloatingComponentWrapper } from './FloatingComponentWrapper';
@@ -21,13 +22,11 @@ import {
 
 // Runtime validation to ensure components are properly imported
 if (typeof window !== 'undefined') {
-  const requiredComponents = { Button, Card, Badge, Avatar, Chip, Input, Switch, Progress, Radio, Checkbox };
+  const requiredComponents = { Button, Card, Badge, Chip, Input, Switch, Progress, Radio, Checkbox };
   const missingComponents = Object.entries(requiredComponents).filter(([name, component]) => !component);
   
   if (missingComponents.length > 0) {
     console.error('Missing ForteUI components:', missingComponents.map(([name]) => name));
-  } else {
-    console.log('✅ All ForteUI components loaded successfully');
   }
 }
 
@@ -38,8 +37,12 @@ export function Hero() {
 
   useEffect(() => {
     setIsClient(true);
+    
     // Enable animations after component mounts to prevent hydration mismatch
-    const timer = setTimeout(() => setAnimationsEnabled(true), 100);
+    const timer = setTimeout(() => {
+      setAnimationsEnabled(true);
+    }, 100);
+    
     return () => clearTimeout(timer);
   }, []);
 
@@ -67,11 +70,17 @@ export function Hero() {
       component: (
         <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
           <div className="flex items-center gap-3">
-            <Avatar 
-              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
-              alt="User" 
-              size="md" 
-            />
+            <div className="relative w-10 h-10 rounded-full overflow-hidden">
+              <Image
+                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+                alt="User avatar"
+                width={40}
+                height={40}
+                className="object-cover"
+                priority={false}
+                loading="lazy"
+              />
+            </div>
             <div>
               <p className="font-medium text-sm text-gray-900">Alex Chen</p>
               <p className="text-xs text-gray-500">Product Designer</p>
@@ -197,8 +206,10 @@ export function Hero() {
                 transition: { duration: 0.2 }
               }}
               onAnimationComplete={() => {
-                // Log successful animation for debugging
-                console.log(`✅ Animation completed for ${id}`);
+                // Simple completion tracking
+                if (process.env.NODE_ENV === 'development') {
+                  console.log(`Animation completed for ${id}`);
+                }
               }}
             >
               <FloatingComponentWrapper componentId={id}>

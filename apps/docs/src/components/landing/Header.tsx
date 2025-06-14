@@ -6,15 +6,6 @@ import { motion } from 'framer-motion';
 import { IconBrandGithub } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
 
-// Runtime validation for production deployment
-if (typeof window !== 'undefined') {
-  if (!Button) {
-    console.error('❌ ForteUI Button component failed to load');
-  } else {
-    console.log('✅ ForteUI Button component loaded successfully');
-  }
-}
-
 export function Header() {
   const [isClient, setIsClient] = useState(false);
 
@@ -53,7 +44,7 @@ export function Header() {
               className="text-gray-600 hover:text-gray-900 border-transparent hover:border-gray-200"
             >
               <a 
-                href="https://github.com/yourusername/forteui" 
+                href="https://github.com/milhamakbarjr/forteui" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="flex items-center gap-2"

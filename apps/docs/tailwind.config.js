@@ -17,17 +17,21 @@ module.exports = {
     // Animation and gradient classes
     'bg-size-200',
     'bg-pos-0',
-    // Opacity variants for all colors
+    // ForteUI color variants (matching your actual color system)
     {
-      pattern: /(bg|text|border)-(primary|secondary|info|success|warning|error|gray)-(8|12|16|20|24|32|40|48)/,
+      pattern: /(bg|text|border)-(primary|secondary|info|success|warning|error)-(lighter|light|main|dark|darker)/,
+    },
+    // ForteUI opacity variants  
+    {
+      pattern: /(bg|text|border)-(primary|secondary|info|success|warning|error)-(8|12|16|20|24|32|40|48)/,
+    },
+    // Grey scale variants
+    {
+      pattern: /(bg|text|border)-grey-(100|200|300|400|500|600|700|800|900)/,
     },
     // Backdrop blur variants
     {
-      pattern: /backdrop-blur-(sm|md|lg|xl|2xl|3xl)/,
-    },
-    // Transform and animation classes
-    {
-      pattern: /(scale|rotate|translate)-(x|y)?-\d+/,
+      pattern: /backdrop-blur-(sm|md|lg|xl)/,
     },
   ],
   theme: {
