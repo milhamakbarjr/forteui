@@ -40,34 +40,34 @@ export function Footer() {
 
       <div className="relative">
         {/* Main Footer Content */}
-        <div className="max-w-7xl mx-auto px-6 py-16">
-          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 lg:gap-12">
             {/* Brand Section */}
-            <div className="lg:col-span-2">
+            <div className="sm:col-span-2 lg:col-span-2">
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-8 h-8 bg-gradient-to-br from-primary-main to-secondary-main rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-sm">F</span>
+                <div className="flex items-center gap-2 mb-4 sm:mb-6">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-primary-main to-secondary-main rounded-lg flex items-center justify-center">
+                    <span className="text-white font-bold text-xs sm:text-sm">F</span>
                   </div>
-                  <h3 className="text-xl font-bold">ForteUI</h3>
+                  <h3 className="text-lg sm:text-xl font-bold">ForteUI</h3>
                 </div>
                 
-                <p className="text-gray-400 mb-6 leading-relaxed max-w-md">
+                <p className="text-gray-400 mb-4 sm:mb-6 leading-relaxed max-w-md text-sm sm:text-base">
                   A modern React component library built for production applications 
-                  with comprehensive design system and accessibility features.
+                  with comprehensive design system.
                 </p>
 
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
                   <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
                     <Button 
                       asChild 
                       variant="outline-default" 
                       size="sm"
-                      className="border-gray-600 text-gray-300 hover:border-gray-400 hover:text-white"
+                      className="border-gray-600 text-gray-300 hover:border-gray-400 hover:text-white min-h-[44px] px-3 sm:px-4"
                     >
                       <a 
                         href="https://github.com/milhamakbarjr/forteui" 
@@ -75,20 +75,11 @@ export function Footer() {
                         rel="noopener noreferrer"
                         className="flex items-center gap-2"
                       >
-                        <IconBrandGithub size={16} />
-                        Star on GitHub
+                        <IconBrandGithub size={14} className="sm:w-4 sm:h-4" />
+                        <span className="text-xs sm:text-sm">Star on GitHub</span>
                       </a>
                     </Button>
                   </motion.div>
-
-                  {/* <motion.a
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.9 }}
-                    href="#"
-                    className="w-9 h-9 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
-                  >
-                    <IconBrandTwitter size={16} className="text-gray-400 hover:text-white" />
-                  </motion.a> */}
                 </div>
               </motion.div>
             </div>
@@ -101,13 +92,13 @@ export function Footer() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
               >
-                <h4 className="font-semibold mb-4 text-white">Documentation</h4>
-                <ul className="space-y-3">
+                <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Documentation</h4>
+                <ul className="space-y-2 sm:space-y-3">
                   {footerLinks.documentation.map((link) => (
                     <li key={link.label}>
                       <Link 
                         href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors text-sm"
+                        className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                       >
                         {link.label}
                       </Link>
@@ -124,13 +115,13 @@ export function Footer() {
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <h4 className="font-semibold mb-4 text-white">Resources</h4>
-                <ul className="space-y-3">
+                <h4 className="font-semibold mb-3 sm:mb-4 text-white text-sm sm:text-base">Resources</h4>
+                <ul className="space-y-2 sm:space-y-3">
                   {footerLinks.resources.map((link) => (
                     <li key={link.label}>
                       <a 
                         href={link.href}
-                        className="text-gray-400 hover:text-white transition-colors text-sm"
+                        className="text-gray-400 hover:text-white transition-colors text-xs sm:text-sm"
                         target={link.href.startsWith('http') ? '_blank' : undefined}
                         rel={link.href.startsWith('http') ? 'noopener noreferrer' : undefined}
                       >
@@ -170,16 +161,16 @@ export function Footer() {
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-800">
-          <div className="max-w-7xl mx-auto px-6 py-6">
-            <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 sm:py-6">
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 sm:gap-4">
               <motion.div
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true }}
-                className="flex items-center gap-2 text-sm text-gray-400"
+                className="flex items-center gap-2 text-xs sm:text-sm text-gray-400"
               >
                 <span>&copy; 2024 ForteUI. Built with</span>
-                <IconHeart size={16} className="text-red-500" />
+                <IconHeart size={14} className="sm:w-4 sm:h-4 text-red-500" />
                 <span>and Next.js</span>
               </motion.div>
 
@@ -187,10 +178,10 @@ export function Footer() {
                 whileHover={{ y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToTop}
-                className="flex items-center gap-2 px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-gray-300 hover:text-white transition-colors text-sm"
+                className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-gray-800 hover:bg-gray-700 rounded-lg text-gray-300 hover:text-white transition-colors text-xs sm:text-sm min-h-[44px]"
               >
-                <IconArrowUp size={16} />
-                Back to top
+                <IconArrowUp size={14} className="sm:w-4 sm:h-4" />
+                <span>Back to top</span>
               </motion.button>
             </div>
           </div>
