@@ -1,8 +1,6 @@
 import { 
   Header, 
   Hero, 
-  ComponentShowcase, 
-  SocialProof, 
   QuickStart, 
   Footer 
 } from '../components/landing';
@@ -13,8 +11,6 @@ export default function HomePage() {
       <Header />
       <main>
         <Hero />
-        <ComponentShowcase />
-        <SocialProof />
         <QuickStart />
       </main>
       <Footer />
