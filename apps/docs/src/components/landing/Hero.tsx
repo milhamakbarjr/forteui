@@ -1,9 +1,21 @@
 'use client';
 
-import { Button } from '@forteui/core';
+import { Button, Card, Badge, Avatar, Chip, Input, Switch, Progress, Radio, Checkbox } from '@forteui/core';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { IconArrowRight, IconSparkles, IconCode, IconPalette } from '@tabler/icons-react';
+import { 
+  IconArrowRight, 
+  IconSparkles, 
+  IconBell,
+  IconSearch,
+  IconHeart,
+  IconStar,
+  IconCheck,
+  IconWifi,
+  IconSettings,
+  IconDownload,
+  IconTrendingUp
+} from '@tabler/icons-react';
 
 export function Hero() {
   const containerVariants = {
@@ -22,47 +34,281 @@ export function Hero() {
     visible: { opacity: 1, y: 0 }
   };
 
-  const floatingIcons = [
-    { icon: IconCode, delay: 0, x: -20, y: -30 },
-    { icon: IconPalette, delay: 1, x: 20, y: -20 },
-    { icon: IconSparkles, delay: 2, x: -15, y: 25 }
+  const floatingComponents = [
+    // Top row - well spaced
+    {
+      id: 'avatar-card',
+      component: (
+        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
+          <div className="flex items-center gap-3">
+            <Avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User" size="md" />
+            <div>
+              <p className="font-medium text-sm text-gray-900">Alex Chen</p>
+              <p className="text-xs text-gray-500">Product Designer</p>
+            </div>
+          </div>
+        </Card>
+      ),
+      position: { left: '5%', top: '15%' },
+      rotation: -8,
+      delay: 0.5,
+      duration: 12,
+      zIndex: 10
+    },
+    {
+      id: 'progress-card',
+      component: (
+        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 w-48">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <span className="text-sm font-medium text-gray-700">Upload Progress</span>
+              <span className="text-xs text-gray-500">78%</span>
+            </div>
+            <Progress value={78} className="h-2" />
+          </div>
+        </Card>
+      ),
+      position: { right: '6%', top: '12%' },
+      rotation: 6,
+      delay: 1.2,
+      duration: 10,
+      zIndex: 12
+    },
+    
+    // Middle left column
+    {
+      id: 'switch-card',
+      component: (
+        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <IconWifi size={16} className="text-blue-500" />
+                <span className="text-sm font-medium text-gray-700">WiFi</span>
+              </div>
+              <Switch defaultChecked />
+            </div>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <IconBell size={16} className="text-orange-500" />
+                <span className="text-sm font-medium text-gray-700">Notifications</span>
+              </div>
+              <Switch />
+            </div>
+          </div>
+        </Card>
+      ),
+      position: { left: '2%', top: '45%' },
+      rotation: -12,
+      delay: 2,
+      duration: 14,
+      zIndex: 8
+    },
+    {
+      id: 'stats-mini',
+      component: (
+        <Card className="p-3 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+              <IconTrendingUp size={16} className="text-green-600" />
+            </div>
+            <div>
+              <p className="text-lg font-bold text-gray-900">2.4k</p>
+              <p className="text-xs text-gray-500">Downloads today</p>
+            </div>
+          </div>
+        </Card>
+      ),
+      position: { left: '8%', top: '75%' },
+      rotation: 15,
+      delay: 2.8,
+      duration: 11,
+      zIndex: 9
+    },
+
+    // Middle right column  
+    {
+      id: 'notification-toast',
+      component: (
+        <Card className="p-3 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 border-l-4 border-l-green-500">
+          <div className="flex items-center gap-2">
+            <IconCheck size={16} className="text-green-500" />
+            <span className="text-sm text-gray-700">Component installed successfully!</span>
+          </div>
+        </Card>
+      ),
+      position: { right: '4%', top: '40%' },
+      rotation: 8,
+      delay: 1.8,
+      duration: 13,
+      zIndex: 11
+    },
+    {
+      id: 'radio-group',
+      component: (
+        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
+          <div className="space-y-2">
+            <p className="text-sm font-medium text-gray-700 mb-3">Theme Preference</p>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <Radio name="theme" value="light" defaultChecked />
+                <span className="text-sm text-gray-600">Light</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Radio name="theme" value="dark" />
+                <span className="text-sm text-gray-600">Dark</span>
+              </div>
+            </div>
+          </div>
+        </Card>
+      ),
+      position: { right: '10%', top: '65%' },
+      rotation: -10,
+      delay: 3.2,
+      duration: 9,
+      zIndex: 7
+    },
+
+    // Bottom row
+    {
+      id: 'badge-collection',
+      component: (
+        <div className="flex gap-2 p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/60">
+          <Badge variant="success">
+            <IconCheck size={12} className="mr-1" />
+            Verified
+          </Badge>
+          <Badge variant="primary">
+            <IconStar size={12} className="mr-1" />
+            Premium
+          </Badge>
+          <Badge variant="warning">
+            <IconDownload size={12} className="mr-1" />
+            New
+          </Badge>
+        </div>
+      ),
+      position: { left: '25%', bottom: '18%' },
+      rotation: 4,
+      delay: 2.5,
+      duration: 15,
+      zIndex: 6
+    },
+    {
+      id: 'search-input',
+      component: (
+        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 w-64">
+          <div className="space-y-3">
+            <div className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
+              <IconSearch size={16} className="text-gray-400" />
+              <span className="text-sm text-gray-500">Search components...</span>
+            </div>
+            <div className="flex gap-1 flex-wrap">
+              <Chip size="small" variant="outlined">Button</Chip>
+              <Chip size="small" variant="outlined">Input</Chip>
+              <Chip size="small" variant="filled">Card</Chip>
+            </div>
+          </div>
+        </Card>
+      ),
+      position: { right: '20%', bottom: '15%' },
+      rotation: -7,
+      delay: 1.5,
+      duration: 12,
+      zIndex: 13
+    },
+
+    // Edge components (partially visible for dynamic effect)
+    {
+      id: 'settings-panel',
+      component: (
+        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
+          <div className="flex items-center gap-3">
+            <IconSettings size={20} className="text-gray-600" />
+            <div>
+              <p className="text-sm font-medium text-gray-700">System Settings</p>
+              <div className="flex items-center gap-2 mt-1">
+                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                <span className="text-xs text-gray-500">3 updates available</span>
+              </div>
+            </div>
+          </div>
+        </Card>
+      ),
+      position: { left: '-5%', top: '35%' }, // Partially off-screen 
+      rotation: -15,
+      delay: 4,
+      duration: 16,
+      zIndex: 5
+    },
+    {
+      id: 'action-buttons',
+      component: (
+        <Card className="p-3 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
+          <div className="flex gap-2">
+            <Button size="sm" variant="primary">
+              <IconHeart size={14} className="mr-1" />
+              Like
+            </Button>
+            <Button size="sm" variant="outline-default">
+              <IconSettings size={14} className="mr-1" />
+              Config
+            </Button>
+          </div>
+        </Card>
+      ),
+      position: { right: '-8%', top: '25%' }, // Partially off-screen
+      rotation: 12,
+      delay: 3.5,
+      duration: 8,
+      zIndex: 14
+    }
   ];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
+    <section className="relative min-h-screen flex items-start justify-center px-6 overflow-hidden pt-20">
       {/* Background Gradients */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary-50/30" />
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-secondary-50/20 to-transparent" />
       
       {/* Floating Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {floatingIcons.map(({ icon: Icon, delay, x, y }, index) => (
+        {/* Floating UI Components */}
+        {floatingComponents.map(({ id, component, position, rotation, delay, duration, zIndex }) => (
           <motion.div
-            key={index}
-            className="absolute text-primary-200"
+            key={id}
+            className="absolute hidden lg:block pointer-events-auto"
             style={{
-              left: `${20 + (index * 30)}%`,
-              top: `${30 + (index * 20)}%`,
+              ...position,
+              transform: `rotate(${rotation}deg)`,
+              zIndex: zIndex,
             }}
-            animate={{
-              y: [y, y - 10, y],
-              x: [x, x + 5, x],
-              rotate: [0, 5, -5, 0],
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ 
+              opacity: 1, 
+              y: [0, -8, 0], 
+              scale: 1,
+              rotate: [rotation, rotation + 2, rotation - 2, rotation],
             }}
             transition={{
-              duration: 6,
-              repeat: Infinity,
-              delay: delay,
-              ease: "easeInOut"
+              opacity: { duration: 1, delay },
+              scale: { duration: 1, delay },
+              rotate: { duration: duration, repeat: Infinity, ease: "easeInOut" },
+              y: { duration: duration, repeat: Infinity, ease: "easeInOut", delay }
+            }}
+            whileHover={{ 
+              scale: 1.05,
+              rotate: rotation + 5,
+              transition: { duration: 0.2 }
             }}
           >
-            <Icon size={24} />
+            {component}
           </motion.div>
         ))}
       </div>
 
       <motion.div 
-        className="relative max-w-6xl mx-auto text-center z-10"
+        className="relative max-w-6xl mx-auto text-center z-20"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
@@ -108,7 +354,7 @@ export function Hero() {
         </motion.p>
 
         <motion.div 
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-16"
+          className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
           variants={itemVariants}
         >
           <motion.div
@@ -132,40 +378,6 @@ export function Hero() {
             </Button>
           </motion.div>
         </motion.div>
-
-        {/* Feature highlights */}
-        <motion.div 
-          className="grid grid-cols-2 md:grid-cols-4 gap-6 text-sm text-gray-600 max-w-2xl mx-auto"
-          variants={itemVariants}
-        >
-          {[
-            { label: "TypeScript", icon: "🔷" },
-            { label: "Accessible", icon: "♿" },
-            { label: "Mobile First", icon: "📱" },
-            { label: "Open Source", icon: "🌟" }
-          ].map((feature, index) => (
-            <motion.div 
-              key={feature.label}
-              className="flex items-center gap-2 justify-center"
-              whileHover={{ y: -2 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
-            >
-              <span className="text-primary-main">{feature.icon}</span>
-              <span className="font-medium">{feature.label}</span>
-            </motion.div>
-          ))}
-        </motion.div>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <div className="w-6 h-10 border-2 border-gray-300 rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-gray-400 rounded-full mt-2" />
-        </div>
       </motion.div>
     </section>
   );
