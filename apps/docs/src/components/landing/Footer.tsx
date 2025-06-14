@@ -14,7 +14,7 @@ const footerLinks = {
   ],
   resources: [
     { label: 'GitHub', href: 'https://github.com/milhamakbarjr/forteui' },
-    { label: 'NPM Package', href: 'https://npmjs.com/package/@forteui/core' },
+    { label: 'NPM Package', href: 'https://www.npmjs.com/package/forteui-core' },
     // { label: 'Changelog', href: '/changelog' },
     // { label: 'Contributing', href: '/contributing' }
   ],
