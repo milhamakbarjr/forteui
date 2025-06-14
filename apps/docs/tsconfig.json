@@ -21,6 +21,7 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
+      "@/.source": ["./.source"],
       "@/components/*": ["./src/components/*"],
       "@/content/*": ["./content/*"],
       "@forteui/core": ["../../packages/core/src"],
