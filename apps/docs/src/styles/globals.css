@@ -2,8 +2,34 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Import Plus Jakarta Sans from Google Fonts directly */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap');
+/* Plus Jakarta Sans is loaded via Next.js font optimization in layout.tsx */
+/* Removed duplicate Google Fonts import to prevent loading conflicts */
+
+@layer utilities {
+  /* Custom background utilities for gradient animations */
+  .bg-size-200 {
+    background-size: 200% 100%;
+  }
+  
+  .bg-pos-0 {
+    background-position: 0%;
+  }
+  
+  .bg-pos-100 {
+    background-position: 100%;
+  }
+  
+  /* Ensure backdrop blur works consistently */
+  .backdrop-blur-xl {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+  
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+  }
+}
 
 @layer components {
   /* Custom documentation styles */

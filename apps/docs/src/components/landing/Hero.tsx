@@ -2,7 +2,9 @@
 
 import { Button, Card, Badge, Avatar, Chip, Input, Switch, Progress, Radio, Checkbox } from '@forteui/core';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { FloatingComponentWrapper } from './FloatingComponentWrapper';
 import { 
   IconArrowRight, 
   IconSparkles, 
@@ -17,7 +19,30 @@ import {
   IconTrendingUp
 } from '@tabler/icons-react';
 
+// Runtime validation to ensure components are properly imported
+if (typeof window !== 'undefined') {
+  const requiredComponents = { Button, Card, Badge, Avatar, Chip, Input, Switch, Progress, Radio, Checkbox };
+  const missingComponents = Object.entries(requiredComponents).filter(([name, component]) => !component);
+  
+  if (missingComponents.length > 0) {
+    console.error('Missing ForteUI components:', missingComponents.map(([name]) => name));
+  } else {
+    console.log('✅ All ForteUI components loaded successfully');
+  }
+}
+
 export function Hero() {
+  // Hydration-safe animation state
+  const [isClient, setIsClient] = useState(false);
+  const [animationsEnabled, setAnimationsEnabled] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    // Enable animations after component mounts to prevent hydration mismatch
+    const timer = setTimeout(() => setAnimationsEnabled(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -34,14 +59,19 @@ export function Hero() {
     visible: { opacity: 1, y: 0 }
   };
 
+  // Simplified floating components for better stability
   const floatingComponents = [
-    // Top row - well spaced
+    // Core components - most stable
     {
       id: 'avatar-card',
       component: (
         <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
           <div className="flex items-center gap-3">
-            <Avatar src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" alt="User" size="md" />
+            <Avatar 
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face" 
+              alt="User" 
+              size="md" 
+            />
             <div>
               <p className="font-medium text-sm text-gray-900">Alex Chen</p>
               <p className="text-xs text-gray-500">Product Designer</p>
@@ -49,11 +79,9 @@ export function Hero() {
           </div>
         </Card>
       ),
-      position: { left: '5%', top: '15%' },
-      rotation: -8,
-      delay: 0.5,
-      duration: 12,
-      zIndex: 10
+      position: { left: '5%', top: '20%' },
+      rotation: -5,
+      delay: 0.5
     },
     {
       id: 'progress-card',
@@ -61,115 +89,31 @@ export function Hero() {
         <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 w-48">
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700">Upload Progress</span>
+              <span className="text-sm font-medium text-gray-700">Progress</span>
               <span className="text-xs text-gray-500">78%</span>
             </div>
             <Progress value={78} className="h-2" />
           </div>
         </Card>
       ),
-      position: { right: '6%', top: '12%' },
-      rotation: 6,
-      delay: 1.2,
-      duration: 10,
-      zIndex: 12
-    },
-    
-    // Middle left column
-    {
-      id: 'switch-card',
-      component: (
-        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <IconWifi size={16} className="text-blue-500" />
-                <span className="text-sm font-medium text-gray-700">WiFi</span>
-              </div>
-              <Switch defaultChecked />
-            </div>
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <IconBell size={16} className="text-orange-500" />
-                <span className="text-sm font-medium text-gray-700">Notifications</span>
-              </div>
-              <Switch />
-            </div>
-          </div>
-        </Card>
-      ),
-      position: { left: '2%', top: '45%' },
-      rotation: -12,
-      delay: 2,
-      duration: 14,
-      zIndex: 8
+      position: { right: '8%', top: '15%' },
+      rotation: 5,
+      delay: 1.0
     },
     {
-      id: 'stats-mini',
-      component: (
-        <Card className="p-3 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
-              <IconTrendingUp size={16} className="text-green-600" />
-            </div>
-            <div>
-              <p className="text-lg font-bold text-gray-900">2.4k</p>
-              <p className="text-xs text-gray-500">Downloads today</p>
-            </div>
-          </div>
-        </Card>
-      ),
-      position: { left: '8%', top: '75%' },
-      rotation: 15,
-      delay: 2.8,
-      duration: 11,
-      zIndex: 9
-    },
-
-    // Middle right column  
-    {
-      id: 'notification-toast',
+      id: 'notification-card',
       component: (
         <Card className="p-3 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 border-l-4 border-l-green-500">
           <div className="flex items-center gap-2">
             <IconCheck size={16} className="text-green-500" />
-            <span className="text-sm text-gray-700">Component installed successfully!</span>
+            <span className="text-sm text-gray-700">Success!</span>
           </div>
         </Card>
       ),
-      position: { right: '4%', top: '40%' },
+      position: { right: '5%', top: '45%' },
       rotation: 8,
-      delay: 1.8,
-      duration: 13,
-      zIndex: 11
+      delay: 1.5
     },
-    {
-      id: 'radio-group',
-      component: (
-        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
-          <div className="space-y-2">
-            <p className="text-sm font-medium text-gray-700 mb-3">Theme Preference</p>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <Radio name="theme" value="light" defaultChecked />
-                <span className="text-sm text-gray-600">Light</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Radio name="theme" value="dark" />
-                <span className="text-sm text-gray-600">Dark</span>
-              </div>
-            </div>
-          </div>
-        </Card>
-      ),
-      position: { right: '10%', top: '65%' },
-      rotation: -10,
-      delay: 3.2,
-      duration: 9,
-      zIndex: 7
-    },
-
-    // Bottom row
     {
       id: 'badge-collection',
       component: (
@@ -182,129 +126,106 @@ export function Hero() {
             <IconStar size={12} className="mr-1" />
             Premium
           </Badge>
-          <Badge variant="warning">
-            <IconDownload size={12} className="mr-1" />
-            New
-          </Badge>
         </div>
       ),
-      position: { left: '25%', bottom: '18%' },
-      rotation: 4,
-      delay: 2.5,
-      duration: 15,
-      zIndex: 6
+      position: { left: '8%', bottom: '25%' },
+      rotation: -3,
+      delay: 2.0
     },
     {
-      id: 'search-input',
+      id: 'search-card',
       component: (
-        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 w-64">
+        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 w-56">
           <div className="space-y-3">
             <div className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
               <IconSearch size={16} className="text-gray-400" />
-              <span className="text-sm text-gray-500">Search components...</span>
+              <span className="text-sm text-gray-500">Search...</span>
             </div>
             <div className="flex gap-1 flex-wrap">
               <Chip size="small" variant="outlined">Button</Chip>
-              <Chip size="small" variant="outlined">Input</Chip>
               <Chip size="small" variant="filled">Card</Chip>
             </div>
           </div>
         </Card>
       ),
-      position: { right: '20%', bottom: '15%' },
-      rotation: -7,
-      delay: 1.5,
-      duration: 12,
-      zIndex: 13
-    },
-
-    // Edge components (partially visible for dynamic effect)
-    {
-      id: 'settings-panel',
-      component: (
-        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
-          <div className="flex items-center gap-3">
-            <IconSettings size={20} className="text-gray-600" />
-            <div>
-              <p className="text-sm font-medium text-gray-700">System Settings</p>
-              <div className="flex items-center gap-2 mt-1">
-                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                <span className="text-xs text-gray-500">3 updates available</span>
-              </div>
-            </div>
-          </div>
-        </Card>
-      ),
-      position: { left: '-5%', top: '35%' }, // Partially off-screen 
-      rotation: -15,
-      delay: 4,
-      duration: 16,
-      zIndex: 5
-    },
-    {
-      id: 'action-buttons',
-      component: (
-        <Card className="p-3 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
-          <div className="flex gap-2">
-            <Button size="sm" variant="primary">
-              <IconHeart size={14} className="mr-1" />
-              Like
-            </Button>
-            <Button size="sm" variant="outline-default">
-              <IconSettings size={14} className="mr-1" />
-              Config
-            </Button>
-          </div>
-        </Card>
-      ),
-      position: { right: '-8%', top: '25%' }, // Partially off-screen
-      rotation: 12,
-      delay: 3.5,
-      duration: 8,
-      zIndex: 14
+      position: { right: '15%', bottom: '20%' },
+      rotation: -6,
+      delay: 2.5
     }
   ];
 
   return (
     <section className="relative min-h-screen flex items-start justify-center px-6 overflow-hidden pt-20">
-      {/* Background Gradients */}
+      {/* Enhanced Background Gradients */}
       <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary-50/30" />
       <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-secondary-50/20 to-transparent" />
       
+      {/* Additional background effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-100/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-secondary-100/20 via-transparent to-transparent" />
+      
       {/* Floating Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating UI Components */}
-        {floatingComponents.map(({ id, component, position, rotation, delay, duration, zIndex }) => (
-          <motion.div
-            key={id}
-            className="absolute hidden lg:block pointer-events-auto"
-            style={{
-              ...position,
-              transform: `rotate(${rotation}deg)`,
-              zIndex: zIndex,
-            }}
-            initial={{ opacity: 0, y: 20, scale: 0.8 }}
-            animate={{ 
-              opacity: 1, 
-              y: [0, -8, 0], 
-              scale: 1,
-              rotate: [rotation, rotation + 2, rotation - 2, rotation],
-            }}
-            transition={{
-              opacity: { duration: 1, delay },
-              scale: { duration: 1, delay },
-              rotate: { duration: duration, repeat: Infinity, ease: "easeInOut" },
-              y: { duration: duration, repeat: Infinity, ease: "easeInOut", delay }
-            }}
-            whileHover={{ 
-              scale: 1.05,
-              rotate: rotation + 5,
-              transition: { duration: 0.2 }
-            }}
-          >
-            {component}
-          </motion.div>
-        ))}
+        {/* Floating UI Components - Only render if client-side and animations enabled */}
+        <AnimatePresence>
+          {isClient && floatingComponents.map(({ id, component, position, rotation, delay }) => (
+            <motion.div
+              key={id}
+              className="absolute hidden lg:block pointer-events-auto"
+              style={{
+                ...position,
+                transform: `rotate(${rotation}deg)`,
+                zIndex: 10,
+              }}
+              initial={{ opacity: 0, y: 20, scale: 0.8 }}
+              animate={animationsEnabled ? { 
+                opacity: 1, 
+                y: [0, -6, 0], 
+                scale: 1,
+                rotate: [rotation, rotation + 1, rotation - 1, rotation],
+              } : { opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{
+                opacity: { duration: 1, delay },
+                scale: { duration: 1, delay },
+                rotate: { duration: 8, repeat: Infinity, ease: "easeInOut" },
+                y: { duration: 6, repeat: Infinity, ease: "easeInOut", delay }
+              }}
+              whileHover={{ 
+                scale: 1.05,
+                rotate: rotation + 3,
+                transition: { duration: 0.2 }
+              }}
+              onAnimationComplete={() => {
+                // Log successful animation for debugging
+                console.log(`✅ Animation completed for ${id}`);
+              }}
+            >
+              <FloatingComponentWrapper componentId={id}>
+                {component}
+              </FloatingComponentWrapper>
+            </motion.div>
+          ))}
+        </AnimatePresence>
+        
+        {/* Fallback static components for better compatibility */}
+        {!isClient && (
+          <div className="hidden lg:block">
+            {floatingComponents.slice(0, 3).map(({ id, component, position, rotation }) => (
+              <div
+                key={`fallback-${id}`}
+                className="absolute pointer-events-auto opacity-80"
+                style={{
+                  ...position,
+                  transform: `rotate(${rotation}deg)`,
+                  zIndex: 10,
+                }}
+              >
+                {component}
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <motion.div 
@@ -328,17 +249,18 @@ export function Hero() {
           <br className="hidden sm:block" />
           with{' '}
           <motion.span 
-            className="text-transparent bg-clip-text bg-gradient-to-r from-primary-main via-secondary-main to-primary-main bg-size-200 bg-pos-0"
-            animate={{
-              backgroundPosition: ['0%', '100%', '0%']
+            className="text-transparent bg-clip-text bg-gradient-to-r from-primary-main via-secondary-main to-primary-main"
+            style={{
+              backgroundSize: '200% 100%',
+              backgroundPosition: '0%'
             }}
+            animate={animationsEnabled ? {
+              backgroundPosition: ['0%', '100%', '0%']
+            } : {}}
             transition={{
               duration: 8,
               repeat: Infinity,
               ease: "linear"
-            }}
-            style={{
-              backgroundSize: '200% 100%'
             }}
           >
             ForteUI

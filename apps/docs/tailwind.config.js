@@ -12,6 +12,24 @@ module.exports = {
     // Include ForteUI components for documentation
     "../../packages/core/src/**/*.{js,ts,jsx,tsx}",
   ],
+  // Safelist important classes that might be used dynamically
+  safelist: [
+    // Animation and gradient classes
+    'bg-size-200',
+    'bg-pos-0',
+    // Opacity variants for all colors
+    {
+      pattern: /(bg|text|border)-(primary|secondary|info|success|warning|error|gray)-(8|12|16|20|24|32|40|48)/,
+    },
+    // Backdrop blur variants
+    {
+      pattern: /backdrop-blur-(sm|md|lg|xl|2xl|3xl)/,
+    },
+    // Transform and animation classes
+    {
+      pattern: /(scale|rotate|translate)-(x|y)?-\d+/,
+    },
+  ],
   theme: {
     ...baseConfig.theme,
     extend: {

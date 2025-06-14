@@ -11,11 +11,15 @@ const ClientProviders = dynamic(() => import('@/components/ClientProviders'), {
 const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
+  display: 'swap', // Add font-display: swap for better loading performance
+  fallback: ['system-ui', 'Arial', 'sans-serif'], // Add fallback fonts
 });
 
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
+  display: 'swap',
+  fallback: ['system-ui', 'Arial', 'sans-serif'],
 });
 
 export const viewport: Viewport = {
@@ -172,9 +176,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link rel="preload" href="/fonts/plus-jakarta-sans.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
       </head>
       <body className="font-sans antialiased font-medium">
         <ClientProviders>

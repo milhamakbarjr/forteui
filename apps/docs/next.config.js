@@ -15,13 +15,14 @@ const nextConfig = {
   // Performance optimizations
   compress: true,
   
-  // Static export optimization
-  output: 'export',
+  // Enable server-side rendering for proper hydration
+  // output: 'export', // Commented out to fix hydration issues
   trailingSlash: true,
   
-  // Image optimization for static export
+  // Image optimization
   images: {
-    unoptimized: true,
+    domains: ['images.unsplash.com'], // Add domains for external images
+    unoptimized: false, // Enable image optimization
   },
   
   // Transpile workspace packages
@@ -29,16 +30,19 @@ const nextConfig = {
   
   // Bundle optimization
   experimental: {
-    optimizePackageImports: ['@forteui/core', 'react-live', 'tailwind-merge'],
+    optimizePackageImports: ['forteui-core', 'react-live', 'tailwind-merge'],
   },
   
   // Enhanced webpack configuration for monorepo
   webpack: (config, { dev, isServer }) => {
-    // Handle workspace protocol imports
+    // Handle workspace protocol imports and fix package resolution
     config.resolve.alias = {
       ...config.resolve.alias,
       '@forteui/core': require.resolve('forteui-core'),
       '@forteui/tokens': require.resolve('forteui-tokens'),
+      // Add fallback for when packages are not found
+      'forteui-core': require.resolve('forteui-core'),
+      'forteui-tokens': require.resolve('forteui-tokens'),
     };
     
     // Optimize for smaller bundles in production
@@ -46,7 +50,7 @@ const nextConfig = {
       config.optimization.usedExports = true;
       config.optimization.sideEffects = false;
       
-      // Split chunks for better caching
+      // Enhanced chunk splitting for better caching and animation libraries
       if (!isServer) {
         config.optimization.splitChunks = {
           ...config.optimization.splitChunks,
@@ -58,6 +62,12 @@ const nextConfig = {
               chunks: 'all',
               priority: 10,
             },
+            animations: {
+              test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
+              name: 'animations',
+              chunks: 'all',
+              priority: 8,
+            },
             vendor: {
               test: /[\\/]node_modules[\\/]/,
               name: 'vendors',
@@ -68,8 +78,6 @@ const nextConfig = {
         };
       }
     }
-    
-    // No need for custom CSS loader - Next.js handles this
     
     return config;
   },

@@ -227,7 +227,31 @@ export default {
         bold: '700',
         extrabold: '800',
       },
+
+      // Custom background utilities for animations
+      backgroundSize: {
+        '200': '200% 100%',
+      },
+      backgroundPosition: {
+        '0': '0%',
+        '100': '100%',
+      },
     },
   },
-  plugins: [],
+  plugins: [
+    // Add custom utilities plugin
+    function({ addUtilities }) {
+      addUtilities({
+        '.bg-size-200': {
+          'background-size': '200% 100%',
+        },
+        '.bg-pos-0': {
+          'background-position': '0%',
+        },
+        '.bg-pos-100': {
+          'background-position': '100%',
+        },
+      });
+    },
+  ],
 };
