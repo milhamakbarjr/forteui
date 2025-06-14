@@ -33,7 +33,7 @@ export function Header() {
             <Button 
               asChild 
               variant="outline-default" 
-              size="sm"
+              size="md"
               className="text-gray-600 hover:text-gray-900 border-transparent hover:border-gray-200"
             >
               <a 
@@ -47,11 +47,11 @@ export function Header() {
               </a>
             </Button>
             
-            <Button asChild variant="outline-default" size="sm">
+            <Button asChild variant="outline-default" size="md">
               <Link href="/docs/introduction">Docs</Link>
             </Button>
             
-            <Button asChild variant="primary" size="sm">
+            <Button asChild variant="primary" size="md">
               <Link href="/docs/getting-started">Get Started</Link>
             </Button>
           </div>
