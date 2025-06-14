@@ -357,26 +357,16 @@ export function Hero() {
           className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
           variants={itemVariants}
         >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button asChild variant="primary" size="lg" className="text-base px-8 py-4">
-              <Link href="/docs/getting-started" className="flex items-center gap-2">
-                Get Started
-                <IconArrowRight size={18} />
-              </Link>
-            </Button>
-          </motion.div>
+          <Button asChild variant="primary" size="lg" className="text-base px-8 py-4">
+            <Link href="/docs/getting-started" className="flex items-center gap-2">
+              Get Started
+              <IconArrowRight size={18} />
+            </Link>
+          </Button>
           
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <Button asChild variant="outline-default" size="lg" className="text-base px-8 py-4">
-              <Link href="/docs/components">View Components</Link>
-            </Button>
-          </motion.div>
+          <Button asChild variant="outline-default" size="lg" className="text-base px-8 py-4">
+            <Link href="/docs/components">View Components</Link>
+          </Button>
         </motion.div>
       </motion.div>
     </section>
