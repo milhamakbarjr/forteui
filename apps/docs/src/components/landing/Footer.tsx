@@ -13,17 +13,17 @@ const footerLinks = {
     { label: 'Design System', href: '/docs/design-system' }
   ],
   resources: [
-    { label: 'GitHub', href: 'https://github.com/yourusername/forteui' },
+    { label: 'GitHub', href: 'https://github.com/milhamakbarjr/forteui' },
     { label: 'NPM Package', href: 'https://npmjs.com/package/@forteui/core' },
-    { label: 'Changelog', href: '/changelog' },
-    { label: 'Contributing', href: '/contributing' }
+    // { label: 'Changelog', href: '/changelog' },
+    // { label: 'Contributing', href: '/contributing' }
   ],
-  community: [
-    { label: 'Discord', href: '#' },
-    { label: 'Twitter', href: '#' },
-    { label: 'Discussions', href: '#' },
-    { label: 'Report Issues', href: '#' }
-  ]
+  // community: [
+  //   { label: 'Discord', href: '#' },
+  //   { label: 'Twitter', href: '#' },
+  //   { label: 'Discussions', href: '#' },
+  //   { label: 'Report Issues', href: '#' }
+  // ]
 };
 
 export function Footer() {
@@ -70,7 +70,7 @@ export function Footer() {
                       className="border-gray-600 text-gray-300 hover:border-gray-400 hover:text-white"
                     >
                       <a 
-                        href="https://github.com/yourusername/forteui" 
+                        href="https://github.com/milhamakbarjr/forteui" 
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="flex items-center gap-2"
@@ -81,14 +81,14 @@ export function Footer() {
                     </Button>
                   </motion.div>
 
-                  <motion.a
+                  {/* <motion.a
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     href="#"
                     className="w-9 h-9 bg-gray-800 hover:bg-gray-700 rounded-lg flex items-center justify-center transition-colors"
                   >
                     <IconBrandTwitter size={16} className="text-gray-400 hover:text-white" />
-                  </motion.a>
+                  </motion.a> */}
                 </div>
               </motion.div>
             </div>
@@ -142,7 +142,8 @@ export function Footer() {
               </motion.div>
             </div>
 
-            <div>
+            {/* Community Section - Commented out until setup is complete */}
+            {/* <div>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -163,7 +164,7 @@ export function Footer() {
                   ))}
                 </ul>
               </motion.div>
-            </div>
+            </div> */}
           </div>
         </div>
 
