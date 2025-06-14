@@ -5,6 +5,27 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Additional production fixes for CSS loading */
+@layer base {
+  /* Ensure root variables are always available */
+  :root {
+    /* Re-declare critical colors for production fallback */
+    --color-primary-main: #0690F4;
+    --color-secondary-main: #9138FF;
+    --color-base-white: #ffffff;
+    --color-base-black: #0B0C0E;
+    --color-gray-50: #FAFAFA;
+    --color-gray-100: #F5F5F5;
+    --color-gray-900: #171717;
+  }
+  
+  /* Ensure body has proper background */
+  body {
+    background-color: var(--color-base-white, #ffffff);
+    color: var(--color-gray-900, #171717);
+  }
+}
+
 /* Plus Jakarta Sans is loaded via Next.js font optimization in layout.tsx */
 /* Removed duplicate Google Fonts import to prevent loading conflicts */
 

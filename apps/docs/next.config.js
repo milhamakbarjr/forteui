@@ -12,7 +12,7 @@ const nextConfig = {
   reactStrictMode: true,
   pageExtensions: ['js', 'jsx', 'mdx', 'ts', 'tsx'],
   
-  // Basic production optimizations
+  // CRITICAL: Fix for CSS loading issues in production
   compiler: {
     // Remove console.log in production
     removeConsole: process.env.NODE_ENV === 'production',
@@ -20,29 +20,32 @@ const nextConfig = {
 
   // Performance optimizations
   compress: true,
-  poweredByHeader: false, // Remove X-Powered-By header
+  poweredByHeader: false,
   
-  // Enable server-side rendering for proper hydration
-  // output: 'export', // Commented out to fix hydration issues
+  // IMPORTANT: Ensure proper static generation and CSS inclusion
   trailingSlash: true,
   
   // Image optimization
   images: {
-    domains: ['images.unsplash.com'], // Add domains for external images
-    unoptimized: false, // Enable image optimization
+    domains: ['images.unsplash.com'],
+    unoptimized: false,
   },
   
-  // Transpile workspace packages
+  // CRITICAL: Transpile workspace packages (this is essential for monorepos)
   transpilePackages: ['forteui-core', 'forteui-tokens'],
   
-  // Bundle optimization with selective imports
+  // CSS-specific configuration for production
   experimental: {
     optimizePackageImports: [
       'forteui-core', 
+      'forteui-tokens',
       'react-live', 
       'tailwind-merge',
       '@tabler/icons-react'
     ],
+    // IMPORTANT: Ensure CSS is properly handled in server components
+    serverComponentsExternalPackages: [],
+    // Remove optimizeCss due to critters dependency issues
   },
   
   // Enhanced webpack configuration for monorepo

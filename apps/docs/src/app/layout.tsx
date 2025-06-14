@@ -3,6 +3,9 @@ import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import type { Metadata, Viewport } from 'next';
 import dynamic from 'next/dynamic';
 
+// Import CSS loader for production safety
+import '@/lib/css-loader';
+
 // Dynamic imports for client components to avoid server/client boundary issues
 const ClientProviders = dynamic(() => import('@/components/ClientProviders'), {
   ssr: false,
