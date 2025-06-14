@@ -1,6 +1,6 @@
 'use client';
 
-import { Button, Card, Badge, Avatar, Chip, Input, Switch, Progress, Radio, Checkbox } from '@forteui/core';
+import { Button, Card, Badge, Avatar, Chip, Input, Switch, Progress, Radio, Checkbox, Pagination, Alert } from '@forteui/core';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -22,7 +22,7 @@ import {
 
 // Runtime validation to ensure components are properly imported
 if (typeof window !== 'undefined') {
-  const requiredComponents = { Button, Card, Badge, Chip, Input, Switch, Progress, Radio, Checkbox };
+  const requiredComponents = { Button, Card, Badge, Chip, Input, Switch, Progress, Radio, Checkbox, Alert };
   const missingComponents = Object.entries(requiredComponents).filter(([name, component]) => !component);
   
   if (missingComponents.length > 0) {
@@ -64,44 +64,76 @@ export function Hero() {
 
   // Simplified floating components for better stability
   const floatingComponents = [
-    // Core components - most stable
+    // Avatar component showcase
     {
       id: 'avatar-card',
       component: (
         <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60">
           <div className="flex items-center gap-3">
-            <div className="relative w-10 h-10 rounded-full overflow-hidden">
-              <Image
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
-                alt="User avatar"
-                width={40}
-                height={40}
-                className="object-cover"
-                priority={false}
-                loading="lazy"
-              />
-            </div>
+            <Avatar 
+              size="md" 
+              src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop&crop=face"
+              fallback="AC"
+            />
             <div>
               <p className="font-medium text-sm text-gray-900">Alex Chen</p>
               <p className="text-xs text-gray-500">Product Designer</p>
             </div>
+            <Badge variant="success">Active</Badge>
           </div>
         </Card>
       ),
-      position: { left: '5%', top: '20%' },
+      position: { left: '3%', top: '25%' },
       rotation: -5,
       delay: 0.5
     },
+    // Switch component showcase
+    {
+      id: 'switch-card',
+      component: (
+        <Card className="p-5 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 min-w-[200px]">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-blue-100 to-blue-200 rounded-xl flex items-center justify-center">
+                <IconSettings size={16} className="text-blue-600" />
+              </div>
+              <div>
+                <p className="text-sm font-semibold text-gray-900">Preferences</p>
+                <p className="text-xs text-gray-500">Customize your experience</p>
+              </div>
+            </div>
+            <div className="space-y-3 pt-2 border-t border-gray-100">
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-700">Dark mode</span>
+                <Switch defaultChecked={true} size="small" color="primary" />
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-sm text-gray-700">Notifications</span>
+                <Switch defaultChecked={false} size="small" color="primary" />
+              </div>
+            </div>
+          </div>
+        </Card>
+      ),
+      position: { left: '15%', top: '8%' },
+      rotation: -8,
+      delay: 0.8
+    },
+    // Progress component showcase
     {
       id: 'progress-card',
       component: (
-        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 w-48">
+        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 w-56">
           <div className="space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-sm font-medium text-gray-700">Progress</span>
+              <span className="text-sm font-medium text-gray-700">Upload Progress</span>
               <span className="text-xs text-gray-500">78%</span>
             </div>
-            <Progress value={78} className="h-2" />
+            <Progress value={78} variant="linear" color="primary" size="md" />
+            <div className="flex gap-2">
+              <Chip size="small" variant="filled" color="info">Uploading</Chip>
+              <Chip size="small" variant="outlined" color="default">3.2 MB</Chip>
+            </div>
           </div>
         </Card>
       ),
@@ -109,50 +141,66 @@ export function Hero() {
       rotation: 5,
       delay: 1.0
     },
+    // Alert component showcase
     {
-      id: 'notification-card',
+      id: 'alert-card',
       component: (
-        <Card className="p-3 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 border-l-4 border-l-green-500">
+        <Alert severity="success" className="shadow-xl border border-green-200/60 bg-white/95 backdrop-blur-sm">
           <div className="flex items-center gap-2">
-            <IconCheck size={16} className="text-green-500" />
-            <span className="text-sm text-gray-700">Success!</span>
+            <span className="text-sm text-green-800 font-medium">Project saved successfully!</span>
           </div>
-        </Card>
+        </Alert>
       ),
       position: { right: '5%', top: '45%' },
       rotation: 8,
       delay: 1.5
     },
+    // Pagination component showcase
     {
-      id: 'badge-collection',
+      id: 'pagination-card',
       component: (
-        <div className="flex gap-2 p-3 bg-white/90 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200/60">
-          <Badge variant="success">
-            <IconCheck size={12} className="mr-1" />
-            Verified
-          </Badge>
-          <Badge variant="primary">
-            <IconStar size={12} className="mr-1" />
-            Premium
-          </Badge>
-        </div>
+        <Card className="p-5 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 min-w-[300px]">
+          <div className="space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="w-10 h-10 bg-gradient-to-br from-purple-100 to-violet-200 rounded-xl flex items-center justify-center">
+                <IconArrowRight size={16} className="text-purple-600" />
+              </div>
+              <div>
+                <h4 className="text-sm font-semibold text-gray-900">Navigation</h4>
+                <p className="text-xs text-gray-500">Page 15 of 100 results</p>
+              </div>
+            </div>
+            <div className="pt-2 border-t border-gray-100 flex justify-center">
+              <Pagination
+                currentPage={15}
+                totalPages={100}
+                onPageChange={() => {}}
+                variant="rounded"
+                size="small"
+                siblingCount={1}
+              />
+            </div>
+          </div>
+        </Card>
       ),
-      position: { left: '8%', bottom: '25%' },
+      position: { left: '12%', bottom: '15%' },
       rotation: -3,
       delay: 2.0
     },
+    // Input and Chip component showcase
     {
       id: 'search-card',
       component: (
-        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 w-56">
+        <Card className="p-4 bg-white/95 backdrop-blur-sm shadow-xl border border-gray-200/60 w-64">
           <div className="space-y-3">
             <div className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
               <IconSearch size={16} className="text-gray-400" />
-              <span className="text-sm text-gray-500">Search...</span>
+              <span className="text-sm text-gray-500">Search components...</span>
             </div>
             <div className="flex gap-1 flex-wrap">
-              <Chip size="small" variant="outlined">Button</Chip>
-              <Chip size="small" variant="filled">Card</Chip>
+              <Chip size="small" variant="outlined" color="default">Button</Chip>
+              <Chip size="small" variant="filled" color="primary">Card</Chip>
+              <Chip size="small" variant="outlined" color="secondary">Input</Chip>
             </div>
           </div>
         </Card>
@@ -164,7 +212,7 @@ export function Hero() {
   ];
 
   return (
-    <section className="relative min-h-screen flex items-start justify-center px-6 overflow-hidden pt-20">
+    <section className="relative py-12 sm:py-16 md:py-20 lg:py-24 flex items-start justify-center px-4 sm:px-6 overflow-hidden">
       {/* Floating Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating UI Components - Only render if client-side and animations enabled */}
@@ -172,7 +220,7 @@ export function Hero() {
           {isClient && floatingComponents.map(({ id, component, position, rotation, delay }) => (
             <motion.div
               key={id}
-              className="absolute hidden lg:block pointer-events-auto"
+              className="absolute hidden xl:block pointer-events-auto"
               style={{
                 ...position,
                 transform: `rotate(${rotation}deg)`,
@@ -213,11 +261,11 @@ export function Hero() {
         
         {/* Fallback static components for better compatibility */}
         {!isClient && (
-          <div className="hidden lg:block">
-            {floatingComponents.slice(0, 3).map(({ id, component, position, rotation }) => (
+          <div className="hidden xl:block">
+            {floatingComponents.slice(0, 2).map(({ id, component, position, rotation }) => (
               <div
                 key={`fallback-${id}`}
-                className="absolute pointer-events-auto opacity-80"
+                className="absolute pointer-events-auto opacity-60"
                 style={{
                   ...position,
                   transform: `rotate(${rotation}deg)`,
@@ -238,14 +286,14 @@ export function Hero() {
         animate="visible"
       >
         <motion.div variants={itemVariants}>
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-50 border border-primary-200 rounded-full text-primary-700 text-sm font-medium mb-8">
-            <IconSparkles size={16} />
+          <div className="inline-flex items-center gap-2 px-3 sm:px-4 py-2 bg-primary-50 border border-primary-200 rounded-full text-primary-700 text-xs sm:text-sm font-medium mb-6 sm:mb-8">
+            <IconSparkles size={14} className="sm:w-4 sm:h-4" />
             <span>17 Production-Ready Components</span>
           </div>
         </motion.div>
 
         <motion.h1 
-          className="text-4xl md:text-6xl lg:text-7xl font-bold text-gray-900 mb-6 tracking-tight leading-tight"
+          className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-gray-900 mb-4 sm:mb-6 tracking-tight leading-tight"
           variants={itemVariants}
         >
           Build beautiful interfaces{' '}
@@ -271,7 +319,7 @@ export function Hero() {
         </motion.h1>
 
         <motion.p 
-          className="text-lg md:text-xl text-gray-600 mb-12 leading-relaxed max-w-3xl mx-auto"
+          className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-600 mb-8 sm:mb-12 leading-relaxed max-w-3xl mx-auto"
           variants={itemVariants}
         >
           A production-ready React component library built with TypeScript, 
@@ -279,18 +327,18 @@ export function Hero() {
         </motion.p>
 
         <motion.div 
-          className="flex flex-col sm:flex-row gap-4 justify-center mb-8"
+          className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center mb-6 sm:mb-8"
           variants={itemVariants}
         >
-          <Button asChild variant="primary" size="lg" className="text-base px-8 py-4">
-            <Link href="/docs/getting-started" className="flex items-center gap-2">
+          <Button asChild variant="primary" size="lg" className="text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto">
+            <Link href="/docs/getting-started" className="flex items-center justify-center gap-2">
               Get Started
-              <IconArrowRight size={18} />
+              <IconArrowRight size={16} className="sm:w-[18px] sm:h-[18px]" />
             </Link>
           </Button>
           
-          <Button asChild variant="outline-default" size="lg" className="text-base px-8 py-4">
-            <Link href="/docs/components">View Components</Link>
+          <Button asChild variant="outline-default" size="lg" className="text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto">
+            <Link href="/docs/components" className="flex items-center justify-center gap-2">View Components</Link>
           </Button>
         </motion.div>
       </motion.div>
