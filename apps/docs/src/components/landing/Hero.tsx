@@ -165,14 +165,6 @@ export function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-start justify-center px-6 overflow-hidden pt-20">
-      {/* Enhanced Background Gradients */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary-50/30" />
-      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-secondary-50/20 to-transparent" />
-      
-      {/* Additional background effects */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary-100/20 via-transparent to-transparent" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-secondary-100/20 via-transparent to-transparent" />
-      
       {/* Floating Background Elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {/* Floating UI Components - Only render if client-side and animations enabled */}
