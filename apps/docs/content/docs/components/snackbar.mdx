@@ -10,19 +10,19 @@ Brief notification messages that appear temporarily to provide feedback about an
 ## Installation
 
 ```bash
-npm install @forteui/core
+npm install forteui-core
 ```
 
 ## Import
 
 ```tsx
-import { Snackbar, useSnackbar } from '@forteui/core';
+import { Snackbar, useSnackbar } from 'forteui-core';
 ```
 
 ## Basic Usage
 
 ```tsx
-import { Snackbar, Button } from '@forteui/core';
+import { Snackbar, Button } from 'forteui-core';
 import { useState } from 'react';
 
 function MyComponent() {
@@ -288,7 +288,7 @@ function AutoHideDuration() {
 ### Hook-Based Usage
 
 ```tsx
-import { useSnackbar } from '@forteui/core';
+import { useSnackbar } from 'forteui-core';
 
 function HookExample() {
   const { showSnackbar, hideSnackbar } = useSnackbar();
@@ -331,7 +331,7 @@ function HookExample() {
 ### Global Provider Setup
 
 ```tsx
-import { SnackbarProvider } from '@forteui/core';
+import { SnackbarProvider } from 'forteui-core';
 
 function App() {
   return (

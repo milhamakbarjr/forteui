@@ -1,0 +1,389 @@
+---
+title: Theming
+description: Learn how to customize ForteUI's appearance with custom themes, colors, and design tokens.
+---
+
+# Theming
+
+ForteUI provides a flexible theming system that allows you to customize the appearance of components to match your brand and design requirements.
+
+## Overview
+
+ForteUI's theming system is built on:
+- **CSS Custom Properties** - For runtime theme switching
+- **Design Tokens** - Semantic color and spacing values
+- **CSS Classes** - For component-specific customization
+- **Tailwind CSS Integration** - For utility-based styling
+
+## Quick Start
+
+### Basic Theme Customization
+
+The easiest way to customize ForteUI is by overriding CSS custom properties:
+
+```css
+:root {
+  /* Primary Colors */
+  --primary-main: #3b82f6;
+  --primary-dark: #2563eb;
+  --primary-light: #93c5fd;
+  --primary-8: rgba(59, 130, 246, 0.08);
+  --primary-16: rgba(59, 130, 246, 0.16);
+  --primary-48: rgba(59, 130, 246, 0.48);
+  
+  /* Typography */
+  --font-family-sans: 'Inter', 'Plus Jakarta Sans', sans-serif;
+  
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+}
+```
+
+## Color System
+
+### Semantic Colors
+
+ForteUI uses semantic color tokens that can be customized:
+
+```css
+:root {
+  /* Primary Brand Colors */
+  --primary-main: #your-primary-color;
+  --primary-dark: #your-primary-dark;
+  --primary-light: #your-primary-light;
+  
+  /* Secondary Brand Colors */
+  --secondary-main: #your-secondary-color;
+  --secondary-dark: #your-secondary-dark;
+  --secondary-light: #your-secondary-light;
+  
+  /* Semantic State Colors */
+  --success-main: #10b981;
+  --success-dark: #059669;
+  --success-light: #6ee7b7;
+  
+  --warning-main: #f59e0b;
+  --warning-dark: #d97706;
+  --warning-light: #fcd34d;
+  
+  --error-main: #ef4444;
+  --error-dark: #dc2626;
+  --error-light: #fca5a5;
+  
+  --info-main: #3b82f6;
+  --info-dark: #2563eb;
+  --info-light: #93c5fd;
+}
+```
+
+### Color Opacity Variants
+
+Each color comes with opacity variants for backgrounds and subtle accents:
+
+```css
+:root {
+  /* 8% opacity - Light backgrounds, hover states */
+  --primary-8: rgba(59, 130, 246, 0.08);
+  --success-8: rgba(16, 185, 129, 0.08);
+  --warning-8: rgba(245, 158, 11, 0.08);
+  --error-8: rgba(239, 68, 68, 0.08);
+  
+  /* 16% opacity - More prominent backgrounds */
+  --primary-16: rgba(59, 130, 246, 0.16);
+  --success-16: rgba(16, 185, 129, 0.16);
+  
+  /* 48% opacity - Borders and accents */
+  --primary-48: rgba(59, 130, 246, 0.48);
+  --success-48: rgba(16, 185, 129, 0.48);
+}
+```
+
+## Dark Mode
+
+### Implementing Dark Mode
+
+ForteUI supports dark mode through CSS custom properties:
+
+```css
+/* Light mode (default) */
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --border: #e2e8f0;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020617;
+    --foreground: #f8fafc;
+    --border: #334155;
+    --card: #0f172a;
+    --card-foreground: #f8fafc;
+  }
+}
+
+/* Manual dark mode class */
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --border: #334155;
+  --card: #0f172a;
+  --card-foreground: #f8fafc;
+}
+```
+
+### Dark Mode Toggle
+
+You can implement a dark mode toggle using JavaScript:
+
+```tsx
+import { useState, useEffect } from 'react';
+import { Button, IconSun, IconMoon } from 'forteui-core';
+
+function ThemeToggle() {
+  const [isDark, setIsDark] = useState(false);
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (isDark) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+  }, [isDark]);
+
+  return (
+    <Button
+      variant="icon-default"
+      size="icon-md"
+      onClick={() => setIsDark(!isDark)}
+    >
+      {isDark ? <IconSun size={20} /> : <IconMoon size={20} />}
+    </Button>
+  );
+}
+```
+
+## Typography
+
+### Font Customization
+
+Customize the typography system:
+
+```css
+:root {
+  /* Font Families */
+  --font-family-sans: 'Inter', 'Helvetica Neue', sans-serif;
+  --font-family-mono: 'Fira Code', 'Monaco', monospace;
+  
+  /* Font Sizes */
+  --text-xs: 12px;
+  --text-sm: 14px;
+  --text-base: 16px;
+  --text-lg: 18px;
+  --text-xl: 20px;
+  --text-2xl: 24px;
+  --text-3xl: 32px;
+  
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+}
+```
+
+### Loading Custom Fonts
+
+When using custom fonts, ensure they're loaded properly:
+
+```html
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+```
+
+## Advanced Theming
+
+### Component-Specific Customization
+
+Target specific components with CSS classes:
+
+```css
+/* Custom button styling */
+.forte-button[data-variant="primary"] {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+}
+
+.forte-button[data-variant="primary"]:hover {
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+}
+
+/* Custom card styling */
+.forte-card {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+}
+```
+
+### Using Design Tokens
+
+Access design tokens programmatically:
+
+```tsx
+import { tokens } from 'forteui-tokens';
+
+const customTheme = {
+  colors: {
+    primary: tokens.colors.primary.main,
+    background: tokens.colors.grey[50],
+  },
+  spacing: {
+    sm: tokens.spacing.sm,
+    md: tokens.spacing.md,
+  }
+};
+```
+
+## Tailwind CSS Integration
+
+### Extending Tailwind Config
+
+Integrate ForteUI tokens with Tailwind:
+
+```js
+// tailwind.config.js
+module.exports = {
+  content: [
+    './src/**/*.{js,ts,jsx,tsx}',
+    './node_modules/forteui-core/**/*.{js,ts,jsx,tsx}',
+  ],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          50: 'rgb(from var(--primary-main) r g b / 0.05)',
+          100: 'rgb(from var(--primary-main) r g b / 0.1)',
+          500: 'var(--primary-main)',
+          600: 'var(--primary-dark)',
+        },
+      },
+      fontFamily: {
+        sans: ['var(--font-family-sans)', 'system-ui', 'sans-serif'],
+      },
+      spacing: {
+        xs: 'var(--spacing-xs)',
+        sm: 'var(--spacing-sm)',
+        md: 'var(--spacing-md)',
+        lg: 'var(--spacing-lg)',
+        xl: 'var(--spacing-xl)',
+      },
+    },
+  },
+  plugins: [],
+}
+```
+
+## Theme Provider (React Context)
+
+### Creating a Theme Provider
+
+For more complex theming needs, create a theme context:
+
+```tsx
+import React, { createContext, useContext, useState } from 'react';
+
+interface Theme {
+  colors: {
+    primary: string;
+    secondary: string;
+  };
+  mode: 'light' | 'dark';
+}
+
+const ThemeContext = createContext<{
+  theme: Theme;
+  setTheme: (theme: Theme) => void;
+} | null>(null);
+
+export function ThemeProvider({ children }: { children: React.ReactNode }) {
+  const [theme, setTheme] = useState<Theme>({
+    colors: {
+      primary: '#3b82f6',
+      secondary: '#8b5cf6',
+    },
+    mode: 'light',
+  });
+
+  return (
+    <ThemeContext.Provider value={{ theme, setTheme }}>
+      <div 
+        className={theme.mode}
+        style={{
+          '--primary-main': theme.colors.primary,
+          '--secondary-main': theme.colors.secondary,
+        } as React.CSSProperties}
+      >
+        {children}
+      </div>
+    </ThemeContext.Provider>
+  );
+}
+
+export const useTheme = () => {
+  const context = useContext(ThemeContext);
+  if (!context) {
+    throw new Error('useTheme must be used within ThemeProvider');
+  }
+  return context;
+};
+```
+
+## Best Practices
+
+### Performance
+- Use CSS custom properties for values that change
+- Prefer CSS classes for static customizations
+- Minimize the number of custom properties
+
+### Accessibility
+- Ensure sufficient color contrast (4.5:1 for normal text)
+- Test themes with screen readers
+- Provide focus indicators in all themes
+
+### Consistency
+- Use semantic color names
+- Follow the established spacing scale
+- Maintain consistent border radius values
+
+## Migration Guide
+
+### From Version 0.1.x
+
+If upgrading from an earlier version:
+
+1. Replace old CSS custom properties:
+```css
+/* Old */
+--forte-primary: #3b82f6;
+
+/* New */
+--primary-main: #3b82f6;
+```
+
+2. Update component class names:
+```css
+/* Old */
+.forte-btn-primary { }
+
+/* New */
+.forte-button[data-variant="primary"] { }
+```

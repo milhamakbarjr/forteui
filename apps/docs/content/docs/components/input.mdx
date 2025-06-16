@@ -12,13 +12,13 @@ A versatile input component with floating label behavior, multiple states, varia
 The Input component is included in the ForteUI core package.
 
 ```bash
-npm install @forteui/core
+npm install forteui-core
 ```
 
 ## Import
 
 ```tsx
-import { Input } from '@forteui/core';
+import { Input } from 'forteui-core';
 ```
 
 ## Basic Usage
@@ -26,7 +26,7 @@ import { Input } from '@forteui/core';
 The simplest way to use the Input component:
 
 ```tsx
-import { Input } from '@forteui/core';
+import { Input } from 'forteui-core';
 
 function MyComponent() {
   return (
@@ -92,7 +92,7 @@ Display error states with helper text:
 Provide additional guidance with helper text:
 
 ```tsx
-import { Input, IconInfoCircle } from '@forteui/core';
+import { Input, IconInfoCircle } from 'forteui-core';
 
 <Input 
   label="Username" 
@@ -109,7 +109,7 @@ import { Input, IconInfoCircle } from '@forteui/core';
 Add icons or elements at the end of the input:
 
 ```tsx
-import { Input, IconSearch, IconMail, IconSettings } from '@forteui/core';
+import { Input, IconSearch, IconMail, IconSettings } from 'forteui-core';
 
 <Input 
   label="Search" 
@@ -135,7 +135,7 @@ import { Input, IconSearch, IconMail, IconSettings } from '@forteui/core';
 Create interactive elements like password toggles:
 
 ```tsx
-import { Input, IconEye, IconEyeOff } from '@forteui/core';
+import { Input, IconEye, IconEyeOff } from 'forteui-core';
 import { useState } from 'react';
 
 function PasswordInput() {
@@ -196,7 +196,7 @@ function ControlledInput() {
 ### With Form Validation
 
 ```tsx
-import { Input } from '@forteui/core';
+import { Input } from 'forteui-core';
 import { useState } from 'react';
 
 function LoginForm() {

@@ -1,0 +1,192 @@
+---
+title: Stepper
+description: Stepper component for guiding users through multi-step processes with clear progress indication.
+---
+
+# Stepper
+
+The Stepper component provides a visual way to guide users through multi-step processes, showing current progress and allowing navigation between steps.
+
+## Installation
+
+```bash
+npm install forteui-core
+```
+
+## Import
+
+```tsx
+import { Stepper } from 'forteui-core';
+```
+
+## Basic Usage
+
+```tsx
+import { Stepper } from 'forteui-core';
+
+function MyComponent() {
+  const [currentStep, setCurrentStep] = useState(0);
+  
+  const steps = [
+    { label: 'Account Details' },
+    { label: 'Profile Information' },
+    { label: 'Review & Submit' }
+  ];
+
+  return (
+    <Stepper
+      steps={steps}
+      currentStep={currentStep}
+      onStepClick={setCurrentStep}
+    />
+  );
+}
+```
+
+## Props
+
+### Stepper Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `steps` | `Step[]` | - | Array of step objects |
+| `currentStep` | `number` | `0` | Index of the current active step |
+| `onStepClick` | `(step: number) => void` | - | Callback when a step is clicked |
+| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Layout orientation |
+| `variant` | `'default' \| 'outlined'` | `'default'` | Visual variant |
+| `allowClickableSteps` | `boolean` | `true` | Whether steps can be clicked |
+| `className` | `string` | - | Additional CSS classes |
+
+### Step Object
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `label` | `string` | Step label text |
+| `description` | `string` | Optional step description |
+| `icon` | `React.ReactNode` | Optional custom icon |
+| `disabled` | `boolean` | Whether the step is disabled |
+
+## Examples
+
+### Horizontal Stepper
+
+```tsx
+const steps = [
+  { label: 'Select campaign settings' },
+  { label: 'Create an ad group' },
+  { label: 'Create an ad' }
+];
+
+<Stepper
+  steps={steps}
+  currentStep={1}
+  orientation="horizontal"
+/>
+```
+
+### Vertical Stepper
+
+```tsx
+const steps = [
+  { 
+    label: 'Select campaign settings',
+    description: 'Set up your campaign name, budget, and targeting'
+  },
+  { 
+    label: 'Create an ad group',
+    description: 'Define your ad group and keywords'
+  },
+  { 
+    label: 'Create an ad',
+    description: 'Write compelling ad copy and select images'
+  }
+];
+
+<Stepper
+  steps={steps}
+  currentStep={0}
+  orientation="vertical"
+/>
+```
+
+### With Custom Icons
+
+```tsx
+import { IconUser, IconSettings, IconCheck } from 'forteui-core';
+
+const steps = [
+  { 
+    label: 'Personal Info',
+    icon: <IconUser size={20} />
+  },
+  { 
+    label: 'Settings',
+    icon: <IconSettings size={20} />
+  },
+  { 
+    label: 'Complete',
+    icon: <IconCheck size={20} />
+  }
+];
+
+<Stepper
+  steps={steps}
+  currentStep={1}
+/>
+```
+
+### Non-clickable Steps
+
+```tsx
+<Stepper
+  steps={steps}
+  currentStep={1}
+  allowClickableSteps={false}
+/>
+```
+
+### Outlined Variant
+
+```tsx
+<Stepper
+  steps={steps}
+  currentStep={1}
+  variant="outlined"
+/>
+```
+
+## Accessibility
+
+The Stepper component includes several accessibility features:
+
+- **Keyboard Navigation**: Steps can be navigated using arrow keys
+- **ARIA Labels**: Proper labeling for screen readers
+- **Focus Management**: Clear focus indicators
+- **Status Announcement**: Screen readers announce step status changes
+
+## Best Practices
+
+### When to Use
+- Multi-step forms and wizards
+- Onboarding processes
+- Checkout flows
+- Setup and configuration processes
+
+### Guidelines
+- Keep step labels concise and clear
+- Use logical step ordering
+- Provide progress indication
+- Allow users to go back to previous steps when possible
+- Consider mobile responsiveness for horizontal steppers
+
+## Styling
+
+The Stepper component can be customized using CSS classes:
+
+```css
+.custom-stepper {
+  --stepper-active-color: #your-brand-color;
+  --stepper-completed-color: #success-color;
+  --stepper-inactive-color: #neutral-color;
+}
+```

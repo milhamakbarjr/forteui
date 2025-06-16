@@ -1,1 +1,153 @@
- 
+---
+title: Design System
+description: Comprehensive guide to ForteUI's design system including colors, typography, spacing, and design tokens.
+---
+
+# Design System
+
+ForteUI is built on a comprehensive design system that ensures consistency, accessibility, and scalability across all components. Our design system is based on semantic tokens that provide meaning and context to design decisions.
+
+## Color System
+
+### Semantic Color Palette
+
+ForteUI uses a semantic color system that provides clear meaning and context for different UI states and actions.
+
+#### Primary Colors
+- **Primary**: Main brand color used for primary actions and key UI elements
+- **Secondary**: Supporting brand color for secondary actions and accents
+
+#### Semantic Colors
+- **Info**: Used for informational messages and neutral actions
+- **Success**: Indicates successful operations and positive states
+- **Warning**: Alerts users to potential issues or important information
+- **Error**: Indicates errors, failures, or destructive actions
+
+#### Neutral Colors
+- **Grey Scale**: From light backgrounds to dark text, providing hierarchy and contrast
+
+### Color Variants
+
+Each semantic color comes with multiple variants for different use cases:
+
+- **Main** (`-main`): The primary color value
+- **Dark** (`-dark`): Darker variant for hover states and emphasis
+- **Light** (`-light`): Lighter variant for subtle backgrounds
+- **8% Opacity** (`-8`): Very light backgrounds and hover states
+- **16% Opacity** (`-16`): Slightly more prominent backgrounds
+- **48% Opacity** (`-48`): Border colors and subtle accents
+
+## Typography
+
+### Font Family
+
+ForteUI uses **Plus Jakarta Sans** as its primary typeface, providing excellent readability and a modern aesthetic.
+
+```css
+font-family: 'Plus Jakarta Sans', sans-serif;
+```
+
+### Typography Scale
+
+Our typography system uses a carefully crafted scale that ensures proper hierarchy and readability:
+
+#### Headings
+- **H1**: 32px - Page titles and major headings
+- **H2**: 24px - Section headings
+- **H3**: 20px - Subsection headings
+- **H4**: 18px - Component titles
+- **H5**: 16px - Small headings
+- **H6**: 14px - Caption headings
+
+#### Body Text
+- **Body Large**: 16px - Primary body text
+- **Body**: 14px - Secondary body text
+- **Caption**: 12px - Small text and labels
+
+### Font Weights
+
+- **Light**: 300 - Subtle text elements
+- **Regular**: 400 - Default body text
+- **Medium**: 500 - Emphasized text
+- **Bold**: 700 - Strong emphasis and headings
+
+## Spacing System
+
+ForteUI uses a consistent spacing scale based on 4px increments:
+
+- **xs**: 4px
+- **sm**: 8px
+- **md**: 16px
+- **lg**: 24px
+- **xl**: 32px
+- **2xl**: 48px
+- **3xl**: 64px
+
+## Component Specifications
+
+### Button Sizes
+- **Small**: 30px height
+- **Medium**: 36px height (default)
+- **Large**: 48px height
+
+### Icon Button Sizes
+- **Extra Small**: 28px (18px icon)
+- **Small**: 36px (20px icon)
+- **Medium**: 40px (24px icon)
+- **Large**: 48px (32px icon)
+
+### Border Radius
+- **Small**: 4px - Small components
+- **Medium**: 8px - Default components
+- **Large**: 12px - Cards and containers
+- **Full**: 9999px - Pills and circular elements
+
+## Accessibility
+
+### Color Contrast
+All color combinations meet WCAG 2.1 AA standards with a minimum contrast ratio of 4.5:1 for normal text and 3:1 for large text.
+
+### Focus States
+Every interactive element includes visible focus indicators with proper contrast ratios for keyboard navigation.
+
+### Semantic Meaning
+Colors are never the sole means of conveying information. Icons, text, and other visual indicators provide additional context.
+
+## Design Tokens
+
+ForteUI's design system is built on design tokens that can be accessed programmatically:
+
+```tsx
+import { tokens } from 'forteui-tokens';
+
+// Access color tokens
+const primaryColor = tokens.colors.primary.main;
+const successColor = tokens.colors.success.main;
+
+// Access spacing tokens
+const mediumSpacing = tokens.spacing.md;
+```
+
+## Using the Design System
+
+### Custom Theming
+
+You can customize ForteUI's design system by overriding CSS custom properties:
+
+```css
+:root {
+  --primary-main: #your-brand-color;
+  --primary-dark: #your-darker-brand-color;
+  /* ... other custom properties */
+}
+```
+
+### Responsive Design
+
+All components are built mobile-first and include responsive design considerations:
+
+- **Mobile**: 0-768px
+- **Tablet**: 768px-1024px
+- **Desktop**: 1024px+
+
+The design system ensures consistent spacing, typography, and layout across all breakpoints.

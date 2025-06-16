@@ -12,13 +12,13 @@ A versatile button component that supports multiple variants, sizes, states, and
 The Button component is included in the ForteUI core package.
 
 ```bash
-npm install @forteui/core
+npm install forteui-core
 ```
 
 ## Import
 
 ```tsx
-import { Button } from '@forteui/core';
+import { Button } from 'forteui-core';
 ```
 
 ## Basic Usage
@@ -26,7 +26,7 @@ import { Button } from '@forteui/core';
 The simplest way to use the Button component:
 
 ```tsx
-import { Button } from '@forteui/core';
+import { Button } from 'forteui-core';
 
 function MyComponent() {
   return (
@@ -92,6 +92,31 @@ Soft buttons provide a subtle background color while maintaining good contrast.
 <Button variant="soft-error">Error</Button>
 ```
 
+### Icon Buttons
+
+Icon buttons are circular buttons designed specifically for icon-only actions. They provide hover backgrounds and are perfect for toolbars and compact interfaces.
+
+```tsx
+import { Button, IconHome, IconUser, IconPlus, IconX } from 'forteui-core';
+
+// Different icon button variants
+<Button variant="icon-default" size="icon-md"><IconHome size={20} /></Button>
+<Button variant="icon-primary" size="icon-md"><IconUser size={20} /></Button>
+<Button variant="icon-info" size="icon-md"><IconPlus size={20} /></Button>
+<Button variant="icon-error" size="icon-md"><IconX size={20} /></Button>
+```
+
+#### Icon Button Sizes
+
+Icon buttons come in four different sizes:
+
+```tsx
+<Button variant="icon-primary" size="icon-xs"><IconHome size={16} /></Button>
+<Button variant="icon-primary" size="icon-sm"><IconHome size={18} /></Button>
+<Button variant="icon-primary" size="icon-md"><IconHome size={20} /></Button>
+<Button variant="icon-primary" size="icon-lg"><IconHome size={24} /></Button>
+```
+
 ## Sizes
 
 The Button component comes in three sizes to fit various design needs:
@@ -117,13 +142,19 @@ Buttons can be disabled using the `disabled` prop:
 
 ## Icons
 
+ForteUI includes Tabler Icons out of the box. You can import icons directly from the core package.
+
+### Import Icons
+
+```tsx
+import { Button, IconPlus, IconCheck, IconTrash, IconHome, IconUser } from 'forteui-core';
+```
+
 ### Buttons with Leading Icons
 
 Add icons before the button text:
 
 ```tsx
-import { Button, IconPlus, IconCheck, IconTrash } from '@forteui/core';
-
 <Button variant="primary">
   <IconPlus size={16} />
   <span>Add Item</span>
@@ -145,7 +176,7 @@ import { Button, IconPlus, IconCheck, IconTrash } from '@forteui/core';
 Add icons after the button text:
 
 ```tsx
-import { Button, IconArrowRight, IconChevronDown, IconDownload } from '@forteui/core';
+import { Button, IconArrowRight, IconChevronDown, IconDownload } from 'forteui-core';
 
 <Button variant="primary">
   <span>Next</span>
@@ -168,7 +199,7 @@ import { Button, IconArrowRight, IconChevronDown, IconDownload } from '@forteui/
 For icon-only buttons, use the icon variants:
 
 ```tsx
-import { Button, IconHome, IconUser, IconSettings } from '@forteui/core';
+import { Button, IconHome, IconUser, IconSettings } from 'forteui-core';
 
 <Button variant="icon-default" size="icon-md">
   <IconHome className="w-6 h-6" />
@@ -209,7 +240,7 @@ Icon buttons come in four sizes:
 Use the `asChild` prop to render the button as a different element:
 
 ```tsx
-import { Button } from '@forteui/core';
+import { Button } from 'forteui-core';
 import Link from 'next/link';
 
 <Button asChild>
@@ -230,17 +261,68 @@ const handleClick = () => {
 </Button>
 ```
 
-## Props
+## API Reference
+
+### Button Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error' \| 'outline-default' \| 'outline-primary' \| 'outline-info' \| 'outline-success' \| 'outline-warning' \| 'outline-error' \| 'text-default' \| 'text-primary' \| 'text-info' \| 'text-success' \| 'text-warning' \| 'text-error' \| 'soft-default' \| 'soft-primary' \| 'soft-info' \| 'soft-success' \| 'soft-warning' \| 'soft-error' \| 'icon-default' \| 'icon-primary' \| 'icon-info' \| 'icon-success' \| 'icon-warning' \| 'icon-error'` | `'primary'` | Visual style variant of the button |
-| `size` | `'sm' \| 'md' \| 'lg' \| 'icon' \| 'icon-lg' \| 'icon-md' \| 'icon-sm' \| 'icon-xs'` | `'md'` | Size of the button |
+| `variant` | `ButtonVariant` | `'primary'` | Visual style variant |
+| `size` | `ButtonSize` | `'md'` | Button size |
 | `disabled` | `boolean` | `false` | Whether the button is disabled |
 | `asChild` | `boolean` | `false` | Render as a child element (polymorphic) |
 | `onClick` | `(event: MouseEvent) => void` | - | Click handler function |
 | `className` | `string` | - | Additional CSS classes |
 | `children` | `ReactNode` | - | Button content |
+
+### Button Variants
+
+| Variant | Description |Use Case |
+|---------|-------------|---------|
+| `default` | Default grey button | Secondary actions |
+| `primary` | Primary brand color | Main call-to-action |
+| `secondary` | Secondary brand color | Supporting actions |
+| `info` | Blue informational | Informational actions |
+| `success` | Green success | Positive actions |
+| `warning` | Orange/yellow warning | Caution actions |
+| `error` | Red error/danger | Destructive actions |
+| `outline-default` | Outlined default | Alternative secondary |
+| `outline-primary` | Outlined primary | Alternative primary |
+| `outline-info` | Outlined info | Alternative info |
+| `outline-success` | Outlined success | Alternative success |
+| `outline-warning` | Outlined warning | Alternative warning |
+| `outline-error` | Outlined error | Alternative destructive |
+| `text-default` | Text-only default | Subtle actions |
+| `text-primary` | Text-only primary | Subtle primary |
+| `text-info` | Text-only info | Subtle info |
+| `text-success` | Text-only success | Subtle success |
+| `text-warning` | Text-only warning | Subtle warning |
+| `text-error` | Text-only error | Subtle destructive |
+| `soft-default` | Soft background default | Gentle emphasis |
+| `soft-primary` | Soft background primary | Gentle primary |
+| `soft-info` | Soft background info | Gentle info |
+| `soft-success` | Soft background success | Gentle success |
+| `soft-warning` | Soft background warning | Gentle warning |
+| `soft-error` | Soft background error | Gentle destructive |
+| `icon-default` | Icon-only default | Icon buttons |
+| `icon-primary` | Icon-only primary | Primary icon actions |
+| `icon-info` | Icon-only info | Info icon actions |
+| `icon-success` | Icon-only success | Success icon actions |
+| `icon-warning` | Icon-only warning | Warning icon actions |
+| `icon-error` | Icon-only error | Destructive icon actions |
+
+### Button Sizes
+
+| Size | Height | Padding | Font Size | Use Case |
+|------|--------|---------|-----------|----------|
+| `sm` | 30px | 8px | 13px | Compact interfaces |
+| `md` | 36px | 12px | 14px | Default size |
+| `lg` | 48px | 16px | 15px | Prominent actions |
+| `icon` | 48px | - | - | Legacy icon button |
+| `icon-xs` | 28px | - | - | Extra small icons |
+| `icon-sm` | 36px | - | - | Small icons |
+| `icon-md` | 40px | - | - | Medium icons |
+| `icon-lg` | 48px | - | - | Large icons |
 
 The Button component also accepts all standard HTML button attributes.
 
@@ -280,4 +362,4 @@ The Button component also accepts all standard HTML button attributes.
 
 - [Input](/docs/components/input) - For form input elements
 - [Checkbox](/docs/components/checkbox) - For selection controls
-- [Switch](/docs/components/switch) - For toggle controls 
+- [Switch](/docs/components/switch) - For toggle controls

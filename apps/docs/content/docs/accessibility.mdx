@@ -1,0 +1,355 @@
+---
+title: Accessibility
+description: Comprehensive guide to ForteUI's accessibility features and best practices for building inclusive user interfaces.
+---
+
+# Accessibility
+
+ForteUI is designed with accessibility as a core principle, ensuring that all components meet or exceed WCAG 2.1 AA standards. This guide covers the accessibility features built into ForteUI and best practices for creating inclusive user interfaces.
+
+## Overview
+
+### Our Commitment
+
+ForteUI provides:
+- **WCAG 2.1 AA Compliance** - All components meet accessibility standards
+- **Keyboard Navigation** - Full keyboard support for all interactive elements
+- **Screen Reader Support** - Proper ARIA labels and semantic markup
+- **Focus Management** - Clear focus indicators and logical tab order
+- **Color Contrast** - Sufficient contrast ratios for all text and UI elements
+
+### Accessibility Principles
+
+We follow the four core principles of web accessibility:
+
+1. **Perceivable** - Information must be presentable in ways users can perceive
+2. **Operable** - Interface components must be operable by all users
+3. **Understandable** - Information and UI operation must be understandable
+4. **Robust** - Content must be robust enough for various assistive technologies
+
+## Component Accessibility
+
+### Button
+
+The Button component includes comprehensive accessibility features:
+
+#### Keyboard Support
+- **Space/Enter**: Activates the button
+- **Tab**: Moves focus to/from the button
+
+#### ARIA Support
+```tsx
+// Buttons include proper roles and states
+<Button disabled aria-describedby="help-text">
+  Submit Form
+</Button>
+<span id="help-text">This will submit your form data</span>
+
+// Icon buttons include accessible labels
+<Button variant="icon-primary" aria-label="Close dialog">
+  <IconX size={20} />
+</Button>
+```
+
+#### Screen Reader Support
+- Button text is announced by screen readers
+- Disabled state is communicated
+- Icon-only buttons require `aria-label` attributes
+
+### Form Components
+
+#### Input
+
+```tsx
+// Proper labeling
+<label htmlFor="email">Email Address</label>
+<Input 
+  id="email"
+  type="email"
+  required
+  aria-describedby="email-error"
+/>
+<span id="email-error">Please enter a valid email address</span>
+
+// Error states
+<Input 
+  aria-invalid="true"
+  aria-describedby="error-message"
+/>
+```
+
+#### Checkbox & Radio
+
+```tsx
+// Proper grouping and labeling
+<fieldset>
+  <legend>Notification Preferences</legend>
+  <Checkbox id="email-notifications">
+    <label htmlFor="email-notifications">Email notifications</label>
+  </Checkbox>
+  <Checkbox id="sms-notifications">
+    <label htmlFor="sms-notifications">SMS notifications</label>
+  </Checkbox>
+</fieldset>
+```
+
+### Alert
+
+Alerts provide proper semantic meaning and screen reader support:
+
+```tsx
+// Alerts are announced to screen readers
+<Alert severity="error" role="alert">
+  Form submission failed. Please check your input.
+</Alert>
+
+// Informational alerts
+<Alert severity="info" role="status">
+  Your changes have been saved automatically.
+</Alert>
+```
+
+### Navigation Components
+
+#### Breadcrumb
+
+```tsx
+<Breadcrumb aria-label="Breadcrumb navigation">
+  <BreadcrumbItem>
+    <a href="/" aria-label="Go to homepage">Home</a>
+  </BreadcrumbItem>
+  <BreadcrumbItem>
+    <a href="/products">Products</a>
+  </BreadcrumbItem>
+  <BreadcrumbItem aria-current="page">
+    Laptops
+  </BreadcrumbItem>
+</Breadcrumb>
+```
+
+## Keyboard Navigation
+
+### Tab Order
+
+ForteUI ensures logical tab order throughout components:
+
+1. Interactive elements receive focus in reading order
+2. Skip links are provided for complex layouts
+3. Focus is trapped within modal dialogs
+4. Focus returns to trigger element when modals close
+
+### Focus Management
+
+```tsx
+// Focus management in modals
+<Modal onClose={() => {
+  // Focus returns to trigger button
+  triggerRef.current?.focus();
+}}>
+  <ModalContent>
+    <h2>Modal Title</h2>
+    <Button>First focusable element</Button>
+  </ModalContent>
+</Modal>
+```
+
+### Keyboard Shortcuts
+
+Common keyboard patterns supported:
+
+- **Arrow Keys**: Navigate through lists, tabs, and menus
+- **Home/End**: Jump to first/last item
+- **Escape**: Close modals, dropdowns, and overlays
+- **Space/Enter**: Activate buttons and links
+
+## Color and Contrast
+
+### Contrast Ratios
+
+All ForteUI components meet WCAG AA contrast requirements:
+
+- **Normal text**: Minimum 4.5:1 contrast ratio
+- **Large text**: Minimum 3:1 contrast ratio
+- **UI components**: Minimum 3:1 contrast ratio
+
+### Color Usage
+
+We ensure color is not the only means of conveying information:
+
+```tsx
+// Good: Uses both color and icon
+<Alert severity="error">
+  <IconAlertTriangle size={20} />
+  Error: Form submission failed
+</Alert>
+
+// Good: Uses both color and text
+<Button variant="success">
+  <IconCheck size={16} />
+  Success
+</Button>
+```
+
+## Screen Reader Support
+
+### ARIA Labels and Descriptions
+
+```tsx
+// Descriptive labels
+<Button aria-label="Add item to shopping cart">
+  <IconPlus size={16} />
+</Button>
+
+// Additional descriptions
+<Input 
+  aria-label="Search products"
+  aria-describedby="search-help"
+/>
+<div id="search-help">
+  Type to search through our product catalog
+</div>
+```
+
+### Live Regions
+
+For dynamic content updates:
+
+```tsx
+// Status updates
+<div role="status" aria-live="polite">
+  {statusMessage}
+</div>
+
+// Error announcements
+<div role="alert" aria-live="assertive">
+  {errorMessage}
+</div>
+```
+
+## Testing for Accessibility
+
+### Manual Testing
+
+1. **Keyboard Navigation**
+   - Tab through all interactive elements
+   - Ensure all functionality is accessible via keyboard
+   - Verify focus indicators are visible
+
+2. **Screen Reader Testing**
+   - Test with VoiceOver (macOS), NVDA (Windows), or JAWS
+   - Verify all content is announced correctly
+   - Check that context and relationships are clear
+
+3. **Color Contrast**
+   - Use tools like WebAIM's Contrast Checker
+   - Test in high contrast mode
+   - Verify information isn't conveyed by color alone
+
+### Automated Testing
+
+```tsx
+// Using jest-axe for automated testing
+import { axe, toHaveNoViolations } from 'jest-axe';
+import { render } from '@testing-library/react';
+import { Button } from 'forteui-core';
+
+expect.extend(toHaveNoViolations);
+
+test('Button should not have accessibility violations', async () => {
+  const { container } = render(<Button>Click me</Button>);
+  const results = await axe(container);
+  expect(results).toHaveNoViolations();
+});
+```
+
+## Best Practices
+
+### Development Guidelines
+
+1. **Always provide text alternatives**
+   ```tsx
+   // Good
+   <Button aria-label="Close dialog">
+     <IconX size={20} />
+   </Button>
+   
+   // Bad
+   <Button>
+     <IconX size={20} />
+   </Button>
+   ```
+
+2. **Use semantic HTML**
+   ```tsx
+   // Good
+   <main>
+     <h1>Page Title</h1>
+     <section>
+       <h2>Section Title</h2>
+     </section>
+   </main>
+   
+   // Bad
+   <div>
+     <div className="title">Page Title</div>
+     <div>
+       <div className="subtitle">Section Title</div>
+     </div>
+   </div>
+   ```
+
+3. **Provide clear error messages**
+   ```tsx
+   // Good
+   <Input 
+     aria-invalid="true"
+     aria-describedby="email-error"
+   />
+   <span id="email-error">
+     Please enter a valid email address (e.g., user@example.com)
+   </span>
+   
+   // Bad
+   <Input className="error" />
+   <span>Invalid</span>
+   ```
+
+### Form Accessibility
+
+1. **Label all form controls**
+2. **Group related fields with fieldset/legend**
+3. **Provide clear error messages**
+4. **Use appropriate input types**
+5. **Indicate required fields**
+
+### Content Guidelines
+
+1. **Write clear, concise text**
+2. **Use headings to structure content**
+3. **Provide alternative text for images**
+4. **Ensure links have descriptive text**
+
+## Resources
+
+### Tools for Testing
+
+- **Automated Testing**: axe-core, jest-axe, @axe-core/react
+- **Browser Extensions**: axe DevTools, WAVE, Lighthouse
+- **Screen Readers**: VoiceOver (macOS), NVDA (Windows), JAWS (Windows)
+- **Contrast Checkers**: WebAIM Contrast Checker, Stark
+
+### Further Reading
+
+- [WCAG 2.1 Guidelines](https://www.w3.org/WAI/WCAG21/quickref/)
+- [WAI-ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [WebAIM Resources](https://webaim.org/)
+
+## Support
+
+If you encounter accessibility issues or have suggestions for improvement, please:
+
+1. [Open an issue](https://github.com/your-org/forteui/issues) on GitHub
+2. Contact our team at accessibility@forteui.com
+3. Contribute to our accessibility improvements
+
+We're committed to making ForteUI accessible to everyone and appreciate your feedback in helping us achieve this goal.
