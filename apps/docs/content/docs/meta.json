@@ -9,6 +9,14 @@
       ]
     },
     {
+      "title": "Design System",
+      "pages": [
+        "design-system",
+        "theming",
+        "accessibility"
+      ]
+    },
+    {
       "title": "Components",
       "pages": [
         {
@@ -49,14 +57,6 @@
             "components/progress"
           ]
         }
-      ]
-    },
-    {
-      "title": "Design System",
-      "pages": [
-        "theming",
-        "typography",
-        "design-tokens"
       ]
     }
   ]
