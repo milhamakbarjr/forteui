@@ -15,8 +15,8 @@ const headingVariants = cva(
         6: "text-lg font-medium leading-normal",
       },
       color: {
-        "primary": "text-text-primary",
-        "secondary": "text-text-secondary",
+        "primary": "text-primary",
+        "secondary": "text-secondary",
         "brand": "text-primary-main",
         "white": "text-white",
       },
