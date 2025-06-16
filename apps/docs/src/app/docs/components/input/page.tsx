@@ -1,5 +1,6 @@
 import { lazy, Suspense } from 'react';
 import type { Metadata } from 'next';
+import { MDXContentFilter } from '@/components/MDXContentFilter';
 
 // Force dynamic rendering - no static generation
 export const dynamic = 'force-dynamic';
@@ -29,10 +30,12 @@ function LoadingFallback() {
 
 export default function InputComponentPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Suspense fallback={<LoadingFallback />}>
-        <InputMDX />
-      </Suspense>
+    <div className="prose prose-gray max-w-none">
+      <MDXContentFilter>
+        <Suspense fallback={<LoadingFallback />}>
+          <InputMDX />
+        </Suspense>
+      </MDXContentFilter>
     </div>
   );
 }

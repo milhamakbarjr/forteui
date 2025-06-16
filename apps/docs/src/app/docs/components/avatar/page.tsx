@@ -1,5 +1,6 @@
-import { lazy, Suspense } from 'react';
+import { lazy, Suspense, type JSX } from 'react';
 import type { Metadata } from 'next';
+import { MDXContentFilter } from '@/components/MDXContentFilter';
 
 // Force dynamic rendering - no static generation
 export const dynamic = 'force-dynamic';
@@ -8,7 +9,7 @@ export const dynamic = 'force-dynamic';
 const AvatarMDX = lazy(() => import('@/content/docs/components/avatar.mdx'));
 
 // Loading component
-function LoadingFallback() {
+function LoadingFallback(): JSX.Element {
   return (
     <div className="animate-pulse space-y-4">
       <div className="h-8 bg-gray-200 rounded mb-4"></div>
@@ -29,10 +30,12 @@ function LoadingFallback() {
 
 export default function AvatarComponentPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Suspense fallback={<LoadingFallback />}>
-        <AvatarMDX />
-      </Suspense>
+    <div className="prose prose-gray max-w-none">
+      <MDXContentFilter>
+        <Suspense fallback={<LoadingFallback />}>
+          <AvatarMDX />
+        </Suspense>
+      </MDXContentFilter>
     </div>
   );
 }
