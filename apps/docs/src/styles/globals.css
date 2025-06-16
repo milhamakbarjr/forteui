@@ -1,5 +1,17 @@
 /* Import ForteUI design tokens and base styles */
 @import './forteui.css';
+/* Import ForteUI design tokens directly */
+@import '../../../../packages/tokens/dist/variables.css';
+/* Import ForteUI component styles (minimal without tokens) */
+
+/* ForteUI Core Styles - manually added to avoid import issues */
+:root {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.forte-ui {
+  font-family: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
 
 @tailwind base;
 @tailwind components;
@@ -17,17 +29,37 @@
     --color-gray-50: #FAFAFA;
     --color-gray-100: #F5F5F5;
     --color-gray-900: #171717;
+    
+    /* Add missing action colors used by components */
+    --color-action-disabled: rgba(115, 115, 115, 0.38);
   }
   
-  /* Ensure body has proper background */
+  /* Ensure body has proper background and font family */
   body {
     background-color: var(--color-base-white, #ffffff);
     color: var(--color-gray-900, #171717);
+    font-family: var(--font-sans, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif);
   }
 }
 
 /* Plus Jakarta Sans is loaded via Next.js font optimization in layout.tsx */
 /* Removed duplicate Google Fonts import to prevent loading conflicts */
+
+/* Force Plus Jakarta Sans for all ForteUI components - target by element types */
+button,
+input,
+textarea,
+select {
+  font-family: var(--font-sans, 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif) !important;
+}
+
+/* Reset default focus styles for form elements */
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+  outline: none !important; /* Remove default browser focus outline */
+}
 
 @layer utilities {
   /* Custom background utilities for gradient animations */
