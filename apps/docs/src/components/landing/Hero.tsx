@@ -323,7 +323,7 @@ export function Hero() {
           variants={itemVariants}
         >
           A production-ready React component library built with TypeScript, 
-          featuring comprehensive design tokens and Plus Jakarta Sans typography.
+          featuring comprehensive design tokens.
         </motion.p>
 
         <motion.div 
