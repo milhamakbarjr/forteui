@@ -1,7 +1,41 @@
 import type { MDXComponents } from 'mdx/types';
 import { CodeBlock } from './CodeBlock';
-import { Text, Heading } from '@forteui/core';
+import { 
+  Text, 
+  Heading, 
+  Button, 
+  Input, 
+  Textarea, 
+  Checkbox, 
+  Radio, 
+  Switch, 
+  Alert, 
+  Avatar, 
+  Badge, 
+  Card, 
+  CardContent, 
+  CardHeader, 
+  CardTitle,
+  Chip,
+  Progress,
+  Slider
+} from '@forteui/core';
 import { cn } from '@forteui/core/lib/utils';
+import { ComponentShowcase, ButtonShowcase, ButtonSizeShowcase } from './ComponentShowcase';
+import { InteractiveButtonDemo } from './InteractiveButtonDemo';
+import { 
+  InputShowcase, 
+  FormControlsShowcase, 
+  AlertShowcase, 
+  AvatarShowcase, 
+  BadgeShowcase, 
+  CardShowcase
+} from './ComponentShowcases';
+import { 
+  DynamicInputShowcase, 
+  DynamicFormControlsShowcase, 
+  DynamicAvatarShowcase 
+} from './DynamicShowcases';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -105,6 +139,38 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </a>
     ),
+    // Interactive Components for MDX
+    ComponentShowcase,
+    ButtonShowcase,
+    ButtonSizeShowcase,
+    InteractiveButtonDemo,
+    InputShowcase,
+    FormControlsShowcase,
+    AlertShowcase,
+    AvatarShowcase,
+    BadgeShowcase,
+    CardShowcase,
+    // Dynamic SSR-safe versions
+    DynamicInputShowcase,
+    DynamicFormControlsShowcase,
+    DynamicAvatarShowcase,
+    // ForteUI Components
+    Button,
+    Input,
+    Textarea,
+    Checkbox,
+    Radio,
+    Switch,
+    Alert,
+    Avatar,
+    Badge,
+    Card,
+    CardContent,
+    CardHeader,
+    CardTitle,
+    Chip,
+    Progress,
+    Slider,
     ...components,
   };
 } 

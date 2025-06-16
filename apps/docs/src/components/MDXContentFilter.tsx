@@ -20,13 +20,12 @@ export function MDXContentFilter({ children }: MDXContentFilterProps) {
     // Function to check if text looks like frontmatter
     const isFrontmatterText = (text: string): boolean => {
       const trimmed = text.trim();
+      // More precise frontmatter detection
       return (
-        trimmed.includes('title:') ||
-        trimmed.includes('description:') ||
-        trimmed.startsWith('---') ||
-        /^(title|description):\s*.+/i.test(trimmed) ||
-        (trimmed.includes('title:') && trimmed.includes('description:')) ||
-        /title:\s*\w+.*description:\s*\w+/i.test(trimmed.replace(/\s+/g, ' '))
+        trimmed === '---' ||
+        (trimmed.startsWith('title:') && trimmed.length < 100) ||
+        (trimmed.startsWith('description:') && trimmed.length < 200) ||
+        /^---\s*title:\s*[^{]*description:\s*[^{]*---\s*$/i.test(trimmed.replace(/\n/g, ' '))
       );
     };
 

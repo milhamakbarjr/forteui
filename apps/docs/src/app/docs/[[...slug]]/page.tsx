@@ -90,18 +90,20 @@ export default async function Page({
 }
 
 export async function generateStaticParams() {
+  // Generate static params for pages that don't have interactive components
+  // Exclude input, checkbox, and avatar as they have useState issues during SSR
   return [
     { slug: ['introduction'] },
     { slug: ['getting-started'] },
     { slug: ['design-system'] },
     { slug: ['components', 'button'] },
-    { slug: ['components', 'input'] },
-    { slug: ['components', 'checkbox'] },
+    // { slug: ['components', 'input'] }, // Excluded - has interactive showcases
+    // { slug: ['components', 'checkbox'] }, // Excluded - has interactive showcases  
+    // { slug: ['components', 'avatar'] }, // Excluded - has interactive showcases
     { slug: ['components', 'radio'] },
     { slug: ['components', 'switch'] },
     { slug: ['components', 'textarea'] },
     { slug: ['components', 'slider'] },
-    { slug: ['components', 'avatar'] },
     { slug: ['components', 'alert'] },
     { slug: ['components', 'badge'] },
     { slug: ['components', 'card'] },
