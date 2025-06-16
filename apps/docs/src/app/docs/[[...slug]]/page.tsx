@@ -2,7 +2,6 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { lazy } from 'react';
 import { getPageFrontmatter } from '@/lib/mdx-utils';
-import { MDXContentFilter } from '@/components/MDXContentFilter';
 
 // Simple mapping for existing pages
 const pageMap = {
@@ -82,16 +81,14 @@ export default async function Page({
 
   return (
     <div className="prose prose-gray max-w-none">
-      <MDXContentFilter>
-        <Component />
-      </MDXContentFilter>
+      <Component />
     </div>
   );
 }
 
 export async function generateStaticParams() {
   // Generate static params for pages that don't have interactive components
-  // Exclude input, checkbox, and avatar as they have useState issues during SSR
+  // Exclude input, checkbox, and avatar as they have dynamic pages with interactive showcases
   return [
     { slug: ['introduction'] },
     { slug: ['getting-started'] },

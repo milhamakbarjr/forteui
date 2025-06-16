@@ -1,6 +1,5 @@
 import { lazy, Suspense } from 'react';
 import type { Metadata } from 'next';
-import { MDXContentFilter } from '@/components/MDXContentFilter';
 
 // Force dynamic rendering - no static generation
 export const dynamic = 'force-dynamic';
@@ -39,11 +38,9 @@ function LoadingFallback() {
 export default function CheckboxComponentPage() {
   return (
     <div className="prose prose-gray max-w-none">
-      <MDXContentFilter>
-        <Suspense fallback={<LoadingFallback />}>
-          <CheckboxMDX />
-        </Suspense>
-      </MDXContentFilter>
+      <Suspense fallback={<LoadingFallback />}>
+        <CheckboxMDX />
+      </Suspense>
     </div>
   );
 }

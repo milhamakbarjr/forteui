@@ -1,7 +1,10 @@
-const withMDX = require('@next/mdx')({
+import withMDXPlugin from '@next/mdx';
+import remarkFrontmatter from 'remark-frontmatter';
+
+const withMDX = withMDXPlugin({
   extension: /\.mdx?$/,
   options: {
-    remarkPlugins: [],
+    remarkPlugins: [remarkFrontmatter],
     rehypePlugins: [],
   },
 });
@@ -53,58 +56,12 @@ const nextConfig = {
     // Handle workspace protocol imports and fix package resolution
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@forteui/core': require.resolve('forteui-core'),
-      '@forteui/tokens': require.resolve('forteui-tokens'),
+      '@forteui/core': 'forteui-core',
+      '@forteui/tokens': 'forteui-tokens',
       // Add fallback for when packages are not found
-      'forteui-core': require.resolve('forteui-core'),
-      'forteui-tokens': require.resolve('forteui-tokens'),
+      'forteui-core': 'forteui-core',
+      'forteui-tokens': 'forteui-tokens',
     };
-    
-    // Optimize for smaller bundles in production
-    if (!dev) {
-      config.optimization.usedExports = true;
-      config.optimization.sideEffects = false;
-      
-      // Enhanced chunk splitting for better caching and animation libraries
-      if (!isServer) {
-        config.optimization.splitChunks = {
-          ...config.optimization.splitChunks,
-          cacheGroups: {
-            ...config.optimization.splitChunks.cacheGroups,
-            forteui: {
-              test: /[\\/]node_modules[\\/](forteui-core|forteui-tokens)[\\/]/,
-              name: 'forteui',
-              chunks: 'all',
-              priority: 10,
-            },
-            animations: {
-              test: /[\\/]node_modules[\\/](framer-motion)[\\/]/,
-              name: 'animations',
-              chunks: 'all',
-              priority: 8,
-            },
-            icons: {
-              test: /[\\/]node_modules[\\/](@tabler\/icons-react)[\\/]/,
-              name: 'icons',
-              chunks: 'all',
-              priority: 7,
-            },
-            ui: {
-              test: /[\\/]node_modules[\\/](fumadocs-ui|fumadocs-core)[\\/]/,
-              name: 'ui-framework',
-              chunks: 'all',
-              priority: 6,
-            },
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name: 'vendors',
-              chunks: 'all',
-              priority: 5,
-            },
-          },
-        };
-      }
-    }
     
     return config;
   },
@@ -125,4 +82,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withMDX(nextConfig);
+export default withMDX(nextConfig);
