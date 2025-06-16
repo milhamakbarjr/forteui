@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { lazy } from 'react';
-import { getPageFrontmatter } from '@/lib/mdx-utils';
+import { getPageFrontmatter } from '../../../lib/mdx-utils';
 
 // Simple mapping for existing pages
 const pageMap = {
