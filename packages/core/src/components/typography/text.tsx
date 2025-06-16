@@ -19,9 +19,9 @@ const textVariants = cva(
         "caption": "text-xs font-normal leading-normal",
       },
       color: {
-        "primary": "text-primary",
-        "secondary": "text-secondary", 
-        "disabled": "text-disabled",
+        "primary": "text-text-primary",
+        "secondary": "text-text-secondary", 
+        "disabled": "text-text-disabled",
         "brand": "text-primary-main",
         "white": "text-white",
       },
