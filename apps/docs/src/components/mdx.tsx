@@ -1,27 +1,29 @@
 import type { MDXComponents } from 'mdx/types';
 import { CodeBlock } from './CodeBlock';
+import { Text, Heading } from '@forteui/core';
+import { cn } from '@forteui/core/lib/utils';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
     h1: ({ children }) => (
-      <h1 className="text-3xl font-bold text-gray-900 mb-6 font-sans">
+      <Heading level={1} color="primary" className="mb-6">
         {children}
-      </h1>
+      </Heading>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-semibold text-gray-900 mb-4 mt-8 font-sans">
+      <Heading level={2} color="primary" className="mb-4 mt-8">
         {children}
-      </h2>
+      </Heading>
     ),
     h3: ({ children }) => (
-      <h3 className="text-xl font-semibold text-gray-900 mb-3 mt-6 font-sans">
+      <Heading level={3} color="primary" className="mb-3 mt-6">
         {children}
-      </h3>
+      </Heading>
     ),
     p: ({ children }) => (
-      <p className="text-gray-700 mb-4 leading-relaxed">
+      <Text variant="body" color="primary" className="mb-4 leading-relaxed">
         {children}
-      </p>
+      </Text>
     ),
     pre: ({ children, ...props }) => {
       // Extract code from pre element
@@ -43,7 +45,7 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       if (isInline) {
         return (
           <code 
-            className="bg-gray-100 text-gray-800 px-1.5 py-0.5 rounded text-sm font-mono"
+            className="bg-gray-100 text-primary px-1.5 py-0.5 rounded text-sm font-mono"
             {...props}
           >
             {children}
@@ -55,20 +57,20 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       return <code className={className} {...props}>{children}</code>;
     },
     ul: ({ children }) => (
-      <ul className="list-disc list-inside mb-4 space-y-1 text-gray-700">
+      <ul className="list-disc list-inside mb-4 space-y-1 text-primary">
         {children}
       </ul>
     ),
     ol: ({ children }) => (
-      <ol className="list-decimal list-inside mb-4 space-y-1 text-gray-700">
+      <ol className="list-decimal list-inside mb-4 space-y-1 text-primary">
         {children}
       </ol>
     ),
     li: ({ children }) => (
-      <li className="text-gray-700">{children}</li>
+      <li className="text-primary">{children}</li>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="border-l-4 border-primary-main bg-primary-8 p-4 mb-4 italic">
+      <blockquote className="border-l-4 border-primary bg-primary-8 p-4 mb-4 italic">
         {children}
       </blockquote>
     ),
@@ -85,19 +87,19 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
       </thead>
     ),
     th: ({ children }) => (
-      <th className="border border-gray-300 px-4 py-2 text-left font-semibold text-gray-900">
+      <th className="border border-gray-300 px-4 py-2 text-left font-semibold text-primary">
         {children}
       </th>
     ),
     td: ({ children }) => (
-      <td className="border border-gray-300 px-4 py-2 text-gray-700">
+      <td className="border border-gray-300 px-4 py-2 text-primary">
         {children}
       </td>
     ),
     a: ({ children, href, ...props }) => (
       <a 
         href={href}
-        className="text-primary-main hover:text-primary-dark underline transition-colors"
+        className="text-primary hover:text-primary-dark underline transition-colors"
         {...props}
       >
         {children}

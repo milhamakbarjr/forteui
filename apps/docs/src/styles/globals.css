@@ -513,3 +513,8 @@ code[class*="language-"] {
     padding: 0.5rem;
   }
 }
+
+/* Hide frontmatter content that appears as text in MDX */
+.mdx-frontmatter-hidden {
+  display: none !important;
+}
