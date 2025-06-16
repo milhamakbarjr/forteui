@@ -74,10 +74,6 @@ export default function Layout({ children }: { children: ReactNode }) {
             </div>
           </div>
 
-          <div className="bg-gradient-to-r from-primary-main to-secondary-main text-white p-3 rounded-lg mb-6">
-            <p className="text-sm font-medium">🎉 100% Component Coverage!</p>
-          </div>
-
           {/* Search - Hidden on mobile, shown in header */}
           <div className="mb-6 hidden lg:block">
             <HeaderSearch />
