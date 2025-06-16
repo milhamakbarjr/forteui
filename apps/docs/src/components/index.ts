@@ -20,5 +20,4 @@ export {
   DynamicFormControlsShowcase, 
   DynamicAvatarShowcase 
 } from './DynamicShowcases';
-export { MDXContentFilter } from './MDXContentFilter';
 export { MDXWrapper } from './MDXWrapper';
