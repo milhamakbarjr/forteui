@@ -39,36 +39,69 @@ function MyComponent() {
 }
 ```
 
+## Interactive Example
+
+<DynamicInputShowcase
+  title="Interactive Input Demo"
+  description="Try out different input types and see how they behave."
+>
+  <div className="space-y-4">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <Input placeholder="Type something..." />
+      <Input type="email" placeholder="your@email.com" />
+      <Input type="password" placeholder="Password" />
+      <Input type="number" placeholder="123" />
+    </div>
+  </div>
+</DynamicInputShowcase>
+
 ## Variants
 
 ### Default Variant (Border-based)
 
 The default variant uses a border-based design:
 
-```tsx
-<Input label="Default Input" placeholder="Border-based styling" />
+<InputShowcase
+  title="Default Input Variants"
+  description="Border-based input styling with different states"
+  code={`<Input label="Default Input" placeholder="Border-based styling" />
 <Input label="With Value" defaultValue="Some input value" />
-<Input label="Disabled" disabled />
-```
+<Input label="Disabled" disabled />`}
+>
+  <Input label="Default Input" placeholder="Border-based styling" />
+  <Input label="With Value" defaultValue="Some input value" />
+  <Input label="Disabled" disabled />
+</InputShowcase>
 
 ### Filled Variant (Background-based)
 
 The filled variant uses a background-based design:
 
-```tsx
-<Input variant="filled" label="Filled Input" placeholder="Background-based styling" />
+<InputShowcase
+  title="Filled Input Variants"
+  description="Background-based input styling with different states"
+  code={`<Input variant="filled" label="Filled Input" placeholder="Background-based styling" />
 <Input variant="filled" label="With Value" defaultValue="Some input value" />
-<Input variant="filled" label="Disabled" disabled />
-```
+<Input variant="filled" label="Disabled" disabled />`}
+>
+  <Input variant="filled" label="Filled Input" placeholder="Background-based styling" />
+  <Input variant="filled" label="With Value" defaultValue="Some input value" />
+  <Input variant="filled" label="Disabled" disabled />
+</InputShowcase>
 
 ## Sizes
 
 The Input component supports two sizes:
 
-```tsx
-<Input size="sm" label="Small Input" placeholder="Small (40px height)" />
-<Input size="md" label="Medium Input" placeholder="Medium (54px height)" />
-```
+<InputShowcase
+  title="Input Sizes"
+  description="Different input sizes for various use cases"
+  code={`<Input size="sm" label="Small Input" placeholder="Small (40px height)" />
+<Input size="md" label="Medium Input" placeholder="Medium (54px height)" />`}
+>
+  <Input size="sm" label="Small Input" placeholder="Small (40px height)" />
+  <Input size="md" label="Medium Input" placeholder="Medium (54px height)" />
+</InputShowcase>
 
 ## States
 

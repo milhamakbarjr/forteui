@@ -33,12 +33,26 @@ function MyComponent() {
 }
 ```
 
+<AlertShowcase
+  title="Basic Alert Usage"
+  description="Simple alert with different severity levels"
+  code={`<Alert severity="info">
+  This is an informational alert.
+</Alert>`}
+>
+  <Alert severity="info">
+    This is an informational alert.
+  </Alert>
+</AlertShowcase>
+
 ## Severity Levels
 
 Alerts support four semantic severity levels:
 
-```tsx
-<Alert severity="info">
+<AlertShowcase
+  title="Alert Severity Levels"
+  description="Different alert severities for various message types"
+  code={`<Alert severity="info">
   This is an info alert — check it out!
 </Alert>
 
@@ -52,8 +66,21 @@ Alerts support four semantic severity levels:
 
 <Alert severity="error">
   This is an error alert — check it out!
-</Alert>
-```
+</Alert>`}
+>
+  <Alert severity="info">
+    This is an info alert — check it out!
+  </Alert>
+  <Alert severity="success">
+    This is a success alert — check it out!
+  </Alert>
+  <Alert severity="warning">
+    This is a warning alert — check it out!
+  </Alert>
+  <Alert severity="error">
+    This is an error alert — check it out!
+  </Alert>
+</AlertShowcase>
 
 ## Variants
 

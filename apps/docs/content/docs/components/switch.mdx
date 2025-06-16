@@ -34,6 +34,22 @@ function MyComponent() {
 }
 ```
 
+<FormControlsShowcase
+  title="Basic Switch Usage"
+  description="Interactive switch toggle examples"
+  code={`<Switch 
+  label="Enable notifications"
+  defaultChecked={false}
+/>`}
+>
+  <div className="space-y-4">
+    <Switch label="Enable notifications" />
+    <Switch label="Dark mode" defaultChecked />
+    <Switch label="Auto-save" defaultChecked />
+    <Switch label="Disabled option" disabled />
+  </div>
+</FormControlsShowcase>
+
 ## Variants and Colors
 
 ```tsx

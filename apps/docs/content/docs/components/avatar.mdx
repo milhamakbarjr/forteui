@@ -35,18 +35,43 @@ function MyComponent() {
 }
 ```
 
+<DynamicAvatarShowcase
+  title="Basic Avatar Usage"
+  description="Simple avatar with image and fallback"
+  code={`<Avatar 
+  src="/user-avatar.jpg"
+  alt="John Doe"
+  fallback="JD"
+/>`}
+>
+  <Avatar 
+    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+    alt="John Doe"
+    fallback="JD"
+  />
+</DynamicAvatarShowcase>
+
 ## Sizes
 
-```tsx
-<div className="flex items-center gap-4">
+<DynamicAvatarShowcase
+  title="Avatar Sizes"
+  description="Different avatar sizes from extra small to extra large"
+  code={`<div className="flex items-center gap-4">
   <Avatar size="xs" src="/user.jpg" fallback="XS" />
   <Avatar size="sm" src="/user.jpg" fallback="SM" />
   <Avatar size="md" src="/user.jpg" fallback="MD" />
   <Avatar size="lg" src="/user.jpg" fallback="LG" />
   <Avatar size="xl" src="/user.jpg" fallback="XL" />
   <Avatar size="2xl" src="/user.jpg" fallback="2XL" />
-</div>
-```
+</div>`}
+>
+  <Avatar size="xs" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face" fallback="XS" />
+  <Avatar size="sm" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" fallback="SM" />
+  <Avatar size="md" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" fallback="MD" />
+  <Avatar size="lg" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" fallback="LG" />
+  <Avatar size="xl" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" fallback="XL" />
+  <Avatar size="2xl" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" fallback="2XL" />
+</DynamicAvatarShowcase>
 
 ## Fallback Handling
 
