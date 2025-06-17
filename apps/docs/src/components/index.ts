@@ -17,7 +17,10 @@ export {
   ClientSafeCheckboxShowcase,
   ClientSafeSwitchShowcase,
   ClientSafeTextareaShowcase,
-  ClientSafeRadioShowcase
+  ClientSafeRadioShowcase,
+  ClientSafeSliderShowcase,
+  ClientSafeBadgeShowcase,
+  ClientSafeChipShowcase
 } from './ClientSafeShowcases';
 export { 
   DynamicInputShowcase, 
@@ -26,6 +29,9 @@ export {
   DynamicCheckboxShowcase,
   DynamicSwitchShowcase,
   DynamicTextareaShowcase,
-  DynamicRadioShowcase
+  DynamicRadioShowcase,
+  DynamicSliderShowcase,
+  DynamicBadgeShowcase,
+  DynamicChipShowcase
 } from './DynamicShowcases';
 export { MDXWrapper } from './MDXWrapper';

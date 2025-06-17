@@ -2,7 +2,8 @@
 @import './forteui.css';
 /* Import ForteUI design tokens directly */
 @import '../../../../packages/tokens/dist/variables.css';
-/* Import ForteUI component styles (minimal without tokens) */
+/* Import Plus Jakarta Sans font */
+@import '../../../../packages/tokens/fonts/plus-jakarta-sans.css';
 
 /* ForteUI Core Styles - manually added to avoid import issues */
 :root {

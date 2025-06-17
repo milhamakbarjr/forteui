@@ -167,3 +167,90 @@ export const DynamicRadioShowcase = dynamic(
     )
   }
 );
+
+export const DynamicSliderShowcase = dynamic(
+  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeSliderShowcase })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="animate-pulse space-y-8">
+        <div className="h-8 bg-gray-200 rounded mb-4"></div>
+        <div className="space-y-6">
+          <div>
+            <div className="h-4 bg-gray-200 rounded w-24 mb-3"></div>
+            <div className="h-2 bg-gray-200 rounded w-full"></div>
+          </div>
+          <div>
+            <div className="h-4 bg-gray-200 rounded w-32 mb-3"></div>
+            <div className="h-2 bg-gray-200 rounded w-full"></div>
+          </div>
+          <div>
+            <div className="h-4 bg-gray-200 rounded w-28 mb-3"></div>
+            <div className="h-2 bg-gray-200 rounded w-full"></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+);
+
+export const DynamicBadgeShowcase = dynamic(
+  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeBadgeShowcase })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="animate-pulse space-y-8">
+        <div className="h-8 bg-gray-200 rounded mb-4"></div>
+        <div className="space-y-6">
+          <div>
+            <div className="h-5 bg-gray-200 rounded w-32 mb-3"></div>
+            <div className="flex flex-wrap gap-3">
+              <div className="h-6 bg-gray-200 rounded w-16"></div>
+              <div className="h-6 bg-gray-200 rounded w-14"></div>
+              <div className="h-6 bg-gray-200 rounded w-18"></div>
+              <div className="h-6 bg-gray-200 rounded w-16"></div>
+            </div>
+          </div>
+          <div>
+            <div className="h-5 bg-gray-200 rounded w-40 mb-3"></div>
+            <div className="flex gap-6">
+              <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
+              <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
+              <div className="w-8 h-8 bg-gray-200 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+);
+
+export const DynamicChipShowcase = dynamic(
+  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeChipShowcase })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="animate-pulse space-y-8">
+        <div className="h-8 bg-gray-200 rounded mb-4"></div>
+        <div className="space-y-6">
+          <div>
+            <div className="h-5 bg-gray-200 rounded w-32 mb-3"></div>
+            <div className="flex flex-wrap gap-3">
+              <div className="h-8 bg-gray-200 rounded-full w-16"></div>
+              <div className="h-8 bg-gray-200 rounded-full w-20"></div>
+              <div className="h-8 bg-gray-200 rounded-full w-18"></div>
+              <div className="h-8 bg-gray-200 rounded-full w-16"></div>
+            </div>
+          </div>
+          <div>
+            <div className="h-5 bg-gray-200 rounded w-40 mb-3"></div>
+            <div className="flex flex-wrap gap-3">
+              <div className="h-8 bg-gray-200 rounded-full w-14"></div>
+              <div className="h-6 bg-gray-200 rounded-full w-12"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+);

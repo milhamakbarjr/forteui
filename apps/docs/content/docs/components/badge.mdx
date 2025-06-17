@@ -1,11 +1,11 @@
 ---
 title: Badge
-description: Badge component for displaying status indicators, counts, and labels with multiple variants and colors.
+description: Badge wrapper component for displaying count numbers or dot indicators on top of child elements like icons or avatars.
 ---
 
 # Badge
 
-Badge component for displaying status indicators, counts, and labels. Perfect for notification badges, status indicators, and categorical labels.
+Badge wrapper component for displaying count numbers or dot indicators on top of child elements. Perfect for notification badges on icons, unread message counts, and status indicators.
 
 ## Installation
 
@@ -26,67 +26,59 @@ import { Badge } from 'forteui-core';
 
 function MyComponent() {
   return (
-    <Badge variant="filled" color="primary">
-      New
+    <Badge variant="primary" count={5}>
+      <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
+        🔔
+      </div>
     </Badge>
   );
 }
 ```
 
-<BadgeShowcase
+<DynamicBadgeShowcase
   title="Basic Badge Usage"
-  description="Simple badge with different colors"
-  code={`<Badge variant="filled" color="primary">
-  New
+  description="Badge wrapper component with count indicators"
+  code={`<Badge variant="primary" count={5}>
+  <IconNotification />
 </Badge>`}
 >
-  <Badge variant="filled" color="primary">New</Badge>
-  <Badge variant="filled" color="success">Success</Badge>
-  <Badge variant="filled" color="warning">Warning</Badge>
-  <Badge variant="filled" color="error">Error</Badge>
-</BadgeShowcase>
+</DynamicBadgeShowcase>
 
 ## Variants
 
-### Filled Badges
+### Number Badges
 
-<BadgeShowcase
-  title="Filled Badge Variants"
-  description="Solid background badges with different colors"
-  code={`<Badge variant="filled" color="default">Default</Badge>
-<Badge variant="filled" color="primary">Primary</Badge>
-<Badge variant="filled" color="secondary">Secondary</Badge>
-<Badge variant="filled" color="success">Success</Badge>
-<Badge variant="filled" color="warning">Warning</Badge>
-<Badge variant="filled" color="error">Error</Badge>`}
+<DynamicBadgeShowcase
+  title="Number Badge Variants"
+  description="Badge wrapper with count numbers in different colors"
+  code={`<Badge variant="default" count={1}>
+  <IconNotification />
+</Badge>
+<Badge variant="primary" count={5}>
+  <IconMail />
+</Badge>
+<Badge variant="secondary" count={12}>
+  <IconShoppingCart />
+</Badge>`}
 >
-  <Badge variant="filled" color="default">Default</Badge>
-  <Badge variant="filled" color="primary">Primary</Badge>
-  <Badge variant="filled" color="secondary">Secondary</Badge>
-  <Badge variant="filled" color="success">Success</Badge>
-  <Badge variant="filled" color="warning">Warning</Badge>
-  <Badge variant="filled" color="error">Error</Badge>
-</BadgeShowcase>
+</DynamicBadgeShowcase>
 
-### Outline Badges
+### Dot Badges
 
-<BadgeShowcase
-  title="Outline Badge Variants"
-  description="Border-based badges with different colors"
-  code={`<Badge variant="outline" color="default">Default</Badge>
-<Badge variant="outline" color="primary">Primary</Badge>
-<Badge variant="outline" color="secondary">Secondary</Badge>
-<Badge variant="outline" color="success">Success</Badge>
-<Badge variant="outline" color="warning">Warning</Badge>
-<Badge variant="outline" color="error">Error</Badge>`}
+<DynamicBadgeShowcase
+  title="Dot Badge Variants"
+  description="Dot indicator badges for status display"
+  code={`<Badge variant="success" type="dot">
+  <UserIcon />
+</Badge>
+<Badge variant="warning" type="dot">
+  <SettingsIcon />
+</Badge>
+<Badge variant="error" type="dot">
+  <AlertIcon />
+</Badge>`}
 >
-  <Badge variant="outline" color="default">Default</Badge>
-  <Badge variant="outline" color="primary">Primary</Badge>
-  <Badge variant="outline" color="secondary">Secondary</Badge>
-  <Badge variant="outline" color="success">Success</Badge>
-  <Badge variant="outline" color="warning">Warning</Badge>
-  <Badge variant="outline" color="error">Error</Badge>
-</BadgeShowcase>
+</DynamicBadgeShowcase>
 
 ### Soft Badges
 
