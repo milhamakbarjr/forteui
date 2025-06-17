@@ -20,7 +20,9 @@ export {
   ClientSafeRadioShowcase,
   ClientSafeSliderShowcase,
   ClientSafeBadgeShowcase,
-  ClientSafeChipShowcase
+  ClientSafeChipShowcase,
+  ClientSafeCardShowcase,
+  ClientSafeTypographyShowcase
 } from './ClientSafeShowcases';
 export { 
   DynamicInputShowcase, 

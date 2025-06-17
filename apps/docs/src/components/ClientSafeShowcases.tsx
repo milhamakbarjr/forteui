@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Input, Checkbox, Switch, Avatar, Textarea, Radio, RadioGroup, Slider, Badge, Chip, IconX, IconUser, IconCheck, IconSettings, IconStar } from '@forteui/core';
+import { Input, Checkbox, Switch, Avatar, Textarea, Radio, RadioGroup, Slider, Badge, Chip, IconX, IconUser, IconCheck, IconSettings, IconStar, Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription, Text, Heading } from '@forteui/core';
 import { ComponentShowcase } from './ComponentShowcase';
 
 // Client-safe Input Showcase
@@ -762,6 +762,414 @@ export function ClientSafeChipShowcase({
             >
               Favorite
             </Chip>
+          </div>
+        </div>
+
+        {children}
+      </div>
+    </ComponentShowcase>
+  );
+}
+
+// Client-safe Card Showcase
+export function ClientSafeCardShowcase({ 
+  children, 
+  code, 
+  title = "Card Examples",
+  description = "Interactive card component examples with variants and composition patterns"
+}: {
+  children?: React.ReactNode;
+  code?: string;
+  title?: string;
+  description?: string;
+}) {
+  const [liked, setLiked] = useState(false);
+  const [bookmarked, setBookmarked] = useState(false);
+  const [selectedVariant, setSelectedVariant] = useState<'default' | 'elevated' | 'outlined' | 'filled'>('default');
+  const [selectedPadding, setSelectedPadding] = useState<'sm' | 'md' | 'lg'>('md');
+
+  return (
+    <ComponentShowcase title={title} description={description} code={code}>
+      <div className="forte-ui space-y-8">
+        {/* Card Variants */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-900">Card Variants</h4>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <Card variant="default">
+              <CardHeader>
+                <CardTitle>Default Card</CardTitle>
+                <CardDescription>Standard card with default styling and shadow.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Text variant="body-sm">
+                  This is the default card variant with standard padding and shadow-sm.
+                </Text>
+              </CardContent>
+              <CardFooter>
+                <button className="px-3 py-1 text-sm bg-blue-100 hover:bg-blue-200 rounded">Action</button>
+              </CardFooter>
+            </Card>
+
+            <Card variant="elevated">
+              <CardHeader>
+                <CardTitle>Elevated Card</CardTitle>
+                <CardDescription>Card with enhanced shadow for emphasis.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Text variant="body-sm">
+                  This elevated card uses shadow-md for a more prominent appearance.
+                </Text>
+              </CardContent>
+              <CardFooter>
+                <button className="px-3 py-1 text-sm bg-blue-500 text-white hover:bg-blue-600 rounded">Learn More</button>
+              </CardFooter>
+            </Card>
+
+            <Card variant="outlined">
+              <CardHeader>
+                <CardTitle>Outlined Card</CardTitle>
+                <CardDescription>Card with prominent border and no shadow.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Text variant="body-sm">
+                  This outlined card emphasizes the border instead of using shadows.
+                </Text>
+              </CardContent>
+              <CardFooter>
+                <button className="px-3 py-1 text-sm border border-blue-500 text-blue-500 hover:bg-blue-50 rounded">View Details</button>
+              </CardFooter>
+            </Card>
+
+            <Card variant="filled">
+              <CardHeader>
+                <CardTitle>Filled Card</CardTitle>
+                <CardDescription>Card with subtle background fill.</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Text variant="body-sm">
+                  This filled card uses a light background color instead of white.
+                </Text>
+              </CardContent>
+              <CardFooter>
+                <button className="px-3 py-1 text-sm text-blue-500 hover:text-blue-700 underline">Learn More</button>
+              </CardFooter>
+            </Card>
+          </div>
+        </div>
+
+        {/* Padding Options */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-900">Padding Options</h4>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Card padding="sm">
+              <CardHeader padding="sm">
+                <CardTitle>Small Padding</CardTitle>
+                <CardDescription>Compact layout (16px)</CardDescription>
+              </CardHeader>
+              <CardContent padding="sm">
+                <Text variant="body-sm">Compact card content with reduced spacing</Text>
+              </CardContent>
+              <CardFooter padding="sm">
+                <button className="px-2 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded">Action</button>
+              </CardFooter>
+            </Card>
+            
+            <Card padding="md">
+              <CardHeader padding="md">
+                <CardTitle>Medium Padding</CardTitle>
+                <CardDescription>Default layout (24px)</CardDescription>
+              </CardHeader>
+              <CardContent padding="md">
+                <Text variant="body-sm">Standard card content with balanced spacing</Text>
+              </CardContent>
+              <CardFooter padding="md">
+                <button className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded">Action</button>
+              </CardFooter>
+            </Card>
+            
+            <Card padding="lg">
+              <CardHeader padding="lg">
+                <CardTitle>Large Padding</CardTitle>
+                <CardDescription>Spacious layout (32px)</CardDescription>
+              </CardHeader>
+              <CardContent padding="lg">
+                <Text variant="body-sm">Expanded card content with generous spacing</Text>
+              </CardContent>
+              <CardFooter padding="lg">
+                <button className="px-4 py-2 text-sm bg-gray-100 hover:bg-gray-200 rounded">Action</button>
+              </CardFooter>
+            </Card>
+          </div>
+        </div>
+
+        {/* Interactive Example */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-900">Interactive Card</h4>
+          <Card variant={selectedVariant} padding={selectedPadding}>
+            <CardHeader>
+              <CardTitle>Interactive Product Card</CardTitle>
+              <CardDescription>Try different variants and padding options below</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-3">
+                <Text variant="body-sm">
+                  This card updates based on your selections. Choose different variants and padding to see the changes.
+                </Text>
+                <div className="flex gap-4">
+                  <div>
+                    <label className="block text-xs font-medium mb-1">Variant:</label>
+                    <select 
+                      value={selectedVariant} 
+                      onChange={(e) => setSelectedVariant(e.target.value as any)}
+                      className="text-xs border rounded px-2 py-1"
+                    >
+                      <option value="default">Default</option>
+                      <option value="elevated">Elevated</option>
+                      <option value="outlined">Outlined</option>
+                      <option value="filled">Filled</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-xs font-medium mb-1">Padding:</label>
+                    <select 
+                      value={selectedPadding} 
+                      onChange={(e) => setSelectedPadding(e.target.value as any)}
+                      className="text-xs border rounded px-2 py-1"
+                    >
+                      <option value="sm">Small</option>
+                      <option value="md">Medium</option>
+                      <option value="lg">Large</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <div className="flex gap-2">
+                <button 
+                  onClick={() => setLiked(!liked)}
+                  className={`px-3 py-1 text-sm rounded ${
+                    liked ? 'bg-red-100 text-red-600' : 'bg-gray-100 text-gray-600'
+                  } hover:bg-red-200`}
+                >
+                  {liked ? '❤️ Liked' : '🤍 Like'}
+                </button>
+                <button 
+                  onClick={() => setBookmarked(!bookmarked)}
+                  className={`px-3 py-1 text-sm rounded ${
+                    bookmarked ? 'bg-blue-100 text-blue-600' : 'bg-gray-100 text-gray-600'
+                  } hover:bg-blue-200`}
+                >
+                  {bookmarked ? '🔖 Saved' : '📑 Save'}
+                </button>
+              </div>
+            </CardFooter>
+          </Card>
+        </div>
+
+        {children}
+      </div>
+    </ComponentShowcase>
+  );
+}
+
+// Client-safe Typography Showcase
+export function ClientSafeTypographyShowcase({ 
+  children, 
+  code, 
+  title = "Typography Examples",
+  description = "Interactive typography system with headings, text variants, and color options"
+}: {
+  children?: React.ReactNode;
+  code?: string;
+  title?: string;
+  description?: string;
+}) {
+  const [selectedHeadingLevel, setSelectedHeadingLevel] = useState<1 | 2 | 3 | 4 | 5 | 6>(2);
+  const [selectedTextVariant, setSelectedTextVariant] = useState<'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'body-sm' | 'caption'>('body');
+  const [selectedColor, setSelectedColor] = useState<'primary' | 'secondary' | 'brand' | 'white'>('primary');
+  const [customText, setCustomText] = useState('Your custom text here');
+
+  return (
+    <ComponentShowcase title={title} description={description} code={code}>
+      <div className="forte-ui space-y-8">
+        {/* Heading Levels */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-900">Heading Levels</h4>
+          <div className="space-y-3">
+            <Heading level={1}>Heading Level 1</Heading>
+            <Heading level={2}>Heading Level 2</Heading>
+            <Heading level={3}>Heading Level 3</Heading>
+            <Heading level={4}>Heading Level 4</Heading>
+            <Heading level={5}>Heading Level 5</Heading>
+            <Heading level={6}>Heading Level 6</Heading>
+          </div>
+        </div>
+
+        {/* Text Variants */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-900">Text Variants</h4>
+          <div className="space-y-3">
+            <Text variant="display">Display Text - Large and bold for major headings</Text>
+            <Text variant="h1">H1 Text - Primary heading style</Text>
+            <Text variant="h2">H2 Text - Secondary heading style</Text>
+            <Text variant="h3">H3 Text - Tertiary heading style</Text>
+            <Text variant="body">Body Text - Default paragraph text</Text>
+            <Text variant="body-sm">Body Small - Smaller paragraph text</Text>
+            <Text variant="caption">Caption Text - Small descriptive text</Text>
+          </div>
+        </div>
+
+        {/* Color Variants */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-900">Color Variants</h4>
+          <div className="space-y-3">
+            <Text variant="body" color="primary">Primary text color</Text>
+            <Text variant="body" color="secondary">Secondary text color</Text>
+            <Text variant="body" color="brand">Brand text color</Text>
+            <div className="bg-gray-800 p-3 rounded">
+              <Text variant="body" color="white">White text on dark background</Text>
+            </div>
+          </div>
+        </div>
+
+        {/* Interactive Typography Editor */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-900">Interactive Typography Editor</h4>
+          <div className="space-y-4 p-4 border rounded-lg bg-gray-50">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label className="block text-xs font-medium mb-1">Heading Level:</label>
+                <select 
+                  value={selectedHeadingLevel} 
+                  onChange={(e) => setSelectedHeadingLevel(Number(e.target.value) as any)}
+                  className="w-full text-xs border rounded px-2 py-1"
+                >
+                  <option value="1">Level 1</option>
+                  <option value="2">Level 2</option>
+                  <option value="3">Level 3</option>
+                  <option value="4">Level 4</option>
+                  <option value="5">Level 5</option>
+                  <option value="6">Level 6</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-medium mb-1">Text Variant:</label>
+                <select 
+                  value={selectedTextVariant} 
+                  onChange={(e) => setSelectedTextVariant(e.target.value as any)}
+                  className="w-full text-xs border rounded px-2 py-1"
+                >
+                  <option value="display">Display</option>
+                  <option value="h1">H1</option>
+                  <option value="h2">H2</option>
+                  <option value="h3">H3</option>
+                  <option value="h4">H4</option>
+                  <option value="h5">H5</option>
+                  <option value="h6">H6</option>
+                  <option value="body">Body</option>
+                  <option value="body-sm">Body Small</option>
+                  <option value="caption">Caption</option>
+                </select>
+              </div>
+              <div>
+                <label className="block text-xs font-medium mb-1">Color:</label>
+                <select 
+                  value={selectedColor} 
+                  onChange={(e) => setSelectedColor(e.target.value as any)}
+                  className="w-full text-xs border rounded px-2 py-1"
+                >
+                  <option value="primary">Primary</option>
+                  <option value="secondary">Secondary</option>
+                  <option value="brand">Brand</option>
+                </select>
+              </div>
+            </div>
+            
+            <div>
+              <label className="block text-xs font-medium mb-1">Custom Text:</label>
+              <input 
+                type="text"
+                value={customText}
+                onChange={(e) => setCustomText(e.target.value)}
+                className="w-full text-sm border rounded px-3 py-2"
+                placeholder="Enter your text here..."
+              />
+            </div>
+
+            <div className="space-y-4 p-4 bg-white rounded border">
+              <div>
+                <Text variant="caption" color="secondary" className="block mb-2">Preview Heading:</Text>
+                <Heading level={selectedHeadingLevel} color={selectedColor}>
+                  {customText}
+                </Heading>
+              </div>
+              <div>
+                <Text variant="caption" color="secondary" className="block mb-2">Preview Text:</Text>
+                <Text variant={selectedTextVariant} color={selectedColor}>
+                  {customText}
+                </Text>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Typography Scale */}
+        <div className="space-y-4">
+          <h4 className="text-sm font-medium text-gray-900">Typography Scale</h4>
+          <div className="space-y-4 p-4 border rounded-lg">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <Text variant="caption" color="secondary" className="block mb-3">Headings:</Text>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Heading level={1} className="flex-1">H1</Heading>
+                    <Text variant="caption" color="secondary">48px</Text>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Heading level={2} className="flex-1">H2</Heading>
+                    <Text variant="caption" color="secondary">36px</Text>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Heading level={3} className="flex-1">H3</Heading>
+                    <Text variant="caption" color="secondary">30px</Text>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Heading level={4} className="flex-1">H4</Heading>
+                    <Text variant="caption" color="secondary">24px</Text>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Heading level={5} className="flex-1">H5</Heading>
+                    <Text variant="caption" color="secondary">20px</Text>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Heading level={6} className="flex-1">H6</Heading>
+                    <Text variant="caption" color="secondary">18px</Text>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <Text variant="caption" color="secondary" className="block mb-3">Body Text:</Text>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between">
+                    <Text variant="display" className="flex-1">Display</Text>
+                    <Text variant="caption" color="secondary">48px</Text>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Text variant="body" className="flex-1">Body</Text>
+                    <Text variant="caption" color="secondary">16px</Text>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Text variant="body-sm" className="flex-1">Body Small</Text>
+                    <Text variant="caption" color="secondary">14px</Text>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <Text variant="caption" className="flex-1">Caption</Text>
+                    <Text variant="caption" color="secondary">12px</Text>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
