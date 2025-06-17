@@ -24,7 +24,8 @@ export {
   ClientSafeCardShowcase,
   ClientSafeTypographyShowcase,
   ClientSafeBreadcrumbShowcase,
-  ClientSafeSnackbarShowcase
+  ClientSafeSnackbarShowcase,
+  ClientSafeProgressShowcase
 } from './ClientSafeShowcases';
 export { 
   DynamicInputShowcase, 
@@ -40,6 +41,9 @@ export {
   DynamicCardShowcase,
   DynamicTypographyShowcase,
   DynamicBreadcrumbShowcase,
-  DynamicSnackbarShowcase
+  DynamicSnackbarShowcase,
+  DynamicProgressShowcase,
+  ProgressShowcase
 } from './DynamicShowcases';
 export { MDXWrapper } from './MDXWrapper';
+export { ProgressTest } from './ProgressTest';

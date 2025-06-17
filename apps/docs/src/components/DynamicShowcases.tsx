@@ -1,6 +1,66 @@
 import dynamic from 'next/dynamic';
 
 // Dynamic imports with SSR disabled for problematic components
+export const DynamicProgressShowcase = dynamic(
+  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeProgressShowcase })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="animate-pulse space-y-6">
+        <div className="h-8 bg-gray-200 rounded mb-4"></div>
+        <div className="space-y-4">
+          {/* Linear progress skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-48"></div>
+            <div className="h-1 bg-gray-200 rounded w-full"></div>
+            <div className="h-1 bg-gray-200 rounded w-full"></div>
+            <div className="h-1 bg-gray-200 rounded w-full"></div>
+          </div>
+          {/* Circular progress skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-48"></div>
+            <div className="flex gap-4">
+              <div className="w-11 h-11 bg-gray-200 rounded-full"></div>
+              <div className="w-11 h-11 bg-gray-200 rounded-full"></div>
+              <div className="w-11 h-11 bg-gray-200 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+);
+
+export const ProgressShowcase = dynamic(
+  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeProgressShowcase })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="animate-pulse space-y-6">
+        <div className="h-8 bg-gray-200 rounded mb-4"></div>
+        <div className="space-y-4">
+          {/* Linear progress skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-48"></div>
+            <div className="h-1 bg-gray-200 rounded w-full"></div>
+            <div className="h-1 bg-gray-200 rounded w-full"></div>
+            <div className="h-1 bg-gray-200 rounded w-full"></div>
+          </div>
+          {/* Circular progress skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-48"></div>
+            <div className="flex gap-4">
+              <div className="w-11 h-11 bg-gray-200 rounded-full"></div>
+              <div className="w-11 h-11 bg-gray-200 rounded-full"></div>
+              <div className="w-11 h-11 bg-gray-200 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+);
+
 export const DynamicInputShowcase = dynamic(
   () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeInputShowcase })),
   { 

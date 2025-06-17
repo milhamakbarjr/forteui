@@ -45,8 +45,11 @@ import {
   DynamicCardShowcase,
   DynamicTypographyShowcase,
   DynamicBreadcrumbShowcase,
-  DynamicSnackbarShowcase
+  DynamicSnackbarShowcase,
+  DynamicProgressShowcase,
+  ProgressShowcase
 } from './DynamicShowcases';
+import { ProgressTest } from './ProgressTest';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
   return {
@@ -176,6 +179,10 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     DynamicTypographyShowcase,
     DynamicBreadcrumbShowcase,
     DynamicSnackbarShowcase,
+    DynamicProgressShowcase,
+    ProgressShowcase,
+    // Test components
+    ProgressTest,
     // ForteUI Components
     Button,
     Input,

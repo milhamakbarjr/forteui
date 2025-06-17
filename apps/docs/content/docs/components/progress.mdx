@@ -31,6 +31,63 @@ function MyComponent() {
 }
 ```
 
+<ProgressShowcase />
+
+## Dynamic Progress Showcase
+
+```tsx
+import { useState } from 'react';
+import { Progress, Button } from 'forteui-core';
+
+function DynamicProgressShowcase() {
+  const [progress, setProgress] = useState(0);
+  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
+
+  const startProgress = () => {
+    if (intervalId) return;
+
+    const id = setInterval(() => {
+      setProgress((oldProgress) => {
+        if (oldProgress === 100) {
+          clearInterval(id);
+          return 100;
+        }
+        return Math.min(oldProgress + Math.random() * 10, 100);
+      });
+    }, 1000);
+
+    setIntervalId(id);
+  };
+
+  const stopProgress = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    }
+  };
+
+  return (
+    <div className="space-y-4">
+      <Progress value={progress} max={100} />
+
+      <div className="flex gap-2">
+        <Button onClick={startProgress} disabled={progress === 100}>
+          Start
+        </Button>
+        <Button onClick={stopProgress} variant="outline-default">
+          Stop
+        </Button>
+      </div>
+
+      <div className="flex justify-between text-sm text-gray-500">
+        <span>Progress: {Math.round(progress)}%</span>
+        {progress === 100 && <span className="text-green-500">Completed!</span>}
+      </div>
+    </div>
+  );
+}
+```
+
 ## Variants
 
 ### Linear Progress
@@ -302,4 +359,4 @@ function MultiStepProgress() {
 
 - [Button](/docs/components/button) - For triggering processes
 - [Alert](/docs/components/alert) - For completion notifications
-- [Card](/docs/components/card) - For dashboard layouts 
+- [Card](/docs/components/card) - For dashboard layouts
