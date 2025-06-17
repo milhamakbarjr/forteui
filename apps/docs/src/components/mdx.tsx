@@ -43,7 +43,9 @@ import {
   DynamicBadgeShowcase,
   DynamicChipShowcase,
   DynamicCardShowcase,
-  DynamicTypographyShowcase
+  DynamicTypographyShowcase,
+  DynamicBreadcrumbShowcase,
+  DynamicSnackbarShowcase
 } from './DynamicShowcases';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -172,6 +174,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     DynamicChipShowcase,
     DynamicCardShowcase,
     DynamicTypographyShowcase,
+    DynamicBreadcrumbShowcase,
+    DynamicSnackbarShowcase,
     // ForteUI Components
     Button,
     Input,

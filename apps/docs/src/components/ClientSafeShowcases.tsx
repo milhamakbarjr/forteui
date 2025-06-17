@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Input, Checkbox, Switch, Avatar, Textarea, Radio, RadioGroup, Slider, Badge, Chip, IconX, IconUser, IconCheck, IconSettings, IconStar, Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription, Text, Heading } from '@forteui/core';
+import { Input, Checkbox, Switch, Avatar, Textarea, Radio, RadioGroup, Slider, Badge, Chip, IconX, IconUser, IconCheck, IconSettings, IconStar, IconHome, IconShoppingCart, IconEye, IconArrowRight, Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription, Text, Heading, Breadcrumb, Snackbar } from '@forteui/core';
 import { ComponentShowcase } from './ComponentShowcase';
 
 // Client-safe Input Showcase
@@ -1169,6 +1169,532 @@ export function ClientSafeTypographyShowcase({
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+
+        {children}
+      </div>
+    </ComponentShowcase>
+  );
+}
+
+// Client-safe Breadcrumb Showcase
+export function ClientSafeBreadcrumbShowcase({ 
+  children, 
+  code, 
+  title = "Breadcrumb Component",
+  description = "Navigation breadcrumb with text and icon variants following ForteUI design specifications"
+}: {
+  children?: React.ReactNode;
+  code?: string;
+  title?: string;
+  description?: string;
+}) {
+  return (
+    <ComponentShowcase title={title} description={description} code={code}>
+      <div className="space-y-8 forte-ui">
+        {/* Text Variant */}
+        <div className="space-y-4">
+          <Text variant="caption" color="secondary" className="mb-3 block">Text Variant (Default)</Text>
+          <div className="space-y-4">
+            <Breadcrumb
+              variant="text"
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Products', href: '/products' },
+                { label: 'Smartphones' }
+              ]}
+            />
+            
+            <Breadcrumb
+              variant="text"
+              items={[
+                { label: 'Dashboard', href: '/dashboard' },
+                { label: 'Settings', href: '/dashboard/settings' },
+                { label: 'Profile', href: '/dashboard/settings/profile' },
+                { label: 'Edit Profile' }
+              ]}
+            />
+          </div>
+        </div>
+
+        {/* Icon Variant */}
+        <div className="space-y-4">
+          <Text variant="caption" color="secondary" className="mb-3 block">Icon Variant</Text>
+          <div className="space-y-4">
+            <Breadcrumb
+              variant="icon"
+              items={[
+                { label: 'Home', href: '/', icon: IconHome },
+                { label: 'Products', href: '/products', icon: IconShoppingCart },
+                { label: 'Smartphones', icon: IconUser }
+              ]}
+            />
+            
+            <Breadcrumb
+              variant="icon"
+              items={[
+                { label: 'Dashboard', href: '/dashboard', icon: IconHome },
+                { label: 'Users', href: '/dashboard/users', icon: IconUser },
+                { label: 'Settings', href: '/dashboard/settings', icon: IconSettings },
+                { label: 'Profile', icon: IconUser }
+              ]}
+            />
+          </div>
+        </div>
+
+        {/* Interactive Navigation */}
+        <div className="space-y-4">
+          <Text variant="caption" color="secondary" className="mb-3 block">Interactive Navigation</Text>
+          <div className="space-y-4">
+            <Breadcrumb
+              items={[
+                { 
+                  label: 'Home', 
+                  onClick: () => alert('Navigate to Home') 
+                },
+                { 
+                  label: 'Products', 
+                  onClick: () => alert('Navigate to Products') 
+                },
+                { 
+                  label: 'Current Page' 
+                }
+              ]}
+            />
+            
+            <Breadcrumb
+              variant="icon"
+              items={[
+                { 
+                  label: 'Dashboard', 
+                  icon: IconHome,
+                  onClick: () => alert('Navigate to Dashboard') 
+                },
+                { 
+                  label: 'Analytics', 
+                  icon: IconStar,
+                  onClick: () => alert('Navigate to Analytics') 
+                },
+                { 
+                  label: 'Reports',
+                  icon: IconEye
+                }
+              ]}
+            />
+          </div>
+        </div>
+
+        {/* Custom Separator */}
+        <div className="space-y-4">
+          <Text variant="caption" color="secondary" className="mb-3 block">Custom Separator</Text>
+          <div className="space-y-4">
+            <Breadcrumb
+              items={[
+                { label: 'Home', href: '/' },
+                { label: 'Documentation', href: '/docs' },
+                { label: 'Components', href: '/docs/components' },
+                { label: 'Breadcrumb' }
+              ]}
+              separator={<IconArrowRight size={12} className="text-gray-400" />}
+            />
+            
+            <Breadcrumb
+              variant="icon"
+              items={[
+                { label: 'Admin', href: '/admin', icon: IconSettings },
+                { label: 'Users', href: '/admin/users', icon: IconUser },
+                { label: 'John Doe', icon: IconUser }
+              ]}
+              separator={<span className="text-gray-400 text-sm">/</span>}
+            />
+          </div>
+        </div>
+
+        {/* Real-world Examples */}
+        <div className="space-y-4">
+          <Text variant="caption" color="secondary" className="mb-3 block">Real-world Examples</Text>
+          <div className="space-y-6">
+            <div className="space-y-3">
+              <Text variant="body-sm" className="mb-2 block font-medium">E-commerce Product Page</Text>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <Breadcrumb
+                  variant="icon"
+                  items={[
+                    { label: 'Home', href: '/', icon: IconHome },
+                    { label: 'Electronics', href: '/electronics', icon: IconSettings },
+                    { label: 'Smartphones', href: '/electronics/smartphones', icon: IconUser },
+                    { label: 'iPhone 15 Pro', icon: IconStar }
+                  ]}
+                />
+              </div>
+            </div>
+            
+            <div className="space-y-3">
+              <Text variant="body-sm" className="mb-2 block font-medium">Admin Dashboard</Text>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <Breadcrumb
+                  items={[
+                    { label: 'Dashboard', href: '/admin' },
+                    { label: 'Content Management', href: '/admin/content' },
+                    { label: 'Blog Posts', href: '/admin/content/posts' },
+                    { label: 'Edit: "Getting Started Guide"' }
+                  ]}
+                />
+              </div>
+            </div>
+            
+            <div className="space-y-3">
+              <Text variant="body-sm" className="mb-2 block font-medium">Documentation Site</Text>
+              <div className="bg-gray-50 p-4 rounded-lg">
+                <Breadcrumb
+                  variant="icon"
+                  items={[
+                    { label: 'Docs', href: '/docs', icon: IconHome },
+                    { label: 'Components', href: '/docs/components', icon: IconSettings },
+                    { label: 'Navigation', href: '/docs/components/navigation', icon: IconArrowRight },
+                    { label: 'Breadcrumb', icon: IconArrowRight }
+                  ]}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Design Specifications */}
+        <div className="bg-gray-50 p-6 rounded-lg space-y-4">
+          <Text variant="body-sm" className="font-medium mb-3 block">Design Specifications:</Text>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
+            <div>
+              <Text variant="body-sm" className="font-medium mb-2 block">Typography:</Text>
+              <ul className="space-y-1">
+                <li>• Font: Public Sans (font-sans)</li>
+                <li>• Size: 14px (text-sm)</li>
+                <li>• Weight: 400 (font-normal)</li>
+                <li>• Line Height: 22px</li>
+              </ul>
+            </div>
+            <div>
+              <Text variant="body-sm" className="font-medium mb-2 block">Colors:</Text>
+              <ul className="space-y-1">
+                <li>• Active: text-primary (#1F2933)</li>
+                <li>• Current: text-disabled</li>
+                <li>• Hover: text-primary-600</li>
+              </ul>
+            </div>
+            <div>
+              <Text variant="body-sm" className="font-medium mb-2 block">Spacing:</Text>
+              <ul className="space-y-1">
+                <li>• Item Gap: 16px (gap-4)</li>
+                <li>• Icon-Text Gap: 4px (gap-1)</li>
+                <li>• Icon Size: 20px × 20px</li>
+              </ul>
+            </div>
+            <div>
+              <Text variant="body-sm" className="font-medium mb-2 block">Features:</Text>
+              <ul className="space-y-1">
+                <li>• Two variants: text, icon</li>
+                <li>• Custom separators</li>
+                <li>• ARIA compliant</li>
+                <li>• Keyboard navigation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        {children}
+      </div>
+    </ComponentShowcase>
+  );
+}
+
+// Client-safe Snackbar Showcase
+export function ClientSafeSnackbarShowcase({ 
+  children, 
+  code, 
+  title = "Snackbar Examples",
+  description = "Snackbar component for displaying brief notifications with optional actions, following Figma specifications"
+}: {
+  children?: React.ReactNode;
+  code?: string;
+  title?: string;
+  description?: string;
+}) {
+  const [triggerSnackbar, setTriggerSnackbar] = useState<string | null>(null);
+
+  const handleAction = (type: string) => {
+    console.log(`${type} action clicked`);
+    // Auto-hide after action
+    if (triggerSnackbar === type) {
+      setTriggerSnackbar(null);
+    }
+  };
+
+  const handleClose = (type: string) => {
+    console.log(`${type} snackbar closed`);
+    setTriggerSnackbar(null);
+  };
+
+  return (
+    <ComponentShowcase title={title} description={description} code={code}>
+      <div className="space-y-8 forte-ui">
+        {/* Default Variant - Dark Theme */}
+        <div className="space-y-4">
+          <Text variant="body-sm" className="font-medium">Default Variant - Dark Theme with Close Button:</Text>
+          
+          <div className="space-y-4">
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Default Dark Snackbar</Text>
+              <Snackbar
+                variant="default"
+                severity="default"
+                message="This is a default message!"
+                closable
+                onClose={() => handleClose('default')}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Action Variant - Semantic Colors */}
+        <div className="space-y-4">
+          <Text variant="body-sm" className="font-medium">Action Variant - Semantic Colors with Action Buttons:</Text>
+          
+          <div className="space-y-4">
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Info Snackbar with Action</Text>
+              <Snackbar
+                variant="action"
+                severity="info"
+                message="This is a info message!"
+                actionLabel="Action"
+                onAction={() => handleAction('info')}
+              />
+            </div>
+
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Success Snackbar with Action</Text>
+              <Snackbar
+                variant="action"
+                severity="success"
+                message="This is a success message!"
+                actionLabel="Action"
+                onAction={() => handleAction('success')}
+              />
+            </div>
+
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Warning Snackbar with Action</Text>
+              <Snackbar
+                variant="action"
+                severity="warning"
+                message="This is a warning message!"
+                actionLabel="Action"
+                onAction={() => handleAction('warning')}
+              />
+            </div>
+
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Error Snackbar with Action</Text>
+              <Snackbar
+                variant="action"
+                severity="error"
+                message="This is a error message!"
+                actionLabel="Action"
+                onAction={() => handleAction('error')}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Default Variant with Semantic Icons and Close */}
+        <div className="space-y-4">
+          <Text variant="body-sm" className="font-medium">Default Variant - Semantic Icons with Close Button:</Text>
+          
+          <div className="space-y-4">
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Info with Close</Text>
+              <Snackbar
+                variant="default"
+                severity="info"
+                message="This is a info message with close!"
+                closable
+                onClose={() => handleClose('info-close')}
+              />
+            </div>
+
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Success with Close</Text>
+              <Snackbar
+                variant="default"
+                severity="success"
+                message="This is a success message with close!"
+                closable
+                onClose={() => handleClose('success-close')}
+              />
+            </div>
+
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Warning with Close</Text>
+              <Snackbar
+                variant="default"
+                severity="warning"
+                message="This is a warning message with close!"
+                closable
+                onClose={() => handleClose('warning-close')}
+              />
+            </div>
+
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Error with Close</Text>
+              <Snackbar
+                variant="default"
+                severity="error"
+                message="This is a error message with close!"
+                closable
+                onClose={() => handleClose('error-close')}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Interactive Examples */}
+        <div className="space-y-4">
+          <Text variant="body-sm" className="font-medium">Interactive Examples:</Text>
+          
+          <div className="space-y-4">
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-3 text-gray-600">Trigger Different Snackbars</Text>
+              
+              <div className="flex flex-wrap gap-3 mb-4">
+                <button
+                  className="px-4 py-2 bg-primary-main text-white rounded-lg hover:bg-primary-dark transition-colors"
+                  onClick={() => setTriggerSnackbar('interactive-info')}
+                >
+                  Show Info Action
+                </button>
+                <button
+                  className="px-4 py-2 bg-success-main text-white rounded-lg hover:bg-success-dark transition-colors"
+                  onClick={() => setTriggerSnackbar('interactive-success')}
+                >
+                  Show Success Action
+                </button>
+                <button
+                  className="px-4 py-2 bg-warning-main text-gray-800 rounded-lg hover:bg-warning-dark transition-colors"
+                  onClick={() => setTriggerSnackbar('interactive-warning')}
+                >
+                  Show Warning Action
+                </button>
+                <button
+                  className="px-4 py-2 bg-error-main text-white rounded-lg hover:bg-error-dark transition-colors"
+                  onClick={() => setTriggerSnackbar('interactive-error')}
+                >
+                  Show Error Action
+                </button>
+              </div>
+
+              {/* Interactive Snackbars */}
+              <div className="space-y-3">
+                {triggerSnackbar === 'interactive-info' && (
+                  <Snackbar
+                    variant="action"
+                    severity="info"
+                    message="Interactive info message triggered!"
+                    actionLabel="Undo"
+                    onAction={() => handleAction('interactive-info')}
+                    closable
+                    onClose={() => setTriggerSnackbar(null)}
+                  />
+                )}
+                
+                {triggerSnackbar === 'interactive-success' && (
+                  <Snackbar
+                    variant="action"
+                    severity="success"
+                    message="Operation completed successfully!"
+                    actionLabel="View Details"
+                    onAction={() => handleAction('interactive-success')}
+                    closable
+                    onClose={() => setTriggerSnackbar(null)}
+                  />
+                )}
+                
+                {triggerSnackbar === 'interactive-warning' && (
+                  <Snackbar
+                    variant="action"
+                    severity="warning"
+                    message="Please review your input before proceeding!"
+                    actionLabel="Review"
+                    onAction={() => handleAction('interactive-warning')}
+                    closable
+                    onClose={() => setTriggerSnackbar(null)}
+                  />
+                )}
+                
+                {triggerSnackbar === 'interactive-error' && (
+                  <Snackbar
+                    variant="action"
+                    severity="error"
+                    message="Something went wrong. Please try again!"
+                    actionLabel="Retry"
+                    onAction={() => handleAction('interactive-error')}
+                    closable
+                    onClose={() => setTriggerSnackbar(null)}
+                  />
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Real-world Scenarios */}
+        <div className="space-y-4">
+          <Text variant="body-sm" className="font-medium">Real-world Scenarios:</Text>
+          
+          <div className="space-y-4">
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Form Submission Success</Text>
+              <Snackbar
+                variant="action"
+                severity="success"
+                message="Form submitted successfully!"
+                actionLabel="View"
+                onAction={() => handleAction('form-success')}
+              />
+            </div>
+
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Network Error with Retry</Text>
+              <Snackbar
+                variant="action"
+                severity="error"
+                message="Failed to save changes"
+                actionLabel="Retry"
+                onAction={() => handleAction('error-retry')}
+              />
+            </div>
+
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">File Upload Warning</Text>
+              <Snackbar
+                variant="default"
+                severity="warning"
+                message="File size is larger than recommended"
+                closable
+                onClose={() => handleClose('file-warning')}
+              />
+            </div>
+
+            <div className="p-3 bg-gray-50 rounded">
+              <Text variant="body-sm" className="mb-2 text-gray-600">Task Notification</Text>
+              <Snackbar
+                variant="default"
+                severity="info"
+                message="Background sync completed"
+                closable
+                onClose={() => handleClose('sync-info')}
+              />
             </div>
           </div>
         </div>

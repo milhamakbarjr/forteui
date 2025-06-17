@@ -8,6 +8,16 @@
   --color-base-white: #ffffff;
   --color-base-black: #0B0C0E;
   --color-base-transparent: transparent;
+  
+  /* Text Colors */
+  --color-text-primary: #1F2933;
+  --color-text-disabled: #9BA3B5;
+  --color-text-secondary: #627587;
+  
+  /* Primary Colors */
+  --color-primary-main: #0690F4;
+  --color-primary-600: #0570C9;
+  --color-primary-dark: #0570C9;
   --color-primary-8: rgba(6, 144, 244, 0.08);
   --color-primary-12: rgba(6, 144, 244, 0.12);
   --color-primary-16: rgba(6, 144, 244, 0.16);

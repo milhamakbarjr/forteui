@@ -18,8 +18,82 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Critical breadcrumb fix - must come after Tailwind base */
+nav ol,
+nav ol li {
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+nav ol li::before,
+nav ol li::marker {
+  display: none !important;
+  content: none !important;
+}
+
+/* Ensure flex layout for breadcrumbs */
+nav[aria-label*="Breadcrumb"] ol {
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+}
+
+nav[aria-label*="Breadcrumb"] ol li {
+  display: flex !important;
+  align-items: center !important;
+}
+
 /* Additional production fixes for CSS loading */
 @layer base {
+  /* Fix for breadcrumb ordered list styling */
+  nav ol {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  nav ol li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Breadcrumb specific styling */
+  nav[aria-label*="Breadcrumb"] ol {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 1rem !important;
+  }
+  
+  nav[aria-label*="Breadcrumb"] ol li {
+    list-style: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  nav[aria-label*="Breadcrumb"] ol li::before {
+    display: none !important;
+  }
+  
+  /* ForteUI text color classes */
+  .text-text-primary {
+    color: var(--color-text-primary, #1F2933);
+  }
+  
+  .text-text-disabled {
+    color: var(--color-text-disabled, #9BA3B5);
+  }
+  
+  .text-primary-600 {
+    color: var(--color-primary-600, #0570C9);
+  }
+  
   /* Ensure root variables are always available */
   :root {
     /* Re-declare critical colors for production fallback */
