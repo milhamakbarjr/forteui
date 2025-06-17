@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Input, Checkbox, Switch, Avatar } from '@forteui/core';
+import { Input, Checkbox, Switch, Avatar, Textarea, Radio, RadioGroup } from '@forteui/core';
 import { ComponentShowcase } from './ComponentShowcase';
 
 // Client-safe Input Showcase
@@ -264,6 +264,119 @@ export function ClientSafeSwitchShowcase({
             label="Disabled option" 
             disabled 
           />
+        </div>
+        {children}
+      </div>
+    </ComponentShowcase>
+  );
+}
+
+// Client-safe Textarea Showcase
+export function ClientSafeTextareaShowcase({ 
+  children, 
+  code, 
+  title = "Textarea Examples",
+  description = "Interactive textarea component examples"
+}: {
+  children?: React.ReactNode;
+  code?: string;
+  title?: string;
+  description?: string;
+}) {
+  const [message, setMessage] = useState('');
+  const [feedback, setFeedback] = useState('Great product! I love the design and functionality.');
+  const [notes, setNotes] = useState('');
+
+  return (
+    <ComponentShowcase title={title} description={description} code={code}>
+      <div className="space-y-6">
+        <div className="space-y-4">
+          <Textarea 
+            label="Message"
+            placeholder="Enter your message..."
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            rows={3}
+          />
+          
+          <Textarea 
+            label="Feedback"
+            value={feedback}
+            onChange={(e) => setFeedback(e.target.value)}
+            rows={3}
+            helperText={`${feedback.length}/500 characters`}
+          />
+          
+          <Textarea 
+            label="Additional Notes"
+            placeholder="Optional notes..."
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
+            rows={4}
+          />
+          
+          <Textarea 
+            label="Disabled Textarea"
+            value="This textarea is disabled"
+            disabled
+            rows={2}
+          />
+        </div>
+        {children}
+      </div>
+    </ComponentShowcase>
+  );
+}
+
+// Client-safe Radio Showcase
+export function ClientSafeRadioShowcase({ 
+  children, 
+  code, 
+  title = "Radio Examples",
+  description = "Interactive radio component examples"
+}: {
+  children?: React.ReactNode;
+  code?: string;
+  title?: string;
+  description?: string;
+}) {
+  const [selectedPlan, setSelectedPlan] = useState('basic');
+  const [selectedTheme, setSelectedTheme] = useState('light');
+  const [selectedSize, setSelectedSize] = useState('medium');
+
+  return (
+    <ComponentShowcase title={title} description={description} code={code}>
+      <div className="space-y-6">
+        <div className="space-y-6">
+          <div>
+            <h4 className="font-medium mb-3">Choose your plan:</h4>
+            <RadioGroup value={selectedPlan} onValueChange={setSelectedPlan}>
+              <Radio value="basic" label="Basic Plan - $9/month" />
+              <Radio value="pro" label="Pro Plan - $19/month" />
+              <Radio value="enterprise" label="Enterprise Plan - $49/month" />
+            </RadioGroup>
+            <p className="text-sm text-gray-600 mt-2">Selected: {selectedPlan}</p>
+          </div>
+
+          <div>
+            <h4 className="font-medium mb-3">Theme preference:</h4>
+            <RadioGroup value={selectedTheme} onValueChange={setSelectedTheme}>
+              <Radio value="light" label="Light Theme" variant="primary" />
+              <Radio value="dark" label="Dark Theme" variant="secondary" />
+              <Radio value="auto" label="Auto (System)" variant="info" />
+            </RadioGroup>
+            <p className="text-sm text-gray-600 mt-2">Selected: {selectedTheme}</p>
+          </div>
+
+          <div>
+            <h4 className="font-medium mb-3">Size options:</h4>
+            <RadioGroup value={selectedSize} onValueChange={setSelectedSize}>
+              <Radio value="small" label="Small" size="sm" />
+              <Radio value="medium" label="Medium" size="md" />
+              <Radio value="disabled" label="Disabled Option" disabled />
+            </RadioGroup>
+            <p className="text-sm text-gray-600 mt-2">Selected: {selectedSize}</p>
+          </div>
         </div>
         {children}
       </div>

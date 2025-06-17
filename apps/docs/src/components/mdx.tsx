@@ -36,7 +36,9 @@ import {
   DynamicFormControlsShowcase, 
   DynamicAvatarShowcase,
   DynamicCheckboxShowcase,
-  DynamicSwitchShowcase
+  DynamicSwitchShowcase,
+  DynamicTextareaShowcase,
+  DynamicRadioShowcase
 } from './DynamicShowcases';
 
 export function useMDXComponents(components: MDXComponents): MDXComponents {
@@ -158,6 +160,8 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     DynamicAvatarShowcase,
     DynamicCheckboxShowcase,
     DynamicSwitchShowcase,
+    DynamicTextareaShowcase,
+    DynamicRadioShowcase,
     // ForteUI Components
     Button,
     Input,
