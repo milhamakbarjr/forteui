@@ -13,11 +13,15 @@ export {
 export { 
   ClientSafeInputShowcase, 
   ClientSafeFormControlsShowcase, 
-  ClientSafeAvatarShowcase 
+  ClientSafeAvatarShowcase,
+  ClientSafeCheckboxShowcase,
+  ClientSafeSwitchShowcase
 } from './ClientSafeShowcases';
 export { 
   DynamicInputShowcase, 
   DynamicFormControlsShowcase, 
-  DynamicAvatarShowcase 
+  DynamicAvatarShowcase,
+  DynamicCheckboxShowcase,
+  DynamicSwitchShowcase
 } from './DynamicShowcases';
 export { MDXWrapper } from './MDXWrapper';

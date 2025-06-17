@@ -58,3 +58,55 @@ export const DynamicAvatarShowcase = dynamic(
     )
   }
 );
+
+export const DynamicCheckboxShowcase = dynamic(
+  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeCheckboxShowcase })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="animate-pulse space-y-4">
+        <div className="h-8 bg-gray-200 rounded mb-4"></div>
+        <div className="space-y-3">
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-4 bg-gray-200 rounded"></div>
+            <div className="h-4 bg-gray-200 rounded w-48"></div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-4 bg-gray-200 rounded"></div>
+            <div className="h-4 bg-gray-200 rounded w-40"></div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-4 h-4 bg-gray-200 rounded"></div>
+            <div className="h-4 bg-gray-200 rounded w-36"></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+);
+
+export const DynamicSwitchShowcase = dynamic(
+  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeSwitchShowcase })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="animate-pulse space-y-4">
+        <div className="h-8 bg-gray-200 rounded mb-4"></div>
+        <div className="space-y-3">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
+            <div className="h-4 bg-gray-200 rounded w-44"></div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
+            <div className="h-4 bg-gray-200 rounded w-32"></div>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
+            <div className="h-4 bg-gray-200 rounded w-40"></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+);

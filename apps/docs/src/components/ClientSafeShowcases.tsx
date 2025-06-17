@@ -183,3 +183,90 @@ export function ClientSafeAvatarShowcase({
     </ComponentShowcase>
   );
 }
+
+// Client-safe Checkbox Showcase
+export function ClientSafeCheckboxShowcase({ 
+  children, 
+  code, 
+  title = "Checkbox Examples",
+  description = "Interactive checkbox component examples"
+}: {
+  children?: React.ReactNode;
+  code?: string;
+  title?: string;
+  description?: string;
+}) {
+  const [checked1, setChecked1] = useState(false);
+  const [checked2, setChecked2] = useState(true);
+  const [checked3, setChecked3] = useState(false);
+
+  return (
+    <ComponentShowcase title={title} description={description} code={code}>
+      <div className="space-y-4">
+        <div className="space-y-3">
+          <Checkbox 
+            label="Accept terms and conditions"
+            checked={checked1}
+            onCheckedChange={setChecked1}
+          />
+          <Checkbox 
+            label="Subscribe to newsletter" 
+            checked={checked2}
+            onCheckedChange={setChecked2}
+          />
+          <Checkbox 
+            label="Disabled option" 
+            disabled 
+          />
+        </div>
+        {children}
+      </div>
+    </ComponentShowcase>
+  );
+}
+
+// Client-safe Switch Showcase
+export function ClientSafeSwitchShowcase({ 
+  children, 
+  code, 
+  title = "Switch Examples",
+  description = "Interactive switch toggle examples"
+}: {
+  children?: React.ReactNode;
+  code?: string;
+  title?: string;
+  description?: string;
+}) {
+  const [enabled1, setEnabled1] = useState(false);
+  const [enabled2, setEnabled2] = useState(true);
+  const [enabled3, setEnabled3] = useState(true);
+
+  return (
+    <ComponentShowcase title={title} description={description} code={code}>
+      <div className="space-y-4">
+        <div className="space-y-3">
+          <Switch 
+            label="Enable notifications"
+            checked={enabled1}
+            onCheckedChange={setEnabled1}
+          />
+          <Switch 
+            label="Dark mode" 
+            checked={enabled2}
+            onCheckedChange={setEnabled2}
+          />
+          <Switch 
+            label="Auto-save"
+            checked={enabled3}
+            onCheckedChange={setEnabled3}
+          />
+          <Switch 
+            label="Disabled option" 
+            disabled 
+          />
+        </div>
+        {children}
+      </div>
+    </ComponentShowcase>
+  );
+}
