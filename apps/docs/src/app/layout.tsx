@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import { Inter, Plus_Jakarta_Sans } from 'next/font/google';
 import type { Metadata, Viewport } from 'next';
 import dynamic from 'next/dynamic';
+import { Analytics } from '@vercel/analytics/next';
 
 // Import CSS loader for production safety
 import '@/lib/css-loader';
@@ -184,17 +185,7 @@ export default function RootLayout({
         <ClientProviders>
           {children}
         </ClientProviders>
-        
-        {/* Analytics placeholder - ready for Google Analytics or other services */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              // Analytics code would go here
-              // Example: Google Analytics, Plausible, etc.
-              console.log('ForteUI Documentation loaded');
-            `
-          }}
-        />
+        <Analytics />
       </body>
     </html>
   );
