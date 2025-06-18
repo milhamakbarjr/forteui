@@ -37,7 +37,7 @@ function MyComponent() {
 }
 ```
 
-<InteractiveButtonDemo />
+<DynamicButtonShowcase />
 
 ## Variants
 
@@ -45,91 +45,54 @@ function MyComponent() {
 
 Contained buttons are high-emphasis buttons that are distinguished by their use of elevation and fill.
 
-<ButtonShowcase
-  title="Contained Button Variants"
-  description="Try different button variants and see the changes in real-time"
-  code={`<Button variant="default">Default</Button>
+```tsx
+<Button variant="default">Default</Button>
 <Button variant="primary">Primary</Button>
 <Button variant="secondary">Secondary</Button>
 <Button variant="info">Info</Button>
 <Button variant="success">Success</Button>
 <Button variant="warning">Warning</Button>
-<Button variant="error">Error</Button>`}
->
-  <Button variant="default">Default</Button>
-  <Button variant="primary">Primary</Button>
-  <Button variant="secondary">Secondary</Button>
-  <Button variant="info">Info</Button>
-  <Button variant="success">Success</Button>
-  <Button variant="warning">Warning</Button>
-  <Button variant="error">Error</Button>
-</ButtonShowcase>
+<Button variant="error">Error</Button>
+```
 
 ### Outline Buttons
 
 Outline buttons are medium-emphasis buttons that provide an alternative to contained buttons.
 
-<ButtonShowcase
-  title="Outline Button Variants"
-  description="Outline buttons with different color variants"
-  code={`<Button variant="outline-default">Default</Button>
+```tsx
+<Button variant="outline-default">Default</Button>
 <Button variant="outline-primary">Primary</Button>
 <Button variant="outline-info">Info</Button>
 <Button variant="outline-success">Success</Button>
 <Button variant="outline-warning">Warning</Button>
-<Button variant="outline-error">Error</Button>`}
->
-  <Button variant="outline-default">Default</Button>
-  <Button variant="outline-primary">Primary</Button>
-  <Button variant="outline-info">Info</Button>
-  <Button variant="outline-success">Success</Button>
-  <Button variant="outline-warning">Warning</Button>
-  <Button variant="outline-error">Error</Button>
-</ButtonShowcase>
+<Button variant="outline-error">Error</Button>
+```
 
 ### Text Buttons
 
 Text buttons are typically used for less-pronounced actions, including those located in cards and dialogs.
 
-<ButtonShowcase
-  title="Text Button Variants"
-  description="Minimal text-only buttons for subtle actions"
-  code={`<Button variant="text-default">Default</Button>
+```tsx
+<Button variant="text-default">Default</Button>
 <Button variant="text-primary">Primary</Button>
 <Button variant="text-info">Info</Button>
 <Button variant="text-success">Success</Button>
 <Button variant="text-warning">Warning</Button>
-<Button variant="text-error">Error</Button>`}
->
-  <Button variant="text-default">Default</Button>
-  <Button variant="text-primary">Primary</Button>
-  <Button variant="text-info">Info</Button>
-  <Button variant="text-success">Success</Button>
-  <Button variant="text-warning">Warning</Button>
-  <Button variant="text-error">Error</Button>
-</ButtonShowcase>
+<Button variant="text-error">Error</Button>
+```
 
 ### Soft Buttons
 
 Soft buttons provide a subtle background color while maintaining good contrast.
 
-<ButtonShowcase
-  title="Soft Button Variants"
-  description="Gentle background colors for subtle emphasis"
-  code={`<Button variant="soft-default">Default</Button>
+```tsx
+<Button variant="soft-default">Default</Button>
 <Button variant="soft-primary">Primary</Button>
 <Button variant="soft-info">Info</Button>
 <Button variant="soft-success">Success</Button>
 <Button variant="soft-warning">Warning</Button>
-<Button variant="soft-error">Error</Button>`}
->
-  <Button variant="soft-default">Default</Button>
-  <Button variant="soft-primary">Primary</Button>
-  <Button variant="soft-info">Info</Button>
-  <Button variant="soft-success">Success</Button>
-  <Button variant="soft-warning">Warning</Button>
-  <Button variant="soft-error">Error</Button>
-</ButtonShowcase>
+<Button variant="soft-error">Error</Button>
+```
 
 ### Icon Buttons
 
@@ -160,19 +123,11 @@ Icon buttons come in four different sizes:
 
 The Button component comes in three sizes to fit various design needs:
 
-<ButtonSizeShowcase
-  title="Button Sizes"
-  description="Interactive example with different sizes"
-  code={`<Button variant="primary" size="sm">Small</Button>
+```tsx
+<Button variant="primary" size="sm">Small</Button>
 <Button variant="primary" size="md">Medium</Button>
-<Button variant="primary" size="lg">Large</Button>`}
->
-  <div className="flex gap-4 items-center">
-    <Button variant="primary" size="sm">Small</Button>
-    <Button variant="primary" size="md">Medium</Button>
-    <Button variant="primary" size="lg">Large</Button>
-  </div>
-</ButtonSizeShowcase>
+<Button variant="primary" size="lg">Large</Button>
+```
 
 ## States
 
@@ -180,19 +135,12 @@ The Button component comes in three sizes to fit various design needs:
 
 Buttons can be disabled using the `disabled` prop:
 
-<ButtonShowcase
-  title="Disabled Button States"
-  description="All button variants in disabled state"
-  code={`<Button variant="primary" disabled>Disabled Button</Button>
+```tsx
+<Button variant="primary" disabled>Disabled Button</Button>
 <Button variant="outline-primary" disabled>Disabled Outline</Button>
 <Button variant="text-primary" disabled>Disabled Text</Button>
-<Button variant="soft-primary" disabled>Disabled Soft</Button>`}
->
-  <Button variant="primary" disabled>Disabled Button</Button>
-  <Button variant="outline-primary" disabled>Disabled Outline</Button>
-  <Button variant="text-primary" disabled>Disabled Text</Button>
-  <Button variant="soft-primary" disabled>Disabled Soft</Button>
-</ButtonShowcase>
+<Button variant="soft-primary" disabled>Disabled Soft</Button>
+```
 
 ## Icons
 
@@ -379,22 +327,6 @@ const handleClick = () => {
 | `icon-lg` | 48px | - | - | Large icons |
 
 The Button component also accepts all standard HTML button attributes.
-
-## Design Specifications
-
-### Contained Buttons
-- **Height**: Small (30px), Medium (36px), Large (48px)
-- **Border Radius**: 6px
-- **Font**: Plus Jakarta Sans Bold
-- **Font Size**: 13px (sm), 14px (md), 15px (lg)
-- **Hover State**: Darker shade of the primary color
-- **Focus Ring**: 2px solid primary color
-
-### Icon Buttons
-- **Sizes**: XS (28px), Small (36px), Medium (40px), Large (48px)
-- **Shape**: Circular
-- **Icon Size**: Scales proportionally with button size
-- **Hover State**: 8% opacity background color
 
 ## Accessibility
 
