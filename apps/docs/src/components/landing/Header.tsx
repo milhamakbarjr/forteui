@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IconBrandGithub } from '@tabler/icons-react';
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 export function Header() {
   const [isClient, setIsClient] = useState(false);
@@ -28,10 +29,13 @@ export function Header() {
               transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <Link href="/" className="flex items-center gap-2">
-                <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-primary-main to-secondary-main rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-xs sm:text-sm">F</span>
-                </div>
-                <h1 className="text-lg sm:text-xl font-bold text-gray-900">ForteUI</h1>
+                <Image
+                  src="/logo-forteui-colored.svg"
+                  alt="ForteUI Logo"
+                  width={1358}
+                  height={431}
+                  className="w-auto h-8 sm:h-9"
+                />
               </Link>
             </motion.div>
           </div>

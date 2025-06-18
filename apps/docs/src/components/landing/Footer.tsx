@@ -4,6 +4,7 @@ import { Button } from '@forteui/core';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { IconBrandGithub, IconBrandTwitter, IconHeart, IconArrowUp } from '@tabler/icons-react';
+import Image from 'next/image';
 
 const footerLinks = {
   documentation: [
@@ -50,10 +51,13 @@ export function Footer() {
                 viewport={{ once: true }}
               >
                 <div className="flex items-center gap-2 mb-4 sm:mb-6">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-br from-primary-main to-secondary-main rounded-lg flex items-center justify-center">
-                    <span className="text-white font-bold text-xs sm:text-sm">F</span>
-                  </div>
-                  <h3 className="text-lg sm:text-xl font-bold">ForteUI</h3>
+                  <Image
+                    src="/logo-forteui-main.svg"
+                    alt="ForteUI Logo"
+                    width={1358}
+                    height={431}
+                    className="w-auto h-8 sm:h-9"
+                  />
                 </div>
                 
                 <p className="text-gray-400 mb-4 sm:mb-6 leading-relaxed max-w-md text-sm sm:text-base">
