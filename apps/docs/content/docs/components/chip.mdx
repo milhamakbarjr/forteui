@@ -12,19 +12,23 @@ Compact elements that represent inputs, attributes, or actions. Chips allow user
 ## Installation
 
 ```bash
-npm install @forteui/core
+npm install forteui-core
 ```
 
 ## Import
 
 ```tsx
-import { Chip } from '@forteui/core';
+import { Chip } from 'forteui-core';
 ```
+
+## Comprehensive Examples
+
+<DynamicChipShowcase />
 
 ## Basic Usage
 
 ```tsx
-import { Chip } from '@forteui/core';
+import { Chip } from 'forteui-core';
 
 function MyComponent() {
   return (
@@ -35,50 +39,21 @@ function MyComponent() {
 }
 ```
 
-<DynamicChipShowcase />
-
 ## Variants
 
-### Filled Chips
+Chip supports three visual variants:
 
 ```tsx
 <div className="flex flex-wrap gap-2">
-  <Chip variant="filled" color="default" size="medium">Default</Chip>
-  <Chip variant="filled" color="primary" size="medium">Primary</Chip>
-  <Chip variant="filled" color="secondary" size="medium">Secondary</Chip>
-  <Chip variant="filled" color="success" size="medium">Success</Chip>
-  <Chip variant="filled" color="warning" size="medium">Warning</Chip>
-  <Chip variant="filled" color="error" size="medium">Error</Chip>
-</div>
-```
-
-### Outlined Chips
-
-```tsx
-<div className="flex flex-wrap gap-2">
-  <Chip variant="outlined" color="default" size="medium">Default</Chip>
-  <Chip variant="outlined" color="primary" size="medium">Primary</Chip>
-  <Chip variant="outlined" color="secondary" size="medium">Secondary</Chip>
-  <Chip variant="outlined" color="success" size="medium">Success</Chip>
-  <Chip variant="outlined" color="warning" size="medium">Warning</Chip>
-  <Chip variant="outlined" color="error" size="medium">Error</Chip>
-</div>
-```
-
-### Soft Chips
-
-```tsx
-<div className="flex flex-wrap gap-2">
-  <Chip variant="soft" color="default" size="medium">Default</Chip>
-  <Chip variant="soft" color="primary" size="medium">Primary</Chip>
-  <Chip variant="soft" color="secondary" size="medium">Secondary</Chip>
-  <Chip variant="soft" color="success" size="medium">Success</Chip>
-  <Chip variant="soft" color="warning" size="medium">Warning</Chip>
-  <Chip variant="soft" color="error" size="medium">Error</Chip>
+  <Chip variant="filled" color="primary" size="medium">Filled</Chip>
+  <Chip variant="outlined" color="primary" size="medium">Outlined</Chip>
+  <Chip variant="soft" color="primary" size="medium">Soft</Chip>
 </div>
 ```
 
 ## Sizes
+
+Available sizes: `small` (24px) and `medium` (32px)
 
 ```tsx
 <div className="flex flex-wrap items-center gap-2">
@@ -92,7 +67,7 @@ function MyComponent() {
 ### Start Icons
 
 ```tsx
-import { IconUser, IconSettings, IconCheck } from '@forteui/core';
+import { IconUser, IconSettings, IconCheck } from '@tabler/icons-react';
 
 <div className="flex flex-wrap gap-2">
   <Chip 
@@ -127,7 +102,7 @@ import { IconUser, IconSettings, IconCheck } from '@forteui/core';
 ### End Icons
 
 ```tsx
-import { IconChevronDown, IconX, IconArrowRight } from '@forteui/core';
+import { IconChevronDown, IconX, IconArrowRight } from '@tabler/icons-react';
 
 <div className="flex flex-wrap gap-2">
   <Chip 
@@ -161,11 +136,9 @@ import { IconChevronDown, IconX, IconArrowRight } from '@forteui/core';
 
 ## Removable Chips
 
-### Basic Removable
-
 ```tsx
 import { useState } from 'react';
-import { Chip, IconX } from '@forteui/core';
+import { Chip, IconX } from 'forteui-core';
 
 function RemovableChipsExample() {
   const [chips, setChips] = useState([
@@ -198,10 +171,10 @@ function RemovableChipsExample() {
 }
 ```
 
-### With Action Icons
+## With Action Icons
 
 ```tsx
-import { Chip, IconStar, IconX } from '@forteui/core';
+import { Chip, IconStar, IconX } from 'forteui-core';
 
 <div className="flex flex-wrap gap-2">
   <Chip 
@@ -218,11 +191,7 @@ import { Chip, IconStar, IconX } from '@forteui/core';
 </div>
 ```
 
-## API Reference
-
-### Props
-
-The Chip component accepts the following props:
+## Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
@@ -233,15 +202,17 @@ The Chip component accepts the following props:
 | `endIcon` | `React.ReactNode` | - | Icon to display at the end (right side) of the chip |
 | `onStartIconClick` | `() => void` | - | Handler function called when the start icon is clicked |
 | `onEndIconClick` | `() => void` | - | Handler function called when the end icon is clicked |
+| `dismissible` | `boolean` | `false` | Whether the chip can be dismissed (legacy prop - adds close icon as endIcon) |
+| `onDismiss` | `() => void` | - | Callback fired when the chip is dismissed (legacy prop) |
 | `children` | `React.ReactNode` | - | The content to display inside the chip |
 | `className` | `string` | - | Additional CSS classes to apply |
 
-### Examples
+## Examples
 
-#### Basic Implementation
+### Basic Implementation
 
 ```tsx
-import { Chip } from '@forteui/core';
+import { Chip } from 'forteui-core';
 
 // Basic chip
 <Chip variant="filled" color="primary" size="medium">
@@ -283,11 +254,11 @@ import { Chip } from '@forteui/core';
 </Chip>
 ```
 
-#### Interactive Example
+### Interactive Tag System
 
 ```tsx
 import { useState } from 'react';
-import { Chip, IconX } from '@forteui/core';
+import { Chip, IconX } from 'forteui-core';
 
 function InteractiveChips() {
   const [tags, setTags] = useState(['React', 'TypeScript', 'Next.js']);
@@ -319,30 +290,20 @@ function InteractiveChips() {
 
 The Chip component follows exact design specifications:
 
-### Medium Size (32px height)
-- Height: 32px (fixed)
-- Outer padding: 4px left/right
-- Label padding: 8px left/right
-- Border radius: 10px (filled), 8px (outlined/soft)
-- Typography: 13px, weight 500, line-height 18px
-
-### Small Size (24px height)
-- Height: 24px (fixed)
-- Outer padding: 3px left/right
-- Label padding: 5px left/right
-- Border radius: 8px (all variants)
-- Typography: 13px, weight 500, line-height 18px
+### Sizing
+- **Medium Size**: 32px height (fixed), 4px outer padding, 8px label padding
+- **Small Size**: 24px height (fixed), 3px outer padding, 5px label padding  
+- **Border Radius**: 10px (filled medium), 8px (outlined/soft medium, all small)
+- **Typography**: 13px font size, weight 500, line-height 18px
 
 ### Action Icons
-- Icon container: 20px × 20px (both sizes)
-- Icon size: 16.67px
-- Opacity: 48% (default), 75% (hover)
-- Start icon margin-right: 4px
-- End icon margin-left: 4px
+- **Icon Container**: 20px × 20px (both sizes)
+- **Icon Size**: 16.67px (exact from Figma)
+- **Opacity**: 48% (default), 75% (hover)
+- **Spacing**: Start icon margin-right 4px, End icon margin-left 4px
 
-### Color Variants
-
-- **Filled**: Background uses semantic color main, text uses contrast colors
+### Variants
+- **Filled**: Background uses semantic color, text uses contrast colors
 - **Outlined**: 1px solid border with semantic color, transparent background
 - **Soft**: 16% alpha semantic color background, darker text variant
 
