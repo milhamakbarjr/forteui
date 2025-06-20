@@ -314,7 +314,7 @@ export const DynamicTextareaShowcase = dynamic(
 );
 
 export const DynamicRadioShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeRadioShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeRadioShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -345,7 +345,7 @@ export const DynamicRadioShowcase = dynamic(
 );
 
 export const DynamicSliderShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeSliderShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeSliderShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -371,7 +371,7 @@ export const DynamicSliderShowcase = dynamic(
 );
 
 export const DynamicBadgeShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeBadgeShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeBadgeShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -402,7 +402,7 @@ export const DynamicBadgeShowcase = dynamic(
 );
 
 export const DynamicChipShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeChipShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeChipShowcase })),
   { 
     ssr: false,
     loading: () => (
