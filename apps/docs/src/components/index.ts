@@ -6,7 +6,6 @@ export {
   FormControlsShowcase, 
   AlertShowcase, 
   AvatarShowcase, 
-  BadgeShowcase, 
   CardShowcase
 } from './ComponentShowcases';
 export { 

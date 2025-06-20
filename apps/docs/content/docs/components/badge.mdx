@@ -23,164 +23,296 @@ import { Badge } from 'forteui-core';
 
 ```tsx
 import { Badge } from 'forteui-core';
+import { IconMail } from 'forteui-core';
 
 function MyComponent() {
   return (
     <Badge variant="primary" count={5}>
-      <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center">
-        🔔
-      </div>
+      <IconMail size={24} />
     </Badge>
   );
 }
 ```
 
-<DynamicBadgeShowcase
-  title="Basic Badge Usage"
-  description="Badge wrapper component with count indicators"
-  code={`<Badge variant="primary" count={5}>
-  <IconNotification />
-</Badge>`}
->
-</DynamicBadgeShowcase>
+<DynamicBadgeShowcase />
 
-## Variants
+## Number Badges
 
-### Number Badges
-
-<DynamicBadgeShowcase
-  title="Number Badge Variants"
-  description="Badge wrapper with count numbers in different colors"
-  code={`<Badge variant="default" count={1}>
-  <IconNotification />
-</Badge>
-<Badge variant="primary" count={5}>
-  <IconMail />
-</Badge>
-<Badge variant="secondary" count={12}>
-  <IconShoppingCart />
-</Badge>`}
->
-</DynamicBadgeShowcase>
-
-### Dot Badges
-
-<DynamicBadgeShowcase
-  title="Dot Badge Variants"
-  description="Dot indicator badges for status display"
-  code={`<Badge variant="success" type="dot">
-  <UserIcon />
-</Badge>
-<Badge variant="warning" type="dot">
-  <SettingsIcon />
-</Badge>
-<Badge variant="error" type="dot">
-  <AlertIcon />
-</Badge>`}
->
-</DynamicBadgeShowcase>
-
-### Soft Badges
+### Basic Number Badge
 
 ```tsx
-<Badge variant="soft" color="default">Default</Badge>
-<Badge variant="soft" color="primary">Primary</Badge>
-<Badge variant="soft" color="secondary">Secondary</Badge>
-<Badge variant="soft" color="success">Success</Badge>
-<Badge variant="soft" color="warning">Warning</Badge>
-<Badge variant="soft" color="error">Error</Badge>
+import { Badge } from 'forteui-core';
+import { IconNotification, IconMail, IconShoppingCart } from 'forteui-core';
+
+function NumberBadgeExample() {
+  return (
+    <div className="flex gap-4">
+      <Badge variant="default" count={1}>
+        <IconNotification size={24} />
+      </Badge>
+      <Badge variant="primary" count={5}>
+        <IconMail size={24} />
+      </Badge>
+      <Badge variant="secondary" count={12}>
+        <IconShoppingCart size={24} />
+      </Badge>
+    </div>
+  );
+}
 ```
 
-## Sizes
+### Overflow Handling
 
 ```tsx
-<Badge size="sm" color="primary">Small</Badge>
-<Badge size="md" color="primary">Medium</Badge>
-<Badge size="lg" color="primary">Large</Badge>
+import { Badge } from 'forteui-core';
+import { IconMail } from 'forteui-core';
+
+function OverflowExample() {
+  return (
+    <div className="flex gap-4">
+      <Badge variant="primary" count={99}>
+        <IconMail size={24} />
+      </Badge>
+      <Badge variant="primary" count={100}>
+        <IconMail size={24} />
+      </Badge>
+      <Badge variant="primary" count={1234}>
+        <IconMail size={24} />
+      </Badge>
+    </div>
+  );
+}
 ```
 
-## Common Use Cases
+## Dot Badges
 
-### Notification Count
+### Basic Dot Badge
 
 ```tsx
-<div className="relative">
-  <Button variant="outline-primary">
-    Messages
-  </Button>
-  <Badge 
-    variant="filled" 
-    color="error" 
-    size="sm"
-    className="absolute -top-2 -right-2"
-  >
-    3
-  </Badge>
-</div>
+import { Badge } from 'forteui-core';
+import { IconUser, IconSettings, IconAlert } from 'forteui-core';
+
+function DotBadgeExample() {
+  return (
+    <div className="flex gap-4">
+      <Badge variant="success" type="dot">
+        <IconUser size={24} />
+      </Badge>
+      <Badge variant="warning" type="dot">
+        <IconSettings size={24} />
+      </Badge>
+      <Badge variant="error" type="dot">
+        <IconAlert size={24} />
+      </Badge>
+    </div>
+  );
+}
+```
+
+## Interactive Examples
+
+### Real-time Counter
+
+```tsx
+import { useState } from 'react';
+import { Badge } from 'forteui-core';
+import { IconMail, IconShoppingCart } from 'forteui-core';
+
+function InteractiveExample() {
+  const [messageCount, setMessageCount] = useState(3);
+  const [cartCount, setCartCount] = useState(0);
+  
+  return (
+    <div className="flex gap-6">
+      <div className="flex flex-col items-center gap-2">
+        <Badge variant="primary" count={messageCount}>
+          <IconMail size={32} />
+        </Badge>
+        <button 
+          onClick={() => setMessageCount(prev => prev + 1)}
+          className="px-3 py-1 bg-blue-100 rounded text-sm"
+        >
+          Add Message ({messageCount})
+        </button>
+      </div>
+      
+      <div className="flex flex-col items-center gap-2">
+        <Badge variant="success" count={cartCount} showZero>
+          <IconShoppingCart size={32} />
+        </Badge>
+        <button 
+          onClick={() => setCartCount(prev => prev + 1)}
+          className="px-3 py-1 bg-green-100 rounded text-sm"
+        >
+          Add to Cart ({cartCount})
+        </button>
+      </div>
+    </div>
+  );
+}
+```
+
+## Advanced Features
+
+### showZero Prop
+
+```tsx
+import { Badge } from 'forteui-core';
+import { IconMail } from 'forteui-core';
+
+function ShowZeroExample() {
+  return (
+    <div className="flex gap-4">
+      <Badge variant="primary" count={0}>
+        <IconMail size={24} />
+      </Badge>
+      
+      <Badge variant="primary" count={0} showZero>
+        <IconMail size={24} />
+      </Badge>
+    </div>
+  );
+}
+```
+
+### Custom max Value
+
+```tsx
+import { Badge } from 'forteui-core';
+import { IconAlert } from 'forteui-core';
+
+function CustomMaxExample() {
+  return (
+    <div className="flex gap-4">
+      <Badge variant="warning" count={150} max={50}>
+        <IconAlert size={24} />
+      </Badge>
+      
+      <Badge variant="error" count={1500} max={999}>
+        <IconAlert size={24} />
+      </Badge>
+    </div>
+  );
+}
+```
+
+## Real-World Examples
+
+### Notification System
+
+```tsx
+import { useState } from 'react';
+import { Badge, Button } from 'forteui-core';
+import { IconBell, IconMail, IconShoppingCart } from 'forteui-core';
+
+function NotificationSystem() {
+  const [notifications, setNotifications] = useState(3);
+  const [messages, setMessages] = useState(12);
+  const [cartItems, setCartItems] = useState(0);
+  
+  return (
+    <div className="flex gap-4">
+      <Badge variant="error" count={notifications}>
+        <Button variant="outline-primary">
+          <IconBell size={20} />
+        </Button>
+      </Badge>
+      
+      <Badge variant="primary" count={messages}>
+        <Button variant="outline-primary">
+          <IconMail size={20} />
+        </Button>
+      </Badge>
+      
+      <Badge variant="success" count={cartItems} showZero>
+        <Button variant="outline-primary">
+          <IconShoppingCart size={20} />
+        </Button>
+      </Badge>
+    </div>
+  );
+}
 ```
 
 ### Status Indicators
 
 ```tsx
-<div className="flex items-center gap-2">
-  <span>Server Status:</span>
-  <Badge variant="filled" color="success">Online</Badge>
-</div>
+import { Badge } from 'forteui-core';
+import { IconUser, IconServer, IconDatabase } from 'forteui-core';
 
-<div className="flex items-center gap-2">
-  <span>Build Status:</span>
-  <Badge variant="filled" color="warning">Pending</Badge>
-</div>
-
-<div className="flex items-center gap-2">
-  <span>Payment Status:</span>
-  <Badge variant="filled" color="error">Failed</Badge>
-</div>
-```
-
-### Category Labels
-
-```tsx
-<div className="flex gap-2">
-  <Badge variant="soft" color="primary">React</Badge>
-  <Badge variant="soft" color="secondary">TypeScript</Badge>
-  <Badge variant="soft" color="success">CSS</Badge>
-</div>
+function StatusIndicators() {
+  return (
+    <div className="space-y-4">
+      <div className="flex items-center gap-3">
+        <Badge variant="success" type="dot">
+          <IconUser size={24} />
+        </Badge>
+        <span>User Online</span>
+      </div>
+      
+      <div className="flex items-center gap-3">
+        <Badge variant="warning" type="dot">
+          <IconServer size={24} />
+        </Badge>
+        <span>Server Warning</span>
+      </div>
+      
+      <div className="flex items-center gap-3">
+        <Badge variant="error" type="dot">
+          <IconDatabase size={24} />
+        </Badge>
+        <span>Database Error</span>
+      </div>
+    </div>
+  );
+}
 ```
 
 ## Props
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
-| `variant` | `'filled' \| 'outline' \| 'soft'` | `'filled'` | Visual style variant |
-| `color` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `'default'` | Color theme |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the badge |
+| `children` | `ReactNode` | - | Child element to wrap with badge |
+| `count` | `number` | `0` | Number to display in badge |
+| `showZero` | `boolean` | `false` | Whether to show badge when count is 0 |
+| `max` | `number` | `99` | Maximum number before showing "max+" |
+| `type` | `'number' \| 'dot'` | `'number'` | Badge display type |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Badge color variant |
 | `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Badge content |
 
 ## Design Specifications
 
-- **Border Radius**: Fully rounded (pill shape)
-- **Typography**: Bold weight for emphasis
-- **Padding**: Proportional to size
-- **Colors**: Uses semantic color system
-- **Sizing**: Small (20px), Medium (24px), Large (28px) height
+### Positioning
+- **Number badges**: Positioned at `-top-2` with dynamic right offset
+- **Dot badges**: Positioned at `-top-1.5, -right-1.5`
+- **Border**: 2px white border for separation from background
+
+### Sizing
+- **Number badges**: Minimum 20px height/width, 6px horizontal padding
+- **Dot badges**: 10px width/height (w-2.5 h-2.5)
+- **Typography**: 12px font size with bold weight
+
+### Overflow Behavior
+- **Default max**: 99 (shows "99+" for counts ≥ 100)
+- **Dynamic positioning**: Adjusts based on formatted count length
+- **Customizable**: Use `max` prop for different overflow points
 
 ## Accessibility
 
-- **Color Independence**: Information is not conveyed by color alone
-- **Readable Text**: High contrast ratios maintained
-- **Screen Readers**: Content is properly announced
+- **Wrapper Component**: Badge acts as a wrapper around child elements
+- **Semantic Colors**: Uses semantic color variants for meaning
+- **Screen Readers**: Child content remains accessible
+- **Focus Management**: Preserves focus behavior of wrapped elements
 
 ## Best Practices
 
-1. **Keep text short**: Use concise labels or numbers
-2. **Consistent sizing**: Use appropriate size for context
-3. **Semantic colors**: Use colors that match the meaning
-4. **Strategic placement**: Position near related content
-5. **Don't overuse**: Avoid too many badges in one area
+1. **Use with Icons**: Pair with ForteUI icons for consistent appearance
+2. **Semantic Colors**: Choose variant colors that match the badge purpose
+3. **Reasonable Counts**: Use overflow handling for large numbers
+4. **Consistent Sizing**: Use appropriate icon sizes (16px, 24px, 32px)
+5. **Interactive Elements**: Badge works well with buttons and clickable icons
 
 ## Related Components
 
-- [Chip](/docs/components/chip) - For interactive tags
-- [Button](/docs/components/button) - For actionable elements 
+- [Button](/docs/components/button) - For interactive badge containers
+- [Chip](/docs/components/chip) - For standalone labels and tags

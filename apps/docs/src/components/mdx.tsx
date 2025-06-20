@@ -27,7 +27,6 @@ import {
   FormControlsShowcase, 
   AlertShowcase, 
   AvatarShowcase, 
-  BadgeShowcase, 
   CardShowcase
 } from './ComponentShowcases';
 import { 
@@ -160,7 +159,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     FormControlsShowcase,
     AlertShowcase,
     AvatarShowcase,
-    BadgeShowcase,
     CardShowcase,
     // Dynamic SSR-safe versions
     DynamicInputShowcase,
