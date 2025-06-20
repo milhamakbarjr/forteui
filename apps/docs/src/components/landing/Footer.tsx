@@ -173,7 +173,7 @@ export function Footer() {
                 viewport={{ once: true }}
                 className="flex items-center gap-2 text-xs sm:text-sm text-gray-400"
               >
-                <span>&copy; 2024 ForteUI. Built with</span>
+                <span>&copy; 2025 ForteUI. Built with</span>
                 <IconHeart size={14} className="sm:w-4 sm:h-4 text-red-500" />
                 <span>and Next.js</span>
               </motion.div>

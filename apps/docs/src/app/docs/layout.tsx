@@ -793,7 +793,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             {/* Sidebar Footer */}
             <div className="p-6 border-t border-neutral-100 bg-neutral-50/30">
               <div className="flex items-center justify-between text-xs text-neutral-500 mb-3">
-                <span className="font-medium">© 2024 ForteUI</span>
+                <span className="font-medium">© 2025 ForteUI</span>
                 <Badge variant="secondary" className="text-xs px-2 py-1">
                   v0.1.3
                 </Badge>
