@@ -1,0 +1,148 @@
+/* Navigation Styles - Modern & Clean */
+.navigation-item {
+  position: relative;
+}
+
+/* Hover effects for navigation items */
+.navigation-item:hover .icon-container {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+/* Smooth expand/collapse animation */
+.children-container {
+  overflow: hidden;
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 500px;
+  }
+}
+
+/* Enhanced focus styles */
+.navigation-item button:focus-visible,
+.navigation-item a:focus-visible {
+  outline: 2px solid #0690F4;
+  outline-offset: 2px;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 1024px) {
+  .navigation-item {
+    margin-left: 0 !important;
+  }
+}
+
+/* Search input - keep it simple and native */
+.search-container input {
+  transition: border-color 0.2s ease;
+}
+
+/* Header improvements */
+.main-header {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Sidebar improvements */
+#sidebar-navigation {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.95);
+  border-right: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Content area scroll improvements */
+#main-content {
+  scroll-behavior: smooth;
+}
+
+#main-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+#main-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#main-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 3px;
+}
+
+#main-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Sidebar scrollbar styling */
+#sidebar-navigation .overflow-y-auto::-webkit-scrollbar {
+  width: 4px;
+}
+
+#sidebar-navigation .overflow-y-auto::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#sidebar-navigation .overflow-y-auto::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+}
+
+#sidebar-navigation .overflow-y-auto::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.2);
+}
+
+/* Icon container enhancements */
+.icon-container {
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.icon-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.navigation-item:hover .icon-container::before {
+  opacity: 1;
+}
+
+/* Breadcrumb enhancements */
+nav[aria-label="Breadcrumb"] a:hover {
+  text-decoration: none;
+  color: #0690F4;
+}
+
+/* Mobile header button enhancement */
+.lg\\:hidden button[aria-label="Toggle navigation menu"] {
+  transition: all 0.2s ease;
+}
+
+.lg\\:hidden button[aria-label="Toggle navigation menu"]:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: scale(1.05);
+}
+
+/* Badge styling improvements */
+.badge {
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
