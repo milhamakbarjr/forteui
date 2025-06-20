@@ -221,24 +221,46 @@ export const DynamicCheckboxShowcase = dynamic(
 );
 
 export const DynamicSwitchShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeSwitchShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeSwitchShowcase })),
   { 
     ssr: false,
     loading: () => (
-      <div className="animate-pulse space-y-4">
+      <div className="animate-pulse space-y-6">
         <div className="h-8 bg-gray-200 rounded mb-4"></div>
-        <div className="space-y-3">
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
-            <div className="h-4 bg-gray-200 rounded w-44"></div>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
+        <div className="space-y-4">
+          {/* Basic states skeleton */}
+          <div className="space-y-2">
             <div className="h-4 bg-gray-200 rounded w-32"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="flex items-center space-x-2">
+                    <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
+                    <div className="h-4 bg-gray-200 rounded w-40"></div>
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-3">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="flex items-center space-x-2">
+                    <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
+                    <div className="h-4 bg-gray-200 rounded w-36"></div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
-            <div className="h-4 bg-gray-200 rounded w-40"></div>
+          {/* Semantic colors skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-48"></div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              {[...Array(7)].map((_, i) => (
+                <div key={i} className="flex items-center space-x-2">
+                  <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
+                  <div className="h-4 bg-gray-200 rounded w-20"></div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -247,24 +269,43 @@ export const DynamicSwitchShowcase = dynamic(
 );
 
 export const DynamicTextareaShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeTextareaShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeTextareaShowcase })),
   { 
     ssr: false,
     loading: () => (
-      <div className="animate-pulse space-y-4">
+      <div className="animate-pulse space-y-6">
         <div className="h-8 bg-gray-200 rounded mb-4"></div>
         <div className="space-y-4">
-          <div>
-            <div className="h-4 bg-gray-200 rounded w-24 mb-2"></div>
-            <div className="h-20 bg-gray-200 rounded"></div>
+          {/* States comparison skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-32"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-4">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="space-y-2">
+                    <div className="h-3 bg-gray-200 rounded w-24"></div>
+                    <div className="h-20 bg-gray-200 rounded"></div>
+                  </div>
+                ))}
+              </div>
+              <div className="space-y-4">
+                {[...Array(4)].map((_, i) => (
+                  <div key={i} className="space-y-2">
+                    <div className="h-3 bg-gray-200 rounded w-28"></div>
+                    <div className="h-20 bg-gray-200 rounded"></div>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
-          <div>
-            <div className="h-4 bg-gray-200 rounded w-20 mb-2"></div>
-            <div className="h-20 bg-gray-200 rounded"></div>
-          </div>
-          <div>
-            <div className="h-4 bg-gray-200 rounded w-32 mb-2"></div>
-            <div className="h-24 bg-gray-200 rounded"></div>
+          {/* Size variants skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-32"></div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="h-16 bg-gray-200 rounded"></div>
+              <div className="h-24 bg-gray-200 rounded"></div>
+              <div className="h-32 bg-gray-200 rounded"></div>
+            </div>
           </div>
         </div>
       </div>
