@@ -1043,55 +1043,223 @@ export function ClientSafeTextareaShowcase({
   title?: string;
   description?: string;
 }) {
-  const [message, setMessage] = useState('');
-  const [feedback, setFeedback] = useState('Great product! I love the design and functionality.');
-  const [notes, setNotes] = useState('');
-
   return (
     <ComponentShowcase title={title} description={description} code={code}>
-      <div className="space-y-6">
+      <div className="space-y-8 forte-ui">
+        {/* Basic States */}
         <div className="space-y-4">
-          <Textarea 
-            label="Message"
-            placeholder="Enter your message..."
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            rows={3}
-          />
-          
-          <Textarea 
-            label="Feedback"
-            value={feedback}
-            onChange={(e) => setFeedback(e.target.value)}
-            rows={3}
-            helperText={`${feedback.length}/500 characters`}
-            variant="default"
-          />
-          
-          <Textarea 
-            label="Additional Notes"
-            placeholder="Optional notes..."
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            rows={4}
-            variant="filled"
-          />
-          
-          <Textarea 
-            label="Error State"
-            value="This has an error"
-            error
-            helperText="This field has an error"
-            rows={2}
-          />
-          
-          <Textarea 
-            label="Disabled Textarea"
-            value="This textarea is disabled"
-            disabled
-            rows={2}
-          />
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Textarea States</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <h4 className="font-medium text-gray-700">Default Variant States</h4>
+              <div className="space-y-4">
+                <Textarea placeholder="Enter your message..." label="Default (Empty)" />
+                <Textarea 
+                  label="With Value" 
+                  defaultValue="This is a sample message with some content to show how the textarea behaves with text."
+                />
+                <Textarea label="Disabled" disabled />
+                <Textarea 
+                  label="Error State" 
+                  error
+                  defaultValue="Short message"
+                  helperText="Message must be at least 20 characters long"
+                  helperIcon={<IconAlertTriangle size={16} />}
+                />
+              </div>
+            </div>
+            <div className="space-y-4">
+              <h4 className="font-medium text-gray-700">Filled Variant States</h4>
+              <div className="space-y-4">
+                <Textarea variant="filled" label="Filled (Empty)" placeholder="Enter your message..." />
+                <Textarea 
+                  variant="filled"
+                  label="Filled with Value" 
+                  defaultValue="This is a sample message with some content to show how the textarea behaves with text."
+                />
+                <Textarea variant="filled" label="Filled Disabled" disabled />
+                <Textarea 
+                  variant="filled"
+                  label="Filled Error" 
+                  error
+                  defaultValue="Short message"
+                  helperText="Message must be at least 20 characters long"
+                  helperIcon={<IconAlertTriangle size={16} />}
+                />
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Sizes */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Textarea Sizes</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Small</h4>
+              <Textarea size="sm" label="Small" placeholder="Small size (60px min-height)" />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Medium</h4>
+              <Textarea size="md" label="Medium" placeholder="Medium size (98px min-height)" />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Large</h4>
+              <Textarea size="lg" label="Large" placeholder="Large size (120px min-height)" />
+            </div>
+          </div>
+        </div>
+
+        {/* Variants */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Variants</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <h4 className="font-medium text-gray-700">Default (Outline-based)</h4>
+              <Textarea 
+                label="Default Variant" 
+                placeholder="Outline-based textarea with border focus"
+                defaultValue="This uses the default variant with outline-based styling."
+              />
+            </div>
+            <div className="space-y-3">
+              <h4 className="font-medium text-gray-700">Filled (Background-based)</h4>
+              <Textarea 
+                variant="filled"
+                label="Filled Variant" 
+                placeholder="Background-based textarea with fill focus"
+                defaultValue="This uses the filled variant with background-based styling."
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Interactive Examples */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Helper Text & Icons</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <h4 className="font-medium text-gray-700">With Helper Info</h4>
+              <Textarea 
+                label="With Helper Info" 
+                placeholder="Tell us about yourself..."
+                helperText="This information will be displayed on your public profile"
+                helperIcon={<IconInfoCircle size={16} />}
+              />
+            </div>
+            <div className="space-y-3">
+              <h4 className="font-medium text-gray-700">With Error</h4>
+              <Textarea 
+                label="With Error" 
+                error
+                defaultValue="Basic requirements"
+                helperText="Please provide more detailed requirements (min 50 characters)"
+                helperIcon={<IconAlertTriangle size={16} />}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Custom Features */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-pink-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Custom Features</h3>
+          </div>
+          <div className="space-y-6">
+            <div>
+              <h4 className="font-medium text-gray-700 mb-3">Custom Height</h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <Textarea 
+                  label="3 Rows" 
+                  rows={3}
+                  placeholder="Fixed height with 3 rows"
+                />
+                <Textarea 
+                  label="6 Rows" 
+                  rows={6}
+                  placeholder="Fixed height with 6 rows"
+                />
+              </div>
+            </div>
+            <div>
+              <h4 className="font-medium text-gray-700 mb-3">Resize Behavior</h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <Textarea 
+                  label="Resize Vertical (Default)" 
+                  placeholder="Can be resized vertically (resize-y)"
+                  className="resize-y"
+                />
+                <Textarea 
+                  label="No Resize" 
+                  placeholder="Cannot be resized (resize-none)"
+                  className="resize-none"
+                />
+                <Textarea 
+                  label="Resize Both" 
+                  placeholder="Can be resized in both directions (resize)"
+                  className="resize"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Design Specifications */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-indigo-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Design Specifications</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-gray-50 rounded-lg">
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Outline Variant (Border-based)</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Default: 1px outline, rgba(147, 161, 174, 0.20)</li>
+                <li>• Hover: 1px outline, #1F2933 (text-primary)</li>
+                <li>• Focus: 2px outline, #1F2933 (text-primary)</li>
+                <li>• Error: 2px outline, #FF5833 (error-main)</li>
+                <li>• Disabled: 1px outline + 50% opacity</li>
+                <li>• Padding: 14px all around</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Filled Variant (Background-based)</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Default: grey-8 background (rgba(147, 161, 174, 0.08))</li>
+                <li>• Hover: grey-16 background (rgba(147, 161, 174, 0.16))</li>
+                <li>• Focus: grey-16 background (rgba(147, 161, 174, 0.16))</li>
+                <li>• Error: error-8 background (rgba(255, 88, 51, 0.08))</li>
+                <li>• Disabled: grey-8 background + 50% opacity</li>
+                <li>• Padding: 12px all around</li>
+              </ul>
+            </div>
+            <div className="md:col-span-2">
+              <h4 className="font-semibold text-gray-900 mb-3">Common Properties</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Border Radius: 8px</li>
+                <li>• Min Heights: Small (60px), Medium (98px), Large (120px)</li>
+                <li>• Typography: 15px font size, Plus Jakarta Sans</li>
+                <li>• Resize: Vertical only (resize-y) by default</li>
+                <li>• Floating label behavior: Same as Input component</li>
+                <li>• Helper Text: 12px font size, 16px icon</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {children}
       </div>
     </ComponentShowcase>

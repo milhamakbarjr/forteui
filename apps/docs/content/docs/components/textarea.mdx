@@ -27,6 +27,7 @@ import { Textarea } from 'forteui-core';
 function MyComponent() {
   return (
     <Textarea 
+      label="Message"
       placeholder="Enter your message..."
       rows={4}
     />
@@ -34,192 +35,34 @@ function MyComponent() {
 }
 ```
 
-<DynamicTextareaShowcase
-  title="Interactive Textarea Examples"
-  description="Interactive textarea components with different states and functionality"
-  code={`<Textarea 
-  label="Message"
-  placeholder="Enter your message..."
-  rows={3}
-/>`}
->
-</DynamicTextareaShowcase>
+<DynamicTextareaShowcase />
 
-## Variants
-
-### Default Textarea
-
-```tsx
-<div className="space-y-4">
-  <Textarea 
-    label="Comments"
-    placeholder="Share your thoughts..."
-    rows={3}
-  />
-  
-  <Textarea 
-    label="Description"
-    placeholder="Provide a detailed description..."
-    rows={4}
-    defaultValue="Some initial content here..."
-  />
-</div>
-```
-
-### Auto-Resize
-
-```tsx
-<Textarea 
-  label="Auto-expanding message"
-  placeholder="Start typing and watch me grow..."
-  autoResize
-  minRows={2}
-  maxRows={8}
-/>
-```
-
-## Sizes
-
-```tsx
-<div className="space-y-4">
-  <Textarea 
-    size="sm"
-    label="Small textarea"
-    placeholder="Small size..."
-    rows={2}
-  />
-  
-  <Textarea 
-    size="md"
-    label="Medium textarea (default)"
-    placeholder="Medium size..."
-    rows={3}
-  />
-  
-  <Textarea 
-    size="lg"
-    label="Large textarea"
-    placeholder="Large size..."
-    rows={4}
-  />
-</div>
-```
-
-## States
-
-### Validation States
-
-```tsx
-<div className="space-y-4">
-  <Textarea 
-    label="Success state"
-    placeholder="Valid input..."
-    state="success"
-    helperText="Looks good!"
-    rows={2}
-  />
-  
-  <Textarea 
-    label="Error state"
-    placeholder="Invalid input..."
-    state="error"
-    helperText="This field is required"
-    rows={2}
-  />
-  
-  <Textarea 
-    label="Warning state"
-    placeholder="Concerning input..."
-    state="warning"
-    helperText="Please double-check this information"
-    rows={2}
-  />
-</div>
-```
-
-### Disabled State
-
-```tsx
-<Textarea 
-  label="Disabled textarea"
-  placeholder="Cannot edit this..."
-  disabled
-  defaultValue="This content cannot be modified"
-  rows={3}
-/>
-```
-
-### Read-only State
-
-```tsx
-<Textarea 
-  label="Read-only textarea"
-  readOnly
-  defaultValue="This content is read-only but can be selected and copied."
-  rows={3}
-/>
-```
-
-## Character Counting
-
-### With Character Limit
-
-```tsx
-import { useState } from 'react';
-
-function CharacterLimitExample() {
-  const [value, setValue] = useState('');
-  const maxLength = 280;
-  
-  return (
-    <Textarea 
-      label="Tweet draft"
-      placeholder="What's happening?"
-      value={value}
-      onChange={(e) => setValue(e.target.value)}
-      maxLength={maxLength}
-      showCharacterCount
-      helperText={`${value.length}/${maxLength} characters`}
-      state={value.length > maxLength * 0.9 ? 'warning' : 'default'}
-      rows={3}
-    />
-  );
-}
-```
-
-### Character Counter
-
-```tsx
-import { useState } from 'react';
-
-function CharacterCountExample() {
-  const [value, setValue] = useState('');
-  
-  return (
-    <div className="space-y-2">
-      <Textarea 
-        label="Feedback"
-        placeholder="Share your detailed feedback..."
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        rows={4}
-      />
-      <div className="text-sm text-gray-500 text-right">
-        {value.length} characters
-      </div>
-    </div>
-  );
-}
-```
-
-## Form Integration
-
-### Controlled Component
+## Controlled Textarea
 
 ```tsx
 import { useState } from 'react';
 
 function ControlledTextarea() {
+  const [message, setMessage] = useState('');
+  
+  return (
+    <Textarea 
+      label="Your message"
+      placeholder="Type your message here..."
+      value={message}
+      onChange={(e) => setMessage(e.target.value)}
+      helperText={`${message.length} characters`}
+      rows={4}
+    />
+  );
+}
+```
+## Form Integration
+
+```tsx
+import { useState } from 'react';
+
+function ContactForm() {
   const [message, setMessage] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   
@@ -250,184 +93,11 @@ function ControlledTextarea() {
       <Button 
         type="submit" 
         disabled={message.length < 10 || isSubmitting}
-        variant="primary"
+        color="primary"
       >
         {isSubmitting ? 'Sending...' : 'Send Message'}
       </Button>
     </form>
-  );
-}
-```
-
-### React Hook Form Integration
-
-```tsx
-import { useForm } from 'react-hook-form';
-
-function ContactForm() {
-  const { register, handleSubmit, watch, formState: { errors } } = useForm();
-  const messageValue = watch('message', '');
-  
-  const onSubmit = (data) => {
-    console.log('Form data:', data);
-  };
-  
-  return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <Textarea 
-        label="Message"
-        placeholder="Enter your message..."
-        {...register('message', { 
-          required: 'Message is required',
-          minLength: { value: 20, message: 'Message must be at least 20 characters' },
-          maxLength: { value: 1000, message: 'Message must not exceed 1000 characters' }
-        })}
-        state={errors.message ? 'error' : 'default'}
-        helperText={errors.message?.message || `${messageValue.length}/1000 characters`}
-        rows={5}
-      />
-      
-      <Button type="submit" variant="primary">
-        Submit
-      </Button>
-    </form>
-  );
-}
-```
-
-## Real-World Examples
-
-### Comment System
-
-```tsx
-import { useState } from 'react';
-
-function CommentBox({ onSubmit }) {
-  const [comment, setComment] = useState('');
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const handleSubmit = async () => {
-    if (comment.trim().length < 3) return;
-    
-    setIsSubmitting(true);
-    await onSubmit(comment);
-    setComment('');
-    setIsSubmitting(false);
-  };
-  
-  return (
-    <Card>
-      <CardContent className="p-4 space-y-4">
-        <div className="flex items-center gap-3">
-          <Avatar size="sm" />
-          <div>
-            <p className="font-medium">Add a comment</p>
-            <p className="text-sm text-gray-500">Share your thoughts</p>
-          </div>
-        </div>
-        
-        <Textarea 
-          placeholder="Write a comment..."
-          value={comment}
-          onChange={(e) => setComment(e.target.value)}
-          autoResize
-          minRows={2}
-          maxRows={6}
-        />
-        
-        <div className="flex justify-between items-center">
-          <span className="text-sm text-gray-500">
-            {comment.length} characters
-          </span>
-          
-          <div className="flex gap-2">
-            <Button variant="outline-default" size="sm">
-              Cancel
-            </Button>
-            <Button 
-              variant="primary" 
-              size="sm"
-              onClick={handleSubmit}
-              disabled={comment.trim().length < 3 || isSubmitting}
-            >
-              {isSubmitting ? 'Posting...' : 'Post Comment'}
-            </Button>
-          </div>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-```
-
-### Support Ticket Form
-
-```tsx
-import { useState } from 'react';
-
-function SupportTicketForm() {
-  const [ticket, setTicket] = useState({
-    subject: '',
-    description: '',
-    priority: 'medium'
-  });
-  
-  return (
-    <Card>
-      <CardHeader>
-        <h3 className="text-lg font-semibold">Submit Support Ticket</h3>
-        <p className="text-sm text-gray-600">
-          Describe your issue and we'll help you resolve it
-        </p>
-      </CardHeader>
-      
-      <CardContent className="space-y-4">
-        <Input 
-          label="Subject"
-          placeholder="Brief description of the issue..."
-          value={ticket.subject}
-          onChange={(e) => setTicket({...ticket, subject: e.target.value})}
-          required
-        />
-        
-        <div>
-          <label className="block text-sm font-medium mb-2">Priority</label>
-          <select 
-            value={ticket.priority}
-            onChange={(e) => setTicket({...ticket, priority: e.target.value})}
-            className="w-full border border-gray-300 rounded-md px-3 py-2"
-          >
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
-            <option value="urgent">Urgent</option>
-          </select>
-        </div>
-        
-        <Textarea 
-          label="Description"
-          placeholder="Please provide detailed information about your issue, including steps to reproduce, expected behavior, and any error messages..."
-          value={ticket.description}
-          onChange={(e) => setTicket({...ticket, description: e.target.value})}
-          rows={6}
-          maxLength={2000}
-          showCharacterCount
-          helperText={`${ticket.description.length}/2000 characters`}
-          required
-        />
-      </CardContent>
-      
-      <CardFooter>
-        <div className="flex gap-2 w-full">
-          <Button variant="outline-default" className="flex-1">
-            Save Draft
-          </Button>
-          <Button variant="primary" className="flex-1">
-            Submit Ticket
-          </Button>
-        </div>
-      </CardFooter>
-    </Card>
   );
 }
 ```
@@ -440,29 +110,25 @@ function SupportTicketForm() {
 | `defaultValue` | `string` | - | Default uncontrolled value |
 | `onChange` | `(e: ChangeEvent) => void` | - | Change handler |
 | `placeholder` | `string` | - | Placeholder text |
-| `rows` | `number` | `3` | Number of visible rows |
-| `autoResize` | `boolean` | `false` | Enable auto-resize functionality |
-| `minRows` | `number` | `2` | Minimum rows when auto-resizing |
-| `maxRows` | `number` | `10` | Maximum rows when auto-resizing |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `state` | `'default' \| 'success' \| 'error' \| 'warning'` | `'default'` | Validation state |
-| `label` | `string` | - | Label text |
-| `helperText` | `string` | - | Helper/error text below input |
-| `showCharacterCount` | `boolean` | `false` | Show character count |
-| `maxLength` | `number` | - | Maximum character limit |
-| `minLength` | `number` | - | Minimum character requirement |
+| `rows` | `number` | - | Number of visible rows |
+| `variant` | `'default' \| 'filled'` | `'default'` | Visual variant (outline vs background-based) |
+| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant with different min-heights |
+| `label` | `string` | - | Label text (floats when focused or has value) |
+| `helperText` | `string` | - | Helper/error text below textarea |
+| `helperIcon` | `React.ReactNode` | - | Icon to display with helper text |
+| `error` | `boolean` | `false` | Error state styling |
 | `disabled` | `boolean` | `false` | Disabled state |
-| `readOnly` | `boolean` | `false` | Read-only state |
 | `required` | `boolean` | `false` | Required field indicator |
 | `className` | `string` | - | Additional CSS classes |
 
 ## Design Specifications
 
-- **Padding**: 12px horizontal, 8px vertical
-- **Border**: 1px solid with rounded corners (6px)
-- **Typography**: Inherits from body text
-- **Focus**: Primary color border with shadow
-- **Resize**: Vertical resize handle (when not auto-resize)
+- **Border Radius**: 8px
+- **Min Heights**: Small (60px), Medium (98px), Large (120px)
+- **Typography**: 15px font size, Plus Jakarta Sans
+- **Resize**: Vertical only (resize-y) by default
+- **Floating Label**: Same behavior as Input component
+- **Helper Text**: 12px font size, 16px icon
 
 ## Accessibility
 
@@ -476,13 +142,12 @@ function SupportTicketForm() {
 
 1. **Clear Labels**: Always provide descriptive labels
 2. **Helper Text**: Use helper text for formatting guidelines
-3. **Character Limits**: Set reasonable character limits with clear feedback
-4. **Auto-resize**: Use auto-resize for better UX when content length varies
-5. **Validation**: Provide real-time feedback for form validation
-6. **Accessibility**: Ensure proper ARIA labeling and keyboard navigation
+3. **Appropriate Sizing**: Choose size based on expected content length
+4. **Validation**: Provide real-time feedback for form validation
+5. **Accessibility**: Ensure proper ARIA labeling and keyboard navigation
 
 ## Related Components
 
 - [Input](/docs/components/input) - For single-line text input
 - [Button](/docs/components/button) - For form submission
-- [Card](/docs/components/card) - For containing forms 
+- [Card](/docs/components/card) - For containing forms
