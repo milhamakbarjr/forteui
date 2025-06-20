@@ -1,11 +1,11 @@
 ---
 title: Avatar
-description: Avatar component for displaying user profile images with fallbacks, multiple sizes, and status indicators.
+description: Avatar component for displaying user profile images with fallbacks, multiple sizes, shapes, and status indicators.
 ---
 
 # Avatar
 
-Avatar component for displaying user profile images with intelligent fallback handling, multiple sizes, and optional status indicators. Perfect for user profiles, comments, and team displays.
+Avatar component for displaying user profile images with intelligent fallback handling, multiple sizes, shapes, variants, and optional status indicators. Perfect for user profiles, comments, and team displays.
 
 ## Installation
 
@@ -18,6 +18,10 @@ npm install forteui-core
 ```tsx
 import { Avatar } from 'forteui-core';
 ```
+
+## Comprehensive Examples
+
+<DynamicAvatarShowcase />
 
 ## Basic Usage
 
@@ -35,43 +39,47 @@ function MyComponent() {
 }
 ```
 
-<DynamicAvatarShowcase
-  title="Basic Avatar Usage"
-  description="Simple avatar with image and fallback"
-  code={`<Avatar 
-  src="/user-avatar.jpg"
-  alt="John Doe"
-  fallback="JD"
-/>`}
->
-  <Avatar 
-    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
-    alt="John Doe"
-    fallback="JD"
-  />
-</DynamicAvatarShowcase>
-
 ## Sizes
 
-<DynamicAvatarShowcase
-  title="Avatar Sizes"
-  description="Different avatar sizes from extra small to extra large"
-  code={`<div className="flex items-center gap-4">
+Available sizes: `xs` (24px), `sm` (32px), `md` (40px), `lg` (48px), `xl` (64px)
+
+```tsx
+<div className="flex items-center gap-4">
   <Avatar size="xs" src="/user.jpg" fallback="XS" />
   <Avatar size="sm" src="/user.jpg" fallback="SM" />
   <Avatar size="md" src="/user.jpg" fallback="MD" />
   <Avatar size="lg" src="/user.jpg" fallback="LG" />
   <Avatar size="xl" src="/user.jpg" fallback="XL" />
-  <Avatar size="2xl" src="/user.jpg" fallback="2XL" />
-</div>`}
->
-  <Avatar size="xs" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&h=150&fit=crop&crop=face" fallback="XS" />
-  <Avatar size="sm" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face" fallback="SM" />
-  <Avatar size="md" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face" fallback="MD" />
-  <Avatar size="lg" src="https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face" fallback="LG" />
-  <Avatar size="xl" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face" fallback="XL" />
-  <Avatar size="2xl" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face" fallback="2XL" />
-</DynamicAvatarShowcase>
+</div>
+```
+
+## Variants
+
+Avatar supports semantic color variants:
+
+```tsx
+<div className="flex items-center gap-4">
+  <Avatar variant="default" fallback="DE" />
+  <Avatar variant="primary" fallback="PR" />
+  <Avatar variant="secondary" fallback="SE" />
+  <Avatar variant="info" fallback="IN" />
+  <Avatar variant="success" fallback="SU" />
+  <Avatar variant="warning" fallback="WA" />
+  <Avatar variant="error" fallback="ER" />
+</div>
+```
+
+## Shapes
+
+Choose from circular, rounded or square shapes:
+
+```tsx
+<div className="flex items-center gap-4">
+  <Avatar shape="circular" variant="primary" fallback="CI" />
+  <Avatar shape="rounded" variant="primary" fallback="RO" />
+  <Avatar shape="square" variant="primary" fallback="SQ" />
+</div>
+```
 
 ## Fallback Handling
 
@@ -83,14 +91,6 @@ function MyComponent() {
   <Avatar fallback="AB" />
   <Avatar fallback="CD" />
 </div>
-```
-
-### Icon Fallback
-
-```tsx
-import { Avatar, IconUser } from 'forteui-core';
-
-<Avatar fallback={<IconUser className="w-5 h-5" />} />
 ```
 
 ### Image with Fallback
@@ -137,7 +137,7 @@ import { Avatar, IconUser } from 'forteui-core';
   <Avatar src="/user1.jpg" fallback="JD" size="md" className="border-2 border-white" />
   <Avatar src="/user2.jpg" fallback="AB" size="md" className="border-2 border-white" />
   <Avatar src="/user3.jpg" fallback="CD" size="md" className="border-2 border-white" />
-  <Avatar fallback="+3" size="md" className="border-2 border-white bg-gray-200 text-gray-600" />
+  <Avatar fallback="+3" size="md" variant="default" className="border-2 border-white" />
 </div>
 ```
 
@@ -182,78 +182,6 @@ function AvatarWithMenu() {
 }
 ```
 
-## Use Cases
-
-### User Profile Header
-
-```tsx
-<div className="flex items-center space-x-4">
-  <Avatar 
-    src="/profile.jpg"
-    fallback="JD"
-    size="xl"
-    status="online"
-  />
-  <div>
-    <h2 className="text-2xl font-bold">John Doe</h2>
-    <p className="text-gray-600">Software Engineer</p>
-    <p className="text-sm text-gray-500">Last seen 2 minutes ago</p>
-  </div>
-</div>
-```
-
-### Comment Section
-
-```tsx
-<div className="space-y-4">
-  <div className="flex space-x-3">
-    <Avatar src="/user1.jpg" fallback="JD" size="sm" />
-    <div className="flex-1">
-      <div className="bg-gray-100 rounded-lg p-3">
-        <p className="font-semibold text-sm">John Doe</p>
-        <p className="text-sm">This is a great feature! Thanks for implementing it.</p>
-      </div>
-      <p className="text-xs text-gray-500 mt-1">2 hours ago</p>
-    </div>
-  </div>
-  
-  <div className="flex space-x-3">
-    <Avatar src="/user2.jpg" fallback="AB" size="sm" />
-    <div className="flex-1">
-      <div className="bg-gray-100 rounded-lg p-3">
-        <p className="font-semibold text-sm">Alice Brown</p>
-        <p className="text-sm">Agreed! The user experience is much better now.</p>
-      </div>
-      <p className="text-xs text-gray-500 mt-1">1 hour ago</p>
-    </div>
-  </div>
-</div>
-```
-
-### Team Grid
-
-```tsx
-<div className="grid grid-cols-4 gap-4">
-  {[
-    { name: 'John Doe', role: 'Designer', src: '/john.jpg' },
-    { name: 'Alice Brown', role: 'Developer', src: '/alice.jpg' },
-    { name: 'Bob Wilson', role: 'Manager', src: '/bob.jpg' },
-    { name: 'Carol Davis', role: 'QA', src: '/carol.jpg' },
-  ].map((member) => (
-    <div key={member.name} className="text-center">
-      <Avatar 
-        src={member.src}
-        fallback={member.name.split(' ').map(n => n[0]).join('')}
-        size="lg"
-        className="mx-auto mb-2"
-      />
-      <p className="font-semibold text-sm">{member.name}</p>
-      <p className="text-xs text-gray-500">{member.role}</p>
-    </div>
-  ))}
-</div>
-```
-
 ## Props
 
 | Prop | Type | Default | Description |
@@ -261,18 +189,21 @@ function AvatarWithMenu() {
 | `src` | `string` | - | Image source URL |
 | `alt` | `string` | - | Alt text for the image |
 | `fallback` | `string \| ReactNode` | - | Fallback content when image fails to load |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| '2xl'` | `'md'` | Size of the avatar |
+| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the avatar |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Color variant |
+| `shape` | `'circular' \| 'rounded' \| 'square'` | `'circular'` | Shape of the avatar |
 | `status` | `'online' \| 'away' \| 'busy' \| 'offline'` | - | Status indicator |
+| `icon` | `ReactNode` | - | Icon to display in avatar |
 | `className` | `string` | - | Additional CSS classes |
 | `onClick` | `() => void` | - | Click handler for interactive avatars |
 
 ## Design Specifications
 
-- **Sizes**: XS (24px), SM (32px), MD (40px), LG (48px), XL (64px), 2XL (80px)
-- **Shape**: Perfect circle
-- **Status Indicator**: 8px circle positioned at bottom-right
-- **Fallback**: Centered text or icon with background color
-- **Border**: Optional border for layered avatars
+- **Sizes**: XS (24px), SM (32px), MD (40px), LG (48px), XL (64px)
+- **Shapes**: Circular (rounded-full), Rounded (12px radius), Square (no radius)
+- **Status Indicator**: Positioned at bottom-right with white border
+- **Fallback**: Automatically extracts initials from text or displays custom content
+- **Variants**: Support all semantic colors with appropriate contrast
 
 ## Accessibility
 
