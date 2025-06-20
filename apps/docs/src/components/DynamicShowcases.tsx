@@ -95,17 +95,41 @@ export const ProgressShowcase = dynamic(
 );
 
 export const DynamicInputShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeInputShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeInputShowcase })),
   { 
     ssr: false,
     loading: () => (
-      <div className="animate-pulse space-y-4">
+      <div className="animate-pulse space-y-6">
         <div className="h-8 bg-gray-200 rounded mb-4"></div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="h-10 bg-gray-200 rounded"></div>
-          <div className="h-10 bg-gray-200 rounded"></div>
-          <div className="h-10 bg-gray-200 rounded"></div>
-          <div className="h-10 bg-gray-200 rounded"></div>
+        <div className="space-y-4">
+          {/* Input states skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-32"></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="h-12 bg-gray-200 rounded"></div>
+              <div className="h-12 bg-gray-200 rounded"></div>
+              <div className="h-12 bg-gray-200 rounded"></div>
+              <div className="h-12 bg-gray-200 rounded"></div>
+            </div>
+          </div>
+          {/* Input sizes skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-32"></div>
+            <div className="space-y-3">
+              <div className="h-10 bg-gray-200 rounded"></div>
+              <div className="h-12 bg-gray-200 rounded"></div>
+            </div>
+          </div>
+          {/* Password toggle skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-48"></div>
+            <div className="space-y-3">
+              <div className="relative">
+                <div className="h-12 bg-gray-200 rounded"></div>
+                <div className="absolute right-3 top-3 w-6 h-6 bg-gray-300 rounded"></div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     )
@@ -153,24 +177,42 @@ export const DynamicAvatarShowcase = dynamic(
 );
 
 export const DynamicCheckboxShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeCheckboxShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeCheckboxShowcase })),
   { 
     ssr: false,
     loading: () => (
-      <div className="animate-pulse space-y-4">
+      <div className="animate-pulse space-y-6">
         <div className="h-8 bg-gray-200 rounded mb-4"></div>
-        <div className="space-y-3">
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-gray-200 rounded"></div>
-            <div className="h-4 bg-gray-200 rounded w-48"></div>
+        <div className="space-y-4">
+          {/* Basic states skeleton */}
+          <div className="space-y-2">
+            <div className="h-4 bg-gray-200 rounded w-32"></div>
+            <div className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <div className="w-5 h-5 bg-gray-200 rounded border"></div>
+                <div className="h-4 bg-gray-200 rounded w-40"></div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-5 h-5 bg-gray-200 rounded border"></div>
+                <div className="h-4 bg-gray-200 rounded w-48"></div>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-5 h-5 bg-gray-200 rounded border"></div>
+                <div className="h-4 bg-gray-200 rounded w-36"></div>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-gray-200 rounded"></div>
+          {/* Color variants skeleton */}
+          <div className="space-y-2">
             <div className="h-4 bg-gray-200 rounded w-40"></div>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-gray-200 rounded"></div>
-            <div className="h-4 bg-gray-200 rounded w-36"></div>
+            <div className="grid grid-cols-2 gap-4">
+              {[...Array(4)].map((_, i) => (
+                <div key={i} className="flex items-center space-x-2">
+                  <div className="w-5 h-5 bg-gray-200 rounded border"></div>
+                  <div className="h-4 bg-gray-200 rounded w-32"></div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
