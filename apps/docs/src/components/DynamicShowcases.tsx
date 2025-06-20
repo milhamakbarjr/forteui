@@ -431,3 +431,27 @@ export const DynamicSnackbarShowcase = dynamic(
     )
   }
 );
+
+// Alert Showcase
+export const DynamicAlertShowcase = dynamic(
+  () => import('./showcases/AlertShowcase').then(mod => ({ 
+    default: mod.ClientSafeAlertShowcase 
+  })),
+  { 
+    ssr: false,
+    loading: () => (
+      <div className="animate-pulse space-y-6">
+        <div className="h-8 bg-gray-200 rounded mb-4"></div>
+        <div className="space-y-4">
+          {/* Alert variants skeleton */}
+          <div className="space-y-3">
+            <div className="h-16 bg-blue-100 rounded w-full"></div>
+            <div className="h-16 bg-green-100 rounded w-full"></div>
+            <div className="h-16 bg-yellow-100 rounded w-full"></div>
+            <div className="h-16 bg-red-100 rounded w-full"></div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+);

@@ -4,7 +4,6 @@ export { InteractiveButtonDemo } from './InteractiveButtonDemo';
 export { ClientOnly } from './ClientOnly';
 export { 
   FormControlsShowcase, 
-  AlertShowcase, 
   AvatarShowcase
 } from './ComponentShowcases';
 export { 
@@ -26,6 +25,7 @@ export {
   ClientSafeButtonShowcase
 } from './ClientSafeShowcases';
 export { 
+  DynamicAlertShowcase,
   DynamicInputShowcase, 
   DynamicFormControlsShowcase, 
   DynamicAvatarShowcase,
@@ -44,4 +44,6 @@ export {
   ProgressShowcase,
   DynamicButtonShowcase
 } from './DynamicShowcases';
+// Export individual showcases for future migration
+export * from './showcases';
 export { MDXWrapper } from './MDXWrapper';

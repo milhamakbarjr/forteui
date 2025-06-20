@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Input, Checkbox, Switch, Avatar, Textarea, Radio, RadioGroup, Slider, Badge, Chip, Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription, Text, Heading, Breadcrumb, Snackbar, Progress, Button } from '@forteui/core';
+import { Input, Checkbox, Switch, Avatar, Textarea, Radio, RadioGroup, Slider, Badge, Chip, Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription, Text, Heading, Breadcrumb, Snackbar, Progress, Button, Alert } from '@forteui/core';
 import { IconX, IconUser, IconCheck, IconSettings, IconStar, IconHome, IconShoppingCart, IconEye, IconEyeOff, IconArrowRight, IconPlus, IconInfoCircle, IconAlertTriangle, IconTrash, IconEdit, IconSearch, IconMail, IconDownload, IconChevronDown } from '@tabler/icons-react';
 import { ComponentShowcase } from './ComponentShowcase';
 

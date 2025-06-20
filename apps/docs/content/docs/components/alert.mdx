@@ -33,58 +33,21 @@ function MyComponent() {
 }
 ```
 
-<AlertShowcase
-  title="Basic Alert Usage"
-  description="Simple alert with different severity levels"
-  code={`<Alert severity="info">
-  This is an informational alert.
-</Alert>`}
->
-  <Alert severity="info">
-    This is an informational alert.
-  </Alert>
-</AlertShowcase>
+<DynamicAlertShowcase />
 
 ## Severity Levels
 
 Alerts support four semantic severity levels:
 
-<AlertShowcase
-  title="Alert Severity Levels"
-  description="Different alert severities for various message types"
-  code={`<Alert severity="info">
-  This is an info alert — check it out!
-</Alert>
-
-<Alert severity="success">
-  This is a success alert — check it out!
-</Alert>
-
-<Alert severity="warning">
-  This is a warning alert — check it out!
-</Alert>
-
-<Alert severity="error">
-  This is an error alert — check it out!
-</Alert>`}
->
-  <Alert severity="info">
-    This is an info alert — check it out!
-  </Alert>
-  <Alert severity="success">
-    This is a success alert — check it out!
-  </Alert>
-  <Alert severity="warning">
-    This is a warning alert — check it out!
-  </Alert>
-  <Alert severity="error">
-    This is an error alert — check it out!
-  </Alert>
-</AlertShowcase>
+- **Info**: For informational messages (blue theme)
+- **Success**: For positive feedback (green theme)  
+- **Warning**: For caution messages (yellow theme)
+- **Error**: For error notifications (red theme)
 
 ## Variants
 
 ### Default Variant
+Light background with subtle border styling.
 
 ```tsx
 <Alert variant="default" severity="info">
@@ -93,6 +56,7 @@ Alerts support four semantic severity levels:
 ```
 
 ### Filled Variant
+Solid background with strong semantic colors.
 
 ```tsx
 <Alert variant="filled" severity="success">
@@ -101,6 +65,7 @@ Alerts support four semantic severity levels:
 ```
 
 ### Outline Variant
+Emphasized border with light background.
 
 ```tsx
 <Alert variant="outline" severity="warning">
@@ -108,8 +73,9 @@ Alerts support four semantic severity levels:
 </Alert>
 ```
 
-## Closable Alerts
+## Interactive Features
 
+### Closable Alerts
 Add a close button to allow users to dismiss alerts:
 
 ```tsx
@@ -122,21 +88,19 @@ Add a close button to allow users to dismiss alerts:
 </Alert>
 ```
 
-## Custom Icons
-
+### Custom Icons
 Replace the default severity icon with a custom one:
 
 ```tsx
-import { Alert, IconCustom } from 'forteui-core';
+import { Alert, IconSettings } from 'forteui-core';
 
-<Alert severity="info" icon={IconCustom}>
+<Alert severity="info" icon={(props) => <IconSettings {...props} />}>
   Alert with custom icon
 </Alert>
 ```
 
-## No Icon
-
-Hide the icon completely:
+### Hide Icon
+Remove the icon completely for a cleaner look:
 
 ```tsx
 <Alert severity="info" hideIcon>

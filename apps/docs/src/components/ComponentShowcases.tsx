@@ -145,38 +145,6 @@ function InteractiveFormControls() {
   );
 }
 
-export function AlertShowcase({ 
-  children, 
-  code, 
-  title = "Alert Variants",
-  description = "Different alert types and styles"
-}: {
-  children?: React.ReactNode;
-  code?: string;
-  title?: string;
-  description?: string;
-}) {
-  return (
-    <ComponentShowcase title={title} description={description} code={code}>
-      <div className="space-y-4">
-        <Alert variant="default">
-          <h4>Default Alert</h4>
-          <p>This is a default alert message.</p>
-        </Alert>
-        <Alert variant="filled">
-          <h4>Filled Alert</h4>
-          <p>This is a filled alert message.</p>
-        </Alert>
-        <Alert variant="outline">
-          <h4>Outline Alert</h4>
-          <p>This is an outline alert message.</p>
-        </Alert>
-        {children}
-      </div>
-    </ComponentShowcase>
-  );
-}
-
 export function AvatarShowcase({ 
   children, 
   code, 
