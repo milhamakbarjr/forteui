@@ -51,18 +51,21 @@ interface BreadcrumbItem {
   href?: string;
 }
 
-// Dynamic import for SearchSystem to avoid SSR issues
-const HeaderSearch = dynamic(
-  () => import('../../components/SearchSystem').then(mod => ({ default: mod.HeaderSearch })),
+// Dynamic imports for search components to avoid SSR issues
+const EnhancedSearchModal = dynamic(
+  () => import('../../components/EnhancedSearch').then(mod => ({ default: mod.EnhancedSearchModal })),
+  { ssr: false }
+);
+
+const SearchTrigger = dynamic(
+  () => import('../../components/EnhancedSearch').then(mod => ({ default: mod.SearchTrigger })),
   { 
     ssr: false,
     loading: () => (
-      <input 
-        type="text" 
-        placeholder="Loading search..." 
-        className="w-full px-3 py-2 border border-neutral-300 rounded-md text-sm bg-white"
-        disabled
-      />
+      <div className="flex items-center gap-3 w-full max-w-sm px-4 py-2.5 bg-white border border-neutral-200 rounded-xl">
+        <div className="w-4 h-4 bg-neutral-200 rounded animate-pulse" />
+        <span className="flex-1 text-left text-sm text-neutral-400">Loading search...</span>
+      </div>
     )
   }
 );
@@ -190,21 +193,21 @@ const navigationData: NavigationItem[] = [
         icon: IconFileText,
         type: 'file',
         href: '/docs/design-system'
-      },
-      {
-        id: 'theming',
-        label: 'Theming',
-        icon: IconFileText,
-        type: 'file',
-        href: '/docs/theming'
-      },
-      {
-        id: 'accessibility',
-        label: 'Accessibility',
-        icon: IconFileText,
-        type: 'file',
-        href: '/docs/accessibility'
       }
+      // {
+      //   id: 'theming',
+      //   label: 'Theming',
+      //   icon: IconFileText,
+      //   type: 'file',
+      //   href: '/docs/theming'
+      // },
+      // {
+      //   id: 'accessibility',
+      //   label: 'Accessibility',
+      //   icon: IconFileText,
+      //   type: 'file',
+      //   href: '/docs/accessibility'
+      // }
     ]
   },
   {
@@ -589,7 +592,7 @@ const BreadcrumbNav = ({ currentPath }: { currentPath: string }) => {
 };
 
 // Main Header Component
-const MainHeader = ({ currentPath }: { currentPath: string }) => (
+const MainHeader = ({ currentPath, onSearchOpen }: { currentPath: string; onSearchOpen: () => void }) => (
   <header className="main-header bg-white/95 backdrop-blur-sm border-b border-neutral-200 sticky top-0 z-40">
     <div className="px-6 py-4">
       <div className="flex items-center justify-between mb-4">
@@ -607,7 +610,7 @@ const MainHeader = ({ currentPath }: { currentPath: string }) => (
         
         <div className="hidden lg:flex items-center gap-6">
           <div className="search-container max-w-sm w-full">
-            <HeaderSearch />
+            <SearchTrigger onClick={onSearchOpen} />
           </div>
           <div className="flex items-center gap-3">
             <Badge 
@@ -638,6 +641,7 @@ const MainHeader = ({ currentPath }: { currentPath: string }) => (
 
 export default function Layout({ children }: { children: ReactNode }) {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [currentPath, setCurrentPath] = useState(() => {
     // Initialize with current path if available on client-side
     if (typeof window !== 'undefined') {
@@ -648,6 +652,19 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
   const closeSidebar = () => setIsSidebarOpen(false);
+  
+  // Global search keyboard shortcut
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setIsSearchOpen(true);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, []);
 
   // Update current path on client side and on route changes
   useEffect(() => {
@@ -692,8 +709,14 @@ export default function Layout({ children }: { children: ReactNode }) {
 
   return (
     <div className="h-screen flex flex-col bg-neutral-50">
+      {/* Enhanced Search Modal */}
+      <EnhancedSearchModal 
+        isOpen={isSearchOpen} 
+        onClose={() => setIsSearchOpen(false)} 
+      />
+      
       {/* Main Header */}
-      <MainHeader currentPath={currentPath} />
+      <MainHeader currentPath={currentPath} onSearchOpen={() => setIsSearchOpen(true)} />
       
       <div className="flex-1 flex overflow-hidden">
         {/* Mobile Overlay */}
@@ -748,7 +771,7 @@ export default function Layout({ children }: { children: ReactNode }) {
               
               {/* Mobile Search */}
               <div className="mt-4">
-                <HeaderSearch />
+                <SearchTrigger onClick={() => setIsSearchOpen(true)} />
               </div>
             </div>
             
