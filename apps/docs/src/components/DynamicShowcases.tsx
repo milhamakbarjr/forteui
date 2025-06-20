@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 
 // Dynamic imports with SSR disabled for problematic components
 export const DynamicButtonShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeButtonShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ButtonShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -35,7 +35,7 @@ export const DynamicButtonShowcase = dynamic(
 );
 
 export const DynamicProgressShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeProgressShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ProgressShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -65,7 +65,7 @@ export const DynamicProgressShowcase = dynamic(
 );
 
 export const ProgressShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeProgressShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ProgressShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -136,30 +136,10 @@ export const DynamicInputShowcase = dynamic(
   }
 );
 
-export const DynamicFormControlsShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeFormControlsShowcase })),
-  { 
-    ssr: false,
-    loading: () => (
-      <div className="animate-pulse space-y-4">
-        <div className="h-8 bg-gray-200 rounded mb-4"></div>
-        <div className="space-y-3">
-          <div className="flex items-center space-x-2">
-            <div className="w-4 h-4 bg-gray-200 rounded"></div>
-            <div className="h-4 bg-gray-200 rounded w-48"></div>
-          </div>
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-4 bg-gray-200 rounded-full"></div>
-            <div className="h-4 bg-gray-200 rounded w-32"></div>
-          </div>
-        </div>
-      </div>
-    )
-  }
-);
+// FormControls is not a real component - skipped during migration
 
 export const DynamicAvatarShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeAvatarShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.AvatarShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -420,7 +400,7 @@ export const DynamicChipShowcase = dynamic(
 );
 
 export const DynamicCardShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeCardShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeCardShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -444,7 +424,7 @@ export const DynamicCardShowcase = dynamic(
 );
 
 export const DynamicTypographyShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeTypographyShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.TypographyShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -463,7 +443,7 @@ export const DynamicTypographyShowcase = dynamic(
 );
 
 export const DynamicBreadcrumbShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeBreadcrumbShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.BreadcrumbShowcase })),
   { 
     ssr: false,
     loading: () => (
@@ -492,7 +472,7 @@ export const DynamicBreadcrumbShowcase = dynamic(
 );
 
 export const DynamicSnackbarShowcase = dynamic(
-  () => import('./ClientSafeShowcases').then(mod => ({ default: mod.ClientSafeSnackbarShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.SnackbarShowcase })),
   { 
     ssr: false,
     loading: () => (

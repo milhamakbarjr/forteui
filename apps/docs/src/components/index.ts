@@ -6,28 +6,10 @@ export {
   FormControlsShowcase, 
   AvatarShowcase
 } from './ComponentShowcases';
-export { 
-  ClientSafeInputShowcase, 
-  ClientSafeFormControlsShowcase, 
-  ClientSafeAvatarShowcase,
-  ClientSafeCheckboxShowcase,
-  ClientSafeSwitchShowcase,
-  ClientSafeTextareaShowcase,
-  ClientSafeRadioShowcase,
-  ClientSafeSliderShowcase,
-  ClientSafeBadgeShowcase,
-  ClientSafeChipShowcase,
-  ClientSafeCardShowcase,
-  ClientSafeTypographyShowcase,
-  ClientSafeBreadcrumbShowcase,
-  ClientSafeSnackbarShowcase,
-  ClientSafeProgressShowcase,
-  ClientSafeButtonShowcase
-} from './ClientSafeShowcases';
+// All showcases have been migrated to individual files in showcases/ directory
 export { 
   DynamicAlertShowcase,
   DynamicInputShowcase, 
-  DynamicFormControlsShowcase, 
   DynamicAvatarShowcase,
   DynamicCheckboxShowcase,
   DynamicSwitchShowcase,

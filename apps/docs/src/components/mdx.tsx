@@ -25,13 +25,12 @@ import { ComponentShowcase, ButtonShowcase, ButtonSizeShowcase } from './Compone
 import { InteractiveButtonDemo } from './InteractiveButtonDemo';
 import { 
   FormControlsShowcase, 
-  AlertShowcase, 
   AvatarShowcase
 } from './ComponentShowcases';
+import { ClientSafeAlertShowcase } from './showcases';
 import { 
   DynamicAlertShowcase,
   DynamicInputShowcase, 
-  DynamicFormControlsShowcase, 
   DynamicAvatarShowcase,
   DynamicCheckboxShowcase,
   DynamicSwitchShowcase,
@@ -157,12 +156,11 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ButtonSizeShowcase,
     InteractiveButtonDemo,
     FormControlsShowcase,
-    AlertShowcase,
+    AlertShowcase: ClientSafeAlertShowcase,
     AvatarShowcase,
     // Dynamic SSR-safe versions
     DynamicAlertShowcase,
     DynamicInputShowcase,
-    DynamicFormControlsShowcase,
     DynamicAvatarShowcase,
     DynamicCheckboxShowcase,
     DynamicSwitchShowcase,
