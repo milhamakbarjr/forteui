@@ -34,55 +34,7 @@ function MyComponent() {
 }
 ```
 
-<DynamicSwitchShowcase
-  title="Basic Switch Usage"
-  description="Interactive switch toggle examples"
-  code={`<Switch 
-  label="Enable notifications"
-  defaultChecked={false}
-/>`}
->
-  <div className="space-y-4">
-    <Switch label="Enable notifications" />
-    <Switch label="Dark mode" defaultChecked />
-    <Switch label="Auto-save" defaultChecked />
-    <Switch label="Disabled option" disabled />
-  </div>
-</DynamicSwitchShowcase>
-
-## Variants and Colors
-
-```tsx
-<div className="space-y-4">
-  <Switch variant="default" label="Default switch" />
-  <Switch variant="primary" label="Primary switch" />
-  <Switch variant="secondary" label="Secondary switch" />
-  <Switch variant="info" label="Info switch" />
-  <Switch variant="success" label="Success switch" />
-  <Switch variant="warning" label="Warning switch" />
-  <Switch variant="error" label="Error switch" />
-</div>
-```
-
-## Sizes
-
-```tsx
-<div className="space-y-4">
-  <Switch size="sm" label="Small switch" />
-  <Switch size="md" label="Medium switch" />
-</div>
-```
-
-## States
-
-```tsx
-<div className="space-y-4">
-  <Switch label="Unchecked" checked={false} />
-  <Switch label="Checked" checked={true} />
-  <Switch label="Disabled unchecked" disabled />
-  <Switch label="Disabled checked" disabled checked={true} />
-</div>
-```
+<DynamicSwitchShowcase />
 
 ## Controlled Switch
 
@@ -134,68 +86,40 @@ function SettingsPanel() {
           label="Push Notifications"
           checked={settings.notifications}
           onCheckedChange={updateSetting('notifications')}
-          variant="primary"
+          color="primary"
         />
         
         <Switch 
           label="Email Updates"
           checked={settings.emailUpdates}
           onCheckedChange={updateSetting('emailUpdates')}
-          variant="info"
+          color="info"
         />
         
         <Switch 
           label="Auto Save"
           checked={settings.autoSave}
           onCheckedChange={updateSetting('autoSave')}
-          variant="success"
+          color="success"
         />
         
         <Switch 
           label="Dark Mode"
           checked={settings.darkMode}
           onCheckedChange={updateSetting('darkMode')}
-          variant="default"
+          color="default"
         />
         
         <Switch 
           label="Analytics"
           checked={settings.analytics}
           onCheckedChange={updateSetting('analytics')}
-          variant="warning"
+          color="warning"
         />
       </div>
     </div>
   );
 }
-```
-
-## With Descriptions
-
-```tsx
-<div className="space-y-6">
-  <div>
-    <Switch 
-      label="Two-Factor Authentication"
-      checked={true}
-      variant="success"
-    />
-    <p className="text-sm text-gray-500 mt-1 ml-12">
-      Add an extra layer of security to your account
-    </p>
-  </div>
-  
-  <div>
-    <Switch 
-      label="Marketing Communications"
-      checked={false}
-      variant="primary"
-    />
-    <p className="text-sm text-gray-500 mt-1 ml-12">
-      Receive updates about new features and promotions
-    </p>
-  </div>
-</div>
 ```
 
 ## Form Integration
@@ -243,7 +167,7 @@ function ProfileForm() {
         />
       </div>
       
-      <Button type="submit" variant="primary">
+      <Button type="submit" color="primary">
         Save Settings
       </Button>
     </form>
@@ -256,23 +180,25 @@ function ProfileForm() {
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
 | `label` | `string` | - | Label text for the switch |
-| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Visual variant |
-| `size` | `'sm' \| 'md'` | `'md'` | Size of the switch |
+| `color` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` | Semantic color variant |
+| `size` | `'small' \| 'medium'` | `'medium'` | Size of the switch |
+| `labelPosition` | `'left' \| 'right'` | `'right'` | Position of the label relative to the switch |
 | `checked` | `boolean` | - | Controlled checked state |
 | `defaultChecked` | `boolean` | `false` | Uncontrolled default checked state |
 | `disabled` | `boolean` | `false` | Whether the switch is disabled |
 | `onCheckedChange` | `(checked: boolean) => void` | - | Callback when checked state changes |
-| `className` | `string` | - | Additional CSS classes for wrapper |
+| `containerClassName` | `string` | - | Additional CSS classes for container |
 | `labelClassName` | `string` | - | Additional CSS classes for label |
+| `className` | `string` | - | Additional CSS classes for switch element |
 
 ## Design Specifications
 
-- **Track Width**: Small (32px), Medium (40px)
-- **Track Height**: Small (18px), Medium (22px)  
-- **Thumb Size**: Scales proportionally with track
+- **Track Width**: Small (25px), Medium (33px)
+- **Track Height**: Small (18px), Medium (20px)  
+- **Thumb Size**: Small (10px), Medium (14px)
 - **Border Radius**: Fully rounded (pill shape)
-- **Animation**: Smooth 200ms spring transition
-- **Focus Ring**: 2px outline for accessibility
+- **Animation**: Smooth 200ms ease-in-out transition
+- **Focus Ring**: 2px offset ring for accessibility
 
 ## Accessibility
 

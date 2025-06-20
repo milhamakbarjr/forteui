@@ -636,38 +636,395 @@ export function ClientSafeSwitchShowcase({
   title?: string;
   description?: string;
 }) {
-  const [enabled1, setEnabled1] = useState(false);
-  const [enabled2, setEnabled2] = useState(true);
-  const [enabled3, setEnabled3] = useState(true);
+  const [basicStates, setBasicStates] = useState({
+    notifications: false,
+    darkMode: true,
+    autoSave: false,
+    newsletter: false,
+    rememberMe: true,
+    twoFactor: false,
+  });
+
+  const [semanticStates, setSemanticStates] = useState({
+    default: false,
+    primary: true,
+    secondary: true,
+    info: true,
+    success: true,
+    warning: true,
+    error: true,
+  });
+
+  const [sizeStates, setSizeStates] = useState({
+    small: true,
+    medium: true,
+  });
+
+  const [interactiveStates, setInteractiveStates] = useState({
+    unchecked: false,
+    checked: true,
+    disabled: false,
+    disabledChecked: true,
+  });
 
   return (
     <ComponentShowcase title={title} description={description} code={code}>
-      <div className="space-y-4">
-        <div className="space-y-3">
-          <Switch 
-            label="Enable notifications"
-            checked={enabled1}
-            onCheckedChange={setEnabled1}
-            color="primary"
-          />
-          <Switch 
-            label="Dark mode" 
-            checked={enabled2}
-            onCheckedChange={setEnabled2}
-            color="secondary"
-          />
-          <Switch 
-            label="Auto-save"
-            checked={enabled3}
-            onCheckedChange={setEnabled3}
-            color="success"
-          />
-          <Switch 
-            label="Disabled option" 
-            disabled 
-            color="default"
-          />
+      <div className="space-y-8 forte-ui">
+        {/* Basic States */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Basic States</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-4">
+              <h4 className="font-medium text-gray-700">Settings Toggle</h4>
+              <div className="space-y-3">
+                <Switch
+                  label="Enable notifications"
+                  checked={basicStates.notifications}
+                  onCheckedChange={(checked) =>
+                    setBasicStates(prev => ({ ...prev, notifications: checked }))
+                  }
+                  color="primary"
+                  size="medium"
+                />
+                <Switch
+                  label="Dark mode"
+                  checked={basicStates.darkMode}
+                  onCheckedChange={(checked) =>
+                    setBasicStates(prev => ({ ...prev, darkMode: checked }))
+                  }
+                  color="secondary"
+                  size="medium"
+                />
+                <Switch
+                  label="Auto-save drafts"
+                  checked={basicStates.autoSave}
+                  onCheckedChange={(checked) =>
+                    setBasicStates(prev => ({ ...prev, autoSave: checked }))
+                  }
+                  color="success"
+                  size="medium"
+                />
+              </div>
+            </div>
+            <div className="space-y-4">
+              <h4 className="font-medium text-gray-700">Form Controls</h4>
+              <div className="space-y-3">
+                <Switch
+                  label="Subscribe to newsletter"
+                  checked={basicStates.newsletter}
+                  onCheckedChange={(checked) =>
+                    setBasicStates(prev => ({ ...prev, newsletter: checked }))
+                  }
+                  color="info"
+                  size="medium"
+                />
+                <Switch
+                  label="Remember me"
+                  checked={basicStates.rememberMe}
+                  onCheckedChange={(checked) =>
+                    setBasicStates(prev => ({ ...prev, rememberMe: checked }))
+                  }
+                  color="primary"
+                  size="small"
+                />
+                <Switch
+                  label="Enable two-factor authentication"
+                  checked={basicStates.twoFactor}
+                  onCheckedChange={(checked) =>
+                    setBasicStates(prev => ({ ...prev, twoFactor: checked }))
+                  }
+                  color="warning"
+                  size="medium"
+                  disabled
+                />
+              </div>
+            </div>
+          </div>
         </div>
+
+        {/* Sizes */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Sizes</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="space-y-3">
+              <h4 className="font-medium text-gray-700">Small</h4>
+              <Switch
+                label="Small Switch"
+                size="small"
+                color="primary"
+                checked={sizeStates.small}
+                onCheckedChange={(checked) =>
+                  setSizeStates(prev => ({ ...prev, small: checked }))
+                }
+              />
+            </div>
+            <div className="space-y-3">
+              <h4 className="font-medium text-gray-700">Medium</h4>
+              <Switch
+                label="Medium Switch"
+                size="medium"
+                color="primary"
+                checked={sizeStates.medium}
+                onCheckedChange={(checked) =>
+                  setSizeStates(prev => ({ ...prev, medium: checked }))
+                }
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Variants */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-purple-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Semantic Color Variants</h3>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Default</h4>
+              <Switch
+                label="Default"
+                color="default"
+                checked={semanticStates.default}
+                onCheckedChange={(checked) =>
+                  setSemanticStates(prev => ({ ...prev, default: checked }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Primary</h4>
+              <Switch
+                label="Primary"
+                color="primary"
+                checked={semanticStates.primary}
+                onCheckedChange={(checked) =>
+                  setSemanticStates(prev => ({ ...prev, primary: checked }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Secondary</h4>
+              <Switch
+                label="Secondary"
+                color="secondary"
+                checked={semanticStates.secondary}
+                onCheckedChange={(checked) =>
+                  setSemanticStates(prev => ({ ...prev, secondary: checked }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Info</h4>
+              <Switch
+                label="Info"
+                color="info"
+                checked={semanticStates.info}
+                onCheckedChange={(checked) =>
+                  setSemanticStates(prev => ({ ...prev, info: checked }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Success</h4>
+              <Switch
+                label="Success"
+                color="success"
+                checked={semanticStates.success}
+                onCheckedChange={(checked) =>
+                  setSemanticStates(prev => ({ ...prev, success: checked }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Warning</h4>
+              <Switch
+                label="Warning"
+                color="warning"
+                checked={semanticStates.warning}
+                onCheckedChange={(checked) =>
+                  setSemanticStates(prev => ({ ...prev, warning: checked }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Error</h4>
+              <Switch
+                label="Error"
+                color="error"
+                checked={semanticStates.error}
+                onCheckedChange={(checked) =>
+                  setSemanticStates(prev => ({ ...prev, error: checked }))
+                }
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Interactive States */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-orange-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Interactive States</h3>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Unchecked</h4>
+              <Switch
+                label="Unchecked"
+                color="primary"
+                checked={interactiveStates.unchecked}
+                onCheckedChange={(checked) =>
+                  setInteractiveStates(prev => ({ ...prev, unchecked: checked }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Checked</h4>
+              <Switch
+                label="Checked"
+                color="primary"
+                checked={interactiveStates.checked}
+                onCheckedChange={(checked) =>
+                  setInteractiveStates(prev => ({ ...prev, checked: checked }))
+                }
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Disabled Unchecked</h4>
+              <Switch
+                label="Disabled"
+                color="primary"
+                checked={interactiveStates.disabled}
+                onCheckedChange={(checked) =>
+                  setInteractiveStates(prev => ({ ...prev, disabled: checked }))
+                }
+                disabled
+              />
+            </div>
+            <div className="space-y-2">
+              <h4 className="font-medium text-gray-700">Disabled Checked</h4>
+              <Switch
+                label="Disabled"
+                color="primary"
+                checked={interactiveStates.disabledChecked}
+                onCheckedChange={(checked) =>
+                  setInteractiveStates(prev => ({ ...prev, disabledChecked: checked }))
+                }
+                disabled
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Custom Styling */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-pink-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Custom Styling</h3>
+          </div>
+          <div className="space-y-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="space-y-3">
+                <h4 className="font-medium text-gray-700">Label Positioning</h4>
+                <div className="space-y-2">
+                  <Switch
+                    label="Label on right"
+                    color="primary"
+                    checked={true}
+                    labelPosition="right"
+                  />
+                  <Switch
+                    label="Label on left"
+                    color="primary"
+                    checked={true}
+                    labelPosition="left"
+                  />
+                </div>
+              </div>
+              <div className="space-y-3">
+                <h4 className="font-medium text-gray-700">Without Labels</h4>
+                <div className="flex items-center gap-3">
+                  <Switch
+                    color="primary"
+                    checked={true}
+                    aria-label="Toggle primary setting"
+                  />
+                  <Switch
+                    color="success"
+                    checked={true}
+                    aria-label="Toggle success setting"
+                  />
+                  <Switch
+                    color="warning"
+                    checked={false}
+                    aria-label="Toggle warning setting"
+                  />
+                  <Switch
+                    color="secondary"
+                    size="small"
+                    checked={true}
+                    aria-label="Toggle small setting"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Design Specifications */}
+        <div className="space-y-4">
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-3 h-3 rounded-full bg-indigo-500"></div>
+            <h3 className="text-lg font-semibold text-gray-900">Design Specifications</h3>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-gray-50 rounded-lg">
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Dimensions</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Small: 25px × 18px track, 10px thumb</li>
+                <li>• Medium: 33px × 20px track, 14px thumb</li>
+                <li>• Track padding: 3px on all sides</li>
+                <li>• Border radius: Fully rounded (500px)</li>
+                <li>• Container height: 24px (small), 38px (medium)</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Spacing & Typography</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Label gap: 7px (small), 9px (medium)</li>
+                <li>• Font: Plus Jakarta Sans, 14px, 400 weight</li>
+                <li>• Line height: 22px</li>
+                <li>• Thumb translation: 7px (small), 13px (medium)</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Colors</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Unchecked background: grey.48</li>
+                <li>• Checked background: Semantic color variants</li>
+                <li>• Thumb: white (#ffffff)</li>
+                <li>• Label: text.primary (#1F2933)</li>
+                <li>• Disabled label: grey.500 (#93A1AE)</li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-semibold text-gray-900 mb-3">Interaction States</h4>
+              <ul className="space-y-1 text-sm text-gray-700">
+                <li>• Hover: 8% opacity overlay of semantic color</li>
+                <li>• Focus: Ring with 2px offset in semantic color</li>
+                <li>• Disabled: 48% opacity, no interactions</li>
+                <li>• Transition: 200ms ease-in-out for all changes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
         {children}
       </div>
     </ComponentShowcase>
