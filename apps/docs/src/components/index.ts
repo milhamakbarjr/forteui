@@ -5,8 +5,7 @@ export { ClientOnly } from './ClientOnly';
 export { 
   FormControlsShowcase, 
   AlertShowcase, 
-  AvatarShowcase, 
-  CardShowcase
+  AvatarShowcase
 } from './ComponentShowcases';
 export { 
   ClientSafeInputShowcase, 

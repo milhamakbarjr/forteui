@@ -16,25 +16,26 @@ npm install forteui-core
 ## Import
 
 ```tsx
-import { Card, CardHeader, CardContent, CardFooter } from 'forteui-core';
+import { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription } from 'forteui-core';
 ```
 
 ## Basic Usage
 
 ```tsx
-import { Card, CardHeader, CardContent, CardFooter } from 'forteui-core';
+import { Card, CardHeader, CardContent, CardFooter, CardTitle, CardDescription } from 'forteui-core';
 
 function MyComponent() {
   return (
     <Card>
       <CardHeader>
-        <h3>Card Title</h3>
+        <CardTitle>Card Title</CardTitle>
+        <CardDescription>Card description goes here</CardDescription>
       </CardHeader>
       <CardContent>
         <p>This is the card content area.</p>
       </CardContent>
       <CardFooter>
-        <button>Action</button>
+        <Button>Action</Button>
       </CardFooter>
     </Card>
   );
@@ -43,67 +44,96 @@ function MyComponent() {
 
 <DynamicCardShowcase />
 
-## Card Structure
+## Card Variants
 
-### Card with Header and Content
+Cards support different visual styles for various use cases:
 
 ```tsx
+{/* Default card with subtle shadow */}
 <Card>
-  <CardHeader>
-    <div>
-      <h3 className="text-lg font-semibold">Project Update</h3>
-      <p className="text-sm text-gray-500">2 hours ago</p>
-    </div>
+  <CardContent>Default card content</CardContent>
+</Card>
+
+{/* Elevated card with enhanced shadow */}
+<Card variant="elevated">
+  <CardContent>Elevated card content</CardContent>
+</Card>
+
+{/* Outlined card with border, no shadow */}
+<Card variant="outlined">
+  <CardContent>Outlined card content</CardContent>
+</Card>
+
+{/* Filled card with background color */}
+<Card variant="filled">
+  <CardContent>Filled card content</CardContent>
+</Card>
+```
+
+## Padding Options
+
+Control the spacing within cards using the padding prop:
+
+```tsx
+{/* Compact spacing (16px) */}
+<Card padding="sm">
+  <CardHeader padding="sm">
+    <CardTitle>Small Padding</CardTitle>
   </CardHeader>
-  <CardContent>
-    <p>The new features have been successfully deployed to production. 
-       All systems are running smoothly.</p>
+  <CardContent padding="sm">
+    Compact content
+  </CardContent>
+</Card>
+
+{/* Default spacing (24px) */}
+<Card padding="md">
+  <CardHeader padding="md">
+    <CardTitle>Medium Padding</CardTitle>
+  </CardHeader>
+  <CardContent padding="md">
+    Standard content
+  </CardContent>
+</Card>
+
+{/* Spacious layout (32px) */}
+<Card padding="lg">
+  <CardHeader padding="lg">
+    <CardTitle>Large Padding</CardTitle>
+  </CardHeader>
+  <CardContent padding="lg">
+    Expanded content
   </CardContent>
 </Card>
 ```
 
-### Card with All Sections
+## Composition Patterns
+
+### Full Card Structure
 
 ```tsx
 <Card>
   <CardHeader>
-    <div className="flex items-center justify-between">
-      <h3 className="text-lg font-semibold">Team Settings</h3>
-      <Badge variant="soft" color="primary">Pro</Badge>
-    </div>
+    <CardTitle>Project Update</CardTitle>
+    <CardDescription>2 hours ago</CardDescription>
   </CardHeader>
   <CardContent>
-    <div className="space-y-4">
-      <div>
-        <label className="text-sm font-medium">Team Name</label>
-        <Input defaultValue="Design Team" />
-      </div>
-      <div>
-        <label className="text-sm font-medium">Description</label>
-        <textarea 
-          className="w-full p-2 border rounded" 
-          placeholder="Describe your team..."
-        />
-      </div>
-    </div>
+    <p>The new features have been successfully deployed to production.</p>
   </CardContent>
-  <CardFooter className="flex justify-between">
-    <Button variant="outline-default">Cancel</Button>
-    <Button variant="primary">Save Changes</Button>
+  <CardFooter>
+    <Button variant="primary">View Details</Button>
+    <Button variant="outline-default">Dismiss</Button>
   </CardFooter>
 </Card>
 ```
 
-## Content-Only Cards
-
-For simple content without header or footer:
+### Content-Only Card
 
 ```tsx
 <Card>
   <CardContent>
     <div className="text-center py-8">
       <h2 className="text-2xl font-bold mb-4">Welcome!</h2>
-      <p className="text-gray-600 mb-6">Get started with your new dashboard.</p>
+      <p className="text-gray-600 mb-6">Get started with your dashboard.</p>
       <Button variant="primary">Get Started</Button>
     </div>
   </CardContent>
@@ -112,7 +142,7 @@ For simple content without header or footer:
 
 ## Interactive Cards
 
-### Clickable Cards
+### Clickable Card
 
 ```tsx
 <Card 
@@ -133,83 +163,28 @@ For simple content without header or footer:
 </Card>
 ```
 
-### Cards with Actions
+### Form Integration
 
 ```tsx
 <Card>
   <CardHeader>
-    <div className="flex items-center justify-between">
-      <div className="flex items-center space-x-3">
-        <Avatar src="/user.jpg" fallback="JD" />
-        <div>
-          <h4 className="font-semibold">John Doe</h4>
-          <p className="text-sm text-gray-500">Software Engineer</p>
-        </div>
-      </div>
-      <Button variant="icon-default" size="icon-sm">
-        <IconMoreHorizontal className="w-4 h-4" />
-      </Button>
-    </div>
+    <CardTitle>Contact Form</CardTitle>
+    <CardDescription>Send us a message</CardDescription>
   </CardHeader>
-  <CardContent>
-    <p>Working on the new user authentication system. 
-       Expected completion by end of week.</p>
+  <CardContent className="space-y-4">
+    <Input label="Name" placeholder="Enter your name" />
+    <Input label="Email" placeholder="Enter your email" />
+    <Textarea
+      label="Message"
+      placeholder="How can we help you?"
+      rows={3}
+    />
   </CardContent>
-  <CardFooter>
-    <div className="flex space-x-2">
-      <Button variant="soft-primary" size="sm">Message</Button>
-      <Button variant="outline-default" size="sm">View Profile</Button>
-    </div>
+  <CardFooter className="flex justify-end gap-3">
+    <Button variant="outline-default">Cancel</Button>
+    <Button variant="primary">Submit</Button>
   </CardFooter>
 </Card>
-```
-
-## Grid Layouts
-
-### Product Cards
-
-```tsx
-<div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-  <Card>
-    <CardContent>
-      <img 
-        src="/product1.jpg" 
-        alt="Product" 
-        className="w-full h-48 object-cover rounded-lg mb-4"
-      />
-      <h3 className="font-semibold mb-2">Wireless Headphones</h3>
-      <p className="text-gray-600 text-sm mb-4">Premium noise-canceling headphones</p>
-      <div className="flex items-center justify-between">
-        <span className="text-lg font-bold">$299</span>
-        <Button variant="primary" size="sm">Add to Cart</Button>
-      </div>
-    </CardContent>
-  </Card>
-  
-  {/* More product cards... */}
-</div>
-```
-
-### Stats Cards
-
-```tsx
-<div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-  <Card>
-    <CardContent>
-      <div className="flex items-center justify-between">
-        <div>
-          <p className="text-sm text-gray-500">Total Users</p>
-          <p className="text-2xl font-bold">12,345</p>
-        </div>
-        <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-          <IconUsers className="w-5 h-5 text-blue-600" />
-        </div>
-      </div>
-    </CardContent>
-  </Card>
-  
-  {/* More stat cards... */}
-</div>
 ```
 
 ## Props
@@ -218,6 +193,8 @@ For simple content without header or footer:
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+| `variant` | `'default' \| 'elevated' \| 'outlined' \| 'filled'` | `'default'` | Visual style variant |
+| `padding` | `'sm' \| 'md' \| 'lg'` | `'md'` | Internal padding size |
 | `className` | `string` | - | Additional CSS classes |
 | `children` | `ReactNode` | - | Card content |
 
@@ -225,6 +202,7 @@ For simple content without header or footer:
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+| `padding` | `'sm' \| 'md' \| 'lg'` | `'md'` | Header padding size |
 | `className` | `string` | - | Additional CSS classes |
 | `children` | `ReactNode` | - | Header content |
 
@@ -232,6 +210,7 @@ For simple content without header or footer:
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+| `padding` | `'sm' \| 'md' \| 'lg'` | `'md'` | Content padding size |
 | `className` | `string` | - | Additional CSS classes |
 | `children` | `ReactNode` | - | Main content |
 
@@ -239,35 +218,42 @@ For simple content without header or footer:
 
 | Prop | Type | Default | Description |
 |------|------|---------|-------------|
+| `padding` | `'sm' \| 'md' \| 'lg'` | `'md'` | Footer padding size |
 | `className` | `string` | - | Additional CSS classes |
 | `children` | `ReactNode` | - | Footer content |
 
-## Design Specifications
+### CardTitle Props
 
-- **Border Radius**: 8px for modern appearance
-- **Shadow**: Subtle elevation for depth
-- **Border**: 1px solid border for definition
-- **Padding**: Consistent spacing between sections
-- **Background**: White background with proper contrast
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Title content |
+
+### CardDescription Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `className` | `string` | - | Additional CSS classes |
+| `children` | `ReactNode` | - | Description content |
 
 ## Accessibility
 
-- **Semantic Structure**: Uses proper heading hierarchy
+- **Semantic Structure**: Uses proper heading hierarchy with CardTitle
 - **Focus Management**: Interactive cards support keyboard navigation
 - **Screen Readers**: Content is properly structured and announced
-- **Color Contrast**: Maintains WCAG AA compliance
+- **Color Contrast**: Maintains WCAG AA compliance across all variants
 
 ## Best Practices
 
-1. **Consistent spacing**: Use consistent padding and margins
-2. **Clear hierarchy**: Use proper heading levels and visual hierarchy
-3. **Logical grouping**: Group related content together
-4. **Action placement**: Place primary actions in footer or prominent locations
-5. **Responsive design**: Ensure cards work well on all screen sizes
+1. **Use CardTitle and CardDescription**: Always use the provided components for consistent typography
+2. **Consistent padding**: Use the padding prop instead of custom CSS classes
+3. **Logical grouping**: Group related content within appropriate card sections
+4. **Action placement**: Place primary actions in CardFooter for consistency
+5. **Responsive design**: Cards automatically adapt to container width
 6. **Loading states**: Consider loading states for dynamic content
 
 ## Related Components
 
 - [Button](/docs/components/button) - For card actions
-- [Badge](/docs/components/badge) - For status indicators
-- [Avatar](/docs/components/avatar) - For user representation 
+- [Input](/docs/components/input) - For form integration
+- [Textarea](/docs/components/textarea) - For form integration 

@@ -26,8 +26,7 @@ import { InteractiveButtonDemo } from './InteractiveButtonDemo';
 import { 
   FormControlsShowcase, 
   AlertShowcase, 
-  AvatarShowcase, 
-  CardShowcase
+  AvatarShowcase
 } from './ComponentShowcases';
 import { 
   DynamicInputShowcase, 
@@ -159,7 +158,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     FormControlsShowcase,
     AlertShowcase,
     AvatarShowcase,
-    CardShowcase,
     // Dynamic SSR-safe versions
     DynamicInputShowcase,
     DynamicFormControlsShowcase,

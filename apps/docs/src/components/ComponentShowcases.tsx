@@ -231,31 +231,3 @@ export function BadgeShowcase({
     </ComponentShowcase>
   );
 }
-
-export function CardShowcase({ 
-  children, 
-  code, 
-  title = "Card Examples",
-  description = "Card component examples"
-}: {
-  children?: React.ReactNode;
-  code?: string;
-  title?: string;
-  description?: string;
-}) {
-  return (
-    <ComponentShowcase title={title} description={description} code={code}>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-2">Card Title</h3>
-          <p className="text-gray-600">This is a basic card with some content.</p>
-        </Card>
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold mb-2">Another Card</h3>
-          <p className="text-gray-600">Cards can contain any content you need.</p>
-        </Card>
-        {children}
-      </div>
-    </ComponentShowcase>
-  );
-}
