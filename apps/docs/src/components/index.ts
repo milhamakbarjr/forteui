@@ -3,7 +3,6 @@ export { ComponentShowcase, ButtonShowcase, ButtonSizeShowcase } from './Compone
 export { InteractiveButtonDemo } from './InteractiveButtonDemo';
 export { ClientOnly } from './ClientOnly';
 export { 
-  InputShowcase, 
   FormControlsShowcase, 
   AlertShowcase, 
   AvatarShowcase, 

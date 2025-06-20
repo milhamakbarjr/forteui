@@ -24,7 +24,6 @@ import { cn } from '@forteui/core/lib/utils';
 import { ComponentShowcase, ButtonShowcase, ButtonSizeShowcase } from './ComponentShowcase';
 import { InteractiveButtonDemo } from './InteractiveButtonDemo';
 import { 
-  InputShowcase, 
   FormControlsShowcase, 
   AlertShowcase, 
   AvatarShowcase, 
@@ -158,7 +157,6 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
     ButtonShowcase,
     ButtonSizeShowcase,
     InteractiveButtonDemo,
-    InputShowcase,
     FormControlsShowcase,
     AlertShowcase,
     AvatarShowcase,
