@@ -552,6 +552,12 @@ const BreadcrumbNav = ({ currentPath }: { currentPath: string }) => {
         let currentPath = '/docs';
         afterDocs.forEach((segment, index) => {
           currentPath += `/${segment}`;
+          
+          // Skip the "components" segment as it's just organizational, not a real page
+          if (segment === 'components') {
+            return;
+          }
+          
           const label = segment.split('-').map(word => 
             word.charAt(0).toUpperCase() + word.slice(1)
           ).join(' ');
