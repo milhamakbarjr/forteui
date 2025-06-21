@@ -34,6 +34,8 @@ function MyComponent() {
 }
 ```
 
+## Component Examples
+
 <DynamicSwitchShowcase />
 
 ## Controlled Switch
@@ -174,46 +176,3 @@ function ProfileForm() {
   );
 }
 ```
-
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | - | Label text for the switch |
-| `color` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'primary'` | Semantic color variant |
-| `size` | `'small' \| 'medium'` | `'medium'` | Size of the switch |
-| `labelPosition` | `'left' \| 'right'` | `'right'` | Position of the label relative to the switch |
-| `checked` | `boolean` | - | Controlled checked state |
-| `defaultChecked` | `boolean` | `false` | Uncontrolled default checked state |
-| `disabled` | `boolean` | `false` | Whether the switch is disabled |
-| `onCheckedChange` | `(checked: boolean) => void` | - | Callback when checked state changes |
-| `containerClassName` | `string` | - | Additional CSS classes for container |
-| `labelClassName` | `string` | - | Additional CSS classes for label |
-| `className` | `string` | - | Additional CSS classes for switch element |
-
-## Accessibility
-
-- **Keyboard Navigation**: Supports Tab and Space key interaction
-- **Screen Readers**: Properly announced as switch control
-- **Focus Management**: Clear focus indicators
-- **ARIA**: Uses `role="switch"` with proper state
-- **Label Association**: Labels properly associated with controls
-
-## Best Practices
-
-1. **Use for binary states**: Perfect for on/off, enable/disable scenarios
-2. **Immediate effect**: Switch should take effect immediately, not require form submission
-3. **Clear labels**: Use action-oriented labels that describe what the switch controls
-4. **Logical defaults**: Choose sensible default states
-5. **Group related switches**: Keep related settings together
-
-## When to Use Switch vs Checkbox
-
-- **Switch**: For settings that take immediate effect (like toggling WiFi)
-- **Checkbox**: For selections that require confirmation (like form submissions)
-
-## Related Components
-
-- [Checkbox](/docs/components/checkbox) - For selection controls requiring confirmation
-- [Radio](/docs/components/radio) - For single-choice selections
-- [Button](/docs/components/button) - For form actions 

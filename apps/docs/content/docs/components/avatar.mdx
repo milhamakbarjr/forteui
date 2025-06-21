@@ -19,10 +19,6 @@ npm install forteui-core
 import { Avatar } from 'forteui-core';
 ```
 
-## Comprehensive Examples
-
-<DynamicAvatarShowcase />
-
 ## Basic Usage
 
 ```tsx
@@ -38,6 +34,10 @@ function MyComponent() {
   );
 }
 ```
+
+## Component Examples
+
+<DynamicAvatarShowcase />
 
 ## Sizes
 
@@ -181,39 +181,3 @@ function AvatarWithMenu() {
   );
 }
 ```
-
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `src` | `string` | - | Image source URL |
-| `alt` | `string` | - | Alt text for the image |
-| `fallback` | `string \| ReactNode` | - | Fallback content when image fails to load |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size of the avatar |
-| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Color variant |
-| `shape` | `'circular' \| 'rounded' \| 'square'` | `'circular'` | Shape of the avatar |
-| `status` | `'online' \| 'away' \| 'busy' \| 'offline'` | - | Status indicator |
-| `icon` | `ReactNode` | - | Icon to display in avatar |
-| `className` | `string` | - | Additional CSS classes |
-| `onClick` | `() => void` | - | Click handler for interactive avatars |
-
-## Accessibility
-
-- **Alt Text**: Properly describes the user when image is present
-- **Keyboard Navigation**: Supports Tab navigation when interactive
-- **Screen Readers**: Fallback content is announced appropriately
-- **Focus Management**: Clear focus indicators for interactive avatars
-
-## Best Practices
-
-1. **Consistent sizing**: Use the same size for avatars in the same context
-2. **Meaningful fallbacks**: Use initials or relevant icons
-3. **Alt text**: Provide descriptive alt text for images
-4. **Status clarity**: Use status indicators consistently across the app
-5. **Loading states**: Consider loading placeholders for slow images
-
-## Related Components
-
-- [Badge](/docs/components/badge) - For status indicators
-- [Button](/docs/components/button) - For interactive actions
-- [Card](/docs/components/card) - For user profile cards 

@@ -34,6 +34,8 @@ function MyComponent() {
 }
 ```
 
+## Component Examples
+
 <DynamicBadgeShowcase />
 
 ## Number Badges
@@ -267,35 +269,3 @@ function StatusIndicators() {
   );
 }
 ```
-
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | - | Child element to wrap with badge |
-| `count` | `number` | `0` | Number to display in badge |
-| `showZero` | `boolean` | `false` | Whether to show badge when count is 0 |
-| `max` | `number` | `99` | Maximum number before showing "max+" |
-| `type` | `'number' \| 'dot'` | `'number'` | Badge display type |
-| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Badge color variant |
-| `className` | `string` | - | Additional CSS classes |
-
-## Accessibility
-
-- **Wrapper Component**: Badge acts as a wrapper around child elements
-- **Semantic Colors**: Uses semantic color variants for meaning
-- **Screen Readers**: Child content remains accessible
-- **Focus Management**: Preserves focus behavior of wrapped elements
-
-## Best Practices
-
-1. **Use with Icons**: Pair with ForteUI icons for consistent appearance
-2. **Semantic Colors**: Choose variant colors that match the badge purpose
-3. **Reasonable Counts**: Use overflow handling for large numbers
-4. **Consistent Sizing**: Use appropriate icon sizes (16px, 24px, 32px)
-5. **Interactive Elements**: Badge works well with buttons and clickable icons
-
-## Related Components
-
-- [Button](/docs/components/button) - For interactive badge containers
-- [Chip](/docs/components/chip) - For standalone labels and tags

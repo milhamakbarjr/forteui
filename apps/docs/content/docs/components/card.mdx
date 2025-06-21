@@ -42,6 +42,8 @@ function MyComponent() {
 }
 ```
 
+## Component Examples
+
 <DynamicCardShowcase />
 
 ## Card Variants
@@ -186,74 +188,3 @@ Control the spacing within cards using the padding prop:
   </CardFooter>
 </Card>
 ```
-
-## Props
-
-### Card Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'default' \| 'elevated' \| 'outlined' \| 'filled'` | `'default'` | Visual style variant |
-| `padding` | `'sm' \| 'md' \| 'lg'` | `'md'` | Internal padding size |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Card content |
-
-### CardHeader Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `padding` | `'sm' \| 'md' \| 'lg'` | `'md'` | Header padding size |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Header content |
-
-### CardContent Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `padding` | `'sm' \| 'md' \| 'lg'` | `'md'` | Content padding size |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Main content |
-
-### CardFooter Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `padding` | `'sm' \| 'md' \| 'lg'` | `'md'` | Footer padding size |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Footer content |
-
-### CardTitle Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Title content |
-
-### CardDescription Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Description content |
-
-## Accessibility
-
-- **Semantic Structure**: Uses proper heading hierarchy with CardTitle
-- **Focus Management**: Interactive cards support keyboard navigation
-- **Screen Readers**: Content is properly structured and announced
-- **Color Contrast**: Maintains WCAG AA compliance across all variants
-
-## Best Practices
-
-1. **Use CardTitle and CardDescription**: Always use the provided components for consistent typography
-2. **Consistent padding**: Use the padding prop instead of custom CSS classes
-3. **Logical grouping**: Group related content within appropriate card sections
-4. **Action placement**: Place primary actions in CardFooter for consistency
-5. **Responsive design**: Cards automatically adapt to container width
-6. **Loading states**: Consider loading states for dynamic content
-
-## Related Components
-
-- [Button](/docs/components/button) - For card actions
-- [Input](/docs/components/input) - For form integration
-- [Textarea](/docs/components/textarea) - For form integration 

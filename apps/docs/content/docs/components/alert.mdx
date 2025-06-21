@@ -33,6 +33,8 @@ function MyComponent() {
 }
 ```
 
+## Component Examples
+
 <DynamicAlertShowcase />
 
 ## Severity Levels
@@ -107,36 +109,3 @@ Remove the icon completely for a cleaner look:
   Alert without an icon
 </Alert>
 ```
-
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `children` | `ReactNode` | - | The content of the alert |
-| `variant` | `'default' \| 'filled' \| 'outline'` | `'default'` | Visual variant of the alert |
-| `severity` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Semantic severity level |
-| `closable` | `boolean` | `false` | Whether to show the close button |
-| `onClose` | `() => void` | - | Callback fired when close button is clicked |
-| `icon` | `ComponentType` | - | Custom icon to override the default |
-| `hideIcon` | `boolean` | `false` | Hide the icon completely |
-| `className` | `string` | - | Additional CSS classes |
-
-## Accessibility
-
-- **ARIA Role**: Uses `role="alert"` for immediate announcements
-- **Keyboard Navigation**: Close button is keyboard accessible
-- **Screen Readers**: Severity is communicated through appropriate styling and icons
-- **Focus Management**: Maintains proper focus flow
-
-## Best Practices
-
-1. **Appropriate severity**: Choose the correct severity level for the message context
-2. **Clear messaging**: Use concise, actionable language
-3. **Strategic placement**: Position alerts near relevant content
-4. **Don't overuse**: Avoid showing too many alerts simultaneously
-5. **Accessibility**: Ensure alerts are announced to screen readers when appropriate
-
-## Related Components
-
-- [Snackbar](/docs/components/snackbar) - For temporary notifications
-- [Button](/docs/components/button) - For alert actions 

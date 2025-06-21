@@ -35,6 +35,8 @@ function MyComponent() {
 }
 ```
 
+## Component Examples
+
 <DynamicTextareaShowcase />
 
 ## Controlled Textarea
@@ -102,43 +104,3 @@ function ContactForm() {
 }
 ```
 
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | - | Controlled value |
-| `defaultValue` | `string` | - | Default uncontrolled value |
-| `onChange` | `(e: ChangeEvent) => void` | - | Change handler |
-| `placeholder` | `string` | - | Placeholder text |
-| `rows` | `number` | - | Number of visible rows |
-| `variant` | `'default' \| 'filled'` | `'default'` | Visual variant (outline vs background-based) |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant with different min-heights |
-| `label` | `string` | - | Label text (floats when focused or has value) |
-| `helperText` | `string` | - | Helper/error text below textarea |
-| `helperIcon` | `React.ReactNode` | - | Icon to display with helper text |
-| `error` | `boolean` | `false` | Error state styling |
-| `disabled` | `boolean` | `false` | Disabled state |
-| `required` | `boolean` | `false` | Required field indicator |
-| `className` | `string` | - | Additional CSS classes |
-
-## Accessibility
-
-- **Keyboard Navigation**: Full keyboard support
-- **Screen Readers**: Proper labeling and descriptions
-- **ARIA Attributes**: Uses appropriate ARIA labels and states
-- **Focus Management**: Clear focus indicators and logical tab order
-- **Error Handling**: ARIA error descriptions for invalid states
-
-## Best Practices
-
-1. **Clear Labels**: Always provide descriptive labels
-2. **Helper Text**: Use helper text for formatting guidelines
-3. **Appropriate Sizing**: Choose size based on expected content length
-4. **Validation**: Provide real-time feedback for form validation
-5. **Accessibility**: Ensure proper ARIA labeling and keyboard navigation
-
-## Related Components
-
-- [Input](/docs/components/input) - For single-line text input
-- [Button](/docs/components/button) - For form submission
-- [Card](/docs/components/card) - For containing forms

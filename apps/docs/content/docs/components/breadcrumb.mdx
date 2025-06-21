@@ -35,6 +35,8 @@ function MyComponent() {
 }
 ```
 
+## Component Examples
+
 <DynamicBreadcrumbShowcase />
 
 ## Separators
@@ -428,50 +430,3 @@ function FormStepBreadcrumb() {
   );
 }
 ```
-
-## Props
-
-### Breadcrumb Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `separator` | `ReactNode \| string` | `"/"` | Element to display between items |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `maxItems` | `number` | - | Maximum items to show before collapsing |
-| `overflowAriaLabel` | `string` | `"Show more"` | ARIA label for overflow button |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | BreadcrumbItem components |
-
-### BreadcrumbItem Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `href` | `string` | - | Navigation URL |
-| `onClick` | `() => void` | - | Click handler |
-| `icon` | `ReactNode` | - | Leading icon |
-| `disabled` | `boolean` | `false` | Disabled state |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Item content |
-
-## Accessibility
-
-- **Semantic HTML**: Uses `<nav>` and `<ol>` for proper structure
-- **ARIA Labels**: `aria-label="Breadcrumb"` on navigation
-- **Screen Readers**: Current page marked with `aria-current="page"`
-- **Keyboard Navigation**: Full keyboard support for interactive items
-- **Focus Management**: Clear focus indicators
-
-## Best Practices
-
-1. **Show Hierarchy**: Represent the actual site structure
-2. **Current Page**: Always show the current page as the last item
-3. **Link Appropriately**: Don't link the current page
-4. **Keep Concise**: Use short, descriptive labels
-5. **Consistent Placement**: Place consistently across pages
-6. **Mobile Consideration**: Consider collapsing on smaller screens
-
-## Related Components
-
-- [Button](/docs/components/button) - For breadcrumb actions
-- [Typography](/docs/components/typography) - For text styling
-- [Navigation](/docs/components/pagination) - For page navigation 

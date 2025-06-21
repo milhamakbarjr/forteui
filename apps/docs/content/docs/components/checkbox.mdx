@@ -5,9 +5,7 @@ description: Checkbox component for selection controls with multiple states, var
 
 # Checkbox
 
-Checkbox component for binary select| `containerClassName` | `string` | - | Additional CSS classes for container |
-
-## Accessibility. Supports multiple visual variants, semantic colors, and provides excellent accessibility for form interactions.
+Checkbox component for binary selection controls with multiple states, variants, and accessible interaction. Supports multiple visual variants, semantic colors, and provides excellent accessibility for form interactions.
 
 ## Installation
 
@@ -35,6 +33,8 @@ function MyComponent() {
   );
 }
 ```
+
+## Component Examples
 
 <DynamicCheckboxShowcase />
 
@@ -175,39 +175,3 @@ function SelectAllExample() {
 />
 ```
 
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | - | Label text for the checkbox |
-| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Visual variant |
-| `size` | `'sm' \| 'md'` | `'md'` | Size of the checkbox |
-| `checked` | `boolean` | - | Controlled checked state |
-| `defaultChecked` | `boolean` | `false` | Uncontrolled default checked state |
-| `indeterminate` | `boolean` | `false` | Whether checkbox is in indeterminate state |
-| `disabled` | `boolean` | `false` | Whether the checkbox is disabled |
-| `onCheckedChange` | `(checked: boolean) => void` | - | Callback when checked state changes |
-| `className` | `string` | - | Additional CSS classes for wrapper |
-| `labelClassName` | `string` | - | Additional CSS classes for label |
-
-## Accessibility
-
-- **Keyboard Navigation**: Supports Tab and Space key interaction
-- **Screen Readers**: Properly labeled and announced
-- **Focus Management**: Clear focus indicators
-- **ARIA**: Follows ARIA checkbox specifications
-- **Label Association**: Labels are properly associated via htmlFor
-
-## Best Practices
-
-1. **Clear labels**: Use descriptive, actionable labels
-2. **Logical grouping**: Group related checkboxes together
-3. **Consistent alignment**: Align checkboxes and labels consistently
-4. **Error handling**: Provide clear error states when validation fails
-5. **Touch targets**: Ensure adequate size for touch interaction
-
-## Related Components
-
-- [Radio](/docs/components/radio) - For single-choice selections
-- [Switch](/docs/components/switch) - For on/off toggles
-- [Button](/docs/components/button) - For form submission 

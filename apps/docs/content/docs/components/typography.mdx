@@ -19,6 +19,25 @@ npm install forteui-core
 import { Heading, Text } from 'forteui-core';
 ```
 
+## Basic Usage
+
+```tsx
+import { Heading, Text } from 'forteui-core';
+
+function MyComponent() {
+  return (
+    <div>
+      <Heading level={1}>Main Title</Heading>
+      <Text variant="body1">This is body text content.</Text>
+    </div>
+  );
+}
+```
+
+## Component Examples
+
+<DynamicTypographyShowcase />
+
 ## Font Family
 
 ForteUI uses **Plus Jakarta Sans** as the primary typeface, providing excellent readability and modern aesthetics across digital interfaces.
@@ -26,8 +45,6 @@ ForteUI uses **Plus Jakarta Sans** as the primary typeface, providing excellent 
 ```css
 font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
 ```
-
-<DynamicTypographyShowcase />
 
 ## Heading Component
 
@@ -416,48 +433,3 @@ font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
   </CardContent>
 </Card>
 ```
-
-## Props
-
-### Heading Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `level` | `1 \| 2 \| 3 \| 4 \| 5 \| 6` | `1` | Heading semantic level |
-| `weight` | `'light' \| 'regular' \| 'medium' \| 'semibold' \| 'bold' \| 'extrabold'` | `'semibold'` | Font weight |
-| `color` | `'primary' \| 'secondary' \| 'default' \| 'muted' \| 'success' \| 'warning' \| 'error'` | `'default'` | Text color |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Text content |
-
-### Text Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'body-xl' \| 'body-lg' \| 'body' \| 'body-sm' \| 'caption' \| 'overline'` | `'body'` | Text variant |
-| `weight` | `'light' \| 'regular' \| 'medium' \| 'semibold' \| 'bold' \| 'extrabold'` | `'regular'` | Font weight |
-| `color` | `'primary' \| 'secondary' \| 'default' \| 'muted' \| 'success' \| 'warning' \| 'error'` | `'default'` | Text color |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Text content |
-
-## Accessibility
-
-- **Semantic HTML**: Uses proper heading hierarchy (h1-h6)
-- **WCAG Compliance**: All text colors meet AA contrast standards
-- **Screen Readers**: Semantic markup ensures proper content navigation
-- **Focus Management**: Headings create logical content outline
-- **Responsive Text**: Scales appropriately for different devices
-
-## Best Practices
-
-1. **Hierarchy**: Maintain logical heading structure (h1 → h2 → h3)
-2. **Contrast**: Ensure sufficient color contrast for accessibility
-3. **Readability**: Use appropriate line lengths (45-75 characters)
-4. **Consistency**: Apply typography consistently across the application
-5. **Performance**: Plus Jakarta Sans is optimized for web performance
-6. **Responsive**: Scale typography appropriately for different screen sizes
-
-## Related Components
-
-- [Button](/docs/components/button) - For interactive text elements
-- [Card](/docs/components/card) - For containing typography layouts
-- [Badge](/docs/components/badge) - For status text indicators 

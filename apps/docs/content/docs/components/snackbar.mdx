@@ -44,6 +44,8 @@ function MyComponent() {
 }
 ```
 
+## Component Examples
+
 <DynamicSnackbarShowcase />
 
 ## Variants
@@ -606,21 +608,6 @@ function ShoppingCartNotifications() {
 }
 ```
 
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `open` | `boolean` | `false` | Whether the snackbar is visible |
-| `onClose` | `() => void` | - | Close handler |
-| `message` | `string` | - | Main message text |
-| `variant` | `'default' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Visual variant |
-| `position` | `'top-left' \| 'top-center' \| 'top-right' \| 'bottom-left' \| 'bottom-center' \| 'bottom-right'` | `'bottom-center'` | Screen position |
-| `autoHideDuration` | `number \| null` | `4000` | Auto-hide timeout (null = no auto-hide) |
-| `action` | `{label: string, onClick: () => void, variant?: string}` | - | Single action button |
-| `actions` | `Array<{label: string, onClick: () => void, variant?: string}>` | - | Multiple action buttons |
-| `closable` | `boolean` | `true` | Show close button |
-| `className` | `string` | - | Additional CSS classes |
-
 ## useSnackbar Hook API
 
 ```tsx
@@ -644,26 +631,3 @@ hideSnackbar(snackbarId);
 // Hide all snackbars
 hideAllSnackbars();
 ```
-
-## Accessibility
-
-- **ARIA Roles**: Uses `role="alert"` for important messages
-- **Screen Readers**: Messages are announced automatically
-- **Keyboard Navigation**: Focusable actions with Tab navigation
-- **Focus Management**: Focus trapped within action buttons
-- **Color Independence**: Uses icons and text, not just color for variants
-
-## Best Practices
-
-1. **Clear Messages**: Keep messages concise and actionable
-2. **Appropriate Duration**: Use longer durations for important messages
-3. **Action Relevance**: Only include actions that are directly related
-4. **Position Consistency**: Use consistent positioning throughout your app
-5. **Stack Management**: Limit the number of simultaneous snackbars
-6. **Error Handling**: Provide retry actions for error states
-
-## Related Components
-
-- [Alert](/docs/components/alert) - For persistent notifications
-- [Button](/docs/components/button) - For action buttons
-- [Card](/docs/components/card) - For detailed notifications 

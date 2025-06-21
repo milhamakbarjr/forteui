@@ -36,6 +36,8 @@ function MyComponent() {
 }
 ```
 
+## Component Examples
+
 <DynamicSliderShowcase />
 
 ## Single Handle Slider
@@ -177,39 +179,4 @@ function VideoPlayerControls() {
   };
   
   return (
-## Props
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `number` | - | Controlled value |
-| `defaultValue` | `number` | - | Default uncontrolled value |
-| `onChange` | `(value: number) => void` | - | Change handler |
-| `onChangeEnd` | `(value: number) => void` | - | Called when dragging ends |
-| `min` | `number` | `0` | Minimum value |
-| `max` | `number` | `100` | Maximum value |
-| `step` | `number` | `1` | Step increment |
-| `label` | `string` | - | Label text |
-| `showValue` | `boolean` | `false` | Show current value |
-| `disabled` | `boolean` | `false` | Disabled state |
-| `className` | `string` | - | Additional CSS classes |
-
-## Accessibility
-
-- **Keyboard Navigation**: Arrow keys for fine control, Page Up/Down for large steps, Home/End for min/max
-- **Screen Readers**: Proper ARIA labels and value announcements
-- **Focus Management**: Clear focus indicators on handles
-- **Touch Support**: Touch-friendly handle sizes for mobile devices
-- **ARIA Attributes**: Uses `role="slider"` with appropriate value attributes
-
-## Best Practices
-
-1. **Clear Labels**: Always provide descriptive labels
-2. **Appropriate Steps**: Choose step values that make sense for your use case
-3. **Visual Feedback**: Show current values clearly with `showValue` prop
-4. **Performance**: Use `onChangeEnd` for expensive operations
-5. **Touch Targets**: Ensure handles are large enough for touch interaction
-
-## Related Components
-
-- [Input](/docs/components/input) - For precise numeric input
-- [Button](/docs/components/button) - For slider actions 

@@ -9,8 +9,6 @@ A versatile button component that supports multiple variants, sizes, states, and
 
 ## Installation
 
-The Button component is included in the ForteUI core package.
-
 ```bash
 npm install forteui-core
 ```
@@ -36,6 +34,8 @@ function MyComponent() {
   );
 }
 ```
+
+## Component Examples
 
 <DynamicButtonShowcase />
 
@@ -262,90 +262,3 @@ const handleClick = () => {
   Custom Handler
 </Button>
 ```
-
-## API Reference
-
-### Button Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `ButtonVariant` | `'primary'` | Visual style variant |
-| `size` | `ButtonSize` | `'md'` | Button size |
-| `disabled` | `boolean` | `false` | Whether the button is disabled |
-| `asChild` | `boolean` | `false` | Render as a child element (polymorphic) |
-| `onClick` | `(event: MouseEvent) => void` | - | Click handler function |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Button content |
-
-### Button Variants
-
-| Variant | Description |Use Case |
-|---------|-------------|---------|
-| `default` | Default grey button | Secondary actions |
-| `primary` | Primary brand color | Main call-to-action |
-| `secondary` | Secondary brand color | Supporting actions |
-| `info` | Blue informational | Informational actions |
-| `success` | Green success | Positive actions |
-| `warning` | Orange/yellow warning | Caution actions |
-| `error` | Red error/danger | Destructive actions |
-| `outline-default` | Outlined default | Alternative secondary |
-| `outline-primary` | Outlined primary | Alternative primary |
-| `outline-info` | Outlined info | Alternative info |
-| `outline-success` | Outlined success | Alternative success |
-| `outline-warning` | Outlined warning | Alternative warning |
-| `outline-error` | Outlined error | Alternative destructive |
-| `text-default` | Text-only default | Subtle actions |
-| `text-primary` | Text-only primary | Subtle primary |
-| `text-info` | Text-only info | Subtle info |
-| `text-success` | Text-only success | Subtle success |
-| `text-warning` | Text-only warning | Subtle warning |
-| `text-error` | Text-only error | Subtle destructive |
-| `soft-default` | Soft background default | Gentle emphasis |
-| `soft-primary` | Soft background primary | Gentle primary |
-| `soft-info` | Soft background info | Gentle info |
-| `soft-success` | Soft background success | Gentle success |
-| `soft-warning` | Soft background warning | Gentle warning |
-| `soft-error` | Soft background error | Gentle destructive |
-| `icon-default` | Icon-only default | Icon buttons |
-| `icon-primary` | Icon-only primary | Primary icon actions |
-| `icon-info` | Icon-only info | Info icon actions |
-| `icon-success` | Icon-only success | Success icon actions |
-| `icon-warning` | Icon-only warning | Warning icon actions |
-| `icon-error` | Icon-only error | Destructive icon actions |
-
-### Button Sizes
-
-| Size | Height | Padding | Font Size | Use Case |
-|------|--------|---------|-----------|----------|
-| `sm` | 30px | 8px | 13px | Compact interfaces |
-| `md` | 36px | 12px | 14px | Default size |
-| `lg` | 48px | 16px | 15px | Prominent actions |
-| `icon` | 48px | - | - | Legacy icon button |
-| `icon-xs` | 28px | - | - | Extra small icons |
-| `icon-sm` | 36px | - | - | Small icons |
-| `icon-md` | 40px | - | - | Medium icons |
-| `icon-lg` | 48px | - | - | Large icons |
-
-The Button component also accepts all standard HTML button attributes.
-
-## Accessibility
-
-- **Keyboard Navigation**: Supports Tab and Enter/Space key interaction
-- **Screen Readers**: Properly labeled with accessible text
-- **Focus Management**: Clear focus indicators for keyboard navigation
-- **Disabled State**: Properly communicated to assistive technologies
-- **ARIA**: Follows ARIA button specifications
-
-## Best Practices
-
-1. **Use appropriate variants**: Primary for main actions, secondary for supporting actions
-2. **Consistent sizing**: Use the same size for buttons in a group
-3. **Clear labels**: Use descriptive text that clearly indicates the action
-4. **Icon alignment**: Ensure icons are properly sized and aligned with text
-5. **Loading states**: Consider adding loading indicators for async actions
-
-## Related Components
-
-- [Input](/docs/components/input) - For form input elements
-- [Checkbox](/docs/components/checkbox) - For selection controls
-- [Switch](/docs/components/switch) - For toggle controls

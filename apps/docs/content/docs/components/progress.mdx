@@ -31,58 +31,37 @@ function MyComponent() {
 }
 ```
 
-<ProgressShowcase />
+## Component Examples
 
-## Dynamic Progress Showcase
+<DynamicProgressShowcase />
+
+## Advanced Usage
+
+### Dynamic Progress Example
 
 ```tsx
 import { useState } from 'react';
 import { Progress, Button } from 'forteui-core';
 
-function DynamicProgressShowcase() {
+function DynamicProgressExample() {
   const [progress, setProgress] = useState(0);
-  const [intervalId, setIntervalId] = useState<NodeJS.Timeout | null>(null);
-
+  
   const startProgress = () => {
-    if (intervalId) return;
-
-    const id = setInterval(() => {
-      setProgress((oldProgress) => {
-        if (oldProgress === 100) {
-          clearInterval(id);
+    const interval = setInterval(() => {
+      setProgress(prev => {
+        if (prev >= 100) {
+          clearInterval(interval);
           return 100;
         }
-        return Math.min(oldProgress + Math.random() * 10, 100);
+        return prev + 10;
       });
-    }, 1000);
-
-    setIntervalId(id);
-  };
-
-  const stopProgress = () => {
-    if (intervalId) {
-      clearInterval(intervalId);
-      setIntervalId(null);
-    }
+    }, 200);
   };
 
   return (
     <div className="space-y-4">
       <Progress value={progress} max={100} />
-
-      <div className="flex gap-2">
-        <Button onClick={startProgress} disabled={progress === 100}>
-          Start
-        </Button>
-        <Button onClick={stopProgress} variant="outline-default">
-          Stop
-        </Button>
-      </div>
-
-      <div className="flex justify-between text-sm text-gray-500">
-        <span>Progress: {Math.round(progress)}%</span>
-        {progress === 100 && <span className="text-green-500">Completed!</span>}
-      </div>
+      <Button onClick={startProgress}>Start Progress</Button>
     </div>
   );
 }
@@ -311,38 +290,3 @@ function MultiStepProgress() {
   </Card>
 </div>
 ```
-
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `number` | `0` | Current progress value |
-| `max` | `number` | `100` | Maximum progress value |
-| `variant` | `'linear' \| 'circular'` | `'linear'` | Progress display style |
-| `color` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error'` | `'primary'` | Color theme |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size of the progress indicator |
-| `indeterminate` | `boolean` | `false` | Show indeterminate animation |
-| `showLabel` | `boolean` | `false` | Show percentage label |
-| `label` | `string` | - | Custom label text |
-| `className` | `string` | - | Additional CSS classes |
-
-## Accessibility
-
-- **ARIA Attributes**: Uses `role="progressbar"` with proper value attributes
-- **Screen Readers**: Progress values are announced appropriately
-- **Labels**: Associated labels provide context
-- **Color Independence**: Progress is not conveyed by color alone
-
-## Best Practices
-
-1. **Provide context**: Use labels to explain what is progressing
-2. **Realistic updates**: Update progress values smoothly and realistically
-3. **Completion feedback**: Provide clear completion states
-4. **Appropriate variants**: Use linear for processes, circular for dashboards
-5. **Loading states**: Use indeterminate for unknown durations
-
-## Related Components
-
-- [Button](/docs/components/button) - For triggering processes
-- [Alert](/docs/components/alert) - For completion notifications
-- [Card](/docs/components/card) - For dashboard layouts

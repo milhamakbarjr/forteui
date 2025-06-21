@@ -9,8 +9,6 @@ A versatile input component with floating label behavior, multiple states, varia
 
 ## Installation
 
-The Input component is included in the ForteUI core package.
-
 ```bash
 npm install forteui-core
 ```
@@ -39,7 +37,7 @@ function MyComponent() {
 }
 ```
 
-## Basic Usage
+## Component Examples
 
 <DynamicInputShowcase />
 
@@ -228,50 +226,3 @@ function LoginForm() {
   );
 }
 ```
-
-## Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | - | Label text for the input |
-| `variant` | `'default' \| 'filled'` | `'default'` | Visual variant of the input |
-| `size` | `'sm' \| 'md'` | `'md'` | Size of the input |
-| `error` | `boolean` | `false` | Whether the input is in error state |
-| `helperText` | `string` | - | Helper text displayed below the input |
-| `helperIcon` | `ReactNode` | - | Icon displayed with helper text |
-| `endAdornment` | `ReactNode` | - | Element displayed at the end of the input |
-| `disabled` | `boolean` | `false` | Whether the input is disabled |
-| `placeholder` | `string` | - | Placeholder text |
-| `value` | `string` | - | Controlled value |
-| `defaultValue` | `string` | - | Uncontrolled default value |
-| `onChange` | `(event: ChangeEvent) => void` | - | Change handler |
-| `onFocus` | `(event: FocusEvent) => void` | - | Focus handler |
-| `onBlur` | `(event: FocusEvent) => void` | - | Blur handler |
-| `className` | `string` | - | Additional CSS classes |
-
-The Input component also accepts all standard HTML input attributes.
-
-## Accessibility
-
-- **Keyboard Navigation**: Supports Tab navigation and all standard input interactions
-- **Screen Readers**: Properly labeled with accessible descriptions
-- **Focus Management**: Clear focus indicators and proper focus flow
-- **Error Handling**: Error states are announced to screen readers
-- **Label Association**: Labels are properly associated with inputs
-- **Helper Text**: Helper text is linked via `aria-describedby`
-
-## Best Practices
-
-1. **Always use labels**: Provide clear, descriptive labels for all inputs
-2. **Helpful placeholder text**: Use placeholders to show format examples
-3. **Clear error messages**: Provide specific, actionable error messages
-4. **Appropriate input types**: Use the correct HTML input type (email, password, tel, etc.)
-5. **Validation timing**: Validate on blur or submit, not on every keystroke
-6. **Helper text**: Use helper text to provide additional context or requirements
-
-## Related Components
-
-- [Button](/docs/components/button) - For form submission
-- [Checkbox](/docs/components/checkbox) - For boolean inputs
-- [Radio](/docs/components/radio) - For single-choice selections
-- [Textarea](/docs/components/textarea) - For multi-line text input 

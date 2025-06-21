@@ -35,6 +35,8 @@ function MyComponent() {
 }
 ```
 
+## Component Examples
+
 <DynamicRadioShowcase />
 
 ## Variants and Colors
@@ -143,50 +145,3 @@ function SurveyForm() {
   </div>
 </RadioGroup>
 ```
-
-## Props
-
-### RadioGroup Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | - | Controlled selected value |
-| `defaultValue` | `string` | - | Uncontrolled default value |
-| `onValueChange` | `(value: string) => void` | - | Callback when selection changes |
-| `disabled` | `boolean` | `false` | Disable the entire group |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Radio components |
-
-### Radio Props
-
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `string` | - | Value for this radio option |
-| `label` | `string` | - | Label text |
-| `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Visual variant |
-| `size` | `'sm' \| 'md'` | `'md'` | Size of the radio |
-| `disabled` | `boolean` | `false` | Whether this option is disabled |
-| `className` | `string` | - | Additional CSS classes |
-| `children` | `ReactNode` | - | Additional content below label |
-
-## Accessibility
-
-- **Keyboard Navigation**: Arrow keys navigate between options
-- **Screen Readers**: Properly announced with group context
-- **Focus Management**: Clear focus indicators
-- **ARIA**: Follows ARIA radio group specifications
-- **Label Association**: Labels properly associated with controls
-
-## Best Practices
-
-1. **Mutually exclusive**: Use for options where only one can be selected
-2. **Clear labels**: Use descriptive, concise labels
-3. **Logical order**: Arrange options in logical sequence
-4. **Default selection**: Consider providing a sensible default
-5. **Group related options**: Keep related choices together
-
-## Related Components
-
-- [Checkbox](/docs/components/checkbox) - For multiple selections
-- [Switch](/docs/components/switch) - For on/off toggles
-- [Button](/docs/components/button) - For form submission 
