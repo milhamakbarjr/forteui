@@ -6,17 +6,13 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function AvatarShowcase({ 
   children, 
-  code, 
-  title = "Avatar Component Showcase",
-  description = "Comprehensive avatar examples with sizes, variants, shapes, status indicators, and advanced features"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Basic States - Avatar Sizes */}
         <div className="space-y-4">

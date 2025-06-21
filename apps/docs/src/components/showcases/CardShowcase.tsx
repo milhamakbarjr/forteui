@@ -7,17 +7,13 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeCardShowcase({ 
   children, 
-  code, 
-  title = "Card Examples",
-  description = "Versatile card component with multiple variants, padding options, and composition patterns following Figma specifications"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Section 1: Card Variants */}
         <div className="space-y-6">

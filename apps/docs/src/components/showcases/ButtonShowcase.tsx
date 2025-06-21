@@ -7,14 +7,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ButtonShowcase({ 
   children, 
-  code, 
-  title = "Button Component",
-  description = "Button component with multiple variants, sizes, states, and rich icon support"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   const [loading, setLoading] = useState(false);
   const [clickCount, setClickCount] = useState(0);
@@ -28,7 +24,7 @@ export function ButtonShowcase({
   };
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8">
         {/* Contained Button Variants */}
         <div className="space-y-4">

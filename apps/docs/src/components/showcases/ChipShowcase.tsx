@@ -7,14 +7,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeChipShowcase({ 
   children, 
-  code, 
-  title = "Chip Component Showcase",
-  description = "Comprehensive chip examples with variants, sizes, action icons, and advanced features following Figma specifications"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   const [removedChips, setRemovedChips] = useState<string[]>([]);
 
@@ -25,7 +21,7 @@ export function ClientSafeChipShowcase({
   const isChipRemoved = (chipId: string) => removedChips.includes(chipId);
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Basic States - Filled Chips */}
         <div className="space-y-4">

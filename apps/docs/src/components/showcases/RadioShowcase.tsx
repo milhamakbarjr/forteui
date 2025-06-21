@@ -6,14 +6,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeRadioShowcase({ 
   children, 
-  code, 
-  title = "Radio Examples",
-  description = "Comprehensive radio examples with multiple states, variants, sizes, and interactive features"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   const [selectedOption, setSelectedOption] = useState('option1');
   const [selectedPriority, setSelectedPriority] = useState('medium');
@@ -28,7 +24,7 @@ export function ClientSafeRadioShowcase({
   ];
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Basic Radio States */}
         <div className="space-y-4">

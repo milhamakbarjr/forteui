@@ -5,19 +5,15 @@ import { Text, Breadcrumb } from '@forteui/core';
 import { IconHome, IconShoppingCart, IconUser, IconSettings, IconStar, IconEye, IconArrowRight } from '@tabler/icons-react';
 import { ComponentShowcase } from '../ComponentShowcase';
 
-export function BreadcrumbShowcase({ 
+export function ClientSafeBreadcrumbShowcase({ 
   children, 
-  code, 
-  title = "Breadcrumb Component",
-  description = "Navigation breadcrumb with text and icon variants"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Text Variant */}
         <div className="space-y-4">

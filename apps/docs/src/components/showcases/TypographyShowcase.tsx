@@ -6,14 +6,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function TypographyShowcase({ 
   children, 
-  code, 
-  title = "Typography Examples",
-  description = "Interactive typography system with headings, text variants, and color options"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   const [selectedHeadingLevel, setSelectedHeadingLevel] = useState<1 | 2 | 3 | 4 | 5 | 6>(2);
   const [selectedTextVariant, setSelectedTextVariant] = useState<'display' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'body' | 'body-sm' | 'caption'>('body');
@@ -21,7 +17,7 @@ export function TypographyShowcase({
   const [customText, setCustomText] = useState('Your custom text here');
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="forte-ui space-y-8">
         {/* Heading Levels */}
         <div className="space-y-4">

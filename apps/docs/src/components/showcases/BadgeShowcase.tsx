@@ -7,14 +7,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeBadgeShowcase({ 
   children, 
-  code, 
-  title = "Badge Examples",
-  description = "Badge wrapper component for displaying count numbers or dot indicators on top of child elements"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   // Interactive state for counter examples
   const [notificationCount, setNotificationCount] = useState(3);
@@ -31,7 +27,7 @@ export function ClientSafeBadgeShowcase({
   };
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Section 1: Basic States */}
         <div className="space-y-6">

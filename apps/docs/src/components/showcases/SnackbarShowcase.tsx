@@ -6,14 +6,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function SnackbarShowcase({ 
   children, 
-  code, 
-  title = "Snackbar Examples",
-  description = "Snackbar component for displaying brief notifications with optional actions, following Figma specifications"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   const [triggerSnackbar, setTriggerSnackbar] = useState<string | null>(null);
 
@@ -31,7 +27,7 @@ export function SnackbarShowcase({
   };
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Default Variant - Dark Theme */}
         <div className="space-y-4">

@@ -7,17 +7,13 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeTextareaShowcase({ 
   children, 
-  code, 
-  title = "Textarea Examples",
-  description = "Comprehensive textarea examples with multiple states, variants, sizes, and custom features"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Basic States */}
         <div className="space-y-4">

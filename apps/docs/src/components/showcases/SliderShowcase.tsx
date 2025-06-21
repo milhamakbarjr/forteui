@@ -6,14 +6,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeSliderShowcase({ 
   children, 
-  code, 
-  title = "Slider Examples",
-  description = "Interactive slider component with customizable ranges, steps, and display options"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   // Basic States
   const [defaultValue, setDefaultValue] = useState(30);
@@ -38,7 +34,7 @@ export function ClientSafeSliderShowcase({
   };
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Section 1: Basic States */}
         <div className="space-y-6">

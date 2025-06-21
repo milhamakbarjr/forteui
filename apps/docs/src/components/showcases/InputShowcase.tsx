@@ -15,14 +15,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeInputShowcase({ 
   children, 
-  code, 
-  title = "Input Examples",
-  description = "Comprehensive input examples with multiple states, variants, sizes, and interactive features"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   const [passwordVisible, setPasswordVisible] = useState(false);
   const [passwordVisible2, setPasswordVisible2] = useState(true);
@@ -63,7 +59,7 @@ export function ClientSafeInputShowcase({
   };
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Input States */}
         <div className="space-y-4">

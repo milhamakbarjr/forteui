@@ -6,14 +6,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeCheckboxShowcase({ 
   children, 
-  code, 
-  title = "Checkbox Examples",
-  description = "Comprehensive checkbox examples with multiple states, variants, sizes, and interactive features"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   const [isChecked, setIsChecked] = useState(false);
   const [selectedOptions, setSelectedOptions] = useState<string[]>([]);
@@ -34,7 +30,7 @@ export function ClientSafeCheckboxShowcase({
   ];
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Basic Checkbox States */}
         <div className="space-y-4">

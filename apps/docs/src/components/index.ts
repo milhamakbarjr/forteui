@@ -1,5 +1,6 @@
 export { CodeBlock } from './CodeBlock';
-export { ComponentShowcase, ButtonShowcase, ButtonSizeShowcase } from './ComponentShowcase';
+export { ComponentShowcase } from './ComponentShowcase';
+export { ButtonShowcase } from './showcases';
 export { InteractiveButtonDemo } from './InteractiveButtonDemo';
 export { ClientOnly } from './ClientOnly';
 export { 

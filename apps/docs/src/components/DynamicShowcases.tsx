@@ -443,7 +443,7 @@ export const DynamicTypographyShowcase = dynamic(
 );
 
 export const DynamicBreadcrumbShowcase = dynamic(
-  () => import('./showcases').then(mod => ({ default: mod.BreadcrumbShowcase })),
+  () => import('./showcases').then(mod => ({ default: mod.ClientSafeBreadcrumbShowcase })),
   { 
     ssr: false,
     loading: () => (

@@ -6,14 +6,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ProgressShowcase({ 
   children, 
-  code, 
-  title = "Progress Component",
-  description = "Progress indicators with linear and circular variants using semantic colors"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   const [animatedValue, setAnimatedValue] = useState(0);
 
@@ -26,7 +22,7 @@ export function ProgressShowcase({
   }, []);
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8">
         {/* Linear Progress - Basic Colors */}
         <div className="space-y-4">

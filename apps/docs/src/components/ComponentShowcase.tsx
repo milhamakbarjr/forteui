@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from '@forteui/core';
 
 interface ComponentShowcaseProps {
-  title: string;
+  title?: string;
   description?: string;
   children: React.ReactNode;
   code?: string;
@@ -42,16 +42,18 @@ export function ComponentShowcase({
   if (!mounted) {
     return (
       <div className="border border-gray-200 rounded-lg mb-6">
-        <div className="border-b border-gray-200 p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-              {description && (
-                <p className="text-sm text-gray-600 mt-1">{description}</p>
-              )}
+        {(title || description || code) && (
+          <div className="border-b border-gray-200 p-4">
+            <div className="flex items-center justify-between">
+              <div>
+                {title && <h3 className="text-lg font-semibold text-gray-900">{title}</h3>}
+                {description && (
+                  <p className="text-sm text-gray-600 mt-1">{description}</p>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
         <div className={`p-6 bg-white ${className}`}>
           {children}
         </div>
@@ -62,36 +64,38 @@ export function ComponentShowcase({
   return (
     <div className="border border-gray-200 rounded-lg mb-6">
       {/* Header */}
-      <div className="border-b border-gray-200 p-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-            {description && (
-              <p className="text-sm text-gray-600 mt-1">{description}</p>
-            )}
-          </div>
-          <div className="flex gap-2">
-            {code && (
-              <>
-                <Button
-                  variant="outline-default"
-                  size="sm"
-                  onClick={handleCopy}
-                >
-                  {copied ? 'Copied!' : 'Copy'}
-                </Button>
-                <Button
-                  variant="outline-default"
-                  size="sm"
-                  onClick={() => setShowCode(!showCode)}
-                >
-                  {showCode ? 'Hide Code' : 'Show Code'}
-                </Button>
-              </>
-            )}
+      {(title || description || code) && (
+        <div className="border-b border-gray-200 p-4">
+          <div className="flex items-center justify-between">
+            <div>
+              {title && <h3 className="text-lg font-semibold text-gray-900">{title}</h3>}
+              {description && (
+                <p className="text-sm text-gray-600 mt-1">{description}</p>
+              )}
+            </div>
+            <div className="flex gap-2">
+              {code && (
+                <>
+                  <Button
+                    variant="outline-default"
+                    size="sm"
+                    onClick={handleCopy}
+                  >
+                    {copied ? 'Copied!' : 'Copy'}
+                  </Button>
+                  <Button
+                    variant="outline-default"
+                    size="sm"
+                    onClick={() => setShowCode(!showCode)}
+                  >
+                    {showCode ? 'Hide Code' : 'Show Code'}
+                  </Button>
+                </>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Preview */}
       <div className={`p-6 bg-white ${className}`}>
@@ -107,36 +111,5 @@ export function ComponentShowcase({
         </div>
       )}
     </div>
-  );
-}
-
-// Component variants for easy use in MDX
-export function ButtonShowcase({ 
-  children, 
-  code, 
-  title = "Button Variants",
-  description = "Try different button variants and see the changes in real-time"
-}: Omit<ComponentShowcaseProps, 'children'> & { children?: React.ReactNode }) {
-  return (
-    <ComponentShowcase title={title} description={description} code={code}>
-      <div className="flex flex-wrap gap-3">
-        {children}
-      </div>
-    </ComponentShowcase>
-  );
-}
-
-export function ButtonSizeShowcase({ 
-  children, 
-  code,
-  title = "Button Sizes",
-  description = "Interactive example with different sizes, loading states, and disabled buttons"
-}: Omit<ComponentShowcaseProps, 'children'> & { children?: React.ReactNode }) {
-  return (
-    <ComponentShowcase title={title} description={description} code={code}>
-      <div className="space-y-4">
-        {children}
-      </div>
-    </ComponentShowcase>
   );
 }

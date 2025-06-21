@@ -7,14 +7,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeAlertShowcase({ 
   children, 
-  code, 
-  title = "Alert Examples",
-  description = "Alert component for displaying important messages with multiple variants and semantic severity levels"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   // Interactive state for dismissible alerts
   const [dismissedAlerts, setDismissedAlerts] = useState<string[]>([]);
@@ -26,7 +22,7 @@ export function ClientSafeAlertShowcase({
   const isAlertDismissed = (alertId: string) => dismissedAlerts.includes(alertId);
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         
         {/* Basic Alert Variants */}

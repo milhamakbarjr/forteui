@@ -6,14 +6,10 @@ import { ComponentShowcase } from '../ComponentShowcase';
 
 export function ClientSafeSwitchShowcase({ 
   children, 
-  code, 
-  title = "Switch Examples",
-  description = "Interactive switch toggle examples with comprehensive state management and semantic color variants"
+  code
 }: {
   children?: React.ReactNode;
   code?: string;
-  title?: string;
-  description?: string;
 }) {
   const [basicStates, setBasicStates] = useState({
     notifications: false,
@@ -47,7 +43,7 @@ export function ClientSafeSwitchShowcase({
   });
 
   return (
-    <ComponentShowcase title={title} description={description} code={code}>
+    <ComponentShowcase code={code}>
       <div className="space-y-8 forte-ui">
         {/* Basic States */}
         <div className="space-y-4">
