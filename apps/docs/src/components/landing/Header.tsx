@@ -68,7 +68,7 @@ export function Header() {
           </div>
           
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Desktop Navigation - Hidden on mobile */}
+            {/* Desktop Navigation - Original layout restored */}
             <div className="hidden md:flex items-center gap-2 sm:gap-3">
               <Button 
                 asChild 
@@ -90,23 +90,28 @@ export function Header() {
               <Button asChild variant="outline-default" size="sm" className="px-3 sm:px-4 py-2 text-xs sm:text-sm min-h-[44px]">
                 <Link href="/docs/introduction">Docs</Link>
               </Button>
+              
+              <Button asChild variant="primary" size="sm" className="px-3 sm:px-4 py-2 text-xs sm:text-sm min-h-[44px]">
+                <Link href="/docs/getting-started">Get Started</Link>
+              </Button>
             </div>
             
-            {/* Get Started - Always visible */}
-            <Button asChild variant="primary" size="sm" className="px-3 sm:px-4 py-2 text-xs sm:text-sm min-h-[44px]">
-              <Link href="/docs/getting-started">Get Started</Link>
-            </Button>
-            
-            {/* Mobile Menu Button - Only visible on mobile */}
-            <Button
-              variant="outline-default"
-              size="sm"
-              onClick={toggleMobileMenu}
-              className="md:hidden p-2 min-h-[44px] w-11"
-              aria-label="Toggle mobile menu"
-            >
-              {isMobileMenuOpen ? <IconX size={18} /> : <IconMenu2 size={18} />}
-            </Button>
+            {/* Mobile: Only Get Started + Menu */}
+            <div className="flex md:hidden items-center gap-2">
+              <Button asChild variant="primary" size="sm" className="px-3 sm:px-4 py-2 text-xs sm:text-sm min-h-[44px]">
+                <Link href="/docs/getting-started">Get Started</Link>
+              </Button>
+              
+              <Button
+                variant="outline-default"
+                size="sm"
+                onClick={toggleMobileMenu}
+                className="p-2 min-h-[44px] w-11"
+                aria-label="Toggle mobile menu"
+              >
+                {isMobileMenuOpen ? <IconX size={18} /> : <IconMenu2 size={18} />}
+              </Button>
+            </div>
           </div>
         </div>
         
