@@ -150,10 +150,10 @@ export const AlertShowcase: React.FC = () => {
           </div>
         </ShowcaseGroup>
 
-        {/* Alert Specifications */}
+        {/* Alert Component Details */}
         <SpecificationBox>
-          <Text variant="body-sm" className="font-medium mb-3 block">Alert Component Specifications</Text>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <Text variant="body-sm" className="font-medium mb-3 block">Alert Component Details</Text>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-3 gap-6">
             <div>
               <Text variant="body-sm" className="font-medium mb-2 block">Variants:</Text>
               <ul className="text-sm text-gray-600 space-y-1">
@@ -178,18 +178,9 @@ export const AlertShowcase: React.FC = () => {
                 <li>• Dismissible with onClose</li>
                 <li>• Semantic icons auto-mapped</li>
                 <li>• ARIA role="alert" for accessibility</li>
-                <li>• Consistent color tokens</li>
-                <li>• Plus Jakarta Sans typography</li>
+                <li>• TypeScript support</li>
+                <li>• Responsive design</li>
               </ul>
-            </div>
-          </div>
-          <div className="mt-4 grid gap-2 text-sm text-gray-600">
-            <Text variant="body-sm" className="font-medium mb-2 block">Design Tokens Used:</Text>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-              <div>• info-main, info-8, info-48</div>
-              <div>• success-main, success-8, success-48</div>
-              <div>• warning-main, warning-8, warning-48</div>
-              <div>• error-main, error-8, error-48</div>
             </div>
           </div>
         </SpecificationBox>

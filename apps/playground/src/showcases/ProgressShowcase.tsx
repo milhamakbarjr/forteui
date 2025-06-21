@@ -179,52 +179,31 @@ export function ProgressShowcase() {
         </ShowcaseVariant>
       </ShowcaseGroup>
 
-      {/* Specifications */}
-      <SpecificationBox>
+      {/* Implementation Details */}
+      <SpecificationBox title="Implementation Details">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <SpecList
-            title="Design Tokens"
+            title="Accessibility"
             items={[
-              "Colors: Full semantic color system from colors.json",
-              "Primary: #0690F4, Secondary: #9138FF", 
-              "Info: #00BEE0, Success: #22B954",
-              "Warning: #FFAD05, Error: #FF5833", 
-              "Default: #1F2933 (text-primary)",
-              "Background opacity: 30% for linear track",
+              "ARIA progressbar role with valuenow, valuemin, valuemax",
+              "Screen reader friendly labels and descriptions",
+              "Keyboard navigation support",
+              "Live region updates for dynamic progress",
+              "Semantic color meanings for different states",
             ]}
           />
           <SpecList
-            title="Dimensions"
+            title="Technical Features"
             items={[
-              "Linear height: 4px (md), 8px (sm), 6px (lg)",
-              "Circular sizes: 32px (sm), 44px (md), 56px (lg)",
-              "Border radius: 16px (linear track and bar)",
-              "Stroke width: 3px (sm), 4px (md), 5px (lg)",
-              "Typography: 12px font-size (Figma spec)",
+              "Two variants: linear and circular",
+              "Seven semantic color options",
+              "Three size variants with responsive scaling",
+              "Smooth animations and transitions",
+              "Custom label support with percentage fallback",
+              "TypeScript support with full prop typing",
             ]}
           />
         </div>
-        <SpecList
-          title="Accessibility"
-          items={[
-            "ARIA progressbar role with valuenow, valuemin, valuemax",
-            "Screen reader friendly labels and descriptions",
-            "Keyboard navigation support",
-            "Live region updates for dynamic progress",
-            "Semantic color meanings for different states",
-          ]}
-        />
-        <SpecList
-          title="Technical Features"
-          items={[
-            "Two variants: linear and circular",
-            "Seven semantic color options",
-            "Three size variants with responsive scaling",
-            "Smooth animations and transitions",
-            "Custom label support with percentage fallback",
-            "TypeScript support with full prop typing",
-          ]}
-        />
       </SpecificationBox>
     </ShowcaseSection>
   );

@@ -165,67 +165,6 @@ export function ClientSafeCheckboxShowcase({
           </div>
         </div>
 
-        {/* Design Specifications */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-            <Text variant="body-sm" className="font-medium text-gray-700">Design Specifications</Text>
-          </div>
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 space-y-4">
-            <Heading level={3} className="text-lg text-gray-900">Checkbox Design Specifications</Heading>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Sizes</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Small: 20px × 20px</div>
-                  <div>• Medium: 24px × 24px (default)</div>
-                  <div>• Checkbox icon scales with container size</div>
-                  <div>• Label maintains consistent text size</div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Interaction States</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Unchecked: Border outline with semantic color</div>
-                  <div>• Checked: Filled background with check icon</div>
-                  <div>• Hover: 8% opacity background with color</div>
-                  <div>• Focus: Ring outline for keyboard navigation</div>
-                  <div>• Disabled: 40% opacity, no interaction</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Color Variants</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Default: Action color (#657686)</div>
-                  <div>• Primary: Brand primary (#0690F4)</div>
-                  <div>• Secondary: Brand secondary (#9138FF)</div>
-                  <div>• Info: Info semantic (#00BEE0)</div>
-                  <div>• Success: Success semantic (#22B954)</div>
-                  <div>• Warning: Warning semantic (#FFAD05)</div>
-                  <div>• Error: Error semantic (#FF5833)</div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Accessibility Features</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Proper ARIA role attributes</div>
-                  <div>• Keyboard navigation support</div>
-                  <div>• Focus visible state for keyboard users</div>
-                  <div>• Screen reader announcements</div>
-                  <div>• Label association with input</div>
-                  <div>• Sufficient color contrast ratio</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {children}
       </div>
     </ComponentShowcase>

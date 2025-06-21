@@ -271,60 +271,6 @@ export function ClientSafeSliderShowcase({
             </div>
           </div>
         </div>
-
-        {/* Section 6: Design Specifications */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-4 h-4 rounded bg-indigo-500"></div>
-            <h3 className="text-lg font-semibold">Design Specifications</h3>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-3">Performance Features</h4>
-              <ul className="text-sm space-y-1 text-gray-600">
-                <li>• Pointer events for better touch support</li>
-                <li>• RequestAnimationFrame for smooth dragging</li>
-                <li>• Direct DOM updates during drag</li>
-                <li>• Ref-based state to avoid re-renders</li>
-                <li>• Pointer capture for reliable dragging</li>
-              </ul>
-            </div>
-            
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-3">Accessibility Features</h4>
-              <ul className="text-sm space-y-1 text-gray-600">
-                <li>• Full keyboard navigation (arrows, home/end, page up/down)</li>
-                <li>• ARIA attributes (role, aria-valuemin/max/now)</li>
-                <li>• Focus management with ring indicator</li>
-                <li>• Screen reader support</li>
-                <li>• Disabled state handling</li>
-              </ul>
-            </div>
-            
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-3">Design Tokens</h4>
-              <ul className="text-sm space-y-1 text-gray-600">
-                <li>• bg-primary-main for active fill</li>
-                <li>• bg-grey-300 for track background</li>
-                <li>• shadow-md and shadow-lg for elevation</li>
-                <li>• Consistent spacing and sizing</li>
-                <li>• Proper disabled state colors</li>
-              </ul>
-            </div>
-            
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-3">Available Props</h4>
-              <ul className="text-sm space-y-1 text-gray-600">
-                <li>• value, defaultValue for controlled/uncontrolled</li>
-                <li>• min, max, step for range configuration</li>
-                <li>• label, showValue for display options</li>
-                <li>• disabled for state control</li>
-                <li>• onChange, onChangeEnd for event handling</li>
-              </ul>
-            </div>
-          </div>
-        </div>
         
         {children}
       </div>

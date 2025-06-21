@@ -300,63 +300,6 @@ export function ClientSafeCardShowcase({
           </div>
         </div>
 
-        {/* Section 6: Design Specifications */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-4 h-4 rounded bg-indigo-500"></div>
-            <h3 className="text-lg font-semibold">Design Specifications</h3>
-          </div>
-          
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 space-y-4">
-            <Heading level={3} className="text-lg text-gray-900">Card Design Specifications</Heading>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Card Variants</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Default: White background with shadow-sm</div>
-                  <div>• Elevated: White background with shadow-md</div>
-                  <div>• Outlined: White background, 2px border, no shadow</div>
-                  <div>• Filled: Light gray background (gray-50), no shadow</div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Padding Options</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Small: 16px padding (compact layout)</div>
-                  <div>• Medium: 24px padding (default layout)</div>
-                  <div>• Large: 32px padding (spacious layout)</div>
-                  <div>• Custom: Any padding value via className</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Component Structure</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• CardHeader: Title and optional description</div>
-                  <div>• CardContent: Main content area</div>
-                  <div>• CardFooter: Action buttons and controls</div>
-                  <div>• All sections are optional and composable</div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Design Tokens</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Border Radius: 8px (rounded-lg)</div>
-                  <div>• Box Shadow: shadow-sm (default), shadow-md (elevated)</div>
-                  <div>• Border: 2px solid gray-200 (outlined)</div>
-                  <div>• Background: white or gray-50 (filled)</div>
-                  <div>• Typography: Plus Jakarta Sans</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {children}
       </div>
     </ComponentShowcase>

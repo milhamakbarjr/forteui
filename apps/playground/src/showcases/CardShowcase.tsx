@@ -15,9 +15,7 @@ import {
 
 import {
   ShowcaseSection,
-  ShowcaseGroup,
-  SpecificationBox,
-  SpecList
+  ShowcaseGroup
 } from '../components';
 
 export function CardShowcase() {
@@ -253,51 +251,6 @@ export function CardShowcase() {
         </div>
       </ShowcaseGroup>
 
-      {/* Design Specifications */}
-      <SpecificationBox variant="figma" title="Card Design Specifications">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Card Variants" 
-            items={[
-              "Default: White background with shadow-sm",
-              "Elevated: White background with shadow-md",
-              "Outlined: White background, 1px border, no shadow",
-              "Filled: Light gray background (gray-50), no shadow"
-            ]}
-          />
-          <SpecList 
-            title="Padding Options" 
-            items={[
-              "Small: 12px padding (compact layout)",
-              "Medium: 16px padding (default layout)",
-              "Large: 24px padding (spacious layout)",
-              "Custom: Any padding value via className"
-            ]}
-          />
-        </div>
-        
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Component Structure" 
-            items={[
-              "CardHeader: Title and optional description",
-              "CardContent: Main content area",
-              "CardFooter: Action buttons and controls",
-              "All sections are optional and composable"
-            ]}
-          />
-          <SpecList 
-            title="Design Tokens" 
-            items={[
-              "Border Radius: 12px (lg rounded)",
-              "Box Shadow: shadow-sm (default), shadow-md (elevated)",
-              "Border: 1px solid gray-200 (outlined)",
-              "Background: white or gray-50 (filled)",
-              "Typography: Plus Jakarta Sans"
-            ]}
-          />
-        </div>
-      </SpecificationBox>
     </ShowcaseSection>
   );
 }

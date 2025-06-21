@@ -190,55 +190,6 @@ export function ClientSafeTextareaShowcase({
           </div>
         </div>
 
-        {/* Design Specifications */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-            <Text variant="body-sm" className="font-medium text-gray-700">Design Specifications</Text>
-          </div>
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 space-y-4">
-            <Heading level={3} className="text-lg text-gray-900">Textarea Design Specifications</Heading>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Outline Variant (Border-based)</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Default: 1px outline, rgba(147, 161, 174, 0.20)</div>
-                  <div>• Hover: 1px outline, #1F2933 (text-primary)</div>
-                  <div>• Focus: 2px outline, #1F2933 (text-primary)</div>
-                  <div>• Error: 2px outline, #FF5833 (error-main)</div>
-                  <div>• Disabled: 1px outline + 50% opacity</div>
-                  <div>• Padding: 14px all around</div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Filled Variant (Background-based)</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Default: grey-8 background (rgba(147, 161, 174, 0.08))</div>
-                  <div>• Hover: grey-16 background (rgba(147, 161, 174, 0.16))</div>
-                  <div>• Focus: grey-16 background (rgba(147, 161, 174, 0.16))</div>
-                  <div>• Error: error-8 background (rgba(255, 88, 51, 0.08))</div>
-                  <div>• Disabled: grey-8 background + 50% opacity</div>
-                  <div>• Padding: 12px all around</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-4 space-y-2">
-              <Text variant="body-sm" className="font-semibold text-gray-900">Common Properties</Text>
-              <div className="space-y-1 text-sm text-gray-700">
-                <div>• Border Radius: 8px</div>
-                <div>• Min Heights: Small (60px), Medium (98px), Large (120px)</div>
-                <div>• Typography: 15px font size, Plus Jakarta Sans</div>
-                <div>• Resize: Vertical only (resize-y) by default</div>
-                <div>• Floating label behavior: Same as Input component</div>
-                <div>• Helper Text: 12px font size, 16px icon</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {children}
       </div>
     </ComponentShowcase>

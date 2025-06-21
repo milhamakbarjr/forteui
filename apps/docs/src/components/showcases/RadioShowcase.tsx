@@ -195,69 +195,6 @@ export function ClientSafeRadioShowcase({
           </div>
         </div>
 
-        {/* Design Specifications */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-            <Text variant="body-sm" className="font-medium text-gray-700">Design Specifications</Text>
-          </div>
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 space-y-4">
-            <Heading level={3} className="text-lg text-gray-900">Radio Component Design Specifications</Heading>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Color Variants</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Default: Action color (#657686)</div>
-                  <div>• Primary: Brand primary (#0690F4)</div>
-                  <div>• Secondary: Brand secondary (#9138FF)</div>
-                  <div>• Info: Info semantic (#00BEE0)</div>
-                  <div>• Success: Success semantic (#22B954)</div>
-                  <div>• Warning: Warning semantic (#FFAD05)</div>
-                  <div>• Error: Error semantic (#FF5833)</div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Interactive States</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Unchecked: Default ring outline</div>
-                  <div>• Unchecked Hovered: 8% background</div>
-                  <div>• Disabled: Action-disabled color</div>
-                  <div>• Checked: Filled center with color</div>
-                  <div>• Checked Hovered: 8% background</div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Features</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Two sizes: Small (20px), Medium (24px)</div>
-                  <div>• Radio groups for single selection</div>
-                  <div>• Native form integration</div>
-                  <div>• Accessibility compliant (ARIA)</div>
-                  <div>• Keyboard navigation support</div>
-                  <div>• Plus Jakarta Sans typography</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="mt-4 space-y-2">
-              <Text variant="body-sm" className="font-semibold text-gray-900">Design Tokens Used</Text>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-sm text-gray-600">
-                <div>• primary-main, primary-8</div>
-                <div>• secondary-main, secondary-8</div>
-                <div>• success-main, success-8</div>
-                <div>• warning-main, warning-8</div>
-                <div>• error-main, error-8</div>
-                <div>• info-main, info-8</div>
-                <div>• action-active, action-disabled</div>
-                <div>• grey-8 (hover backgrounds)</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {children}
       </div>
     </ComponentShowcase>

@@ -18,16 +18,14 @@ import {
 import {
   ShowcaseSection,
   ShowcaseGroup,
-  ShowcaseVariant,
-  SpecificationBox,
-  SpecList
+  ShowcaseVariant
 } from '../components';
 
 export function ButtonShowcase() {
   return (
     <ShowcaseSection
       title="Button Component"
-      description="Button component with multiple variants, sizes, states, and rich icon support following Figma specifications."
+      description="Button component with multiple variants, sizes, states, and rich icon support."
     >
       {/* Contained Variants */}
       <ShowcaseGroup title="Contained Button Variants">
@@ -184,46 +182,6 @@ export function ButtonShowcase() {
           </div>
         </ShowcaseVariant>
       </ShowcaseGroup>
-
-      {/* Design Specifications */}
-      <SpecificationBox variant="figma" title="Button Design Specifications">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Contained Button Specs" 
-            items={[
-              "Height: Small (32px), Medium (40px), Large (48px)",
-              "Border Radius: 6px (default), 8px (large)",
-              "Font: Plus Jakarta Sans Medium",
-              "Font Size: 14px (sm), 15px (md), 16px (lg)",
-              "Hover State: 8% opacity color blend",
-              "Focus Ring: 2px solid primary-lighter"
-            ]}
-          />
-          <SpecList 
-            title="Icon Button Specs" 
-            items={[
-              "Shape: Circular (border-radius: 500px)",
-              "Sizes: XS (28px), SM (36px), MD (40px), LG (48px)",
-              "Icon Sizes: 16px, 20px, 24px, 32px",
-              "Hover State: 8% opacity background",
-              "Focus Ring: 2px solid with color-lighter"
-            ]}
-          />
-        </div>
-        
-        <div className="mt-4">
-          <SpecList 
-            title="Interaction States" 
-            items={[
-              "Default: Base styling with semantic colors",
-              "Hover: 8% darken/lighten overlay effect",
-              "Pressed: 16% darken/lighten overlay effect",
-              "Focus: 2px outline ring in color-light variant",
-              "Disabled: 0.5 opacity with no-events pointer"
-            ]}
-          />
-        </div>
-      </SpecificationBox>
     </ShowcaseSection>
   );
 }

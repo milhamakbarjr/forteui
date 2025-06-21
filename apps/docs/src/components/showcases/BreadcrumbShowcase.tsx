@@ -9,7 +9,7 @@ export function BreadcrumbShowcase({
   children, 
   code, 
   title = "Breadcrumb Component",
-  description = "Navigation breadcrumb with text and icon variants following ForteUI design specifications"
+  description = "Navigation breadcrumb with text and icon variants"
 }: {
   children?: React.ReactNode;
   code?: string;
@@ -26,19 +26,19 @@ export function BreadcrumbShowcase({
             <Breadcrumb
               variant="text"
               items={[
-                { label: 'Home', href: '/' },
-                { label: 'Products', href: '/products' },
-                { label: 'Smartphones' }
+                { label: 'Home', href: '/docs/components/breadcrumb/' },
+                { label: 'Products', href: '/docs/components/breadcrumb/' },
+                { label: 'Smartphones', href: '/docs/components/breadcrumb/' }
               ]}
             />
             
             <Breadcrumb
               variant="text"
               items={[
-                { label: 'Dashboard', href: '/dashboard' },
-                { label: 'Settings', href: '/dashboard/settings' },
-                { label: 'Profile', href: '/dashboard/settings/profile' },
-                { label: 'Edit Profile' }
+                { label: 'Dashboard', href: '/docs/components/breadcrumb/' },
+                { label: 'Settings', href: '/docs/components/breadcrumb/' },
+                { label: 'Profile', href: '/docs/components/breadcrumb/' },
+                { label: 'Edit Profile', href: '/docs/components/breadcrumb/' }
               ]}
             />
           </div>
@@ -51,19 +51,19 @@ export function BreadcrumbShowcase({
             <Breadcrumb
               variant="icon"
               items={[
-                { label: 'Home', href: '/', icon: IconHome },
-                { label: 'Products', href: '/products', icon: IconShoppingCart },
-                { label: 'Smartphones', icon: IconUser }
+                { label: 'Home', href: '/docs/components/breadcrumb/', icon: IconHome },
+                { label: 'Products', href: '/docs/components/breadcrumb/', icon: IconShoppingCart },
+                { label: 'Smartphones', href: '/docs/components/breadcrumb/', icon: IconUser }
               ]}
             />
             
             <Breadcrumb
               variant="icon"
               items={[
-                { label: 'Dashboard', href: '/dashboard', icon: IconHome },
-                { label: 'Users', href: '/dashboard/users', icon: IconUser },
-                { label: 'Settings', href: '/dashboard/settings', icon: IconSettings },
-                { label: 'Profile', icon: IconUser }
+                { label: 'Dashboard', href: '/docs/components/breadcrumb/', icon: IconHome },
+                { label: 'Users', href: '/docs/components/breadcrumb/', icon: IconUser },
+                { label: 'Settings', href: '/docs/components/breadcrumb/', icon: IconSettings },
+                { label: 'Profile', href: '/docs/components/breadcrumb/', icon: IconUser }
               ]}
             />
           </div>
@@ -117,9 +117,9 @@ export function BreadcrumbShowcase({
           <div className="space-y-4">
             <Breadcrumb
               items={[
-                { label: 'Home', href: '/' },
-                { label: 'Documentation', href: '/docs' },
-                { label: 'Components', href: '/docs/components' },
+                { label: 'Home', href: '/docs/components/breadcrumb/' },
+                { label: 'Documentation', href: '/docs/components/breadcrumb/' },
+                { label: 'Components', href: '/docs/components/breadcrumb/' },
                 { label: 'Breadcrumb' }
               ]}
               separator={<IconArrowRight size={12} className="text-gray-400" />}
@@ -128,8 +128,8 @@ export function BreadcrumbShowcase({
             <Breadcrumb
               variant="icon"
               items={[
-                { label: 'Admin', href: '/admin', icon: IconSettings },
-                { label: 'Users', href: '/admin/users', icon: IconUser },
+                { label: 'Admin', href: '/docs/components/breadcrumb/', icon: IconSettings },
+                { label: 'Users', href: '/docs/components/breadcrumb/', icon: IconUser },
                 { label: 'John Doe', icon: IconUser }
               ]}
               separator={<span className="text-gray-400 text-sm">/</span>}
@@ -147,9 +147,9 @@ export function BreadcrumbShowcase({
                 <Breadcrumb
                   variant="icon"
                   items={[
-                    { label: 'Home', href: '/', icon: IconHome },
-                    { label: 'Electronics', href: '/electronics', icon: IconSettings },
-                    { label: 'Smartphones', href: '/electronics/smartphones', icon: IconUser },
+                    { label: 'Home', href: '/docs/components/breadcrumb/', icon: IconHome },
+                    { label: 'Electronics', href: '/docs/components/breadcrumb/', icon: IconSettings },
+                    { label: 'Smartphones', href: '/docs/components/breadcrumb/', icon: IconUser },
                     { label: 'iPhone 15 Pro', icon: IconStar }
                   ]}
                 />
@@ -161,9 +161,9 @@ export function BreadcrumbShowcase({
               <div className="bg-gray-50 p-4 rounded-lg">
                 <Breadcrumb
                   items={[
-                    { label: 'Dashboard', href: '/admin' },
-                    { label: 'Content Management', href: '/admin/content' },
-                    { label: 'Blog Posts', href: '/admin/content/posts' },
+                    { label: 'Dashboard', href: '/docs/components/breadcrumb/' },
+                    { label: 'Content Management', href: '/docs/components/breadcrumb/' },
+                    { label: 'Blog Posts', href: '/docs/components/breadcrumb/' },
                     { label: 'Edit: "Getting Started Guide"' }
                   ]}
                 />
@@ -176,54 +176,13 @@ export function BreadcrumbShowcase({
                 <Breadcrumb
                   variant="icon"
                   items={[
-                    { label: 'Docs', href: '/docs', icon: IconHome },
-                    { label: 'Components', href: '/docs/components', icon: IconSettings },
-                    { label: 'Navigation', href: '/docs/components/navigation', icon: IconArrowRight },
+                    { label: 'Docs', href: '/docs/components/breadcrumb/', icon: IconHome },
+                    { label: 'Components', href: '/docs/components/breadcrumb/', icon: IconSettings },
+                    { label: 'Navigation', href: '/docs/components/breadcrumb/', icon: IconArrowRight },
                     { label: 'Breadcrumb', icon: IconArrowRight }
                   ]}
                 />
               </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Design Specifications */}
-        <div className="bg-gray-50 p-6 rounded-lg space-y-4">
-          <Text variant="body-sm" className="font-medium mb-3 block">Design Specifications:</Text>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
-            <div>
-              <Text variant="body-sm" className="font-medium mb-2 block">Typography:</Text>
-              <ul className="space-y-1">
-                <li>• Font: Public Sans (font-sans)</li>
-                <li>• Size: 14px (text-sm)</li>
-                <li>• Weight: 400 (font-normal)</li>
-                <li>• Line Height: 22px</li>
-              </ul>
-            </div>
-            <div>
-              <Text variant="body-sm" className="font-medium mb-2 block">Colors:</Text>
-              <ul className="space-y-1">
-                <li>• Active: text-primary (#1F2933)</li>
-                <li>• Current: text-disabled</li>
-                <li>• Hover: text-primary-600</li>
-              </ul>
-            </div>
-            <div>
-              <Text variant="body-sm" className="font-medium mb-2 block">Spacing:</Text>
-              <ul className="space-y-1">
-                <li>• Item Gap: 16px (gap-4)</li>
-                <li>• Icon-Text Gap: 4px (gap-1)</li>
-                <li>• Icon Size: 20px × 20px</li>
-              </ul>
-            </div>
-            <div>
-              <Text variant="body-sm" className="font-medium mb-2 block">Features:</Text>
-              <ul className="space-y-1">
-                <li>• Two variants: text, icon</li>
-                <li>• Custom separators</li>
-                <li>• ARIA compliant</li>
-                <li>• Keyboard navigation</li>
-              </ul>
             </div>
           </div>
         </div>

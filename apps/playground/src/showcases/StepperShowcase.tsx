@@ -57,34 +57,6 @@ const ShowcaseVariant: React.FC<ShowcaseVariantProps> = ({ title, children, layo
   </div>
 );
 
-interface SpecificationBoxProps {
-  children: React.ReactNode;
-  title?: string;
-}
-
-const SpecificationBox: React.FC<SpecificationBoxProps> = ({ children, title = "Design Specifications" }) => (
-  <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
-    <Text variant="body" className="font-semibold mb-4 block">{title}</Text>
-    {children}
-  </div>
-);
-
-interface SpecListProps {
-  items: string[];
-  title?: string;
-}
-
-const SpecList: React.FC<SpecListProps> = ({ items, title }) => (
-  <div>
-    {title && <Text variant="body-sm" className="font-medium mb-2 block">{title}</Text>}
-    <ul className="text-sm text-gray-600 space-y-1">
-      {items.map((item, index) => (
-        <li key={index}>• {item}</li>
-      ))}
-    </ul>
-  </div>
-);
-
 // Interactive demo component
 const InteractiveStepperDemo: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
@@ -371,86 +343,6 @@ export function StepperShowcase() {
           </div>
         </ShowcaseVariant>
       </ShowcaseGroup>
-
-      {/* Design Specifications */}
-      <SpecificationBox title="Stepper Design Specifications">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Visual Variants"
-            items={[
-              "Number: 24px circles with step numbers/checkmarks",
-              "Dot: 8px circles for minimal design",
-              "Icon: 48px circles for custom icons",
-              "All variants support completed state with IconCheck",
-              "Connector lines: 2px primary (completed), 1px grey (incomplete)"
-            ]}
-          />
-          <SpecList 
-            title="Step States"
-            items={[
-              "Incomplete: Grey styling (#E1E5EA background/border)",
-              "Active: Primary styling (#0690F4 background/border)",
-              "Completed: Primary with IconCheck overlay",
-              "Smooth transitions between states (200ms duration)",
-              "Color-coded connection lines between steps"
-            ]}
-          />
-        </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-          <SpecList 
-            title="Design Tokens Used"
-            items={[
-              "Primary: #0690F4 (primary-main)",
-              "Grey: #E1E5EA (grey-300), #6B7380 (grey-600)",
-              "Text: #1F2933 (text-primary), #6B7380 (grey-500)",
-              "Typography: Plus Jakarta Sans, 14px labels",
-              "Border Radius: Full rounded circles (border-radius: 9999px)"
-            ]}
-          />
-          <SpecList 
-            title="Accessibility Features"
-            items={[
-              "ARIA progressbar role with value tracking",
-              "Keyboard navigation support (Enter/Space)",
-              "Screen reader friendly step announcements",
-              "Focus management for clickable steps",
-              "Semantic labeling: 'Step X of Y: Label'",
-              "Proper ARIA attributes for assistive technology"
-            ]}
-          />
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-4">
-          <SpecList 
-            title="Layout Options"
-            items={[
-              "Horizontal: Default row layout",
-              "Vertical: Column layout for sidebar navigation",
-              "Responsive: Adapts to container width",
-              "Flexible spacing with connector lines"
-            ]}
-          />
-          <SpecList 
-            title="Interactive Features"
-            items={[
-              "Optional click navigation (onStepClick)",
-              "Controlled current step state",
-              "Custom icons for each step",
-              "Hover states for clickable steps"
-            ]}
-          />
-          <SpecList 
-            title="Technical Details"
-            items={[
-              "React.forwardRef for component composition",
-              "TypeScript interfaces with VariantProps",
-              "CVA (class-variance-authority) for styling",
-              "Tabler Icons integration (IconCheck)"
-            ]}
-          />
-        </div>
-      </SpecificationBox>
     </ShowcaseSection>
   );
 }

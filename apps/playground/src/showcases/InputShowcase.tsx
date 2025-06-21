@@ -12,16 +12,14 @@ import {
 import {
   ShowcaseSection,
   ShowcaseGroup,
-  ShowcaseVariant,
-  SpecificationBox,
-  SpecList
+  ShowcaseVariant
 } from '../components';
 
 export function InputShowcase() {
   return (
     <ShowcaseSection
       title="Input Component"
-      description="Input component with multiple states, variants, sizes, and floating label behavior following Figma specifications."
+      description="Input component with multiple states, variants, sizes, and floating label behavior."
     >
       {/* Input States */}
       <ShowcaseGroup title="Input States">
@@ -185,48 +183,6 @@ export function InputShowcase() {
           </ShowcaseVariant>
         </div>
       </ShowcaseGroup>
-
-      {/* Design Specifications */}
-      <SpecificationBox variant="figma" title="Input Design Specifications">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Default Variant (Border-based)" 
-            items={[
-              "Default: 1px outline, rgba(147, 161, 174, 0.20)",
-              "Hover: 1px outline, #1F2933 (text-primary)",
-              "Focus: 2px outline, #1F2933 (text-primary)",
-              "Error: 2px outline, #FF5833 (error-main)",
-              "Disabled: 1px outline, rgba(147, 161, 174, 0.20) + 50% opacity",
-              "Padding: 14px left/right"
-            ]}
-          />
-          <SpecList 
-            title="Filled Variant (Background-based)" 
-            items={[
-              "Default: grey-8 background (rgba(147, 161, 174, 0.08))",
-              "Hover: grey-16 background (rgba(147, 161, 174, 0.16))",
-              "Focus: grey-16 background (rgba(147, 161, 174, 0.16))",
-              "Error: error-8 background (rgba(255, 88, 51, 0.08))",
-              "Disabled: grey-8 background + 50% opacity",
-              "Padding: 12px left, 10px right"
-            ]}
-          />
-        </div>
-        
-        <div className="mt-4">
-          <SpecList 
-            title="Common Properties" 
-            items={[
-              "Border Radius: 8px",
-              "Height: 54px (medium), 40px (small)",
-              "Typography: 15px font size, Plus Jakarta Sans",
-              "Label floating behavior: Same for both variants",
-              "Helper Text: 12px font size, 16px icon",
-              "End Adornment: 20px icon size, centered vertically"
-            ]}
-          />
-        </div>
-      </SpecificationBox>
     </ShowcaseSection>
   );
 }

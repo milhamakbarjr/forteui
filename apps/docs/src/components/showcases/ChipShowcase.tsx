@@ -334,52 +334,6 @@ export function ClientSafeChipShowcase({
           </div>
         </div>
 
-        {/* Design Specifications */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-            <Text variant="body-sm" className="font-medium text-gray-700">Design Specifications</Text>
-          </div>
-          <div className="p-6 bg-blue-50 rounded-lg space-y-4">
-            <Text variant="body-sm" className="font-medium">Figma Design Specifications</Text>
-            <Text variant="body-sm" color="secondary" className="mb-4">
-              Chip component follows exact Figma specifications for sizing, spacing, typography, and action icons
-            </Text>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <div>
-                <Text variant="caption" className="font-medium mb-2 block">Medium Size (32px):</Text>
-                <ul className="text-xs text-gray-600 space-y-1">
-                  <li>• Height: 32px (fixed)</li>
-                  <li>• Outer padding: 4px left/right</li>
-                  <li>• Label padding: 8px left/right</li>
-                  <li>• Border radius: 10px (filled), 8px (outlined/soft)</li>
-                  <li>• Typography: 13px, weight 500, line-height 18px</li>
-                </ul>
-              </div>
-              <div>
-                <Text variant="caption" className="font-medium mb-2 block">Small Size (24px):</Text>
-                <ul className="text-xs text-gray-600 space-y-1">
-                  <li>• Height: 24px (fixed)</li>
-                  <li>• Outer padding: 3px left/right</li>
-                  <li>• Label padding: 5px left/right</li>
-                  <li>• Border radius: 8px (all variants)</li>
-                  <li>• Typography: 13px, weight 500, line-height 18px</li>
-                </ul>
-              </div>
-              <div>
-                <Text variant="caption" className="font-medium mb-2 block">Action Icon System:</Text>
-                <ul className="text-xs text-gray-600 space-y-1">
-                  <li>• Icon container: 20px × 20px (both sizes)</li>
-                  <li>• Icon size: 16.67px (exact from Figma)</li>
-                  <li>• Opacity: 48% (default), 75% (hover)</li>
-                  <li>• Start icon margin-right: 4px</li>
-                  <li>• End icon margin-left: 4px</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {children}
       </div>
     </ComponentShowcase>

@@ -356,63 +356,6 @@ export function ClientSafeSwitchShowcase({
           </div>
         </div>
 
-        {/* Design Specifications */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-indigo-500 rounded-full"></div>
-            <Text variant="body-sm" className="font-medium text-gray-700">Design Specifications</Text>
-          </div>
-          <div className="bg-purple-50 border border-purple-200 rounded-lg p-6 space-y-4">
-            <Heading level={3} className="text-lg text-gray-900">Switch Design Specifications</Heading>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Dimensions</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Small: 25px × 18px track, 10px thumb</div>
-                  <div>• Medium: 33px × 20px track, 14px thumb</div>
-                  <div>• Track padding: 3px on all sides</div>
-                  <div>• Border radius: Fully rounded (500px)</div>
-                  <div>• Container height: 24px (small), 38px (medium)</div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Spacing & Typography</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Label gap: 7px (small), 9px (medium)</div>
-                  <div>• Font: Plus Jakarta Sans, 14px, 400 weight</div>
-                  <div>• Line height: 22px</div>
-                  <div>• Thumb translation: 7px (small), 13px (medium)</div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Colors</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Unchecked background: grey.48</div>
-                  <div>• Checked background: Semantic color variants</div>
-                  <div>• Thumb: white (#ffffff)</div>
-                  <div>• Label: text.primary (#1F2933)</div>
-                  <div>• Disabled label: grey.500 (#93A1AE)</div>
-                </div>
-              </div>
-              
-              <div className="space-y-2">
-                <Text variant="body-sm" className="font-semibold text-gray-900">Interaction States</Text>
-                <div className="space-y-1 text-sm text-gray-700">
-                  <div>• Hover: 8% opacity overlay of semantic color</div>
-                  <div>• Focus: Ring with 2px offset in semantic color</div>
-                  <div>• Disabled: 48% opacity, no interactions</div>
-                  <div>• Transition: 200ms ease-in-out for all changes</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {children}
       </div>
     </ComponentShowcase>

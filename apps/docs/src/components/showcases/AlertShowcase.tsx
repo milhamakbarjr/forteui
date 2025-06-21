@@ -202,56 +202,6 @@ export function ClientSafeAlertShowcase({
           </div>
         </div>
 
-        {/* Design Specifications */}
-        <div className="space-y-4">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-2 h-2 bg-gray-500 rounded-full"></div>
-            <Text variant="body-sm" className="font-medium text-gray-700">Design Specifications</Text>
-          </div>
-          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 space-y-4">
-            <Text variant="body-sm" className="font-medium mb-3 block">Alert Component Technical Details</Text>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div>
-                <Text variant="body-sm" className="font-medium mb-2 block">Variants:</Text>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Default: Light backgrounds with subtle borders</li>
-                  <li>• Filled: Strong semantic color backgrounds</li>
-                  <li>• Outline: Emphasized borders with light backgrounds</li>
-                </ul>
-              </div>
-              <div>
-                <Text variant="body-sm" className="font-medium mb-2 block">Severity Levels:</Text>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Info: Information circle icon (blue)</li>
-                  <li>• Success: Check mark icon (green)</li>
-                  <li>• Warning: Alert triangle icon (yellow)</li>
-                  <li>• Error: X mark icon (red)</li>
-                </ul>
-              </div>
-              <div>
-                <Text variant="body-sm" className="font-medium mb-2 block">Features:</Text>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Dismissible with closable prop</li>
-                  <li>• Custom icon override support</li>
-                  <li>• Icon hiding capability</li>
-                  <li>• ARIA role="alert" for accessibility</li>
-                  <li>• Consistent color tokens</li>
-                  <li>• Plus Jakarta Sans typography</li>
-                </ul>
-              </div>
-            </div>
-            <div className="mt-4 grid gap-2 text-sm text-gray-600">
-              <Text variant="body-sm" className="font-medium mb-2 block">Design Tokens Used:</Text>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                <div>• info-main, info-8, info-48</div>
-                <div>• success-main, success-8, success-48</div>
-                <div>• warning-main, warning-8, warning-48</div>
-                <div>• error-main, error-8, error-48</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {children}
       </div>
     </ComponentShowcase>

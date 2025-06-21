@@ -7,9 +7,7 @@ import {
 import {
   ShowcaseSection,
   ShowcaseGroup,
-  ShowcaseVariant,
-  SpecificationBox,
-  SpecList
+  ShowcaseVariant
 } from '../components';
 
 export function TextareaShowcase() {
@@ -154,48 +152,6 @@ export function TextareaShowcase() {
           </div>
         </div>
       </ShowcaseGroup>
-
-      {/* Design Specifications */}
-      <SpecificationBox variant="figma" title="Textarea Design Specifications">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Outline Variant (Border-based)" 
-            items={[
-              "Default: 1px outline, rgba(147, 161, 174, 0.20)",
-              "Hover: 1px outline, #1F2933 (text-primary)",
-              "Focus: 2px outline, #1F2933 (text-primary)",
-              "Error: 2px outline, #FF5833 (error-main)",
-              "Disabled: 1px outline, rgba(147, 161, 174, 0.20) + 50% opacity",
-              "Padding: 14px all around"
-            ]}
-          />
-          <SpecList 
-            title="Filled Variant (Background-based)" 
-            items={[
-              "Default: grey-8 background (rgba(147, 161, 174, 0.08))",
-              "Hover: grey-16 background (rgba(147, 161, 174, 0.16))",
-              "Focus: grey-16 background (rgba(147, 161, 174, 0.16))",
-              "Error: error-8 background (rgba(255, 88, 51, 0.08))",
-              "Disabled: grey-8 background + 50% opacity",
-              "Padding: 12px all around"
-            ]}
-          />
-        </div>
-        
-        <div className="mt-4">
-          <SpecList 
-            title="Common Properties" 
-            items={[
-              "Border Radius: 8px",
-              "Min Heights: Small (60px), Medium (98px), Large (120px)",
-              "Typography: 15px font size, Plus Jakarta Sans",
-              "Resize: Vertical only (resize-y) by default",
-              "Floating label behavior: Same as Input component",
-              "Helper Text: 12px font size, 16px icon"
-            ]}
-          />
-        </div>
-      </SpecificationBox>
     </ShowcaseSection>
   );
 }

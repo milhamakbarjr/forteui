@@ -162,7 +162,7 @@ export function AvatarShowcase({
           </div>
         </div>
 
-        {/* Design Specifications - Fallback Handling */}
+        {/* Fallback Handling */}
         <div className="space-y-4">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-2 h-2 bg-red-500 rounded-full"></div>

@@ -5,7 +5,7 @@ import * as SwitchPrimitives from "@radix-ui/react-switch";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "../../lib/utils";
 
-// Switch root variants using Figma design specifications
+// Switch root variants with semantic colors
 const switchVariants = cva(
   // Base styles: rounded track with flex layout to position thumb consistently
   [

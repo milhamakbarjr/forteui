@@ -7,9 +7,7 @@ import { useState } from 'react';
 import {
   ShowcaseSection,
   ShowcaseGroup,
-  ShowcaseVariant,
-  SpecificationBox,
-  SpecList
+  ShowcaseVariant
 } from '../components';
 
 export function CheckboxShowcase() {
@@ -133,57 +131,6 @@ export function CheckboxShowcase() {
           />
         </ShowcaseVariant>
       </ShowcaseGroup>
-
-      {/* Design Specifications */}
-      <SpecificationBox variant="design-tokens" title="Checkbox Design Specifications">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Sizes" 
-            items={[
-              "Small: 20px × 20px",
-              "Medium: 24px × 24px (default)",
-              "Checkbox icon scales with container size",
-              "Label maintains consistent text size"
-            ]}
-          />
-          <SpecList 
-            title="Interaction States" 
-            items={[
-              "Unchecked: Border outline with semantic color",
-              "Checked: Filled background with check icon",
-              "Hover: 8% opacity background with color",
-              "Focus: Ring outline for keyboard navigation",
-              "Disabled: 40% opacity, no interaction"
-            ]}
-          />
-        </div>
-        
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Color Variants" 
-            items={[
-              "Default: Action color (#657686)",
-              "Primary: Brand primary (#0690F4)",
-              "Secondary: Brand secondary (#9138FF)",
-              "Info: Info semantic (#00BEE0)",
-              "Success: Success semantic (#22B954)",
-              "Warning: Warning semantic (#FFAD05)",
-              "Error: Error semantic (#FF5833)"
-            ]}
-          />
-          <SpecList 
-            title="Accessibility Features" 
-            items={[
-              "Proper ARIA role attributes",
-              "Keyboard navigation support",
-              "Focus visible state for keyboard users",
-              "Screen reader announcements",
-              "Label association with input",
-              "Sufficient color contrast ratio"
-            ]}
-          />
-        </div>
-      </SpecificationBox>
     </ShowcaseSection>
   );
 }

@@ -280,23 +280,6 @@ function StatusIndicators() {
 | `variant` | `'default' \| 'primary' \| 'secondary' \| 'info' \| 'success' \| 'warning' \| 'error'` | `'default'` | Badge color variant |
 | `className` | `string` | - | Additional CSS classes |
 
-## Design Specifications
-
-### Positioning
-- **Number badges**: Positioned at `-top-2` with dynamic right offset
-- **Dot badges**: Positioned at `-top-1.5, -right-1.5`
-- **Border**: 2px white border for separation from background
-
-### Sizing
-- **Number badges**: Minimum 20px height/width, 6px horizontal padding
-- **Dot badges**: 10px width/height (w-2.5 h-2.5)
-- **Typography**: 12px font size with bold weight
-
-### Overflow Behavior
-- **Default max**: 99 (shows "99+" for counts ≥ 100)
-- **Dynamic positioning**: Adjusts based on formatted count length
-- **Customizable**: Use `max` prop for different overflow points
-
 ## Accessibility
 
 - **Wrapper Component**: Badge acts as a wrapper around child elements

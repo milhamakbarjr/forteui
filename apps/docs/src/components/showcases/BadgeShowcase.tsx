@@ -309,61 +309,6 @@ export function ClientSafeBadgeShowcase({
             </div>
           </div>
         </div>
-
-        {/* Section 6: Design Specifications */}
-        <div className="space-y-6">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="w-4 h-4 rounded bg-indigo-500"></div>
-            <h3 className="text-lg font-semibold">Design Specifications</h3>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-3">Badge Positioning</h4>
-              <ul className="text-sm space-y-1 text-gray-600">
-                <li>• Absolute positioning with CSS top/right offsets</li>
-                <li>• Number badges: -top-2, dynamic right positioning</li>
-                <li>• Dot badges: -top-1.5, -right-1.5 for consistent placement</li>
-                <li>• White border (2px) for separation from background</li>
-                <li>• Automatic positioning adjustment based on count length</li>
-              </ul>
-            </div>
-            
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-3">Typography & Sizing</h4>
-              <ul className="text-sm space-y-1 text-gray-600">
-                <li>• Font size: 12px (text-xs) with font-bold weight</li>
-                <li>• Minimum size: 20px height/width for number badges</li>
-                <li>• Dot badges: 10px width/height (w-2.5 h-2.5)</li>
-                <li>• Padding: 6px horizontal for number badges (px-1.5)</li>
-                <li>• Fully rounded corners (rounded-full)</li>
-              </ul>
-            </div>
-            
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-3">Overflow Handling</h4>
-              <ul className="text-sm space-y-1 text-gray-600">
-                <li>• Default max: 99 (shows "99+" for counts ≥ 100)</li>
-                <li>• Customizable max prop for different overflow points</li>
-                <li>• Dynamic positioning based on formatted count length</li>
-                <li>• Single digit: -right-3, Double/triple: -right-4/-right-6</li>
-                <li>• Maintains readability with automatic width adjustment</li>
-              </ul>
-            </div>
-            
-            <div className="p-4 border rounded-lg">
-              <h4 className="font-medium mb-3">Accessibility & Props</h4>
-              <ul className="text-sm space-y-1 text-gray-600">
-                <li>• children (ReactNode): Required wrapper content</li>
-                <li>• count (number): Badge count value</li>
-                <li>• showZero (boolean): Show badge when count is 0</li>
-                <li>• max (number): Maximum before showing "max+"</li>
-                <li>• type ("number" | "dot"): Badge display type</li>
-                <li>• variant: 7 semantic colors available</li>
-              </ul>
-            </div>
-          </div>
-        </div>
         
         {children}
       </div>

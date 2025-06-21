@@ -9,7 +9,7 @@ export function ButtonShowcase({
   children, 
   code, 
   title = "Button Component",
-  description = "Button component with multiple variants, sizes, states, and rich icon support following ForteUI design specifications"
+  description = "Button component with multiple variants, sizes, states, and rich icon support"
 }: {
   children?: React.ReactNode;
   code?: string;
@@ -240,44 +240,6 @@ export function ButtonShowcase({
               <strong>Status:</strong> {loading ? 'Processing...' : 'Ready'} |
               <strong> Click Count:</strong> {clickCount}
             </div>
-          </div>
-        </div>
-
-        {/* Design Specifications */}
-        <div className="space-y-4">
-          <h4 className="text-sm font-medium text-gray-900">Design Specifications</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4 bg-gray-50 rounded-lg">
-            <div>
-              <h5 className="text-sm font-medium mb-2">Contained Button Specs</h5>
-              <ul className="text-sm text-gray-600 space-y-1">
-                <li>• Height: Small (32px), Medium (40px), Large (48px)</li>
-                <li>• Border Radius: 6px (default), 8px (large)</li>
-                <li>• Font: Plus Jakarta Sans Medium</li>
-                <li>• Font Size: 14px (sm), 15px (md), 16px (lg)</li>
-                <li>• Hover State: 8% opacity color blend</li>
-                <li>• Focus Ring: 2px solid primary-lighter</li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="text-sm font-medium mb-2">Icon Button Specs</h5>
-              <ul className="text-sm text-gray-600 space-y-1">
-                <li>• Shape: Circular (border-radius: 500px)</li>
-                <li>• Sizes: XS (28px), SM (36px), MD (40px), LG (48px)</li>
-                <li>• Icon Sizes: 16px, 20px, 24px, 32px</li>
-                <li>• Hover State: 8% opacity background</li>
-                <li>• Focus Ring: 2px solid with color-lighter</li>
-              </ul>
-            </div>
-          </div>
-          <div className="p-4 bg-gray-50 rounded-lg">
-            <h5 className="text-sm font-medium mb-2">Interaction States</h5>
-            <ul className="text-sm text-gray-600 space-y-1">
-              <li>• Default: Base styling with semantic colors</li>
-              <li>• Hover: 8% darken/lighten overlay effect</li>
-              <li>• Pressed: 16% darken/lighten overlay effect</li>
-              <li>• Focus: 2px outline ring in color-light variant</li>
-              <li>• Disabled: 0.5 opacity with no-events pointer</li>
-            </ul>
           </div>
         </div>
       </div>

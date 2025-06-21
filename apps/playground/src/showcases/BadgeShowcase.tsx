@@ -58,7 +58,7 @@ export const BadgeShowcase: React.FC = () => {
   return (
     <ShowcaseSection
       title="Badge Component"
-      description="Badge component for icons with number counts or dot indicators using CSS positioning and Figma design specifications."
+      description="Badge component for icons with number counts or dot indicators using CSS positioning."
     >
       <div className="space-y-8">
         {/* Number Badge Examples */}

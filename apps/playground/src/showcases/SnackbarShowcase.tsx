@@ -4,9 +4,7 @@ import { Snackbar } from 'forteui-core';
 import {
   ShowcaseSection,
   ShowcaseGroup,
-  ShowcaseVariant,
-  SpecificationBox,
-  SpecList
+  ShowcaseVariant
 } from '../components';
 
 export function SnackbarShowcase() {
@@ -225,71 +223,6 @@ export function SnackbarShowcase() {
           </ShowcaseVariant>
         </div>
       </ShowcaseGroup>
-
-      {/* Design Specifications */}
-      <SpecificationBox variant="figma" title="Snackbar Design Specifications">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Variants" 
-            items={[
-              "Default: Dark theme (#1F2933) with white text",
-              "Action: Light theme with semantic color actions",
-              "Both variants: 420px fixed width",
-              "Border radius: 12px for consistency",
-              "Shadow: 0px 8px 16px rgba(147, 161, 174, 0.16)"
-            ]}
-          />
-          <SpecList 
-            title="Semantic Severities" 
-            items={[
-              "Info: Info circle icon with cyan colors (#00BEE0)",
-              "Success: Check icon with green colors (#22B954)",
-              "Warning: Alert triangle icon with orange colors (#FFAD05)",
-              "Error: Alert circle icon with red colors (#FF5833)",
-              "Default: No icon, dark theme styling"
-            ]}
-          />
-        </div>
-        
-        <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SpecList 
-            title="Icon System" 
-            items={[
-              "Icon container: 48px × 48px with 12px border radius",
-              "Background: 8% opacity of semantic color",
-              "Icon size: 24px (w-6 h-6)",
-              "Icons from Tabler Icons for consistency",
-              "Auto-mapped based on severity level"
-            ]}
-          />
-          <SpecList 
-            title="Typography & Actions" 
-            items={[
-              "Message: 14px font-weight 600, line-height 22px",
-              "Action label: 13px font-weight 700, line-height 22px",
-              "Action button: 30px height, 8px padding",
-              "Close button: 20px circular with border",
-              "Plus Jakarta Sans font family"
-            ]}
-          />
-        </div>
-
-        <div className="mt-4 grid gap-2 text-sm text-gray-600">
-          <div className="font-medium mb-2">Design Tokens Used:</div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-            <div>• info-main, info-8, info-dark</div>
-            <div>• success-main, success-8, success-dark</div>
-            <div>• warning-main, warning-8, warning-dark</div>
-            <div>• error-main, error-8, error-dark</div>
-          </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2 mt-2">
-            <div>• primary-main, primary-dark</div>
-            <div>• grey-800, grey-16, grey-8</div>
-            <div>• Fixed width: 420px</div>
-            <div>• Shadow: shadow-md</div>
-          </div>
-        </div>
-      </SpecificationBox>
     </ShowcaseSection>
   );
 }

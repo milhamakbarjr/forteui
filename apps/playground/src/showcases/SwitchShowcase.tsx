@@ -7,8 +7,7 @@ import {
   ShowcaseSection,
   ShowcaseGroup,
   ShowcaseVariant,
-  SpecificationBox,
-  SpecList
+  SpecificationBox
 } from '../components';
 
 export function SwitchShowcase() {
@@ -36,7 +35,7 @@ export function SwitchShowcase() {
   return (
     <ShowcaseSection
       title="Switch"
-      description="A switch component that allows users to toggle between two states. Implemented with accessibility-first approach using Radix UI primitives and faithful to Figma design specifications."
+      description="A switch component that allows users to toggle between two states. Implemented with accessibility-first approach using Radix UI primitives."
     >
       {/* Real-World Examples */}
       <ShowcaseGroup title="Real-World Examples">
@@ -313,62 +312,6 @@ export function SwitchShowcase() {
           </ShowcaseVariant>
         </div>
       </ShowcaseGroup>
-
-      {/* Design Specifications */}
-      <SpecificationBox variant="figma" title="Switch Design Specifications">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h4 className="font-semibold text-text-primary mb-3">Dimensions</h4>
-            <SpecList
-              title="Size Specifications"
-              items={[
-                "Small: 25px × 18px track, 10px thumb",
-                "Medium: 33px × 20px track, 14px thumb",
-                "Track padding: 3px on all sides",
-                "Border radius: Fully rounded (500px)",
-                "Container height: 24px (small), 38px (medium)"
-              ]}
-            />
-          </div>
-          <div>
-            <h4 className="font-semibold text-text-primary mb-3">Spacing & Typography</h4>
-            <SpecList
-              title="Layout Details"
-              items={[
-                "Label gap: 7px (small), 9px (medium)",
-                "Font: Plus Jakarta Sans, 14px, 400 weight",
-                "Line height: 22px",
-                "Thumb translation: 7px (small), 13px (medium)"
-              ]}
-            />
-          </div>
-          <div>
-            <h4 className="font-semibold text-text-primary mb-3">Colors</h4>
-            <SpecList
-              title="Color Tokens"
-              items={[
-                "Unchecked background: grey.48 (rgba(147, 161, 174, 0.48))",
-                "Checked background: Semantic color main variants",
-                "Thumb: white (#ffffff)",
-                "Label: text.primary (#1F2933)",
-                "Disabled label: grey.500 (#93A1AE)"
-              ]}
-            />
-          </div>
-          <div>
-            <h4 className="font-semibold text-text-primary mb-3">Interaction States</h4>
-            <SpecList
-              title="State Behaviors"
-              items={[
-                "Hover: 8% opacity overlay of semantic color",
-                "Focus: Ring with 2px offset in semantic color",
-                "Disabled: 48% opacity, no interactions",
-                "Transition: 200ms ease-in-out for all changes"
-              ]}
-            />
-          </div>
-        </div>
-      </SpecificationBox>
 
       {/* Implementation Examples */}
       <SpecificationBox variant="default" title="Implementation Examples">

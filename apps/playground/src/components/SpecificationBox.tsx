@@ -8,7 +8,7 @@ interface SpecificationBoxProps {
 }
 
 export function SpecificationBox({ 
-  title = "Design Specifications", 
+  title = "Implementation Details", 
   children, 
   variant = 'default',
   className = "" 

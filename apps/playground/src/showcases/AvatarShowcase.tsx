@@ -2,9 +2,7 @@ import { Avatar, Text, IconUser, IconSettings, IconHeart, IconStar, IconHome, Ic
 import { 
   ShowcaseSection, 
   ShowcaseGroup, 
-  ShowcaseVariant, 
-  SpecificationBox, 
-  SpecList 
+  ShowcaseVariant
 } from '../components';
 
 // Avatar Images
@@ -120,95 +118,6 @@ export function AvatarShowcase() {
         </ShowcaseVariant>
       </ShowcaseGroup>
 
-      {/* Figma Patterns */}
-      <ShowcaseGroup title="Figma Pattern Examples">
-        <div className="space-y-6">
-          <SpecificationBox title="Circular Image Avatars" variant="default" className="bg-gray-50">
-            <Text variant="body-sm" color="secondary" className="mb-3">
-              Figma Pattern: Circular avatars with border-radius: 500px (All sizes 24px-64px)
-            </Text>
-            <ShowcaseVariant title="" layout="horizontal">
-              <div className="text-center">
-                <Avatar size="xs" shape="circular" src={avatarImage1} alt="Avatar 1" fallback="A1" />
-                <Text variant="caption" className="block mt-1">24px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="sm" shape="circular" src={avatarImage2} alt="Avatar 2" fallback="A2" />
-                <Text variant="caption" className="block mt-1">32px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="md" shape="circular" src={avatarImage3} alt="Avatar 3" fallback="A3" />
-                <Text variant="caption" className="block mt-1">40px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="lg" shape="circular" src={avatarImage4} alt="Avatar 4" fallback="A4" />
-                <Text variant="caption" className="block mt-1">48px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="xl" shape="circular" src={avatarImage5} alt="Avatar 5" fallback="A5" />
-                <Text variant="caption" className="block mt-1">64px</Text>
-              </div>
-            </ShowcaseVariant>
-          </SpecificationBox>
-
-          <SpecificationBox title="Rounded Image Avatars" variant="default" className="bg-blue-50">
-            <Text variant="body-sm" color="secondary" className="mb-3">
-              Figma Pattern: Rounded avatars with border-radius: 12px (All sizes 24px-64px)
-            </Text>
-            <ShowcaseVariant title="" layout="horizontal">
-              <div className="text-center">
-                <Avatar size="xs" shape="rounded" src={avatarImage2} alt="Avatar 2" fallback="A2" />
-                <Text variant="caption" className="block mt-1">24px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="sm" shape="rounded" src={avatarImage3} alt="Avatar 3" fallback="A3" />
-                <Text variant="caption" className="block mt-1">32px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="md" shape="rounded" src={avatarImage4} alt="Avatar 4" fallback="A4" />
-                <Text variant="caption" className="block mt-1">40px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="lg" shape="rounded" src={avatarImage5} alt="Avatar 5" fallback="A5" />
-                <Text variant="caption" className="block mt-1">48px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="xl" shape="rounded" src={avatarImage1} alt="Avatar 1" fallback="A1" />
-                <Text variant="caption" className="block mt-1">64px</Text>
-              </div>
-            </ShowcaseVariant>
-          </SpecificationBox>
-
-          <SpecificationBox title="Square Image Avatars" variant="default" className="bg-green-50">
-            <Text variant="body-sm" color="secondary" className="mb-3">
-              Figma Pattern: Square avatars with no border-radius (All sizes 24px-64px)
-            </Text>
-            <ShowcaseVariant title="" layout="horizontal">
-              <div className="text-center">
-                <Avatar size="xs" shape="square" src={avatarImage3} alt="Avatar 3" fallback="A3" />
-                <Text variant="caption" className="block mt-1">24px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="sm" shape="square" src={avatarImage4} alt="Avatar 4" fallback="A4" />
-                <Text variant="caption" className="block mt-1">32px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="md" shape="square" src={avatarImage5} alt="Avatar 5" fallback="A5" />
-                <Text variant="caption" className="block mt-1">40px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="lg" shape="square" src={avatarImage1} alt="Avatar 1" fallback="A1" />
-                <Text variant="caption" className="block mt-1">48px</Text>
-              </div>
-              <div className="text-center">
-                <Avatar size="xl" shape="square" src={avatarImage2} alt="Avatar 2" fallback="A2" />
-                <Text variant="caption" className="block mt-1">64px</Text>
-              </div>
-            </ShowcaseVariant>
-          </SpecificationBox>
-        </div>
-      </ShowcaseGroup>
-
       {/* Avatar with Images and Fallbacks */}
       <ShowcaseGroup title="Avatar with Images & Fallbacks">
         <ShowcaseVariant title="Local Images with Fallback Support" layout="horizontal">
@@ -297,41 +206,6 @@ export function AvatarShowcase() {
           <Avatar size="xl" shape="rounded" variant="warning" fallback="XL" />
         </ShowcaseVariant>
       </ShowcaseGroup>
-
-      {/* Specifications */}
-      <SpecificationBox title="Avatar Design Specifications" variant="figma">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <SpecList 
-            title="Avatar Sizes:"
-            items={[
-              "XS: 24px × 24px",
-              "SM: 32px × 32px", 
-              "MD: 40px × 40px (default)",
-              "LG: 48px × 48px",
-              "XL: 64px × 64px"
-            ]}
-          />
-          <SpecList 
-            title="Shape Options:"
-            items={[
-              "Circular: border-radius: 500px",
-              "Rounded: border-radius: 12px",
-              "Square: border-radius: 0px",
-              "All shapes support images & fallbacks"
-            ]}
-          />
-          <SpecList 
-            title="Status Features:"
-            items={[
-              "Online: Green dot indicator",
-              "Away: Yellow dot indicator", 
-              "Busy: Red dot indicator",
-              "Offline: Gray dot indicator",
-              "2px white border for contrast"
-            ]}
-          />
-        </div>
-      </SpecificationBox>
     </ShowcaseSection>
   );
 }

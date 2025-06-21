@@ -51,21 +51,11 @@ const ShowcaseVariant: React.FC<ShowcaseVariantProps> = ({ title, children }) =>
   </div>
 );
 
-interface SpecificationBoxProps {
-  children: React.ReactNode;
-}
-
-const SpecificationBox: React.FC<SpecificationBoxProps> = ({ children }) => (
-  <div className="bg-gray-50 p-6 rounded-lg space-y-4">
-    {children}
-  </div>
-);
-
 export const BreadcrumbShowcase: React.FC = () => {
   return (
     <ShowcaseSection
       title="Breadcrumb Component"
-      description="Navigation breadcrumb with text and icon variants following ForteUI design specifications."
+      description="Navigation breadcrumb with text and icon variants."
     >
       <div className="space-y-8">
         {/* Text Variant */}
@@ -227,47 +217,6 @@ export const BreadcrumbShowcase: React.FC = () => {
             </ShowcaseVariant>
           </div>
         </ShowcaseGroup>
-
-        {/* Specifications */}
-        <SpecificationBox>
-          <Text variant="body-sm" className="font-medium mb-3 block">Design Specifications:</Text>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm text-gray-600">
-            <div>
-              <Text variant="body-sm" className="font-medium mb-2 block">Typography:</Text>
-              <ul className="space-y-1">
-                <li>• Font: Public Sans (font-sans)</li>
-                <li>• Size: 14px (text-sm)</li>
-                <li>• Weight: 400 (font-normal)</li>
-                <li>• Line Height: 22px</li>
-              </ul>
-            </div>
-            <div>
-              <Text variant="body-sm" className="font-medium mb-2 block">Colors:</Text>
-              <ul className="space-y-1">
-                <li>• Active: text-primary (#1F2933)</li>
-                <li>• Current: text-disabled</li>
-                <li>• Hover: text-primary-600</li>
-              </ul>
-            </div>
-            <div>
-              <Text variant="body-sm" className="font-medium mb-2 block">Spacing:</Text>
-              <ul className="space-y-1">
-                <li>• Item Gap: 16px (gap-4)</li>
-                <li>• Icon-Text Gap: 4px (gap-1)</li>
-                <li>• Icon Size: 20px × 20px</li>
-              </ul>
-            </div>
-            <div>
-              <Text variant="body-sm" className="font-medium mb-2 block">Features:</Text>
-              <ul className="space-y-1">
-                <li>• Two variants: text, icon</li>
-                <li>• Custom separators</li>
-                <li>• ARIA compliant</li>
-                <li>• Keyboard navigation</li>
-              </ul>
-            </div>
-          </div>
-        </SpecificationBox>
       </div>
     </ShowcaseSection>
   );
