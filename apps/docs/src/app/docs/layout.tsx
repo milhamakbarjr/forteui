@@ -23,7 +23,8 @@ import {
   IconChevronRight,
   IconChevronDown,
   IconFolder,
-  IconFolderOpen
+  IconFolderOpen,
+  IconDots
 } from '@tabler/icons-react';
 import '../../styles/navigation.css';
 
@@ -70,7 +71,80 @@ const SearchTrigger = dynamic(
   }
 );
 
-// Custom hook for navigation state management
+// Helper function to get current page title from path
+const getCurrentPageTitle = (path: string, navigationData: NavigationItem[]) => {
+  for (const section of navigationData) {
+    if (section.children) {
+      for (const item of section.children) {
+        if (item.href === path) {
+          return item.label;
+        }
+      }
+    }
+  }
+  
+  // Fallback: extract from path
+  const segments = path.split('/').filter(Boolean);
+  const lastSegment = segments[segments.length - 1];
+  if (lastSegment) {
+    return lastSegment.split('-').map(word => 
+      word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
+  }
+  
+  return 'Documentation';
+};
+
+// Mobile Action Menu Component (Simplified)
+const MobileActionMenu = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  return (
+    <div className="relative">
+      <Button
+        variant="text-default"
+        size="sm"
+        onClick={() => setIsOpen(!isOpen)}
+        className="p-2 h-10 w-10 hover:bg-neutral-100 rounded-xl transition-all duration-200"
+        aria-label="More options"
+      >
+        <IconDots size={20} />
+      </Button>
+      
+      {isOpen && (
+        <>
+          <div 
+            className="fixed inset-0 z-40" 
+            onClick={() => setIsOpen(false)}
+          />
+          <div className="absolute right-0 top-12 bg-white border border-neutral-200 rounded-xl shadow-lg py-2 min-w-48 z-50">
+            <a
+              href="https://github.com/forteui/forteui"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full px-4 py-3 text-left text-sm hover:bg-neutral-50 flex items-center gap-3"
+              onClick={() => setIsOpen(false)}
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              View on GitHub
+            </a>
+            <div className="px-4 py-3 text-left text-sm text-neutral-500 flex items-center gap-3 border-t border-neutral-100 mt-2 pt-3">
+              <Badge variant="secondary" className="text-xs px-2 py-1">
+                v0.1.3
+              </Badge>
+              <span className="text-xs">Version Info</span>
+            </div>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+// Progressive Breadcrumb Component for Mobile (Removed - redundant with header title)
+// Mobile breadcrumb removed to reduce redundancy since current page is shown in header
 const useNavigationState = (currentPath: string, navigationData: NavigationItem[]) => {
   // Initialize expanded items with persistence and smart defaults
   const [expandedItems, setExpandedItems] = useState<Set<string>>(() => {
@@ -454,18 +528,19 @@ const NavigationItem = ({
     <div className="navigation-item">
       <div 
         className={`
-          relative flex items-center gap-3 px-3 py-2.5 mx-2
+          relative flex items-center gap-3 px-3 py-3 mx-2 rounded-lg
           transition-all duration-200 cursor-pointer group
           ${level > 0 ? `ml-${level * 4}` : ''}
           ${'disabled' in item && item.disabled
             ? 'text-neutral-400 cursor-not-allowed'
-            : 'text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900'
+            : 'text-neutral-700 hover:bg-neutral-100 hover:text-neutral-900 active:bg-neutral-200'
           }
         `}
         onClick={handleClick}
         style={{ 
           marginLeft: level > 0 ? `${level * 16}px` : '0px',
-          paddingLeft: level > 0 ? '12px' : '12px'
+          paddingLeft: level > 0 ? '12px' : '12px',
+          minHeight: '44px' // Touch-friendly minimum height
         }}
       >
         {/* Icon */}
@@ -509,7 +584,8 @@ const NavigationItem = ({
               e.stopPropagation();
               handleToggle();
             }}
-            className="p-1 opacity-60 group-hover:opacity-100 hover:bg-white/50 transition-all"
+            className="p-2 opacity-60 group-hover:opacity-100 hover:bg-white/50 transition-all rounded-md"
+            style={{ minWidth: '32px', minHeight: '32px' }} // Touch-friendly size
           >
             <IconChevronDown 
               size={14}
@@ -597,9 +673,9 @@ const BreadcrumbNav = ({ currentPath }: { currentPath: string }) => {
   );
 };
 
-// Main Header Component
+// Main Header Component (Desktop only)
 const MainHeader = ({ currentPath, onSearchOpen }: { currentPath: string; onSearchOpen: () => void }) => (
-  <header className="main-header bg-white/95 backdrop-blur-sm border-b border-neutral-200 sticky top-0 z-40">
+  <header className="main-header bg-white/95 backdrop-blur-sm border-b border-neutral-200 sticky top-0 z-40 hidden lg:block">
     <div className="px-6 py-4">
       <div className="flex items-center justify-between mb-4">
         <a 
@@ -745,45 +821,9 @@ export default function Layout({ children }: { children: ReactNode }) {
           `}
         >
           <div className="p-0 flex-1 flex flex-col min-h-0">
-            {/* Sidebar Header - Mobile Only */}
-            <div className="lg:hidden p-6 border-b border-neutral-100 bg-neutral-50/50">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-3">
-                  <img 
-                    src="/logo-forteui-colored.svg" 
-                    alt="ForteUI" 
-                    className="h-7 w-auto"
-                  />
-                  <div className="flex flex-col">
-                    <Heading level={6} className="text-neutral-900 font-bold text-sm">
-                      ForteUI
-                    </Heading>
-                    <Text variant="caption" className="text-neutral-500 text-xs">
-                      Documentation
-                    </Text>
-                  </div>
-                </div>
-                
-                <Button
-                  variant="text-default"
-                  size="sm"
-                  onClick={closeSidebar}
-                  className="p-2 h-9 w-9 hover:bg-neutral-200 rounded-xl"
-                  aria-label="Close navigation"
-                >
-                  <IconX size={16} />
-                </Button>
-              </div>
-              
-              {/* Mobile Search */}
-              <div className="mt-4">
-                <SearchTrigger onClick={() => setIsSearchOpen(true)} />
-              </div>
-            </div>
-            
-            {/* Navigation */}
-            <div className="flex-1 min-h-0 overflow-y-auto px-4 py-6">
-              <nav className="space-y-2">
+            {/* Navigation - Remove redundant mobile breadcrumb */}
+            <div className="flex-1 min-h-0 overflow-y-auto px-4 py-6 touch-pan-y">
+              <nav className="space-y-1">{/* Reduced spacing for mobile */}
                 {navigationData.map((item) => (
                   <NavigationItem
                     key={item.id}
@@ -796,30 +836,13 @@ export default function Layout({ children }: { children: ReactNode }) {
               </nav>
             </div>
             
-            {/* Sidebar Footer */}
-            <div className="p-6 border-t border-neutral-100 bg-neutral-50/30">
-              <div className="flex items-center justify-between text-xs text-neutral-500 mb-3">
-                <span className="font-medium">© 2025 ForteUI</span>
-                <Badge variant="secondary" className="text-xs px-2 py-1">
+            {/* Simplified Mobile Footer - Remove redundant links */}
+            <div className="p-4 border-t border-neutral-100 bg-neutral-50/30 lg:p-6">
+              <div className="flex items-center justify-center lg:justify-between">
+                <span className="text-xs font-medium text-neutral-500">© 2025 ForteUI</span>
+                <Badge variant="secondary" className="text-xs px-2 py-1 ml-3 lg:ml-0">
                   v0.1.3
                 </Badge>
-              </div>
-              <div className="flex items-center gap-2">
-                <a 
-                  href="https://github.com/forteui/forteui" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="text-xs text-neutral-600 hover:text-neutral-900 transition-colors"
-                >
-                  GitHub
-                </a>
-                <span className="text-neutral-300">•</span>
-                <a 
-                  href="/docs" 
-                  className="text-xs text-neutral-600 hover:text-neutral-900 transition-colors"
-                >
-                  Docs
-                </a>
               </div>
             </div>
           </div>
@@ -827,35 +850,49 @@ export default function Layout({ children }: { children: ReactNode }) {
 
         {/* Main Content Area */}
         <div className="flex-1 flex flex-col overflow-hidden">
-          {/* Mobile Header */}
-          <header className="lg:hidden bg-white/95 backdrop-blur-sm border-b border-neutral-200 px-4 py-3 flex items-center justify-between">
-            <Button
-              variant="text-default"
-              size="sm"
-              onClick={toggleSidebar}
-              className="p-2 h-10 w-10 hover:bg-neutral-100 rounded-xl transition-all duration-200"
-              aria-label="Toggle navigation menu"
-              aria-expanded={isSidebarOpen}
-              aria-controls="sidebar-navigation"
-            >
-              <IconMenu2 size={20} />
-            </Button>
-            
-            <a 
-              href="/"
-              className="flex items-center gap-2 hover:opacity-80 transition-opacity"
-            >
-              <img 
-                src="/logo-forteui-colored.svg" 
-                alt="ForteUI" 
-                className="h-6 w-auto"
-              />
-              <Text variant="body-sm" className="font-bold text-neutral-900">
-                ForteUI
-              </Text>
-            </a>
-            
-            <div className="w-10"></div> {/* Balance the layout */}
+          {/* Enhanced Mobile Header */}
+          <header className="lg:hidden bg-white/95 backdrop-blur-sm border-b border-neutral-200 sticky top-0 z-30">
+            <div className="px-4 py-3">
+              <div className="flex items-center justify-between">
+                {/* Left: Menu + Current Page */}
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <Button
+                    variant="text-default"
+                    size="sm"
+                    onClick={toggleSidebar}
+                    className="p-2 h-10 w-10 hover:bg-neutral-100 rounded-xl transition-all duration-200 flex-shrink-0"
+                    aria-label="Toggle navigation menu"
+                    aria-expanded={isSidebarOpen}
+                    aria-controls="sidebar-navigation"
+                  >
+                    <IconMenu2 size={20} />
+                  </Button>
+                  
+                  <div className="flex items-center gap-2 min-w-0 flex-1">
+                    <img 
+                      src="/logo-forteui-colored.svg" 
+                      alt="ForteUI" 
+                      className="h-6 w-auto flex-shrink-0"
+                    />
+                  </div>
+                </div>
+                
+                {/* Right: Search + Actions */}
+                <div className="flex items-center gap-2 flex-shrink-0">
+                  <Button
+                    variant="text-default"
+                    size="sm"
+                    onClick={() => setIsSearchOpen(true)}
+                    className="p-2 h-10 w-10 hover:bg-neutral-100 rounded-xl transition-all duration-200"
+                    aria-label="Search"
+                  >
+                    <IconSearch size={20} />
+                  </Button>
+                  
+                  <MobileActionMenu />
+                </div>
+              </div>
+            </div>
           </header>
 
           {/* Content */}
