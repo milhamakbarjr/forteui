@@ -293,7 +293,7 @@ export function QuickStart() {
               </Button>
               
               <Button asChild variant="outline-default" size="lg" className="text-sm sm:text-base px-6 sm:px-8 py-3 sm:py-4 w-full sm:w-auto">
-                <Link href="/docs/components" className="flex items-center justify-center gap-2">
+                <Link href="/docs/introduction" className="flex items-center justify-center gap-2">
                   View Components
                 </Link>
               </Button>
