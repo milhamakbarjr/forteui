@@ -38,12 +38,12 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://forteui.dev'),
+  metadataBase: new URL('https://forteui.com'),
   title: {
     default: 'ForteUI - Modern React Component Library',
     template: '%s | ForteUI'
   },
-  description: 'A production-ready React component library with 17 components, comprehensive design system, TypeScript support, and interactive documentation. Built with Plus Jakarta Sans and WCAG 2.1 AA accessibility.',
+  description: 'ForteUI is a modern, production-ready React UI component library with 17 accessible components, a comprehensive design system, and TypeScript support.',
   keywords: [
     'React components',
     'UI library',
@@ -56,12 +56,18 @@ export const metadata: Metadata = {
     'Frontend',
     'Web development',
     'WCAG 2.1',
-    'ForteUI'
+    'ForteUI',
+    'UI kit',
+    'Open source UI',
+    'Frontend toolkit',
+    'Developer tools',
+    'Modern UI',
+    'Accessible components'
   ],
   authors: [
     {
       name: 'ForteUI Team',
-      url: 'https://forteui.dev'
+      url: 'https://forteui.com'
     }
   ],
   creator: 'ForteUI Team',
@@ -74,25 +80,18 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://forteui.dev',
+    url: 'https://forteui.com',
     title: 'ForteUI - Modern React Component Library',
-    description: 'A production-ready React component library with 17 components, comprehensive design system, and interactive documentation.',
+    description: 'ForteUI is a modern, production-ready React UI component library with 17 accessible components, a comprehensive design system, and TypeScript support.',
     siteName: 'ForteUI',
     images: [
       {
-        url: '/og-image.png',
+        url: 'https://forteui.com/og-image.png',
         width: 1200,
         height: 630,
         alt: 'ForteUI - Modern React Component Library'
       }
     ]
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'ForteUI - Modern React Component Library',
-    description: 'A production-ready React component library with 17 components, comprehensive design system, and interactive documentation.',
-    images: ['/og-image.png'],
-    creator: '@forteui'
   },
   robots: {
     index: true,
@@ -121,9 +120,9 @@ export const metadata: Metadata = {
   },
   manifest: '/site.webmanifest',
   alternates: {
-    canonical: 'https://forteui.dev',
+    canonical: 'https://forteui.com',
     types: {
-      'application/rss+xml': 'https://forteui.dev/feed.xml'
+      'application/rss+xml': 'https://forteui.com/feed.xml'
     }
   },
   category: 'technology',
@@ -141,7 +140,7 @@ const jsonLd = {
   name: 'ForteUI',
   applicationCategory: 'DeveloperApplication',
   operatingSystem: 'Web',
-  description: 'A production-ready React component library with 17 components, comprehensive design system, and interactive documentation.',
+  description: 'ForteUI is a modern, production-ready React UI component library with 17 accessible components, a comprehensive design system, and TypeScript support.',
   offers: {
     '@type': 'Offer',
     price: '0',
@@ -150,13 +149,13 @@ const jsonLd = {
   creator: {
     '@type': 'Organization',
     name: 'ForteUI Team',
-    url: 'https://forteui.dev'
+    url: 'https://forteui.com'
   },
   softwareVersion: '1.0.0',
   programmingLanguage: 'TypeScript',
   runtimePlatform: 'React',
   downloadUrl: 'https://www.npmjs.com/package/@forteui/core',
-  screenshot: 'https://forteui.dev/og-image.png',
+  screenshot: 'https://forteui.com/og-image.png',
   featureList: [
     '17 React Components',
     'TypeScript Support',
