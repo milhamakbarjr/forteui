@@ -734,11 +734,11 @@ export default function Layout({ children }: { children: ReactNode }) {
           aria-label="Documentation navigation"
           className={`
             fixed lg:relative lg:translate-x-0 transition-transform duration-300 ease-in-out z-50
-            w-80 bg-white border-r border-neutral-200 overflow-hidden h-full flex flex-col
+            w-80 bg-white border-r border-neutral-200 overflow-hidden h-full flex flex-col min-h-0
             ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
           `}
         >
-          <div className="p-0 flex-1 flex flex-col">
+          <div className="p-0 flex-1 flex flex-col min-h-0">
             {/* Sidebar Header - Mobile Only */}
             <div className="lg:hidden p-6 border-b border-neutral-100 bg-neutral-50/50">
               <div className="flex items-center justify-between">
@@ -776,7 +776,7 @@ export default function Layout({ children }: { children: ReactNode }) {
             </div>
             
             {/* Navigation */}
-            <div className="flex-1 overflow-y-auto px-4 py-6">
+            <div className="flex-1 min-h-0 overflow-y-auto px-4 py-6">
               <nav className="space-y-2">
                 {navigationData.map((item) => (
                   <NavigationItem
